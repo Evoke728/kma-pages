@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>K媽｜小心一點 · 心理測驗承接頁</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;700;900&family=Noto+Sans+TC:wght@400;500;700;900&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* === K媽 亮色版（親子溫馨：米白暖系 + 玫瑰粉） === */
+  --skin-primary:   #8B4A6B;
+  --skin-accent:    #C47FA0;
+  --skin-highlight: #F6D34D;
+  --skin-ink:    #2A1A22;
+  --skin-cream:  #FFFFFF;
+  --skin-bg:     #F7EFE9;
+  --skin-pink:   #F2C9DC;
+  --skin-peach:  #FBE3D4;
+  --skin-white:  #FFFFFF;
+
+  --shadow-sm: 4px 4px 0 var(--skin-ink);
+  --shadow-md: 8px 8px 0 var(--skin-ink);
+  --shadow-lg: 12px 12px 0 var(--skin-ink);
+  --border-thick:  3px solid var(--skin-ink);
+  --border-medium: 2px solid var(--skin-ink);
+  --radius-sm:8px; --radius-md:16px; --radius-lg:24px; --radius-pill:50px;
+  --ease-bounce: 400ms cubic-bezier(0.34,1.56,0.64,1);
+  --serif:"Noto Serif TC",serif; --sans:"Noto Sans TC","Inter",sans-serif;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:var(--skin-bg); font-family:var(--sans); color:var(--skin-ink); line-height:1.8; overflow-x:hidden; }
+.wrap { max-width:680px; margin:0 auto; position:relative; }
+
+/* BLOB */
+.skin-blob-wrap { position:relative; overflow:hidden; }
+.skin-blob { position:absolute; border-radius:60% 40% 30% 70% / 60% 30% 70% 40%;
+  animation:skin-morph 8s ease-in-out infinite; opacity:0.45; z-index:0; pointer-events:none; }
+.skin-blob--1 { width:min(70vw,420px); height:min(70vw,420px);
+  background:linear-gradient(135deg,var(--skin-peach),var(--skin-pink)); top:-8%; right:-15%; }
+.skin-blob--2 { width:min(60vw,360px); height:min(60vw,360px);
+  background:linear-gradient(135deg,var(--skin-pink),var(--skin-accent)); bottom:-10%; left:-18%; animation-delay:-4s; }
+@keyframes skin-morph {
+  0%,100% { border-radius:60% 40% 30% 70% / 60% 30% 70% 40%; }
+  25% { border-radius:30% 60% 70% 40% / 50% 60% 30% 40%; }
+  50% { border-radius:50% 60% 30% 70% / 30% 40% 70% 60%; }
+  75% { border-radius:60% 30% 60% 40% / 70% 50% 40% 30%; }
+}
+
+.skin-mark { background:var(--skin-highlight); color:var(--skin-ink); padding:0.08em 0.35em; border-radius:5px; display:inline-block; box-decoration-break:clone; }
+
+/* fade-up */
+.skin-fade-up { opacity:0; transform:translateY(32px); transition:opacity .6s ease, transform .6s ease; }
+.skin-fade-up.visible { opacity:1; transform:translateY(0); }
+
+/* HERO */
+.hero { position:relative; padding:64px 28px 48px; text-align:center; z-index:1; }
+.hero-tag { display:inline-block; background:var(--skin-accent); color:#fff; border:var(--border-medium);
+  border-radius:var(--radius-pill); padding:6px 16px; font-size:13px; font-weight:700; box-shadow:var(--shadow-sm); margin-bottom:22px; }
+.hero-title { font-family:var(--serif); font-weight:900; font-size:30px; line-height:1.5; position:relative; z-index:1; }
+
+/* SECTION */
+.section { position:relative; padding:36px 28px; z-index:1; }
+.section-label { display:inline-block; background:var(--skin-primary); color:#fff; border:var(--border-medium);
+  border-radius:var(--radius-pill); padding:4px 14px; font-size:12px; font-weight:700; margin-bottom:20px; box-shadow:var(--shadow-sm); }
+.quiz-q { font-family:var(--serif); font-size:21px; font-weight:700; line-height:1.6; margin-bottom:8px; }
+.quiz-sub { font-size:14px; color:#7a5c68; margin-bottom:26px; font-weight:500; }
+
+/* OPTION CARD */
+.opt { background:var(--skin-white); border:var(--border-thick); border-radius:var(--radius-md);
+  box-shadow:var(--shadow-sm); padding:18px 20px; margin-bottom:18px; cursor:pointer;
+  transition:transform var(--ease-bounce), box-shadow var(--ease-bounce); }
+.opt:hover { transform:translate(-3px,-3px); box-shadow:var(--shadow-md); }
+.opt.active { box-shadow:var(--shadow-md); }
+.opt-head { display:flex; align-items:center; gap:14px; font-size:17px; font-weight:700; }
+.opt-letter { display:inline-flex; align-items:center; justify-content:center; width:34px; height:34px;
+  background:var(--skin-highlight); color:var(--skin-ink); border:var(--border-medium); border-radius:50%;
+  font-family:"Inter"; font-weight:700; font-size:16px; flex-shrink:0; }
+.opt-result { max-height:0; overflow:hidden; transition:max-height .45s ease, margin .3s, padding .3s; }
+.opt.active .opt-result { max-height:640px; margin-top:16px; padding-top:16px; border-top:2px dashed var(--skin-pink); }
+.res-type { display:inline-block; background:var(--skin-peach); color:var(--skin-primary); font-size:13px; font-weight:700;
+  padding:3px 12px; border-radius:var(--radius-pill); border:var(--border-medium); margin-bottom:12px; }
+.res-text { font-size:14.5px; color:#3a2a30; line-height:1.85; margin-bottom:14px; }
+.res-gem { font-family:var(--serif); font-size:15.5px; font-weight:700; color:var(--skin-primary); line-height:1.6;
+  background:var(--skin-bg); border-left:4px solid var(--skin-accent); padding:12px 14px; border-radius:0 8px 8px 0; }
+
+/* TRANSITION */
+.transition { text-align:center; padding:18px 0; position:relative; z-index:1; }
+.transition-text { display:inline-block; background:var(--skin-white); border:var(--border-medium); border-radius:var(--radius-pill);
+  padding:8px 20px; font-size:14px; font-weight:700; box-shadow:var(--shadow-sm); }
+
+/* BRIDGE */
+.bridge { position:relative; z-index:1; padding:36px 28px; }
+.bridge-card { background:var(--skin-white); border:var(--border-thick); border-radius:var(--radius-lg); box-shadow:var(--shadow-md); padding:28px 24px; }
+.bridge p { font-size:15px; color:#3a2a30; line-height:1.9; margin-bottom:14px; }
+.bridge .em { font-family:var(--serif); font-size:19px; font-weight:900; line-height:1.6; margin:6px 0 16px; }
+
+/* INTRO */
+.intro { position:relative; z-index:1; padding:36px 28px; }
+.intro-card { background:var(--skin-peach); border:var(--border-thick); border-radius:var(--radius-lg); box-shadow:var(--shadow-md); padding:26px 24px; }
+.intro-name { font-family:var(--serif); font-size:20px; font-weight:900; margin-bottom:12px; }
+.intro-name .skin-mark { font-size:20px; }
+.intro-text { font-size:14.5px; color:#3a2a30; line-height:1.9; }
+
+/* COURSE */
+.course { position:relative; z-index:1; padding:36px 28px; }
+.course-card { background:var(--skin-white); border:var(--border-thick); border-radius:var(--radius-md); box-shadow:var(--shadow-sm);
+  padding:22px; margin-bottom:18px; transition:transform var(--ease-bounce), box-shadow var(--ease-bounce); }
+.course-card:hover { transform:translate(-3px,-3px); box-shadow:var(--shadow-md); }
+.course-stage { display:inline-block; background:var(--skin-primary); color:#fff; font-size:13px; font-weight:700;
+  padding:4px 12px; border-radius:var(--radius-pill); margin-bottom:12px; }
+.course-name { font-family:var(--serif); font-size:18px; font-weight:700; margin-bottom:8px; }
+.course-desc { font-size:14px; color:#3a2a30; line-height:1.8; }
+
+/* CTA */
+.cta { position:relative; z-index:1; padding:30px 28px 56px; text-align:center; }
+.cta-line { font-family:var(--serif); font-size:22px; font-weight:900; line-height:1.6; margin-bottom:10px; }
+.cta-sub { font-size:14.5px; color:#7a5c68; margin-bottom:26px; line-height:1.8; font-weight:500; }
+.skin-btn { display:inline-flex; align-items:center; gap:8px; background:var(--skin-primary); color:#fff;
+  border:var(--border-thick); border-radius:var(--radius-pill); padding:16px 44px; font-weight:900; font-size:18px;
+  box-shadow:var(--shadow-md); transition:transform var(--ease-bounce), box-shadow var(--ease-bounce);
+  position:relative; overflow:hidden; cursor:pointer; text-decoration:none; }
+.skin-btn:hover { transform:translate(-4px,-4px); box-shadow:var(--shadow-lg); }
+.skin-btn:active { transform:translate(0,0); box-shadow:var(--shadow-sm); }
+.skin-btn::after { content:''; position:absolute; top:0; left:-100%; width:50%; height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,0.35),transparent); transform:skewX(-25deg); animation:skin-shine 3s ease-in-out infinite; }
+@keyframes skin-shine { 0%{left:-100%;} 20%{left:150%;} 100%{left:150%;} }
+.cta-note { margin-top:16px; font-size:12.5px; color:#7a5c68; font-weight:500; }
+
+/* FOOTER */
+.footer { position:relative; z-index:1; padding:22px 28px 40px; text-align:center; }
+.footer-acc { font-style:italic; font-size:14px; color:var(--skin-primary); font-weight:700; }
+.disclaimer { font-size:11.5px; color:#9a8089; margin-top:10px; line-height:1.6; }
+</style>
+</head>
+<body>
+<div class="wrap skin-blob-wrap">
+  <div class="skin-blob skin-blob--1"></div>
+  <div class="skin-blob skin-blob--2"></div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <span class="hero-tag">#家庭育兒 · 心理測驗解析</span>
+    <div class="hero-title">最傷孩子的那句話<br>是我們以為最保護他的<br><span class="skin-mark">「小心一點」</span></div>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="section skin-fade-up">
+    <span class="section-label">先看你的直覺</span>
+    <div class="quiz-q">孩子堆積木，歪歪的快倒了<br>你的手會——</div>
+    <div class="quiz-sub">點下面你的選擇，看你心裡的反應是哪一種</div>
+
+    <div class="opt" onclick="toggle(this)">
+      <div class="opt-head"><span class="opt-letter">A</span>馬上扶住</div>
+      <div class="opt-result">
+        <span class="res-type">焦慮型照顧者</span>
+        <div class="res-text">你不是不信任孩子，是太怕他受傷<br>你習慣先一步把風險擋掉，讓他不用經歷失敗<br>但孩子失去的，是「自己把它扶正」的那份成就感</div>
+        <div class="res-gem">💗 他需要的不是你的手，是你相信他能站穩</div>
+      </div>
+    </div>
+
+    <div class="opt" onclick="toggle(this)">
+      <div class="opt-head"><span class="opt-letter">B</span>先等一下看看</div>
+      <div class="opt-result">
+        <span class="res-type">拉扯型</span>
+        <div class="res-text">你知道該放手，但手還是會抖<br>理智告訴你讓他試，情緒卻忍不住緊張<br>這種拉扯不是矛盾，是你正在學一件很難的事</div>
+        <div class="res-gem">💗 那個「等一下」，就是你正在學會信任</div>
+      </div>
+    </div>
+
+    <div class="opt" onclick="toggle(this)">
+      <div class="opt-head"><span class="opt-letter">C</span>完全不動</div>
+      <div class="opt-result">
+        <span class="res-type">信任型</span>
+        <div class="res-text">你已經懂得把舞台讓給他<br>就算倒了，你也相信他能自己重來一次<br>你忍住的不是冷漠，是讓他長出能力的空間</div>
+        <div class="res-gem">💗 你給的不是放任，是最深的安全感</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TRANSITION -->
+  <div class="transition"><span class="transition-text">繼續往下滑 ⬇️</span></div>
+
+  <!-- BRIDGE -->
+  <div class="bridge skin-fade-up">
+    <div class="bridge-card">
+      <p>不管你是哪一種<br>能放手信任孩子的媽媽，有一個共同點——</p>
+      <p class="em">她們自己，<span class="skin-mark">先站穩了</span></p>
+      <p>真正能對孩子說「我相信你」的媽媽<br>不是沒有焦慮<br>是有能力替自己、也替這個家，創造更多選擇權</p>
+      <p>當你不再被「錢夠不夠用」綁住<br>你才有餘裕，把那雙手，放心地收回來</p>
+    </div>
+  </div>
+
+  <!-- INTRO -->
+  <div class="intro skin-fade-up">
+    <div class="intro-card">
+      <div class="intro-name">HI，我是 <span class="skin-mark">K媽</span></div>
+      <div class="intro-text">記錄一個媽媽如何把「賺錢、變美、好好生活」這三件事同時做到<br><br>我也是從每天說「小心一點」的焦慮走過來的——後來我發現，要先讓自己有底氣，才有辦法真正放手</div>
+    </div>
+  </div>
+
+  <!-- COURSE -->
+  <div class="course skin-fade-up">
+    <span class="section-label">如果你也想開始</span>
+    <div class="course-card">
+      <div class="course-stage">🧭 一階 · 新手班</div>
+      <div class="course-name">7 天線上課程，真人陪跑</div>
+      <div class="course-desc">每天只要約 10 分鐘<br>從零開始，帶你建立讓錢替你工作的第一步</div>
+    </div>
+    <div class="course-card">
+      <div class="course-stage">🧠 二階 · VIP 進階實戰</div>
+      <div class="course-name">線上＋線下，一對一私教</div>
+      <div class="course-desc">想走更遠的人，進到實戰<br>把方法變成你真正能用的能力</div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta skin-fade-up">
+    <div class="cta-line">想替自己<br>多一個<span class="skin-mark">選擇權</span>嗎</div>
+    <div class="cta-sub">不是叫你梭哈<br>是讓你多一條路，走得更從容</div>
+    <a class="skin-btn" href="https://line.me/R/oaMessage/@341vxnvi/?%E6%88%91%E6%BA%96%E5%82%99%E5%A5%BD%E4%BA%86" target="_blank" rel="noopener">加入 LINE 社群</a>
+    <div class="cta-note">免費入門課程，名額有限</div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-acc">@lovekaren0316</div>
+    <div class="disclaimer">以上為觀念與邏輯示範，非投資建議</div>
+  </div>
+
+</div>
+
+<script>
+function toggle(el) {
+  const wasActive = el.classList.contains('active');
+  document.querySelectorAll('.opt').forEach(o => o.classList.remove('active'));
+  if (!wasActive) el.classList.add('active');
+}
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.skin-fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
