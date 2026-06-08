@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>K媽｜我用 AI 做輪播貼文的完整節奏</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;700;900&family=Noto+Sans+TC:wght@300;400;500;700;900&family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --gold:#B5862A; --gold-bright:#C9A84C; --gold-dim:rgba(181,134,42,0.28);
+  --ink:#2A2316; --bg:#F5EFE2; --card:#FFFFFF; --card2:#FBF5EA;
+  --code:#1A1710; --code-tx:#EBE3D0; --text:#2C2619; --dim:#7E745F;
+  --shadow-sm:4px 4px 0 var(--ink); --shadow-md:7px 7px 0 var(--ink); --shadow-lg:11px 11px 0 var(--ink);
+  --bd-thick:3px solid var(--ink); --bd-med:2px solid var(--ink); --bd-gold:2px solid var(--gold);
+  --r-md:16px; --r-lg:24px; --pill:50px;
+  --bounce:400ms cubic-bezier(0.34,1.56,0.64,1);
+  --serif:"Noto Serif TC",serif; --sans:"Noto Sans TC","Inter",sans-serif; --mono:"JetBrains Mono",monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:var(--sans);color:var(--text);line-height:1.85;overflow-x:hidden;
+  background:var(--bg);
+  background-image:radial-gradient(120% 55% at 50% 0%, rgba(181,134,42,0.13) 0%, rgba(181,134,42,0.04) 30%, rgba(245,239,226,0) 62%);
+  background-attachment:fixed;}
+.bg-blobs{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
+.blob{position:absolute;border-radius:60% 40% 30% 70% / 60% 30% 70% 40%;animation:morph 11s ease-in-out infinite;opacity:0.32;filter:blur(14px);}
+.blob1{width:min(48vw,640px);height:min(48vw,640px);background:linear-gradient(135deg,#F0D58A,#E6BE55);top:-12%;right:-8%;}
+.blob2{width:min(42vw,520px);height:min(42vw,520px);background:linear-gradient(135deg,#F5E3B0,#EAD18A);bottom:-10%;left:-9%;animation-delay:-5.5s;}
+@keyframes morph{0%,100%{border-radius:60% 40% 30% 70% / 60% 30% 70% 40%;}25%{border-radius:30% 60% 70% 40% / 50% 60% 30% 40%;}50%{border-radius:50% 60% 30% 70% / 30% 40% 70% 60%;}75%{border-radius:60% 30% 60% 40% / 70% 50% 40% 30%;}}
+.wrap{max-width:720px;margin:0 auto;position:relative;background:transparent;min-height:100vh;}
+.mark{background:var(--gold);color:#FFF8E6;padding:0.06em 0.32em;border-radius:5px;display:inline-block;box-decoration-break:clone;font-weight:700;}
+.fade{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease;}
+.fade.vis{opacity:1;transform:translateY(0);}
+.hero{position:relative;z-index:1;padding:66px 30px 46px;}
+.kicker{font-family:var(--mono);font-size:11px;letter-spacing:0.28em;color:var(--gold);margin-bottom:24px;font-weight:600;}
+.hero h1{font-family:var(--serif);font-weight:900;font-size:38px;line-height:1.35;margin-bottom:18px;}
+.hero h1 .g{color:var(--gold);}
+.hero-sub{font-size:15px;color:var(--dim);line-height:1.8;margin-bottom:30px;}
+.divider{width:46px;height:3px;background:var(--gold);margin-bottom:30px;}
+.stats{display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
+.stat{text-align:center;}
+.stat .n{font-family:"Inter";font-weight:700;font-size:34px;color:var(--gold);line-height:1;}
+.stat .l{font-size:11px;color:var(--dim);margin-top:6px;letter-spacing:0.05em;}
+.stat-op{font-size:22px;color:#C9B27E;font-weight:300;}
+.author-card{margin-top:32px;background:var(--card);border:var(--bd-med);border-radius:var(--r-md);box-shadow:var(--shadow-sm);padding:16px 20px;position:relative;z-index:1;}
+.author-card .a{font-weight:700;color:var(--gold);font-size:15px;}
+.author-card .b{font-size:13px;color:var(--dim);margin-top:3px;}
+.sec{position:relative;z-index:1;padding:40px 30px;border-top:1px solid rgba(181,134,42,0.18);}
+.sec-tag{display:inline-block;background:var(--gold);color:#FFF8E6;font-size:12px;font-weight:700;padding:4px 14px;border-radius:var(--pill);box-shadow:var(--shadow-sm);border:var(--bd-med);margin-bottom:18px;letter-spacing:0.04em;}
+.sec h2{font-family:var(--serif);font-weight:900;font-size:25px;line-height:1.4;margin-bottom:16px;}
+.sec h2 .g{color:var(--gold);}
+.sec p{font-size:15px;color:var(--text);line-height:1.9;margin-bottom:14px;}
+.sec p .hl{color:var(--gold);font-weight:500;}
+.sub-h{font-family:var(--serif);font-weight:700;font-size:18px;color:var(--gold);margin:26px 0 14px;}
+.cols{display:flex;gap:14px;flex-wrap:wrap;margin:8px 0 6px;}
+.col{flex:1;min-width:240px;background:var(--card);border:var(--bd-thick);border-radius:var(--r-md);box-shadow:var(--shadow-sm);padding:18px 20px;}
+.col.good{border-color:var(--gold);}
+.col .ct{font-size:12px;font-weight:700;color:var(--dim);margin-bottom:10px;letter-spacing:0.05em;}
+.col.good .ct{color:var(--gold);}
+.col .cc{font-size:14px;line-height:1.8;color:var(--text);}
+.insight{background:var(--card2);border:var(--bd-thick);border-radius:var(--r-lg);box-shadow:var(--shadow-md);padding:22px 24px;margin:22px 0;}
+.insight .il{font-size:12px;font-weight:700;color:var(--gold);letter-spacing:0.06em;margin-bottom:10px;}
+.insight .it{font-family:var(--serif);font-size:17px;font-weight:700;line-height:1.7;color:var(--text);}
+.checks{margin:8px 0;}
+.ck{display:flex;gap:12px;align-items:flex-start;margin-bottom:14px;}
+.ck .bx{flex-shrink:0;width:22px;height:22px;border-radius:6px;background:var(--gold);color:#FFF8E6;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;border:var(--bd-med);}
+.ck .tx{font-size:14.5px;line-height:1.75;color:var(--text);}
+.ck .tx b{color:var(--gold);}
+.prompt{background:var(--code);border:var(--bd-gold);border-radius:var(--r-md);box-shadow:var(--shadow-md);padding:18px 18px;margin:18px 0;position:relative;}
+.prompt .pl{font-family:var(--mono);font-size:11px;letter-spacing:0.12em;color:var(--gold-bright);margin-bottom:12px;display:flex;align-items:center;gap:8px;max-width:calc(100% - 70px);}
+.prompt .pl::before{content:"\25B6";font-size:9px;}
+.prompt pre{font-family:var(--mono);font-size:12.5px;line-height:1.85;color:var(--code-tx);white-space:pre-wrap;word-break:break-word;}
+.prompt .ph{color:var(--gold-bright);}
+.copy-btn{position:absolute;top:12px;right:12px;background:rgba(201,168,76,0.16);border:1px solid var(--gold);color:var(--gold-bright);font-family:var(--sans);font-size:11px;font-weight:700;padding:5px 13px;border-radius:50px;cursor:pointer;transition:all .2s;letter-spacing:0.04em;z-index:2;}
+.copy-btn:hover{background:var(--gold);color:#1A1406;}
+.copy-btn.done{background:var(--gold);color:#1A1406;border-color:var(--gold);}
+.fu{margin-bottom:18px;}
+.fu .ft{font-size:14px;font-weight:700;color:var(--gold);margin-bottom:6px;}
+.fu .fq{font-size:14px;color:var(--text);line-height:1.8;font-style:italic;border-left:3px solid var(--gold-dim);padding-left:12px;margin-bottom:6px;}
+.fu .fa{font-size:13px;color:var(--dim);line-height:1.7;}
+.maps{margin:6px 0;}
+.maps .m{font-size:14px;line-height:1.85;margin-bottom:8px;color:var(--text);}
+.maps .m b{color:var(--gold);}
+.tl{margin:6px 0;}
+.tl .t{display:flex;gap:14px;margin-bottom:14px;}
+.tl .tm{flex-shrink:0;font-family:"Inter";font-weight:700;color:var(--gold);font-size:13px;min-width:66px;}
+.tl .td{font-size:14px;line-height:1.7;color:var(--text);}
+.cta{position:relative;z-index:1;padding:48px 30px 60px;border-top:3px solid var(--gold-dim);}
+.cta-card{background:var(--card);border:var(--bd-thick);border-radius:var(--r-lg);box-shadow:var(--shadow-lg);padding:30px 26px;}
+.cta-kicker{font-family:var(--mono);font-size:11px;letter-spacing:0.2em;color:var(--gold);margin-bottom:14px;font-weight:600;}
+.cta-card h2{font-family:var(--serif);font-weight:900;font-size:24px;line-height:1.45;margin-bottom:8px;}
+.cta-card h2 .g{color:var(--gold);}
+.cta-lead{font-size:14.5px;color:var(--dim);line-height:1.85;margin-bottom:22px;}
+.fit{margin:18px 0;}
+.fit .f{display:flex;gap:10px;font-size:14px;line-height:1.7;margin-bottom:10px;color:var(--text);}
+.fit .f::before{content:"\2714";color:var(--gold);font-weight:700;flex-shrink:0;}
+.gives{background:var(--card2);border:var(--bd-med);border-radius:var(--r-md);padding:18px 20px;margin:20px 0;}
+.gives .gt{font-size:12px;font-weight:700;color:var(--gold);letter-spacing:0.05em;margin-bottom:12px;}
+.gives .gi{font-size:14px;line-height:1.75;margin-bottom:9px;padding-left:20px;position:relative;color:var(--text);}
+.gives .gi::before{content:"\2726";color:var(--gold);position:absolute;left:0;}
+.btn-wrap{text-align:center;margin-top:26px;}
+.skbtn{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:#FFF8E6;border:var(--bd-thick);border-radius:var(--pill);padding:17px 46px;font-weight:900;font-size:18px;box-shadow:var(--shadow-md);transition:transform var(--bounce),box-shadow var(--bounce);position:relative;overflow:hidden;cursor:pointer;text-decoration:none;}
+.skbtn:hover{transform:translate(-4px,-4px);box-shadow:var(--shadow-lg);}
+.skbtn:active{transform:translate(0,0);box-shadow:var(--shadow-sm);}
+.skbtn::after{content:'';position:absolute;top:0;left:-100%;width:50%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.5),transparent);transform:skewX(-25deg);animation:shine 3s ease-in-out infinite;}
+@keyframes shine{0%{left:-100%;}20%{left:150%;}100%{left:150%;}}
+.btn-note{margin-top:14px;font-size:12.5px;color:var(--dim);}
+.footer{position:relative;z-index:1;padding:24px 30px 44px;text-align:center;}
+.footer .fa{font-style:italic;font-size:14px;color:var(--gold);font-weight:700;}
+.footer .fc{font-size:11px;color:#A99E86;margin-top:8px;letter-spacing:0.05em;}
+</style>
+</head>
+<body>
+<div class="bg-blobs"><div class="blob blob1"></div><div class="blob blob2"></div></div>
+<div class="wrap">
+  <div class="hero">
+    <div class="kicker">WORKFLOW GUIDE · VOL.01</div>
+    <h1>我用 AI<br>做輪播貼文的<br><span class="g">完整節奏</span></h1>
+    <div class="hero-sub">從 4 小時壓縮到 20 分鐘的實際操作流程<br>含即用 Prompt 範本</div>
+    <div class="divider"></div>
+    <div class="stats">
+      <div class="stat"><div class="n">4</div><div class="l">小時 · 以前</div></div>
+      <div class="stat-op">→</div>
+      <div class="stat"><div class="n">20</div><div class="l">分鐘 · 現在</div></div>
+      <div class="stat-op">=</div>
+      <div class="stat"><div class="n">12×</div><div class="l">效率提升</div></div>
+    </div>
+    <div class="author-card"><div class="a">K媽｜美麗K媽</div><div class="b">記錄一個媽媽把「賺錢、變美、好好生活」同時做到</div></div>
+  </div>
+
+  <div class="sec fade">
+    <span class="sec-tag">01 · 核心觀念</span>
+    <h2>為什麼大多數人<br>用 AI <span class="g">沒效率</span></h2>
+    <p>你有沒有這個經驗：把主題丟給 AI，叫它「幫我寫一篇輪播貼文」，然後看著結果，覺得哪裡不對、但也說不清楚哪裡不對，開始改、它再寫、再改，<span class="hl">最後花的時間比自己從頭寫還多</span>？</p>
+    <p>問題不在 AI 不好用，問題在於——你請它跳過了最關鍵的步驟。</p>
+    <div class="sub-h">根本原因：角色混淆</div>
+    <div class="cols">
+      <div class="col"><div class="ct">✗ 大多數人的做法</div><div class="cc">直接叫 AI 當執行者：「幫我寫一篇關於 X 的輪播」<br><br>結果：它給你的是「猜測」你要什麼的版本，不是真正理解你受眾的版本。</div></div>
+      <div class="col good"><div class="ct">✦ 正確的做法</div><div class="cc">先叫它當<b style="color:var(--gold)">研究員</b>，再叫它當<b style="color:var(--gold)">策略師</b>，最後才叫它當<b style="color:var(--gold)">執行者</b>。<br><br>順序對了，輸出品質差三倍以上。</div></div>
+    </div>
+    <div class="insight"><div class="il">核心洞察</div><div class="it">AI 是一面鏡子。你給它多深的前置，它給你多深的輸出。跳過研究，就是跳過品質。</div></div>
+  </div>
+
+  <div class="sec fade">
+    <span class="sec-tag">02 · 研究階段 STEP 1</span>
+    <h2>開場那句話<br><span class="g">怎麼問</span></h2>
+    <p>AI 的輸出品質，<span class="hl">70% 取決於你的第一個 Prompt</span>。正確的開場問句，要做到三件事：</p>
+    <div class="checks">
+      <div class="ck"><div class="bx">1</div><div class="tx"><b>設定角色</b>：告訴它現在要扮演什麼——不是文案寫手，是研究員</div></div>
+      <div class="ck"><div class="bx">2</div><div class="tx"><b>給定受眾</b>：說清楚這份內容給誰看，他們的背景、痛點、現況</div></div>
+      <div class="ck"><div class="bx">3</div><div class="tx"><b>明確任務</b>：這個階段只要研究，不要輸出——把這件事講清楚</div></div>
+    </div>
+    <div class="prompt"><button class="copy-btn" onclick="copyPrompt(this)">複製</button><div class="pl">PROMPT 範本 1/4 — 研究開場</div><pre>你現在是一位內容策略研究員，專門協助個人創作者做 Instagram 輪播貼文的前期研究。
+
+我想做一篇關於<span class="ph">【主題】</span>的輪播貼文。
+目標受眾是：<span class="ph">【描述受眾：職業/年齡/現況/想達成的目標】</span>
+
+請你先幫我做主題的底層邏輯分析，包括：
+1. 這個主題對受眾來說，最根本的痛點是什麼？
+2. 他們現在通常用什麼方式面對？為什麼不夠好？
+3. 這個主題有沒有被大多數人誤解或忽略的面向？
+
+先給我分析，不要寫貼文。</pre></div>
+    <div class="sub-h">拿到回應後，三個必問的追問句</div>
+    <div class="fu"><div class="ft">追問 A · 強化痛點的具體感</div><div class="fq">「你說的痛點，能不能給我一個具體場景？某個人在某個時刻，到底在做什麼、感覺到什麼？越具體越好。」</div><div class="fa">→ 讓痛點從抽象變成畫面，寫封面才有衝擊感</div></div>
+    <div class="fu"><div class="ft">追問 B · 挖出隱性阻力</div><div class="fq">「假設受眾看完覺得有道理，但還是沒行動——最可能的原因是什麼？他心裡的阻力是什麼？」</div><div class="fa">→ 提前知道讀者的抗拒點，貼文才能主動消除它</div></div>
+    <div class="fu"><div class="ft">追問 C · 找出最有說服力的角度</div><div class="fq">「如果這篇只能讓受眾帶走一個觀念，哪個最能讓他的行為真正改變？為什麼是這個？」</div><div class="fa">→ 這個答案，通常就是整篇貼文的核心觀點</div></div>
+  </div>
+
+  <div class="sec fade">
+    <span class="sec-tag">03 · 研究階段 STEP 2</span>
+    <h2>深挖受眾<br><span class="g">真實心理</span></h2>
+    <p>Step 1 找到「受眾的問題」，但<span class="hl">問題是表面的，動機是深層的</span>。貼文能不能讓人轉發、留言，取決於你有沒有觸碰到動機層。</p>
+    <div class="prompt"><button class="copy-btn" onclick="copyPrompt(this)">複製</button><div class="pl">PROMPT 範本 2/4 — 受眾心理分析</div><pre>基於剛才的分析，請幫我做一個更深層的受眾心理側寫。
+請用以下四個維度來分析<span class="ph">【目標受眾】</span>：
+
+1. 表面問題：他們說出口的困難是什麼？
+2. 深層動機：他們真正想要的是什麼？（不一定說得出口）
+3. 心理阻力：是什麼讓他們即使知道方法，還是不行動？
+4. 渴望的自我形象：他們希望在別人眼中是什麼樣的人？
+
+每個維度給我 2-3 個具體洞察，
+請用受眾在某個時刻會說出的「台詞」來呈現。</pre></div>
+    <div class="sub-h">四個維度，對應貼文的哪一張</div>
+    <div class="maps">
+      <div class="m"><b>表面問題</b> → 第 2 張痛點頁：用他說得出口的語言，讓受眾覺得「這在說我」</div>
+      <div class="m"><b>深層動機</b> → 第 1 張封面大標：用動機層的語言，封面才有停下來的力道</div>
+      <div class="m"><b>心理阻力</b> → 第 4 張方法頁：解釋方法時，主動提前說出阻力、再拆解它</div>
+      <div class="m"><b>渴望的自我形象</b> → 第 7 張 CTA：用受眾「想成為的那個人」的語言寫行動呼籲</div>
+    </div>
+  </div>
+
+  <div class="sec fade">
+    <span class="sec-tag">04 · 研究階段 STEP 3</span>
+    <h2>找到讓人停下來的<br><span class="g">反直覺角度</span></h2>
+    <p>大多數貼文失敗，不是因為沒內容，而是因為「<span class="hl">這個我知道</span>」。受眾滑到的那個瞬間就跳過。你要打破的，就是這個「我知道了」的自動判斷。</p>
+    <div class="prompt"><button class="copy-btn" onclick="copyPrompt(this)">複製</button><div class="pl">PROMPT 範本 3/4 — 反直覺角度</div><pre>基於以上對<span class="ph">【主題】</span>和受眾的分析，
+請幫我找出 5 個「反直覺切入角度」。
+
+反直覺角度的定義：
+- 和大多數人的認知相反，但有邏輯支撐
+- 讓人看到第一句話就想看第二句話
+- 不是嘩眾取寵，是真正能改變行為的洞察
+
+格式：每個角度用一句「封面大標」呈現，
+再用兩句話說明為什麼有說服力。</pre></div>
+    <div class="sub-h">五個裡面怎麼選一個</div>
+    <div class="checks">
+      <div class="ck"><div class="bx">✓</div><div class="tx">受眾看完能用<b>一句話跟朋友解釋</b>為什麼他改變了做法——這個角度就夠強</div></div>
+      <div class="ck"><div class="bx">✓</div><div class="tx">這個角度和你的<b>親身經驗有共鳴</b>——有案例，寫出來的溫度完全不同</div></div>
+      <div class="ck"><div class="bx">✓</div><div class="tx">是受眾「<b>需要聽</b>」的，而不只是「想聽」的——後者更容易被分享收藏</div></div>
+    </div>
+  </div>
+
+  <div class="sec fade">
+    <span class="sec-tag">05 · 執行階段</span>
+    <h2>從研究到輸出<br><span class="g">這樣交棒</span></h2>
+    <p>Step 1–3 完成後，你手上有：底層邏輯分析、受眾心理側寫、一個選定的反直覺角度。現在把這三份研究，<span class="hl">打包成一個「簡報」</span>交給執行者角色的 AI。</p>
+    <div class="prompt"><button class="copy-btn" onclick="copyPrompt(this)">複製</button><div class="pl">PROMPT 範本 4/4 — 執行交棒</div><pre>好，研究階段完成了。現在換你扮演輪播貼文執行者。
+
+根據我們剛才討論的：
+- 主題核心：<span class="ph">【一句話總結底層邏輯】</span>
+- 目標受眾：<span class="ph">【受眾描述 + 最大的深層動機】</span>
+- 核心切入角度：<span class="ph">【選定的反直覺大標】</span>
+- 受眾最大的心理阻力：<span class="ph">【Step 2 找到的阻力】</span>
+
+請幫我寫一組 7 張 Instagram 輪播貼文：
+第 1 張：封面（大標+副標，大標用核心角度）
+第 2 張：點出受眾的表面問題和感受
+第 3 張：轉折（你怎麼發現問題的根源）
+第 4 張：方法核心（主動拆解心理阻力）
+第 5 張：佐證或漣漪效應
+第 6 張：解鎖頁（部分模糊 + CTA 預告）
+第 7 張：完整 CTA</pre></div>
+  </div>
+
+  <div class="sec fade">
+    <span class="sec-tag">06 · 時間節奏</span>
+    <h2>20 分鐘<br><span class="g">怎麼分配</span></h2>
+    <div class="tl">
+      <div class="t"><div class="tm">0–3 分</div><div class="td">設定場景（Step 1 開場 Prompt）</div></div>
+      <div class="t"><div class="tm">3–8 分</div><div class="td">深挖研究（Step 1 追問 + Step 2）</div></div>
+      <div class="t"><div class="tm">8–11 分</div><div class="td">選定角度（Step 3）</div></div>
+      <div class="t"><div class="tm">11–14 分</div><div class="td">打包交棒（執行 Prompt）</div></div>
+      <div class="t"><div class="tm">14–20 分</div><div class="td">審稿 + 微調</div></div>
+    </div>
+    <div class="insight"><div class="il">最常見的時間浪費點</div><div class="it">卡在「選角度」和「改文稿」。前者靠決策力，後者靠研究品質——兩個都是上游決定下游的事。</div></div>
+  </div>
+
+  <div class="cta fade">
+    <div class="cta-card">
+      <div class="cta-kicker">WHAT'S NEXT</div>
+      <h2>這套流程，<br>有人<span class="g">每天一起練</span></h2>
+      <div class="cta-lead">這份指南只是起點。真正讓 AI 變成你工作方式的，是持續迭代與一群一起走的人——這就是我們做<span style="color:var(--gold);font-weight:700;">奇點研究所</span>的原因。</div>
+      <div class="fit">
+        <div class="f">想開始做個人品牌，但不知道從哪裡發第一篇</div>
+        <div class="f">已經在做，但流量起不來、轉換沒有</div>
+        <div class="f">想用 AI 讓內容製作不那麼累</div>
+        <div class="f">教練、顧問、講師——想用內容把專業變現</div>
+      </div>
+      <div class="gives">
+        <div class="gt">免費加入，你會拿到</div>
+        <div class="gi">從 0 開始的 Claude 操作手冊，加入即領</div>
+        <div class="gi">一個每天陪你練習的「起始點計畫」30 天</div>
+        <div class="gi">研究員成果發表牆——每一篇都是從零做出來的</div>
+        <div class="gi">一個共同成長、不孤單的圈子</div>
+      </div>
+      <div class="btn-wrap">
+        <a class="skbtn" href="https://www.skool.com/d11-4379" target="_blank" rel="noopener">免費加入 奇點研究所</a>
+        <div class="btn-note">從執行者到決策者——你的奇點就在這裡</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer"><div class="fa">@lovekaren0316</div><div class="fc">AI 輪播實戰指南 · VOL.01 · 2026</div></div>
+</div>
+<script>
+function copyPrompt(btn){
+  var pre = btn.parentElement.querySelector('pre');
+  var text = pre.innerText;
+  var done = function(){ btn.textContent='已複製 \u2713'; btn.classList.add('done'); setTimeout(function(){ btn.textContent='複製'; btn.classList.remove('done'); },1600); };
+  if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(text).then(done).catch(function(){ fb(text,done); }); }
+  else{ fb(text,done); }
+}
+function fb(text,done){ var ta=document.createElement('textarea'); ta.value=text; ta.style.position='fixed'; ta.style.top='-9999px'; document.body.appendChild(ta); ta.select(); try{ document.execCommand('copy'); done(); }catch(e){} document.body.removeChild(ta); }
+var ob=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting) e.target.classList.add('vis'); }); },{threshold:0.08});
+document.querySelectorAll('.fade').forEach(function(el){ ob.observe(el); });
+</script>
+</body>
+</html>
