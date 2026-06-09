@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>美麗K媽｜一幣兩用 完整設定教學</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;700;900&family=Noto+Sans+TC:wght@300;400;500;700;900&family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --gold:#B5862A; --gold-bright:#C9A84C; --gold-dim:rgba(181,134,42,0.28);
+  --ink:#2A2316; --bg:#F5EFE2; --card:#FFFFFF; --card2:#FBF5EA;
+  --code:#1A1710; --code-tx:#EBE3D0; --text:#2C2619; --dim:#7E745F;
+  --shadow-sm:4px 4px 0 var(--ink); --shadow-md:7px 7px 0 var(--ink); --shadow-lg:11px 11px 0 var(--ink);
+  --bd-thick:3px solid var(--ink); --bd-med:2px solid var(--ink); --bd-gold:2px solid var(--gold);
+  --r-md:16px; --r-lg:24px; --pill:50px;
+  --bounce:400ms cubic-bezier(0.34,1.56,0.64,1);
+  --serif:"Noto Serif TC",serif; --sans:"Noto Sans TC","Inter",sans-serif; --mono:"JetBrains Mono",monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:var(--sans);color:var(--text);line-height:1.85;overflow-x:hidden;
+  background:var(--bg);
+  background-image:radial-gradient(120% 55% at 50% 0%, rgba(181,134,42,0.13) 0%, rgba(181,134,42,0.04) 30%, rgba(245,239,226,0) 62%);
+  background-attachment:fixed;}
+.bg-blobs{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
+.blob{position:absolute;border-radius:60% 40% 30% 70% / 60% 30% 70% 40%;animation:morph 11s ease-in-out infinite;opacity:0.32;filter:blur(14px);}
+.blob1{width:min(48vw,640px);height:min(48vw,640px);background:linear-gradient(135deg,#F0D58A,#E6BE55);top:-12%;right:-8%;}
+.blob2{width:min(42vw,520px);height:min(42vw,520px);background:linear-gradient(135deg,#F5E3B0,#EAD18A);bottom:-10%;left:-9%;animation-delay:-5.5s;}
+@keyframes morph{0%,100%{border-radius:60% 40% 30% 70% / 60% 30% 70% 40%;}25%{border-radius:30% 60% 70% 40% / 50% 60% 30% 40%;}50%{border-radius:50% 60% 30% 70% / 30% 40% 70% 60%;}75%{border-radius:60% 30% 60% 40% / 70% 50% 40% 30%;}}
+.wrap{max-width:720px;margin:0 auto;position:relative;background:transparent;min-height:100vh;}
+.mark{background:var(--gold);color:#FFF8E6;padding:0.06em 0.32em;border-radius:5px;display:inline-block;font-weight:700;}
+.fade{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease;}
+.fade.vis{opacity:1;transform:translateY(0);}
+.hero{position:relative;z-index:1;padding:62px 30px 42px;}
+.kicker{font-family:var(--mono);font-size:11px;letter-spacing:0.26em;color:var(--gold);margin-bottom:22px;font-weight:600;}
+.hero h1{font-family:var(--serif);font-weight:900;font-size:36px;line-height:1.4;margin-bottom:16px;}
+.hero h1 .g{color:var(--gold);}
+.hero-sub{font-size:15px;color:var(--dim);line-height:1.8;margin-bottom:28px;}
+.divider{width:46px;height:3px;background:var(--gold);margin-bottom:28px;}
+.author-card{background:var(--card);border:var(--bd-med);border-radius:var(--r-md);box-shadow:var(--shadow-sm);padding:16px 20px;}
+.author-card .a{font-weight:700;color:var(--gold);font-size:16px;}
+.author-card .b{font-size:13px;color:var(--dim);margin-top:3px;letter-spacing:0.04em;}
+.sec{position:relative;z-index:1;padding:34px 30px;border-top:1px solid rgba(181,134,42,0.18);}
+.sec-tag{display:inline-block;background:var(--gold);color:#FFF8E6;font-size:12px;font-weight:700;padding:4px 14px;border-radius:var(--pill);box-shadow:var(--shadow-sm);border:var(--bd-med);margin-bottom:18px;letter-spacing:0.04em;}
+.sec h2{font-family:var(--serif);font-weight:900;font-size:24px;line-height:1.4;margin-bottom:14px;}
+.sec h2 .g{color:var(--gold);}
+.intro-card{background:var(--card2);border:var(--bd-thick);border-radius:var(--r-lg);box-shadow:var(--shadow-md);padding:24px;}
+.intro-card .q{font-family:var(--serif);font-size:18px;font-weight:700;color:var(--gold);margin-bottom:10px;}
+.intro-card p{font-size:15px;line-height:1.9;color:var(--text);}
+.intro-card .hl{color:var(--gold);font-weight:700;}
+.step{background:var(--card);border:var(--bd-thick);border-radius:var(--r-lg);box-shadow:var(--shadow-md);padding:22px 22px 22px 24px;margin-bottom:20px;transition:transform var(--bounce),box-shadow var(--bounce);}
+.step:hover{transform:translate(-3px,-3px);box-shadow:var(--shadow-lg);}
+.step-head{display:flex;align-items:center;gap:12px;margin-bottom:12px;}
+.step-num{flex-shrink:0;width:38px;height:38px;border-radius:50%;background:var(--gold);color:#FFF8E6;display:flex;align-items:center;justify-content:center;font-family:"Inter";font-weight:700;font-size:17px;border:var(--bd-med);}
+.step-title{font-family:var(--serif);font-size:18px;font-weight:700;color:var(--text);}
+.step-body{font-size:14.5px;line-height:1.9;color:var(--text);}
+.step-body .hl{color:var(--gold);font-weight:700;}
+.step-link{display:inline-block;background:var(--gold);color:#FFF8E6;font-weight:700;font-size:13px;padding:3px 12px;border-radius:var(--pill);text-decoration:none;border:var(--bd-med);margin:2px 0;}
+.cta{position:relative;z-index:1;padding:44px 30px 58px;border-top:3px solid var(--gold-dim);}
+.cta-card{background:var(--card);border:var(--bd-thick);border-radius:var(--r-lg);box-shadow:var(--shadow-lg);padding:30px 26px;text-align:center;}
+.cta-kicker{font-family:var(--mono);font-size:11px;letter-spacing:0.2em;color:var(--gold);margin-bottom:14px;font-weight:600;}
+.cta-card h2{font-family:var(--serif);font-weight:900;font-size:23px;line-height:1.5;margin-bottom:12px;}
+.cta-card h2 .g{color:var(--gold);}
+.cta-lead{font-size:14.5px;color:var(--dim);line-height:1.85;margin-bottom:24px;}
+.skbtn{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:#FFF8E6;border:var(--bd-thick);border-radius:var(--pill);padding:17px 44px;font-weight:900;font-size:18px;box-shadow:var(--shadow-md);transition:transform var(--bounce),box-shadow var(--bounce);position:relative;overflow:hidden;cursor:pointer;text-decoration:none;}
+.skbtn:hover{transform:translate(-4px,-4px);box-shadow:var(--shadow-lg);}
+.skbtn:active{transform:translate(0,0);box-shadow:var(--shadow-sm);}
+.skbtn::after{content:'';position:absolute;top:0;left:-100%;width:50%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.5),transparent);transform:skewX(-25deg);animation:shine 3s ease-in-out infinite;}
+@keyframes shine{0%{left:-100%;}20%{left:150%;}100%{left:150%;}}
+.cta-note{margin-top:14px;font-size:12.5px;color:var(--dim);}
+.footer{position:relative;z-index:1;padding:22px 30px 44px;text-align:center;}
+.footer .fa{font-style:italic;font-size:14px;color:var(--gold);font-weight:700;}
+.footer .disc{font-size:11px;color:#A99E86;margin-top:10px;line-height:1.6;}
+</style>
+</head>
+<body>
+<div class="bg-blobs"><div class="blob blob1"></div><div class="blob blob2"></div></div>
+<div class="wrap">
+  <div class="hero">
+    <div class="kicker">BINGX WEALTH · 一幣兩用設定教學</div>
+    <h1>同一筆錢<br><span class="g">同時做兩件事</span></h1>
+    <div class="hero-sub">從開戶、活期設定，到一幣兩用<br>完整四步驟，跟著做就會</div>
+    <div class="divider"></div>
+    <div class="author-card">
+      <div class="a">美麗K媽</div>
+      <div class="b">加密貨幣 × 女性成長 × 親子家庭</div>
+    </div>
+  </div>
+
+  <div class="sec fade">
+    <span class="sec-tag">💡 觀念先懂</span>
+    <h2>什麼是<span class="g">一幣兩用</span></h2>
+    <div class="intro-card">
+      <div class="q">簡單說就是——</div>
+      <p><span class="hl">同一筆錢，同時賺利息、又能拿來交易</span><br>本金不動、利息照跑、還能開倉</p>
+    </div>
+  </div>
+
+  <div class="sec fade">
+    <span class="sec-tag">📋 完整設定步驟</span>
+    <h2>四步驟<span class="g">跟著做</span></h2>
+
+    <div class="step">
+      <div class="step-head"><span class="step-num">1</span><span class="step-title">🔐 開通 BingX 帳號</span></div>
+      <div class="step-body">還沒有帳號的話，先 <a class="step-link" href="https://bingxzone.com/zh-tw/invite/58XRCY" target="_blank" rel="noopener">註冊 BingX</a> 完成身份驗證（KYC），<span class="hl">才能使用理財功能</span></div>
+    </div>
+
+    <div class="step">
+      <div class="step-head"><span class="step-num">2</span><span class="step-title">💰 把資金轉入「活期理財」</span></div>
+      <div class="step-body">登入後進入「理財」→「活期」，把你想放的資金轉進去<br>目前最高年化利率 <span class="hl">8%</span><br>每天自動計息、每天自動入帳，<span class="hl">不需要做任何操作</span></div>
+    </div>
+
+    <div class="step">
+      <div class="step-head"><span class="step-num">3</span><span class="step-title">⚡ 開啟一幣兩用</span></div>
+      <div class="step-body">點擊理財功能中的「<span class="hl">保證金</span>」，選用充當保證金，輸入你想用來交易的資金金額，就可以<span class="hl">直接充當合約保證金</span></div>
+    </div>
+
+    <div class="step">
+      <div class="step-head"><span class="step-num">4</span><span class="step-title">🚀 開始交易</span></div>
+      <div class="step-body">進入合約頁面正常開倉，系統會自動以活期資金作為保證金<br><span class="hl">活期中的本金不會被動用，利息照樣每天跑</span></div>
+    </div>
+  </div>
+
+  <div class="cta fade">
+    <div class="cta-card">
+      <div class="cta-kicker">WHAT'S NEXT</div>
+      <h2>想系統學習<br><span class="g">從零開始的交易方法？</span></h2>
+      <div class="cta-lead">我有一套完整的免費課程<br>從新手到進階，帶你建立自己的交易系統</div>
+      <a class="skbtn" href="https://line.me/R/oaMessage/@341vxnvi/?%E6%88%91%E6%BA%96%E5%82%99%E5%A5%BD%E4%BA%86" target="_blank" rel="noopener">👉 加入免費課程</a>
+      <div class="cta-note">點擊加入 LINE，我把完整課程傳給你</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="fa">@lovekaren0316</div>
+    <div class="disc">＊以上為功能介紹與個人經驗分享，非投資建議，投資有風險，利率依平台級距浮動</div>
+  </div>
+</div>
+<script>
+var ob=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting) e.target.classList.add('vis'); }); },{threshold:0.08});
+document.querySelectorAll('.fade').forEach(function(el){ ob.observe(el); });
+</script>
+</body>
+</html>
