@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>K媽｜全職媽媽的免費 AI 自媒體計畫</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;700;900&family=Noto+Sans+TC:wght@300;400;500;700;900&family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --gold:#3A97D6; --gold-bright:#7CC0EC; --gold-dim:rgba(58,151,214,0.30);
+  --bg:#ECE5DA; --bg2:#F4EEE5; --card:#FCF8F3; --card2:#F3EAE0;
+  --code:#12161f; --code-tx:#e6eaf2;
+  --text:#38322D; --dim:#6f655f; --faint:#ab9f97;
+  --line:rgba(0,0,0,0.12);
+  --r-md:16px; --r-lg:22px; --pill:50px;
+  --bounce:400ms cubic-bezier(0.34,1.56,0.64,1);
+  --serif:"Noto Serif TC",serif; --sans:"Noto Sans TC","Inter",sans-serif; --mono:"JetBrains Mono",monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:var(--sans);color:var(--text);line-height:1.85;overflow-x:hidden;
+  background:var(--bg);
+  background-image:radial-gradient(118% 54% at 50% 0%, rgba(58,151,214,0.16) 0%, rgba(58,151,214,0.05) 34%, rgba(244,241,234,0) 62%);
+  background-attachment:fixed;}
+.glow{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
+.g1{position:absolute;width:min(60vw,680px);height:min(60vw,680px);border-radius:50%;
+  background:radial-gradient(circle, rgba(58,151,214,0.13), rgba(58,151,214,0));top:-18%;right:-14%;filter:blur(20px);}
+.g2{position:absolute;width:min(50vw,560px);height:min(50vw,560px);border-radius:50%;
+  background:radial-gradient(circle, rgba(213,132,164,0.12), rgba(213,132,164,0));bottom:-14%;left:-12%;filter:blur(22px);}
+.wrap{max-width:720px;margin:0 auto;position:relative;min-height:100vh;}
+.mark{color:var(--gold);font-weight:700;}
+.js .fade{opacity:0;transform:translateY(28px);transition:opacity .6s ease,transform .6s ease;}
+.fade.vis{opacity:1;transform:translateY(0);}
+a{color:var(--gold);text-decoration:none;word-break:break-all;}
+a.inl{border-bottom:1px solid var(--gold-dim);}
+
+/* ---- 頂部吸附細橫幅（手機前段 CTA）---- */
+.top-cta{display:none;}
+.top-cta a{display:flex;align-items:center;justify-content:center;gap:8px;
+  background:var(--gold);color:#ffffff;font-weight:800;font-size:13.5px;
+  padding:11px 16px;text-align:center;letter-spacing:0.02em;}
+.top-cta .tc-em{font-weight:900;}
+
+/* ---- 桌機右側吸附浮動小卡（前段 CTA）---- */
+.side-cta{display:none;}
+@media(min-width:1120px){
+  .side-cta{display:block;position:fixed;top:130px;right:max(24px,calc((100vw - 720px)/2 - 268px));
+    width:236px;z-index:30;background:linear-gradient(165deg,var(--card) 0%,var(--card2) 100%);
+    border:1px solid var(--gold-dim);border-left:3px solid var(--gold);border-radius:var(--r-md);
+    padding:20px 20px 22px;box-shadow:0 10px 34px rgba(120,90,30,0.13);}
+  .side-cta .sk-k{font-family:var(--mono);font-size:10px;letter-spacing:0.16em;color:var(--gold);margin-bottom:10px;font-weight:500;}
+  .side-cta h4{font-family:var(--serif);font-weight:900;font-size:17px;line-height:1.5;color:#39302c;margin-bottom:9px;}
+  .side-cta h4 .g{color:var(--gold);}
+  .side-cta p{font-size:12.5px;color:var(--dim);line-height:1.7;margin-bottom:16px;}
+  .side-cta a{display:block;text-align:center;background:var(--gold);color:#ffffff;font-weight:900;
+    font-size:14px;padding:12px 14px;border-radius:var(--pill);box-shadow:0 6px 18px rgba(58,151,214,0.26);transition:transform var(--bounce);}
+  .side-cta a:hover{transform:translateY(-2px);}
+}
+
+.hero{position:relative;z-index:1;padding:64px 30px 40px;}
+.kicker{font-family:var(--mono);font-size:11px;letter-spacing:0.24em;color:var(--gold);margin-bottom:22px;font-weight:500;}
+.hero h1{font-family:var(--serif);font-weight:900;font-size:36px;line-height:1.36;margin-bottom:18px;color:#39302c;}
+.hero h1 .g{color:var(--gold);}
+.hero-sub{font-size:15px;color:var(--dim);line-height:1.85;margin-bottom:26px;}
+.divider{width:46px;height:3px;background:var(--gold);margin-bottom:26px;}
+.stats{display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
+.stat{text-align:center;}
+.stat .n{font-family:"Inter";font-weight:800;font-size:32px;color:var(--gold);line-height:1;}
+.stat .l{font-size:11px;color:var(--dim);margin-top:6px;letter-spacing:0.04em;}
+.stat-op{font-size:20px;color:var(--faint);font-weight:300;}
+.author-card{margin-top:28px;background:var(--card);border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:var(--r-md);padding:15px 20px;position:relative;z-index:1;}
+.author-card .a{font-weight:700;color:var(--gold);font-size:15px;}
+.author-card .b{font-size:13px;color:var(--dim);margin-top:3px;}
+.src-note{margin-top:16px;font-size:11.5px;color:var(--faint);}
+
+.sec{position:relative;z-index:1;padding:38px 30px;border-top:1px solid var(--line);}
+.sec-tag{display:inline-block;background:rgba(58,151,214,0.14);color:var(--gold);font-size:12px;font-weight:700;padding:5px 15px;border:1px solid var(--gold-dim);border-radius:var(--pill);margin-bottom:16px;letter-spacing:0.05em;}
+.sec h2{font-family:var(--serif);font-weight:900;font-size:24px;line-height:1.42;margin-bottom:14px;color:#39302c;}
+.sec h2 .g{color:var(--gold);}
+.sec>p{font-size:15px;color:var(--text);line-height:1.9;margin-bottom:14px;}
+.sec>p .hl{color:var(--gold);font-weight:500;}
+
+.insight{background:var(--card2);border:1px solid var(--gold-dim);border-radius:var(--r-lg);padding:20px 22px;margin:20px 0;}
+.insight .il{font-size:12px;font-weight:700;color:var(--gold);letter-spacing:0.06em;margin-bottom:9px;}
+.insight .it{font-family:var(--serif);font-size:16px;font-weight:700;line-height:1.7;color:#39302c;}
+
+.notes{margin:18px 0 4px;}
+.note-h{font-family:var(--serif);font-weight:700;font-size:16px;color:var(--gold);margin:18px 0 10px;}
+.ck{display:flex;gap:11px;align-items:flex-start;margin-bottom:11px;}
+.ck .bx{flex-shrink:0;width:20px;height:20px;border-radius:6px;background:var(--gold);color:#ffffff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:12px;margin-top:2px;}
+.ck .tx{font-size:14px;line-height:1.72;color:var(--text);}
+.ck .tx b{color:var(--gold);}
+.warn{background:rgba(200,70,40,0.06);border:1px solid rgba(200,70,40,0.22);border-radius:12px;padding:13px 16px;margin:14px 0;font-size:13.5px;line-height:1.72;color:#7a3320;}
+.warn b{color:#b1431f;}
+
+/* ---- 分類摺疊 accordion ---- */
+.cat-lead{font-size:14px;color:var(--dim);line-height:1.8;margin-bottom:18px;}
+.acc{display:flex;flex-direction:column;gap:10px;}
+details.ch{background:var(--card);border:1px solid var(--line);border-radius:var(--r-md);overflow:hidden;}
+details.ch[open]{border-color:var(--gold-dim);box-shadow:0 4px 18px rgba(120,90,30,0.07);}
+details.ch summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:13px;padding:16px 18px;user-select:none;}
+details.ch summary::-webkit-details-marker{display:none;}
+.ch-n{flex-shrink:0;width:26px;height:26px;border-radius:8px;background:rgba(58,151,214,0.14);border:1px solid var(--gold-dim);color:var(--gold);font-family:"Inter";font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;}
+.ch-t{flex:1;font-weight:700;font-size:15px;color:var(--text);line-height:1.4;}
+.ch-tag{flex-shrink:0;font-family:var(--mono);font-size:10px;letter-spacing:0.05em;color:var(--gold);background:rgba(58,151,214,0.1);padding:3px 8px;border-radius:50px;}
+.ch-mk{flex-shrink:0;width:22px;height:22px;position:relative;}
+.ch-mk::before,.ch-mk::after{content:"";position:absolute;background:var(--gold);border-radius:2px;transition:transform .25s ease;}
+.ch-mk::before{top:10px;left:4px;width:14px;height:2px;}
+.ch-mk::after{top:4px;left:10px;width:2px;height:14px;}
+details.ch[open] .ch-mk::after{transform:rotate(90deg);opacity:0;}
+.ch-body{padding:2px 20px 20px;border-top:1px solid var(--line);}
+.ch-body>p{font-size:14px;line-height:1.85;color:var(--text);margin:13px 0;}
+.ch-body p .hl{color:var(--gold);font-weight:500;}
+.ch-link{display:inline-block;font-family:var(--mono);font-size:12.5px;background:rgba(18,22,31,0.04);border:1px solid var(--line);border-radius:8px;padding:7px 12px;margin:4px 0 6px;}
+.steps{margin:12px 0;counter-reset:s;}
+.steps .st{display:flex;gap:11px;margin-bottom:10px;font-size:13.7px;line-height:1.72;color:var(--text);}
+.steps .st::before{counter-increment:s;content:counter(s);flex-shrink:0;width:21px;height:21px;border-radius:50%;background:var(--gold);color:#ffffff;font-weight:800;font-size:11.5px;display:flex;align-items:center;justify-content:center;margin-top:2px;}
+.bul{margin:12px 0;}
+.bul li{list-style:none;position:relative;padding-left:18px;font-size:13.7px;line-height:1.74;color:var(--text);margin-bottom:8px;}
+.bul li::before{content:"–";position:absolute;left:2px;color:var(--gold);font-weight:700;}
+.bul li b{color:var(--gold);}
+.subh{font-weight:700;font-size:13.5px;color:var(--gold);margin:15px 0 8px;letter-spacing:0.02em;}
+
+/* 可複製區塊（email / 文案 / 地址）*/
+.cp{background:var(--code);border:1px solid var(--gold-dim);border-radius:var(--r-md);padding:16px 16px;margin:14px 0;position:relative;}
+.cp .pl{font-family:var(--mono);font-size:10.5px;letter-spacing:0.1em;color:var(--gold-bright);margin-bottom:11px;max-width:calc(100% - 70px);}
+.cp pre{font-family:var(--mono);font-size:12px;line-height:1.85;color:var(--code-tx);white-space:pre-wrap;word-break:break-word;}
+.cp .ph{color:var(--gold-bright);}
+.copy-btn{position:absolute;top:11px;right:11px;background:rgba(58,151,214,0.16);border:1px solid var(--gold);color:var(--gold-bright);font-family:var(--sans);font-size:10.5px;font-weight:700;padding:5px 12px;border-radius:50px;cursor:pointer;transition:all .2s;letter-spacing:0.03em;z-index:2;}
+.copy-btn:hover{background:var(--gold);color:#ffffff;}
+.copy-btn.done{background:var(--gold);color:#ffffff;}
+
+/* ---- 中段穿插 CTA ---- */
+.mid-cta{position:relative;z-index:1;margin:0 30px;padding:30px 0;}
+.mid-card{background:linear-gradient(160deg,#15110b 0%,#241a0e 100%);border:1px solid var(--gold-dim);border-radius:var(--r-lg);padding:28px 26px;text-align:center;position:relative;overflow:hidden;}
+.mid-card .mk{font-family:var(--mono);font-size:11px;letter-spacing:0.16em;color:var(--gold-bright);margin-bottom:12px;font-weight:500;}
+.mid-card h3{font-family:var(--serif);font-weight:900;font-size:21px;line-height:1.5;color:#fff;margin-bottom:10px;}
+.mid-card h3 .g{color:var(--gold-bright);}
+.mid-card p{font-size:13.5px;color:rgba(255,255,255,0.72);line-height:1.8;margin-bottom:20px;}
+.mid-card .skbtn{font-size:16px;padding:14px 38px;}
+
+/* ---- 後段完整 CTA ---- */
+.cta{position:relative;z-index:1;padding:46px 30px 54px;border-top:3px solid var(--gold-dim);}
+.cta-card{background:linear-gradient(160deg, var(--card) 0%, var(--card2) 100%);border:1px solid var(--gold-dim);border-radius:var(--r-lg);padding:32px 26px;}
+.cta-kicker{font-family:var(--mono);font-size:11px;letter-spacing:0.2em;color:var(--gold);margin-bottom:14px;font-weight:500;}
+.cta-card h2{font-family:var(--serif);font-weight:900;font-size:24px;line-height:1.45;margin-bottom:10px;color:#39302c;}
+.cta-card h2 .g{color:var(--gold);}
+.cta-lead{font-size:14.5px;color:var(--dim);line-height:1.85;margin-bottom:22px;}
+.fit{margin:18px 0;}
+.fit .f{display:flex;gap:10px;font-size:14px;line-height:1.7;margin-bottom:10px;color:var(--text);}
+.fit .f::before{content:"\2714";color:var(--gold);font-weight:700;flex-shrink:0;}
+.gives{background:rgba(58,151,214,0.07);border:1px solid var(--line);border-radius:var(--r-md);padding:18px 20px;margin:20px 0;}
+.gives .gt{font-size:12px;font-weight:700;color:var(--gold);letter-spacing:0.05em;margin-bottom:12px;}
+.gives .gi{font-size:14px;line-height:1.75;margin-bottom:9px;padding-left:20px;position:relative;color:var(--text);}
+.gives .gi::before{content:"\2726";color:var(--gold);position:absolute;left:0;}
+.btn-wrap{text-align:center;margin-top:26px;}
+.skbtn{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:#ffffff;border-radius:var(--pill);padding:17px 46px;font-weight:900;font-size:18px;box-shadow:0 8px 28px rgba(58,151,214,0.28);transition:transform var(--bounce),box-shadow var(--bounce);position:relative;overflow:hidden;cursor:pointer;text-decoration:none;}
+.skbtn:hover{transform:translateY(-3px);box-shadow:0 14px 36px rgba(58,151,214,0.40);}
+.skbtn:active{transform:translateY(0);}
+.skbtn::after{content:'';position:absolute;top:0;left:-100%;width:50%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.45),transparent);transform:skewX(-25deg);animation:shine 3.4s ease-in-out infinite;}
+@keyframes shine{0%{left:-100%;}22%{left:160%;}100%{left:160%;}}
+.btn-note{margin-top:14px;font-size:12.5px;color:var(--dim);text-align:center;}
+
+.footer{position:relative;z-index:1;padding:24px 30px 46px;text-align:center;}
+.footer .fa{font-style:italic;font-size:14px;color:var(--gold);font-weight:700;}
+.footer .fc{font-size:11px;color:var(--faint);margin-top:8px;letter-spacing:0.05em;}
+
+@media(max-width:680px){
+  .top-cta{display:block;position:fixed;top:0;left:0;right:0;z-index:40;box-shadow:0 2px 12px rgba(0,0,0,0.12);}
+  body{padding-top:42px;}
+  .hero{padding-top:48px;}
+  .hero h1{font-size:30px;}
+  .sec h2{font-size:21px;}
+}
+</style>
+<style>
+.aibadge{display:inline-block;background:rgba(58,151,214,0.14);color:#2C7CB5;border:1px solid var(--gold-dim);border-radius:50px;font-size:12.5px;font-weight:700;padding:4px 13px;margin:2px 6px 2px 0;}
+.howto{font-size:13.5px;color:var(--dim);line-height:1.8;margin:10px 0 4px;}
+.howto b{color:#2C7CB5;}
+</style>
+</head>
+<body>
+<script>document.documentElement.className+=' js';</script>
+<div class="glow"><div class="g1"></div><div class="g2"></div></div>
+
+<div class="top-cta">
+  <a href="https://www.skool.com/d11-lab/about?ref=81fd135dd97643128bb641d5238e8ffb" id="skool-top" target="_blank" rel="noopener">
+    <span>想有人帶你一起做 →</span><span class="tc-em">加入 奇點研究所 × D11</span>
+  </a>
+</div>
+<aside class="side-cta">
+  <div class="sk-k">NEXT STEP</div>
+  <h4>指令都給你了<br><span class="g">剩下的是有沒有人陪你做</span></h4>
+  <p>把這 5 步走順、走成一條自己的收入，最快的方式是走進一群正在做的人裡。</p>
+  <a href="https://www.skool.com/d11-lab/about?ref=81fd135dd97643128bb641d5238e8ffb" id="skool-side" target="_blank" rel="noopener">加入 奇點研究所 × D11</a>
+</aside>
+
+<div class="wrap">
+  <div class="hero">
+    <div class="kicker">AI × 自媒體 · 完整計畫</div>
+    <h1>全職媽媽的<br><span class="g">免費 AI 自媒體計畫</span></h1>
+    <div class="hero-sub">沒時間、沒心力、沒經驗都沒關係<br>這 5 個 AI 指令，從開帳號到寫貼文一條龍，照著貼就能用</div>
+    <div class="divider"></div>
+    <div class="author-card">
+      <div class="a">美麗K媽（@lovekaren0316）</div>
+      <div class="b">記錄一個媽媽怎麼把「賺錢、變美、好好生活」這三件事同時做到<br><br>我自己就是邊顧小孩，邊用這些免費工具把自媒體一點一點做起來。把我在用的指令整理在這裡，你直接拿去用</div>
+    </div>
+  </div>
+
+  <div class="sec fade">
+    <span class="sec-tag">開始之前 · 必讀</span>
+    <h2>你需要的工具<br><span class="g">通通免費</span></h2>
+    <p>整套計畫只用到這幾個<span class="hl">免費</span>工具，一支手機就能開始：</p>
+    <div class="notes">
+      <div class="ck"><div class="bx">1</div><div class="tx"><b>Claude</b> 或 ChatGPT：想內容、寫文案、打磨貼文（下面 5 個指令都貼這裡）</div></div>
+      <div class="ck"><div class="bx">2</div><div class="tx"><b>Canva</b>：把內容做成好看的圖</div></div>
+      <div class="ck"><div class="bx">3</div><div class="tx"><b>CapCut</b>：剪 Reel 短影音</div></div>
+      <div class="ck"><div class="bx">4</div><div class="tx"><b>Instagram</b>：你的主場，內容發布的地方</div></div>
+      <div class="warn">用法很簡單：<b>打開 Claude，開一個新對話，把指令整段貼進去</b>，把內容換成你自己的情況，它就會一步一步給你結果。下面 5 個指令照順序走一遍，你的帳號就從 0 跑起來了。</div>
+    </div>
+  </div>
+
+  <div class="sec fade">
+    <span class="sec-tag">5 個 AI 指令 · 照順序走</span>
+    <h2>點開每一步<br><span class="g">複製指令就能用</span></h2>
+    <p class="cat-lead">每一步都附「用哪個 AI、怎麼用」，指令可以一鍵複製。</p>
+    <div class="acc"><details class="ch"><summary><span class="ch-n">1</span><span class="ch-t">開一個全新的 IG 帳號</span><span class="ch-mk"></span></summary>
+      <div class="ch-body">
+        <div style="margin:6px 0 10px;"><span class="aibadge">用 Claude</span><span class="aibadge">或 ChatGPT</span></div>
+        <div class="howto"><b>怎麼用：</b>打開 Claude，開一個新對話，把下面整段貼進去。它會給你幾個適合的內容方向、帳號名、bio 跟新手內容角度，挑一個你最有感的開始</div>
+        <div class="cp"><button class="copy-btn" onclick="copyCp(this)">複製指令</button><div class="pl">直接複製這段，貼進 AI</div><pre>我想開一個全新的 IG 帳號，從零開始經營自媒體
+我是一個全職媽媽，平常要顧小孩、做家事，沒有受眾、沒有經驗、也沒有太多時間
+幫我一次想好幾個方向：先給我 3 到 5 個我這種媽媽適合、又有一群人想看的內容利基
+每個利基說明它在紅什麼、受眾是誰、為什麼適合新手媽媽切入
+再幫我各取一個好記、好念、看一眼就懂的帳號名
+還有一段清楚說明我能幫大家什麼的 bio，語氣要親切、像鄰居姐姐
+最後給我一個新手友善的內容角度，讓我就算從 0 粉開始，也能在 2026 一步一步慢慢長大</pre></div>
+      </div></details><details class="ch"><summary><span class="ch-n">2</span><span class="ch-t">把你會的事，變成可以分享的內容</span><span class="ch-mk"></span></summary>
+      <div class="ch-body">
+        <div style="margin:6px 0 10px;"><span class="aibadge">用 Claude</span><span class="aibadge">或 ChatGPT</span></div>
+        <div class="howto"><b>怎麼用：</b>把你會的、平常在做的事盡量列出來，連同這段一起貼給 Claude。它會幫你挑出最適合做內容、又不用本錢的方向</div>
+        <div class="cp"><button class="copy-btn" onclick="copyCp(this)">複製指令</button><div class="pl">直接複製這段，貼進 AI</div><pre>我想在 IG 經營自媒體，但完全不知道從哪開始
+我是全職媽媽，會帶孩子、會收納、會煮飯、懂得把錢花在刀口上
+幫我把這些我本來就會的事，整理成一張清單
+從裡面挑出新手友善、不用囤貨、不用本錢、在家就能開始的內容方向
+每一個方向都告訴我：它能幫到哪一種人、為什麼有人想看、我可以怎麼一步一步做出來
+也幫我想好，每個方向第一個月先發哪幾種內容
+讓我不會卡在想很多、卻不知道怎麼開始</pre></div>
+      </div></details><details class="ch"><summary><span class="ch-n">3</span><span class="ch-t">讓內容自己幫你說話</span><span class="ch-mk"></span></summary>
+      <div class="ch-body">
+        <div style="margin:6px 0 10px;"><span class="aibadge">用 Claude</span><span class="aibadge">或 ChatGPT</span></div>
+        <div class="howto"><b>怎麼用：</b>把這段貼給 Claude，它會給你一週的發文節奏跟一套流程，讓你顧小孩、沒上線時，內容也持續在被看見</div>
+        <div class="cp"><button class="copy-btn" onclick="copyCp(this)">複製指令</button><div class="pl">直接複製這段，貼進 AI</div><pre>用最白話的方式，一步一步教我這個全職媽媽，怎麼讓 IG 內容自己幫我工作
+先告訴我，開始之前要先準備好哪些貼文跟素材
+再教我怎麼安排一週的發文節奏，讓我不用每天臨時想
+接著解釋，怎麼讓新的人持續刷到我、慢慢累積信任
+最後幫我設計一套流程：就算我在顧小孩、在睡覺、沒上線的時候
+我的內容也還在幫我被看見、把對的人帶過來</pre></div>
+      </div></details><details class="ch"><summary><span class="ch-n">4</span><span class="ch-t">圍繞你的方向做內容，記錄你的旅程</span><span class="ch-mk"></span></summary>
+      <div class="ch-body">
+        <div style="margin:6px 0 10px;"><span class="aibadge">用 Claude</span><span class="aibadge">或 ChatGPT</span></div>
+        <div class="howto"><b>怎麼用：</b>把這段貼給 Claude，它會給你一批新手友善的 Reel、限動、貼文鉤子，照著拍、照著寫就好</div>
+        <div class="cp"><button class="copy-btn" onclick="copyCp(this)">複製指令</button><div class="pl">直接複製這段，貼進 AI</div><pre>幫我用記錄旅程的方式，規劃我的 IG 內容
+我是一個邊顧小孩、邊自己摸索的全職媽媽，想邊學邊做、邊做邊分享
+給我新手友善又好執行的素材：包含 Reel 點子、限動點子、還有貼文的開頭鉤子
+每一種都告訴我可以怎麼拍、怎麼寫、想表達什麼
+重點是要能建立信任、吸引那些也想在家做點什麼的媽媽
+但語氣要真誠、像在跟朋友分享，不要顯得逼迫、業配、或很假</pre></div>
+      </div></details><details class="ch"><summary><span class="ch-n">5</span><span class="ch-t">最後用 Claude 幫你把內容打磨好</span><span class="ch-mk"></span></summary>
+      <div class="ch-body">
+        <div style="margin:6px 0 10px;"><span class="aibadge">用 Claude</span><span class="aibadge">或 ChatGPT</span></div>
+        <div class="howto"><b>怎麼用：</b>每次想好內容，就把草稿連同這段貼給 Claude，它會幫你把文案、鉤子、語氣都打磨成自然好讀的版本</div>
+        <div class="cp"><button class="copy-btn" onclick="copyCp(this)">複製指令</button><div class="pl">直接複製這段，貼進 AI</div><pre>我要你當我的個人內容助理，固定幫我打磨每一篇 IG 內容
+幫我把腦中零散的想法，整理成清楚好讀的貼文文案
+幫我把開頭的鉤子改得更強，讓人滑到就想停下來
+把太複雜的說法，換成新手媽媽也一看就懂的白話
+整體語氣要自然、口語、像真人在說話，不要機器人、也不要太業配
+最後在結尾自然地引導大家行動，但不要讓人覺得有壓力</pre></div>
+      </div></details></div>
+  </div>
+
+  <div class="mid-cta fade">
+    <div class="mid-card">
+      <div class="mk">給已經想動手的你</div>
+      <h3>指令會了<br><span class="g">但一個人最容易半路放棄</span></h3>
+      <p>真正讓你做起來的，不是再多一個工具，是一群正在做、會互相督促的人。<br>我把完整的做法跟陪跑都放在社群裡。</p>
+      <a class="skbtn" href="https://www.skool.com/d11-lab/about?ref=81fd135dd97643128bb641d5238e8ffb" id="skool-mid" target="_blank" rel="noopener">加入 奇點研究所 × D11 →</a>
+    </div>
+  </div>
+
+  <div class="cta fade">
+    <div class="cta-card">
+      <div class="cta-kicker">下一步</div>
+      <h2>工具免費、指令也給你了<br><span class="g">剩下的就是開始</span></h2>
+      <div class="cta-lead">你缺的不是工具，只是還沒有開始。把這 5 步走成一條自己的收入，不該你一個人慢慢摸。</div>
+      <div class="fit">
+        <div class="f">沒時間、沒經驗，但想在家多做點什麼的媽媽</div>
+        <div class="f">想用 AI 把自媒體做起來、又怕半路放棄的你</div>
+        <div class="f">存了一堆方法，卻一直沒真的開始的你</div>
+      </div>
+      <div class="gives">
+        <div class="gt">進來你會拿到</div>
+        <div class="gi">完整的 AI ＋ 自媒體做法，一步步帶著走</div>
+        <div class="gi">可以直接照做的指令與範例</div>
+        <div class="gi">一群跟你一樣、邊顧生活邊做的人</div>
+      </div>
+      <div class="btn-wrap">
+        <a class="skbtn" href="https://www.skool.com/d11-lab/about?ref=81fd135dd97643128bb641d5238e8ffb" id="skool-link" target="_blank" rel="noopener">加入 奇點研究所 × D11 →</a>
+        <div class="btn-note">你只是還沒開始，不是真的落後</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="fa">@lovekaren0316</div>
+    <div class="fc">記錄一個媽媽把賺錢、變美、好好生活同時做到</div>
+  </div>
+</div>
+
+<script>
+function copyCp(btn){var pre=btn.parentElement.querySelector('pre');navigator.clipboard.writeText(pre.innerText).then(function(){var o=btn.textContent;btn.textContent='已複製 ✓';btn.classList.add('done');setTimeout(function(){btn.textContent=o;btn.classList.remove('done');},1800);}).catch(function(){btn.textContent='請手動選取';});}
+function revealOnScroll(){var vh=window.innerHeight||document.documentElement.clientHeight;var els=document.querySelectorAll('.fade:not(.vis)');for(var i=0;i<els.length;i++){if(els[i].getBoundingClientRect().top<vh*0.94){els[i].classList.add('vis');}}}
+window.addEventListener('scroll',revealOnScroll,{passive:true});window.addEventListener('resize',revealOnScroll);window.addEventListener('load',revealOnScroll);revealOnScroll();
+setTimeout(function(){document.querySelectorAll('.fade').forEach(function(e){e.classList.add('vis');});},2500);
+</script>
+</body>
+</html>
