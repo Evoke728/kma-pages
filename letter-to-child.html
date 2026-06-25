@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>K媽｜給我的孩子 · 心理測驗解析</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;700;900&family=Noto+Sans+TC:wght@400;500;700;900&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* === 暗色暖金版（呼應 moody 暖調背景 + 暖金琥珀頂線） === */
+  --skin-primary:   #E0739B;   /* 暖琥珀，按鈕/標籤 */
+  --skin-accent:    #F4AEC8;   /* 金，次要點綴 */
+  --skin-highlight: #F58CB6;   /* mark 底色（暖金） */
+  --skin-ink:       #3A1020;   /* 近黑暖，邊框/陰影 */
+  --skin-cream:     #FFF8FA;   /* 卡片底，暖暗棕 */
+  --skin-bg:        #FCEFF2;   /* 頁面底，近黑暖 */
+  --skin-warm:      #F2C4D5;   /* 邊框中間色 */
+  --skin-white:     #2A0F1A;   /* 暖白，文字 */
+
+  --shadow-sm: 4px 4px 0 var(--skin-ink);
+  --shadow-md: 7px 7px 0 var(--skin-ink);
+  --shadow-lg: 11px 11px 0 var(--skin-ink);
+  --border-thick:  3px solid var(--skin-warm);
+  --border-medium: 2px solid var(--skin-warm);
+  --radius-md:16px; --radius-lg:24px; --radius-pill:50px;
+  --ease-bounce: 400ms cubic-bezier(0.34,1.56,0.64,1);
+  --serif:"Noto Serif TC",serif; --sans:"Noto Sans TC","Inter",sans-serif;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#FCEFF2; font-family:var(--sans); color:var(--skin-white); line-height:1.8; overflow-x:hidden; }
+.wrap { max-width:680px; margin:0 auto; position:relative; background:var(--skin-bg); }
+
+/* top accent line: amber, left solid 2/3 fade right 1/3, 3px */
+.top-line { position:absolute; top:0; left:0; width:100%; height:3px; z-index:20;
+  background:linear-gradient(to right, #F58CB6 0%, #F58CB6 66%, rgba(0,0,0,0) 100%); }
+
+/* BLOB — 暖金/琥珀/棕 漸層，暗底上透明度提高 */
+.blob { position:absolute; border-radius:60% 40% 30% 70% / 60% 30% 70% 40%;
+  animation:morph 8s ease-in-out infinite; opacity:0.30; z-index:0; pointer-events:none; filter:blur(6px); }
+.blob--1 { width:min(70vw,420px); height:min(70vw,420px);
+  background:linear-gradient(135deg, #E0739B, #F4AEC8); top:-6%; right:-16%; }
+.blob--2 { width:min(60vw,360px); height:min(60vw,360px);
+  background:linear-gradient(135deg, #F4AEC8, #F2C4D5); bottom:8%; left:-18%; animation-delay:-4s; }
+@keyframes morph {
+  0%,100% { border-radius:60% 40% 30% 70% / 60% 30% 70% 40%; }
+  25% { border-radius:30% 60% 70% 40% / 50% 60% 30% 40%; }
+  50% { border-radius:50% 60% 30% 70% / 30% 40% 70% 60%; }
+  75% { border-radius:60% 30% 60% 40% / 70% 50% 40% 30%; }
+}
+
+.skin-mark { background:var(--skin-highlight); color:#3A1020; padding:0.08em 0.35em; border-radius:5px; display:inline-block; box-decoration-break:clone; }
+.fade-up { opacity:0; transform:translateY(32px); transition:opacity .6s ease, transform .6s ease; }
+.fade-up.visible { opacity:1; transform:translateY(0); }
+
+.hero { position:relative; z-index:1; padding:62px 28px 44px; text-align:center; }
+.hero-tag { display:inline-block; background:var(--skin-primary); color:#3A1020; border:var(--border-medium); border-radius:var(--radius-pill); padding:6px 16px; font-size:13px; font-weight:700; box-shadow:var(--shadow-sm); margin-bottom:22px; }
+.hero-title { font-family:var(--serif); font-weight:900; font-size:29px; line-height:1.5; color:var(--skin-white); }
+.hero-sub { margin-top:16px; font-size:14px; color:rgba(42,15,26,0.62); }
+
+.section { position:relative; z-index:1; padding:36px 28px; }
+.section-label { display:inline-block; background:var(--skin-primary); color:#3A1020; border:var(--border-medium); border-radius:var(--radius-pill); padding:4px 14px; font-size:12px; font-weight:700; margin-bottom:20px; box-shadow:var(--shadow-sm); }
+.quiz-q { font-family:var(--serif); font-size:21px; font-weight:700; line-height:1.6; margin-bottom:8px; }
+.quiz-sub { font-size:14px; color:rgba(42,15,26,0.55); margin-bottom:26px; font-weight:500; }
+
+.opt { background:var(--skin-cream); border:var(--border-thick); border-radius:var(--radius-md); box-shadow:var(--shadow-sm); padding:18px 20px; margin-bottom:18px; cursor:pointer; transition:transform var(--ease-bounce), box-shadow var(--ease-bounce); }
+.opt:hover { transform:translate(-3px,-3px); box-shadow:var(--shadow-md); }
+.opt.active { box-shadow:var(--shadow-md); }
+.opt-head { display:flex; align-items:center; gap:14px; font-size:17px; font-weight:700; }
+.opt-letter { display:inline-flex; align-items:center; justify-content:center; width:34px; height:34px; background:var(--skin-highlight); color:#3A1020; border:var(--border-medium); border-radius:50%; font-family:"Inter"; font-weight:700; font-size:16px; flex-shrink:0; }
+.opt-result { max-height:0; overflow:hidden; transition:max-height .45s ease, margin .3s, padding .3s; }
+.opt.active .opt-result { max-height:640px; margin-top:16px; padding-top:16px; border-top:2px dashed var(--skin-warm); }
+.res-type { display:inline-block; background:rgba(224,144,74,0.18); color:var(--skin-primary); font-size:13px; font-weight:700; padding:3px 12px; border-radius:var(--radius-pill); border:var(--border-medium); margin-bottom:12px; }
+.res-text { font-size:14.5px; color:rgba(42,15,26,0.88); line-height:1.85; margin-bottom:14px; }
+.res-gem { font-family:var(--serif); font-size:15.5px; font-weight:700; color:var(--skin-highlight); line-height:1.6; background:rgba(0,0,0,0.25); border-left:4px solid var(--skin-primary); padding:12px 14px; border-radius:0 8px 8px 0; }
+
+.transition { text-align:center; padding:18px 0; position:relative; z-index:1; }
+.transition-text { display:inline-block; background:var(--skin-cream); border:var(--border-medium); border-radius:var(--radius-pill); padding:8px 20px; font-size:14px; font-weight:700; box-shadow:var(--shadow-sm); }
+
+.bridge { position:relative; z-index:1; padding:36px 28px; }
+.bridge-card { background:var(--skin-cream); border:var(--border-thick); border-radius:var(--radius-lg); box-shadow:var(--shadow-md); padding:28px 24px; }
+.bridge p { font-size:15px; color:rgba(42,15,26,0.88); line-height:1.9; margin-bottom:14px; }
+.bridge .em { font-family:var(--serif); font-size:19px; font-weight:900; line-height:1.6; margin:6px 0 16px; }
+
+.intro { position:relative; z-index:1; padding:36px 28px; }
+.intro-card { background:#FFF1F5; border:var(--border-thick); border-radius:var(--radius-lg); box-shadow:var(--shadow-md); padding:26px 24px; }
+.intro-name { font-family:var(--serif); font-size:20px; font-weight:900; margin-bottom:12px; }
+.intro-text { font-size:14.5px; color:rgba(42,15,26,0.88); line-height:1.9; }
+
+.course { position:relative; z-index:1; padding:36px 28px; }
+.course-card { background:var(--skin-cream); border:var(--border-thick); border-radius:var(--radius-md); box-shadow:var(--shadow-sm); padding:22px; margin-bottom:18px; transition:transform var(--ease-bounce), box-shadow var(--ease-bounce); }
+.course-card:hover { transform:translate(-3px,-3px); box-shadow:var(--shadow-md); }
+.course-stage { display:inline-block; background:var(--skin-primary); color:#3A1020; font-size:13px; font-weight:700; padding:4px 12px; border-radius:var(--radius-pill); margin-bottom:12px; }
+.course-name { font-family:var(--serif); font-size:18px; font-weight:700; margin-bottom:8px; }
+.course-desc { font-size:14px; color:rgba(42,15,26,0.82); line-height:1.8; }
+
+.cta { position:relative; z-index:1; padding:30px 28px 56px; text-align:center; }
+.cta-line { font-family:var(--serif); font-size:22px; font-weight:900; line-height:1.6; margin-bottom:10px; }
+.cta-sub { font-size:14.5px; color:rgba(42,15,26,0.55); margin-bottom:26px; line-height:1.8; font-weight:500; }
+.skin-btn { display:inline-flex; align-items:center; gap:8px; background:var(--skin-primary); color:#3A1020; border:var(--border-thick); border-radius:var(--radius-pill); padding:16px 44px; font-weight:900; font-size:18px; box-shadow:var(--shadow-md); transition:transform var(--ease-bounce), box-shadow var(--ease-bounce); position:relative; overflow:hidden; cursor:pointer; text-decoration:none; }
+.skin-btn:hover { transform:translate(-4px,-4px); box-shadow:var(--shadow-lg); }
+.skin-btn:active { transform:translate(0,0); box-shadow:var(--shadow-sm); }
+.skin-btn::after { content:''; position:absolute; top:0; left:-100%; width:50%; height:100%; background:linear-gradient(90deg,transparent,rgba(255,255,255,0.4),transparent); transform:skewX(-25deg); animation:shine 3s ease-in-out infinite; }
+@keyframes shine { 0%{left:-100%;} 20%{left:150%;} 100%{left:150%;} }
+.cta-note { margin-top:16px; font-size:12.5px; color:rgba(42,15,26,0.5); font-weight:500; }
+
+.footer { position:relative; z-index:1; padding:22px 28px 40px; text-align:center; }
+.footer-acc { font-style:italic; font-size:14px; color:var(--skin-primary); font-weight:700; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  
+  <div class="blob blob--1"></div>
+  <div class="blob blob--2"></div>
+
+  <div class="hero">
+    <span class="hero-tag">#家庭育兒 · 心理測驗解析</span>
+    <div class="hero-title">你選的那一句<br><span class="skin-mark">藏著你最想給孩子的價值</span></div>
+    <div class="hero-sub">你選了想送給最愛的人的那句話，其實也說出了，你最想留給孩子的是什麼</div>
+  </div>
+
+  <div class="section fade-up">
+    <span class="section-label">點開你的選擇</span>
+    <div class="quiz-q">如果只能留一句話給孩子<br>你會選哪一句</div>
+    <div class="quiz-sub">點下面你的選擇，看你最想給孩子的價值</div>
+
+    <div class="opt" onclick="toggle(this)">
+      <div class="opt-head"><span class="opt-letter">A</span>先學會好好愛自己</div>
+      <div class="opt-result">
+        <span class="res-type">愛自己</span>
+        <div class="res-text">你選的這句，代表你最想給孩子的，是「先把自己放在心上」的能力<br>你大概也看過太多人，把自己排到最後一位，愛別人愛到把自己掏空<br>所以你希望，不管他以後多愛一個人、多在乎一個家，他都不會弄丟自己<br>因為一個懂得愛自己的人，才有餘力長久地愛別人，給出去的愛也才不會變成委屈</div>
+        <div class="res-gem">💛 先把自己愛好，才有餘力愛別人</div>
+      </div>
+    </div>    <div class="opt" onclick="toggle(this)">
+      <div class="opt-head"><span class="opt-letter">B</span>你永遠有選擇的權利</div>
+      <div class="opt-result">
+        <span class="res-type">選擇權</span>
+        <div class="res-text">你選的這句，代表你最想給孩子的，是「人生是可以選的」這份自由<br>你希望他知道，不管走到哪一步，他都不是只能認命<br>工作不適合可以換，關係讓他痛可以走，走錯了也永遠有重新選一次的權利<br>你想給他的，不是替他決定好的路，而是「你可以自己決定」的底氣</div>
+        <div class="res-gem">💛 知道自己有選擇的人，不會把自己活成受害者</div>
+      </div>
+    </div>    <div class="opt" onclick="toggle(this)">
+      <div class="opt-head"><span class="opt-letter">C</span>不用討好誰，做你自己就好</div>
+      <div class="opt-result">
+        <span class="res-type">做自己</span>
+        <div class="res-text">你選的這句，代表你最想給孩子的，是「做自己就夠好」的底氣<br>你希望他不用為了被喜歡，就把自己縮起來、變成別人想要的樣子<br>你想讓他從小就相信，他不需要表演、不需要完美，光是原本的他，就值得被愛<br>真正會留在他身邊的人，是喜歡他本來的樣子</div>
+        <div class="res-gem">💛 不用討好也不會孤單，才是真的安全感</div>
+      </div>
+    </div>    <div class="opt" onclick="toggle(this)">
+      <div class="opt-head"><span class="opt-letter">D</span>跌倒了，你有能力自己站起來</div>
+      <div class="opt-result">
+        <span class="res-type">韌性</span>
+        <div class="res-text">你選的這句，代表你最想給孩子的，是「跌倒也不怕」的韌性<br>你知道，你沒辦法陪他一輩子，也沒辦法替他擋掉所有的失敗和傷<br>所以比起把他保護得好好的，你更希望他有一種能力，是摔了、輸了，也撐得住、站得起來<br>你想給他的，是一雙跌倒了還能再站起來的腳</div>
+        <div class="res-gem">💛 每一次自己站起來，都會更強一點</div>
+      </div>
+    </div>    <div class="opt" onclick="toggle(this)">
+      <div class="opt-head"><span class="opt-letter">E</span>你值得更好的，也配得上</div>
+      <div class="opt-result">
+        <span class="res-type">配得感</span>
+        <div class="res-text">你選的這句，代表你最想給孩子的，是「值得更好」的相信<br>你希望他不要太早學會將就，不要覺得「這樣就好了、我不配要更多」<br>你想讓他敢去要、敢去爭取，不管是更好的對待、更好的關係、還是更好的人生<br>因為很多人不是不夠好，是從小就沒有人告訴他「你值得」</div>
+        <div class="res-gem">💛 讓「我配得上」這四個字，長在他心裡</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="transition"><span class="transition-text">繼續往下滑 ⬇️</span></div>
+
+  <div class="bridge fade-up">
+    <div class="bridge-card">
+      <p>不管你選的是哪一句</p>
+      <p class="em">那都是你<span class="skin-mark">最想守護</span>的那份心意</p>
+      <p>趁孩子還在你身邊，趁話還來得及<br>別只放在心裡，好好說給他聽</p>
+    </div>
+  </div>
+
+  <div class="intro fade-up">
+    <div class="intro-card">
+      <div class="intro-name">HI，我是 <span class="skin-mark">K媽</span></div>
+      <div class="intro-text">記錄一個媽媽如何把「賺錢、變美、好好生活」這三件事同時做到<br><br>我也常想，能留給孩子的到底是什麼。後來發現，最珍貴的從來不是錢，是這些話，還有一個把自己過好的媽媽</div>
+    </div>
+  </div>
+
+  <div class="course fade-up">
+    <span class="section-label">把自己過好，也是給孩子的禮物</span>
+    <div class="course-card">
+      <div class="course-stage">🧭 一階 · 新手班</div>
+      <div class="course-name">7 天線上課程，真人陪跑</div>
+      <div class="course-desc">每天只要約 10 分鐘<br>帶你從零開始，把「賺錢、變美、好好生活」一步步做起來</div>
+    </div>
+    <div class="course-card">
+      <div class="course-stage">🧠 二階 · VIP 進階實戰</div>
+      <div class="course-name">線上＋線下，一對一私教</div>
+      <div class="course-desc">想走更遠的人，進到實戰<br>把方法變成你真正能用的能力</div>
+    </div>
+  </div>
+
+  <div class="cta fade-up">
+    <div class="cta-line">把愛，趁早變成<br>孩子心裡的<span class="skin-mark">底氣</span></div>
+    <div class="cta-sub">我會在這裡<br>繼續陪你把日子過好，把孩子養好</div>
+    <a class="skin-btn" href="https://line.me/R/oaMessage/@341vxnvi/?%E6%88%91%E6%BA%96%E5%82%99%E5%A5%BD%E4%BA%86" target="_blank" rel="noopener">加入 LINE 社群</a>
+    <div class="cta-note">免費入門課程，真人陪跑</div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-acc">@lovekaren0316</div>
+  </div>
+</div>
+
+<script>
+function toggle(el) {
+  const wasActive = el.classList.contains('active');
+  document.querySelectorAll('.opt').forEach(o => o.classList.remove('active'));
+  if (!wasActive) el.classList.add('active');
+}
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
