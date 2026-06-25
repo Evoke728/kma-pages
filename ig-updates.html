@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>K媽｜IG 更新 × 完整運用清單</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;700;900&family=Noto+Sans+TC:wght@300;400;500;700;900&family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --gold:#B5862A; --gold-bright:#C9A84C; --gold-dim:rgba(181,134,42,0.28);
+  --ink:#2A2316; --bg:#F5EFE2; --card:#FFFFFF; --card2:#FBF5EA;
+  --code:#1A1710; --code-tx:#EBE3D0; --text:#2C2619; --dim:#7E745F;
+  --shadow-sm:4px 4px 0 var(--ink); --shadow-md:7px 7px 0 var(--ink); --shadow-lg:11px 11px 0 var(--ink);
+  --bd-thick:3px solid var(--ink); --bd-med:2px solid var(--ink); --bd-gold:2px solid var(--gold);
+  --r-md:16px; --r-lg:24px; --pill:50px;
+  --bounce:400ms cubic-bezier(0.34,1.56,0.64,1);
+  --serif:"Noto Serif TC",serif; --sans:"Noto Sans TC","Inter",sans-serif; --mono:"JetBrains Mono",monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:var(--sans);color:var(--text);line-height:1.85;overflow-x:hidden;
+  background:var(--bg);
+  background-image:radial-gradient(120% 55% at 50% 0%, rgba(181,134,42,0.13) 0%, rgba(181,134,42,0.04) 30%, rgba(245,239,226,0) 62%);
+  background-attachment:fixed;}
+.bg-blobs{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
+.blob{position:absolute;border-radius:60% 40% 30% 70% / 60% 30% 70% 40%;animation:morph 11s ease-in-out infinite;opacity:0.32;filter:blur(14px);}
+.blob1{width:min(48vw,640px);height:min(48vw,640px);background:linear-gradient(135deg,#F0D58A,#E6BE55);top:-12%;right:-8%;}
+.blob2{width:min(42vw,520px);height:min(42vw,520px);background:linear-gradient(135deg,#F5E3B0,#EAD18A);bottom:-10%;left:-9%;animation-delay:-5.5s;}
+@keyframes morph{0%,100%{border-radius:60% 40% 30% 70% / 60% 30% 70% 40%;}25%{border-radius:30% 60% 70% 40% / 50% 60% 30% 40%;}50%{border-radius:50% 60% 30% 70% / 30% 40% 70% 60%;}75%{border-radius:60% 30% 60% 40% / 70% 50% 40% 30%;}}
+.wrap{max-width:720px;margin:0 auto;position:relative;background:transparent;min-height:100vh;}
+.mark{background:var(--gold);color:#FFF8E6;padding:0.06em 0.32em;border-radius:5px;display:inline-block;font-weight:700;}
+.fade{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease;}
+.fade.vis{opacity:1;transform:translateY(0);}
+.hero{position:relative;z-index:1;padding:62px 30px 42px;}
+.kicker{font-family:var(--mono);font-size:11px;letter-spacing:0.26em;color:var(--gold);margin-bottom:22px;font-weight:600;}
+.hero h1{font-family:var(--serif);font-weight:900;font-size:36px;line-height:1.4;margin-bottom:16px;}
+.hero h1 .g{color:var(--gold);}
+.hero-sub{font-size:15px;color:var(--dim);line-height:1.8;margin-bottom:28px;}
+.divider{width:46px;height:3px;background:var(--gold);margin-bottom:28px;}
+.author-card{background:var(--card);border:var(--bd-med);border-radius:var(--r-md);box-shadow:var(--shadow-sm);padding:16px 20px;}
+.author-card .a{font-weight:700;color:var(--gold);font-size:16px;}
+.author-card .b{font-size:13px;color:var(--dim);margin-top:3px;letter-spacing:0.04em;}
+.sec{position:relative;z-index:1;padding:34px 30px;border-top:1px solid rgba(181,134,42,0.18);}
+.sec-tag{display:inline-block;background:var(--gold);color:#FFF8E6;font-size:12px;font-weight:700;padding:4px 14px;border-radius:var(--pill);box-shadow:var(--shadow-sm);border:var(--bd-med);margin-bottom:18px;letter-spacing:0.04em;}
+.sec h2{font-family:var(--serif);font-weight:900;font-size:24px;line-height:1.4;margin-bottom:14px;}
+.sec h2 .g{color:var(--gold);}
+.intro-card{background:var(--card2);border:var(--bd-thick);border-radius:var(--r-lg);box-shadow:var(--shadow-md);padding:24px;}
+.intro-card .q{font-family:var(--serif);font-size:18px;font-weight:700;color:var(--gold);margin-bottom:10px;}
+.intro-card p{font-size:15px;line-height:1.9;color:var(--text);}
+.intro-card .hl{color:var(--gold);font-weight:700;}
+.step{background:var(--card);border:var(--bd-thick);border-radius:var(--r-lg);box-shadow:var(--shadow-md);padding:22px 22px 22px 24px;margin-bottom:20px;transition:transform var(--bounce),box-shadow var(--bounce);}
+.step:hover{transform:translate(-3px,-3px);box-shadow:var(--shadow-lg);}
+.step-head{display:flex;align-items:center;gap:12px;margin-bottom:12px;}
+.step-num{flex-shrink:0;width:38px;height:38px;border-radius:50%;background:var(--gold);color:#FFF8E6;display:flex;align-items:center;justify-content:center;font-family:"Inter";font-weight:700;font-size:17px;border:var(--bd-med);}
+.step-title{font-family:var(--serif);font-size:18px;font-weight:700;color:var(--text);}
+.step-body{font-size:14.5px;line-height:1.9;color:var(--text);}
+.step-body .hl{color:var(--gold);font-weight:700;}
+.step-link{display:inline-block;background:var(--gold);color:#FFF8E6;font-weight:700;font-size:13px;padding:3px 12px;border-radius:var(--pill);text-decoration:none;border:var(--bd-med);margin:2px 0;}
+.cta{position:relative;z-index:1;padding:44px 30px 58px;border-top:3px solid var(--gold-dim);}
+.cta-card{background:var(--card);border:var(--bd-thick);border-radius:var(--r-lg);box-shadow:var(--shadow-lg);padding:30px 26px;text-align:center;}
+.cta-kicker{font-family:var(--mono);font-size:11px;letter-spacing:0.2em;color:var(--gold);margin-bottom:14px;font-weight:600;}
+.cta-card h2{font-family:var(--serif);font-weight:900;font-size:23px;line-height:1.5;margin-bottom:12px;}
+.cta-card h2 .g{color:var(--gold);}
+.cta-lead{font-size:14.5px;color:var(--dim);line-height:1.85;margin-bottom:24px;}
+.skbtn{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:#FFF8E6;border:var(--bd-thick);border-radius:var(--pill);padding:17px 44px;font-weight:900;font-size:18px;box-shadow:var(--shadow-md);transition:transform var(--bounce),box-shadow var(--bounce);position:relative;overflow:hidden;cursor:pointer;text-decoration:none;}
+.skbtn:hover{transform:translate(-4px,-4px);box-shadow:var(--shadow-lg);}
+.skbtn:active{transform:translate(0,0);box-shadow:var(--shadow-sm);}
+.skbtn::after{content:'';position:absolute;top:0;left:-100%;width:50%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.5),transparent);transform:skewX(-25deg);animation:shine 3s ease-in-out infinite;}
+@keyframes shine{0%{left:-100%;}20%{left:150%;}100%{left:150%;}}
+.cta-note{margin-top:14px;font-size:12.5px;color:var(--dim);}
+.footer{position:relative;z-index:1;padding:22px 30px 44px;text-align:center;}
+.footer .fa{font-style:italic;font-size:14px;color:var(--gold);font-weight:700;}
+.footer .disc{font-size:11px;color:#A99E86;margin-top:10px;line-height:1.6;}
+</style>
+<style>.strat{margin:10px 0 2px;padding:0;list-style:none;}.strat li{position:relative;padding-left:18px;font-size:14px;line-height:1.75;color:var(--text);margin-bottom:8px;}.strat li::before{content:"";position:absolute;left:0;top:9px;width:8px;height:8px;background:var(--gold);border:1.5px solid var(--ink);border-radius:2px;}.whatis{display:inline-block;background:var(--gold);color:#FFF8E6;font-size:12px;font-weight:700;padding:2px 10px;border-radius:var(--pill);border:var(--bd-med);margin-bottom:8px;}</style>
+<style>
+.top-cta{display:none;}
+.top-cta a{display:flex;align-items:center;justify-content:center;gap:8px;background:var(--gold);color:#FFF8E6;font-weight:800;font-size:13.5px;padding:12px 16px;text-align:center;letter-spacing:0.02em;text-decoration:none;border-bottom:var(--bd-med);}
+.top-cta .tc-em{font-weight:900;}
+@media(max-width:1119px){
+  .top-cta{display:block;position:fixed;top:0;left:0;right:0;z-index:50;box-shadow:0 3px 0 var(--ink);}
+  body{padding-top:46px;}
+}
+.side-cta{display:none;}
+@media(min-width:1120px){
+  .side-cta{display:block;position:fixed;top:140px;right:max(20px,calc((100vw - 720px)/2 - 230px));width:206px;z-index:40;background:var(--card);border:var(--bd-thick);border-radius:var(--r-lg);box-shadow:var(--shadow-md);padding:18px 18px 20px;text-align:center;}
+  .side-cta .fk{font-family:var(--mono);font-size:10px;letter-spacing:0.14em;color:var(--gold);margin-bottom:8px;font-weight:600;}
+  .side-cta h4{font-family:var(--serif);font-size:16px;font-weight:900;line-height:1.5;margin-bottom:12px;color:var(--text);}
+  .side-cta h4 .g{color:var(--gold);}
+  .side-cta a{display:block;background:var(--gold);color:#FFF8E6;border:var(--bd-med);border-radius:var(--pill);padding:11px 14px;font-weight:900;font-size:14px;text-decoration:none;box-shadow:var(--shadow-sm);transition:transform var(--bounce),box-shadow var(--bounce);}
+  .side-cta a:hover{transform:translate(-2px,-2px);box-shadow:var(--shadow-md);}
+}
+</style>
+</head>
+<body>
+<div class="top-cta"><a href="https://www.skool.com/d11-lab/about?ref=81fd135dd97643128bb641d5238e8ffb" target="_blank" rel="noopener"><span>跟上每一次 IG 更新 →</span><span class="tc-em">加入社群</span></a></div>
+<aside class="side-cta">
+  <div class="fk">JOIN US</div>
+  <h4>跟上每一次<br><span class="g">IG 更新</span></h4>
+  <a href="https://www.skool.com/d11-lab/about?ref=81fd135dd97643128bb641d5238e8ffb" target="_blank" rel="noopener">加入社群 →</a>
+</aside>
+<div class="bg-blobs"><div class="blob blob1"></div><div class="blob blob2"></div></div>
+<div class="wrap">
+  <div class="hero">
+    <div class="kicker">INSTAGRAM UPDATES · 自媒體懶人包</div>
+    <h1>IG 最近改的 3 件事<br><span class="g">還有它的完整運用清單</span></h1>
+    <div class="hero-sub">平台一直在變，看懂並用起來的人永遠走在前面<br>這頁幫你一次整理好</div>
+    <div class="divider"></div>
+    <div class="author-card">
+      <div class="a">@lovekaren0316</div>
+      <div class="b">AI × 自媒體經營 · 幫你用更省力的方式把帳號做起來</div>
+    </div>
+  </div>
+
+  <div class="sec fade">
+    <span class="sec-tag">💡 先搞懂</span>
+    <h2>為什麼要<span class="g">追 IG 更新</span></h2>
+    <div class="intro-card">
+      <div class="q">工具會用的人，永遠領先一步</div>
+      <p>IG 每次改版，都是一次<span class="hl">重新分配流量</span>的機會<br>早一步把新功能用起來，就比別人多一個被看見的入口</p>
+    </div>
+  </div>
+
+  <div class="sec fade">
+    <span class="sec-tag">📋 3 個更新 × 完整策略</span>
+    <h2>每個新功能<span class="g">怎麼用到極致</span></h2>
+    <div class="step">
+      <div class="step-head"><span class="step-num">1</span><span class="step-title">每張輪播圖可以有自己的 caption</span></div>
+      <div class="step-body"><span class="whatis">是什麼</span><br>IG 測試中，滑到第幾張就顯示對應那張的文字<ul class="strat"><li>把一篇拆成分段故事，每張一個轉折，caption 跟著推進，讀者被一張一張帶著走</li><li>教學型內容每張一個步驟，圖留簡單、細節寫在那張 caption</li><li>CTA 留到最後一張的 caption，前面先把價值給滿，不過早推銷</li><li>每張 caption 埋一個小鉤子或提問，拉高滑到下一張的動機</li><li>金句放對應那張的 caption，方便讀者截圖那張＋那句一起存</li></ul></div>
+    </div>
+    <div class="step">
+      <div class="step-head"><span class="step-num">2</span><span class="step-title">試播 Reel 現在可以先排程</span></div>
+      <div class="step-body"><span class="whatis">是什麼</span><br>Trial Reel（只給非粉絲看、測水溫）現在能在 App 內預先排程<ul class="strat"><li>一次排一週的 Trial Reel，固定時段釋出，維持穩定曝光</li><li>先用 Trial Reel 測鉤子和封面，表現好的再正式發給粉絲，降低翻車風險</li><li>靈感好的時候一次拍多支，排進未來幾天，避開靈感空窗</li><li>對準你的數據高峰時段排程，讓每支在對的時間出</li><li>排程後仍可在 trial settings 決定要不要轉成正式發布給所有人</li></ul></div>
+    </div>
+    <div class="step">
+      <div class="step-head"><span class="step-num">3</span><span class="step-title">發文後終於可以重排輪播順序</span></div>
+      <div class="step-body"><span class="whatis">是什麼</span><br>發布後能重新排列輪播圖順序，不用刪掉重發<ul class="strat"><li>封面 A／B，數據不好就把更強那張重排到第一張</li><li>發現第 3 張其實最抓眼，直接重排到封面位，救回觸及</li><li>圖放錯順序、漏了邏輯，直接重排修正，不損失既有讚數和留言</li><li>舊貼文把最新的優惠圖重排到最前面，延長貼文壽命</li><li>用重排測「鉤子順序」哪種留存最好，累積你自己的封面公式</li></ul></div>
+    </div>
+  </div>
+
+  <div class="sec fade">
+    <div class="intro-card">
+      <div class="q">一句話收尾</div>
+      <p><span class="hl">學會運用工具，才能真正省力</span><br>規則一直在變，但會用工具的人，永遠不會被甩在後面</p>
+    </div>
+  </div>
+
+  <div class="cta fade">
+    <div class="cta-card">
+      <div class="cta-kicker">WHAT'S NEXT</div>
+      <h2>想把這些工具<br><span class="g">真的變成你的優勢</span></h2>
+      <div class="cta-lead">更多 AI × 自媒體的實戰，從選題到產出，我都整理在這裡<br>一群人一起把帳號做起來</div>
+      <a class="skbtn" href="https://www.skool.com/d11-lab/about?ref=81fd135dd97643128bb641d5238e8ffb" target="_blank" rel="noopener">加入 奇點研究所 × D11 →</a>
+      <div class="cta-note">點擊加入社群，跟上每一次更新</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="fa">@lovekaren0316</div>
+    <div class="disc">＊以上為平台功能介紹與個人經驗分享，功能依 IG 實際版本與測試範圍為準</div>
+  </div>
+</div>
+<script>
+var ob=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting) e.target.classList.add('vis'); }); },{threshold:0.08});
+document.querySelectorAll('.fade').forEach(function(el){ ob.observe(el); });
+</script>
+</body>
+</html>
