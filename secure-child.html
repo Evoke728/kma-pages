@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>K媽｜一直黏著你的孩子 · 心理測驗解析</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;700;900&family=Noto+Sans+TC:wght@400;500;700;900&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* === 暗色暖金版（呼應 moody 暖調背景 + 暖金琥珀頂線） === */
+  --skin-primary:   #E0739B;   /* 暖琥珀，按鈕/標籤 */
+  --skin-accent:    #F4AEC8;   /* 金，次要點綴 */
+  --skin-highlight: #F58CB6;   /* mark 底色（暖金） */
+  --skin-ink:       #3A1020;   /* 近黑暖，邊框/陰影 */
+  --skin-cream:     #FFF8FA;   /* 卡片底，暖暗棕 */
+  --skin-bg:        #FCEFF2;   /* 頁面底，近黑暖 */
+  --skin-warm:      #F2C4D5;   /* 邊框中間色 */
+  --skin-white:     #2A0F1A;   /* 暖白，文字 */
+
+  --shadow-sm: 4px 4px 0 var(--skin-ink);
+  --shadow-md: 7px 7px 0 var(--skin-ink);
+  --shadow-lg: 11px 11px 0 var(--skin-ink);
+  --border-thick:  3px solid var(--skin-warm);
+  --border-medium: 2px solid var(--skin-warm);
+  --radius-md:16px; --radius-lg:24px; --radius-pill:50px;
+  --ease-bounce: 400ms cubic-bezier(0.34,1.56,0.64,1);
+  --serif:"Noto Serif TC",serif; --sans:"Noto Sans TC","Inter",sans-serif;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#FCEFF2; font-family:var(--sans); color:var(--skin-white); line-height:1.8; overflow-x:hidden; }
+.wrap { max-width:680px; margin:0 auto; position:relative; background:var(--skin-bg); }
+
+/* top accent line: amber, left solid 2/3 fade right 1/3, 3px */
+.top-line { position:absolute; top:0; left:0; width:100%; height:3px; z-index:20;
+  background:linear-gradient(to right, #F58CB6 0%, #F58CB6 66%, rgba(0,0,0,0) 100%); }
+
+/* BLOB — 暖金/琥珀/棕 漸層，暗底上透明度提高 */
+.blob { position:absolute; border-radius:60% 40% 30% 70% / 60% 30% 70% 40%;
+  animation:morph 8s ease-in-out infinite; opacity:0.30; z-index:0; pointer-events:none; filter:blur(6px); }
+.blob--1 { width:min(70vw,420px); height:min(70vw,420px);
+  background:linear-gradient(135deg, #E0739B, #F4AEC8); top:-6%; right:-16%; }
+.blob--2 { width:min(60vw,360px); height:min(60vw,360px);
+  background:linear-gradient(135deg, #F4AEC8, #F2C4D5); bottom:8%; left:-18%; animation-delay:-4s; }
+@keyframes morph {
+  0%,100% { border-radius:60% 40% 30% 70% / 60% 30% 70% 40%; }
+  25% { border-radius:30% 60% 70% 40% / 50% 60% 30% 40%; }
+  50% { border-radius:50% 60% 30% 70% / 30% 40% 70% 60%; }
+  75% { border-radius:60% 30% 60% 40% / 70% 50% 40% 30%; }
+}
+
+.skin-mark { background:var(--skin-highlight); color:#3A1020; padding:0.08em 0.35em; border-radius:5px; display:inline-block; box-decoration-break:clone; }
+.fade-up { opacity:0; transform:translateY(32px); transition:opacity .6s ease, transform .6s ease; }
+.fade-up.visible { opacity:1; transform:translateY(0); }
+
+.hero { position:relative; z-index:1; padding:62px 28px 44px; text-align:center; }
+.hero-tag { display:inline-block; background:var(--skin-primary); color:#3A1020; border:var(--border-medium); border-radius:var(--radius-pill); padding:6px 16px; font-size:13px; font-weight:700; box-shadow:var(--shadow-sm); margin-bottom:22px; }
+.hero-title { font-family:var(--serif); font-weight:900; font-size:29px; line-height:1.5; color:var(--skin-white); }
+.hero-sub { margin-top:16px; font-size:14px; color:rgba(42,15,26,0.62); }
+
+.section { position:relative; z-index:1; padding:36px 28px; }
+.section-label { display:inline-block; background:var(--skin-primary); color:#3A1020; border:var(--border-medium); border-radius:var(--radius-pill); padding:4px 14px; font-size:12px; font-weight:700; margin-bottom:20px; box-shadow:var(--shadow-sm); }
+.quiz-q { font-family:var(--serif); font-size:21px; font-weight:700; line-height:1.6; margin-bottom:8px; }
+.quiz-sub { font-size:14px; color:rgba(42,15,26,0.55); margin-bottom:26px; font-weight:500; }
+
+.opt { background:var(--skin-cream); border:var(--border-thick); border-radius:var(--radius-md); box-shadow:var(--shadow-sm); padding:18px 20px; margin-bottom:18px; cursor:pointer; transition:transform var(--ease-bounce), box-shadow var(--ease-bounce); }
+.opt:hover { transform:translate(-3px,-3px); box-shadow:var(--shadow-md); }
+.opt.active { box-shadow:var(--shadow-md); }
+.opt-head { display:flex; align-items:center; gap:14px; font-size:17px; font-weight:700; }
+.opt-letter { display:inline-flex; align-items:center; justify-content:center; width:34px; height:34px; background:var(--skin-highlight); color:#3A1020; border:var(--border-medium); border-radius:50%; font-family:"Inter"; font-weight:700; font-size:16px; flex-shrink:0; }
+.opt-result { max-height:0; overflow:hidden; transition:max-height .45s ease, margin .3s, padding .3s; }
+.opt.active .opt-result { max-height:640px; margin-top:16px; padding-top:16px; border-top:2px dashed var(--skin-warm); }
+.res-type { display:inline-block; background:rgba(224,144,74,0.18); color:var(--skin-primary); font-size:13px; font-weight:700; padding:3px 12px; border-radius:var(--radius-pill); border:var(--border-medium); margin-bottom:12px; }
+.res-text { font-size:14.5px; color:rgba(42,15,26,0.88); line-height:1.85; margin-bottom:14px; }
+.res-gem { font-family:var(--serif); font-size:15.5px; font-weight:700; color:var(--skin-highlight); line-height:1.6; background:rgba(0,0,0,0.25); border-left:4px solid var(--skin-primary); padding:12px 14px; border-radius:0 8px 8px 0; }
+
+.transition { text-align:center; padding:18px 0; position:relative; z-index:1; }
+.transition-text { display:inline-block; background:var(--skin-cream); border:var(--border-medium); border-radius:var(--radius-pill); padding:8px 20px; font-size:14px; font-weight:700; box-shadow:var(--shadow-sm); }
+
+.bridge { position:relative; z-index:1; padding:36px 28px; }
+.bridge-card { background:var(--skin-cream); border:var(--border-thick); border-radius:var(--radius-lg); box-shadow:var(--shadow-md); padding:28px 24px; }
+.bridge p { font-size:15px; color:rgba(42,15,26,0.88); line-height:1.9; margin-bottom:14px; }
+.bridge .em { font-family:var(--serif); font-size:19px; font-weight:900; line-height:1.6; margin:6px 0 16px; }
+
+.intro { position:relative; z-index:1; padding:36px 28px; }
+.intro-card { background:#FFF1F5; border:var(--border-thick); border-radius:var(--radius-lg); box-shadow:var(--shadow-md); padding:26px 24px; }
+.intro-name { font-family:var(--serif); font-size:20px; font-weight:900; margin-bottom:12px; }
+.intro-text { font-size:14.5px; color:rgba(42,15,26,0.88); line-height:1.9; }
+
+.course { position:relative; z-index:1; padding:36px 28px; }
+.course-card { background:var(--skin-cream); border:var(--border-thick); border-radius:var(--radius-md); box-shadow:var(--shadow-sm); padding:22px; margin-bottom:18px; transition:transform var(--ease-bounce), box-shadow var(--ease-bounce); }
+.course-card:hover { transform:translate(-3px,-3px); box-shadow:var(--shadow-md); }
+.course-stage { display:inline-block; background:var(--skin-primary); color:#3A1020; font-size:13px; font-weight:700; padding:4px 12px; border-radius:var(--radius-pill); margin-bottom:12px; }
+.course-name { font-family:var(--serif); font-size:18px; font-weight:700; margin-bottom:8px; }
+.course-desc { font-size:14px; color:rgba(42,15,26,0.82); line-height:1.8; }
+
+.cta { position:relative; z-index:1; padding:30px 28px 56px; text-align:center; }
+.cta-line { font-family:var(--serif); font-size:22px; font-weight:900; line-height:1.6; margin-bottom:10px; }
+.cta-sub { font-size:14.5px; color:rgba(42,15,26,0.55); margin-bottom:26px; line-height:1.8; font-weight:500; }
+.skin-btn { display:inline-flex; align-items:center; gap:8px; background:var(--skin-primary); color:#3A1020; border:var(--border-thick); border-radius:var(--radius-pill); padding:16px 44px; font-weight:900; font-size:18px; box-shadow:var(--shadow-md); transition:transform var(--ease-bounce), box-shadow var(--ease-bounce); position:relative; overflow:hidden; cursor:pointer; text-decoration:none; }
+.skin-btn:hover { transform:translate(-4px,-4px); box-shadow:var(--shadow-lg); }
+.skin-btn:active { transform:translate(0,0); box-shadow:var(--shadow-sm); }
+.skin-btn::after { content:''; position:absolute; top:0; left:-100%; width:50%; height:100%; background:linear-gradient(90deg,transparent,rgba(255,255,255,0.4),transparent); transform:skewX(-25deg); animation:shine 3s ease-in-out infinite; }
+@keyframes shine { 0%{left:-100%;} 20%{left:150%;} 100%{left:150%;} }
+.cta-note { margin-top:16px; font-size:12.5px; color:rgba(42,15,26,0.5); font-weight:500; }
+
+.footer { position:relative; z-index:1; padding:22px 28px 40px; text-align:center; }
+.footer-acc { font-style:italic; font-size:14px; color:var(--skin-primary); font-weight:700; }
+</style>
+<style>
+.top-cta{display:none;}
+.top-cta a{display:flex;align-items:center;justify-content:center;gap:8px;background:var(--skin-primary);color:#3A1020;font-weight:800;font-size:13.5px;padding:12px 16px;text-decoration:none;border-bottom:var(--border-medium);}
+.top-cta .tc-em{font-weight:900;}
+@media(max-width:1119px){.top-cta{display:block;position:fixed;top:0;left:0;right:0;z-index:50;box-shadow:0 3px 0 var(--skin-ink);}body{padding-top:48px;}}
+.side-cta{display:none;}
+@media(min-width:1120px){
+ .side-cta{display:block;position:fixed;top:140px;right:max(20px,calc((100vw - 680px)/2 - 220px));width:200px;z-index:40;background:var(--skin-cream);border:var(--border-thick);border-radius:var(--radius-lg);box-shadow:var(--shadow-md);padding:18px 18px 20px;text-align:center;}
+ .side-cta .fk{font-family:var(--sans);font-size:10px;letter-spacing:0.14em;color:var(--skin-primary);font-weight:700;margin-bottom:8px;}
+ .side-cta h4{font-family:var(--serif);font-size:16px;font-weight:900;color:var(--skin-white);line-height:1.5;margin-bottom:12px;}
+ .side-cta h4 .g{color:var(--skin-primary);}
+ .side-cta a{display:block;background:var(--skin-primary);color:#3A1020;border:var(--border-medium);border-radius:var(--radius-pill);padding:11px 14px;font-weight:900;font-size:14px;text-decoration:none;box-shadow:var(--shadow-sm);transition:transform var(--ease-bounce);}
+ .side-cta a:hover{transform:translate(-2px,-2px);}
+}
+</style>
+</head>
+<body>
+<div class="top-cta"><a href="https://www.skool.com/d11-lab/about?ref=81fd135dd97643128bb641d5238e8ffb" target="_blank" rel="noopener"><span>想學用 AI 做內容 →</span><span class="tc-em">加入社群</span></a></div>
+<aside class="side-cta">
+  <div class="fk">JOIN US</div>
+  <h4>跟我一起<br><span class="g">用 AI 做內容</span></h4>
+  <a href="https://www.skool.com/d11-lab/about?ref=81fd135dd97643128bb641d5238e8ffb" target="_blank" rel="noopener">加入社群 →</a>
+</aside>
+<div class="wrap">
+  <div class="blob blob--1"></div>
+  <div class="blob blob--2"></div>
+
+  <div class="hero">
+    <span class="hero-tag">#家庭育兒 · 心理測驗解析</span>
+    <div class="hero-title">你家孩子最常喊的那句話<br><span class="skin-mark">藏著他最需要你的方式</span></div>
+    <div class="hero-sub">那些看似很煩的時刻，其實是孩子給你的信任<br>看你家孩子最常喊哪一句，就懂他最需要你的什麼</div>
+  </div>
+
+  <div class="section fade-up">
+    <span class="section-label">點開你的選擇</span>
+    <div class="quiz-q">你家孩子最常喊著找你的<br>是哪一句</div>
+    <div class="quiz-sub">點下面那一句，看他最需要你的方式</div>
+
+    <div class="opt" onclick="toggle(this)">
+      <div class="opt-head"><span class="opt-letter">A</span>你看我看我</div>
+      <div class="opt-result">
+        <span class="res-type">被看見</span>
+        <div class="res-text">你家孩子最常喊「你看我看我」<br>代表他最需要的，是被你看見<br>學會一個新動作、畫了一張畫、跳了一下，他第一件事就是回頭找你的眼睛<br>因為對他來說，你的目光就是全世界的掌聲<br>他要的不是你拍手，是你真的有在看<br>下次他喊你看，別急著說等一下，你那一個專心的眼神，他會記得很久</div>
+        <div class="res-gem">💛 你看他的那個眼神，就是他的全世界</div>
+      </div>
+    </div>    <div class="opt" onclick="toggle(this)">
+      <div class="opt-head"><span class="opt-letter">B</span>我跟你說喔</div>
+      <div class="opt-result">
+        <span class="res-type">被信任</span>
+        <div class="res-text">你家孩子最常說「我跟你說喔」<br>代表他把你當成第一個想分享的人<br>幼兒園的小事、一隻路過的狗、一個他自己想出來的問題，他全都想第一個告訴你<br>因為在他心裡，你是最安全、最不會笑他的那個人<br>有一天他長大，這句話會越來越少<br>所以現在他願意跟你說的每件小事，都要好好聽</div>
+        <div class="res-gem">💛 那是信任，不是吵</div>
+      </div>
+    </div>    <div class="opt" onclick="toggle(this)">
+      <div class="opt-head"><span class="opt-letter">C</span>我要抱抱</div>
+      <div class="opt-result">
+        <span class="res-type">安全感</span>
+        <div class="res-text">你家孩子最常討抱抱<br>代表他用最直接的方式跟你要安全感<br>累了、怕了、受委屈了，他不會分析情緒，他只知道回到你懷裡就會沒事<br>你的擁抱，對他來說是世界上最安全的地方<br>這種需要不會永遠都在<br>能抱的時候多抱一點，因為總有一天，他會學會自己撐住自己</div>
+        <div class="res-gem">💛 你的懷抱，是他的避風港</div>
+      </div>
+    </div>    <div class="opt" onclick="toggle(this)">
+      <div class="opt-head"><span class="opt-letter">D</span>你不要走</div>
+      <div class="opt-result">
+        <span class="res-type">陪伴</span>
+        <div class="res-text">你家孩子最常說「你不要走」<br>代表他正在最黏、最需要你的階段<br>你去個廁所、出個門，對他來說都像天要塌了<br>這不是不獨立，是他還沒準備好離開你的安全範圍<br>這段時間其實很短，短到幾年後你會懷念那個拉著你衣角不放的小人<br>所以在他還這麼需要你的時候，好好被他需要</div>
+        <div class="res-gem">💛 你就是他現在的全世界</div>
+      </div>
+    </div>    <div class="opt" onclick="toggle(this)">
+      <div class="opt-head"><span class="opt-letter">E</span>我來幫你</div>
+      <div class="opt-result">
+        <span class="res-type">體貼</span>
+        <div class="res-text">你家孩子最常搶著說「我來幫你」<br>代表他正在學著愛你、照顧你<br>他幫的忙可能越幫越忙，但那份心意是真的<br>他在模仿你怎麼對待別人，也在練習把愛給出去<br>你平常的溫柔，正在養出一個體貼的孩子<br>別嫌他慢、別嫌他亂，讓他幫</div>
+        <div class="res-gem">💛 他會記得，原來愛是可以付出的</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="transition"><span class="transition-text">繼續往下滑 ⬇️</span></div>
+
+  <div class="bridge fade-up">
+    <div class="bridge-card">
+      <p>不管他喊的是哪一句</p>
+      <p class="em">那都是因為，在他心裡<br>你是<span class="skin-mark">最安全</span>的那個人</p>
+      <p>這種黏，不會永遠都在<br>趁他還這麼需要你的時候，好好被他需要</p>
+    </div>
+  </div>
+
+  <div class="intro fade-up">
+    <div class="intro-card">
+      <div class="intro-name">HI，我是 <span class="skin-mark">K媽</span></div>
+      <div class="intro-text">我是一個媽媽，也用 AI ＋ 自媒體在記錄生活、經營內容<br><br>像這篇你剛剛滑過的圖文，其實就是我用 AI 一張一張做出來的<br>我把「怎麼用 AI 輕鬆做內容、把帳號經營起來」都整理在社群裡</div>
+    </div>
+  </div>
+
+  <div class="cta fade-up">
+    <div class="cta-line">連這篇圖文<br>都是我用 <span class="skin-mark">AI</span> 做出來的</div>
+    <div class="cta-sub">想學怎麼用 AI ＋ 自媒體，把內容輕鬆做起來<br>我都整理在這個社群裡，一群人一起做</div>
+    <a class="skin-btn" href="https://www.skool.com/d11-lab/about?ref=81fd135dd97643128bb641d5238e8ffb" target="_blank" rel="noopener">加入 奇點研究所 × D11</a>
+    <div class="cta-note">點擊加入社群，跟我一起用 AI 做內容</div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-acc">@lovekaren0316</div>
+  </div>
+</div>
+
+<script>
+function toggle(el) {
+  const wasActive = el.classList.contains('active');
+  document.querySelectorAll('.opt').forEach(o => o.classList.remove('active'));
+  if (!wasActive) el.classList.add('active');
+}
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
