@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>K媽｜90 年代復古動漫海報 Prompt</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;700;900&family=Noto+Sans+TC:wght@300;400;500;700;900&family=Inter:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --neon:#ff2e63; --neon-b:#ff7099; --neon-dim:rgba(255,46,99,0.30);
+  --cyan:#2fe3e3; --cyan-dim:rgba(47,227,227,0.28);
+  --bg:#0a0b12; --bg2:#0e0f18; --card:#14161f; --card2:#191c28;
+  --code:#06070c; --code-tx:#e4e7f5;
+  --text:#e9eaf2; --dim:#a3a7bd; --faint:#6c7088;
+  --line:rgba(255,255,255,0.10);
+  --r-md:16px; --r-lg:22px; --pill:50px;
+  --bounce:400ms cubic-bezier(0.34,1.56,0.64,1);
+  --serif:"Noto Serif TC",serif; --sans:"Noto Sans TC","Inter",sans-serif; --mono:"JetBrains Mono",monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:var(--sans);color:var(--text);line-height:1.85;overflow-x:hidden;
+  background:var(--bg);
+  background-image:radial-gradient(120% 56% at 50% 0%, rgba(255,46,99,0.18) 0%, rgba(255,46,99,0.05) 32%, rgba(10,11,18,0) 60%),
+    repeating-linear-gradient(0deg, rgba(255,255,255,0.025) 0px, rgba(255,255,255,0.025) 1px, transparent 1px, transparent 3px);
+  background-attachment:fixed;}
+.glow{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
+.g1{position:absolute;width:min(60vw,680px);height:min(60vw,680px);border-radius:50%;
+  background:radial-gradient(circle, rgba(255,46,99,0.16), rgba(255,46,99,0));top:-20%;right:-16%;filter:blur(26px);}
+.g2{position:absolute;width:min(52vw,560px);height:min(52vw,560px);border-radius:50%;
+  background:radial-gradient(circle, rgba(47,227,227,0.13), rgba(47,227,227,0));bottom:-16%;left:-14%;filter:blur(28px);}
+.wrap{max-width:720px;margin:0 auto;position:relative;min-height:100vh;}
+.js .fade{opacity:0;transform:translateY(28px);transition:opacity .6s ease,transform .6s ease;}
+.fade.vis{opacity:1;transform:translateY(0);}
+a{color:var(--neon-b);text-decoration:none;word-break:break-all;}
+
+/* ---- 頂部吸附細橫幅（手機前段 CTA）---- */
+.top-cta{display:none;}
+.top-cta a{display:flex;align-items:center;justify-content:center;gap:8px;
+  background:var(--neon);color:#fff;font-weight:800;font-size:13.5px;
+  padding:11px 16px;text-align:center;letter-spacing:0.02em;}
+.top-cta .tc-em{font-weight:900;}
+
+/* ---- 桌機右側吸附浮動小卡 ---- */
+.side-cta{display:none;}
+@media(min-width:1120px){
+  .side-cta{display:block;position:fixed;top:130px;right:max(24px,calc((100vw - 720px)/2 - 268px));
+    width:236px;z-index:30;background:linear-gradient(165deg,var(--card) 0%,var(--card2) 100%);
+    border:1px solid var(--neon-dim);border-left:3px solid var(--neon);border-radius:var(--r-md);
+    padding:20px 20px 22px;box-shadow:0 10px 34px rgba(0,0,0,0.5),0 0 26px rgba(255,46,99,0.10);}
+  .side-cta .sk-k{font-family:var(--mono);font-size:10px;letter-spacing:0.16em;color:var(--cyan);margin-bottom:10px;font-weight:500;}
+  .side-cta h4{font-family:var(--serif);font-weight:900;font-size:17px;line-height:1.5;color:#fff;margin-bottom:9px;}
+  .side-cta h4 .g{color:var(--neon-b);}
+  .side-cta p{font-size:12.5px;color:var(--dim);line-height:1.7;margin-bottom:16px;}
+  .side-cta a{display:block;text-align:center;background:var(--neon);color:#fff;font-weight:900;
+    font-size:14px;padding:12px 14px;border-radius:var(--pill);box-shadow:0 6px 20px rgba(255,46,99,0.34);transition:transform var(--bounce);}
+  .side-cta a:hover{transform:translateY(-2px);}
+}
+
+.hero{position:relative;z-index:1;padding:64px 30px 40px;}
+.kicker{font-family:var(--mono);font-size:11px;letter-spacing:0.24em;color:var(--cyan);margin-bottom:22px;font-weight:500;}
+.hero h1{font-family:var(--serif);font-weight:900;font-size:38px;line-height:1.32;margin-bottom:18px;color:#fff;
+  text-shadow:0 0 22px rgba(255,46,99,0.30);}
+.hero h1 .g{color:var(--neon-b);}
+.hero h1 .c{color:var(--cyan);}
+.hero-sub{font-size:15px;color:var(--dim);line-height:1.85;margin-bottom:26px;}
+.divider{width:46px;height:3px;background:var(--neon);margin-bottom:26px;box-shadow:0 0 12px var(--neon);}
+.author-card{margin-top:28px;background:var(--card);border:1px solid var(--line);border-left:3px solid var(--neon);border-radius:var(--r-md);padding:15px 20px;position:relative;z-index:1;}
+.author-card .a{font-weight:700;color:var(--neon-b);font-size:15px;}
+.author-card .b{font-size:13px;color:var(--dim);margin-top:6px;line-height:1.8;}
+.src-note{margin-top:16px;font-size:11.5px;color:var(--faint);}
+
+.sec{position:relative;z-index:1;padding:38px 30px;border-top:1px solid var(--line);}
+.sec-tag{display:inline-block;background:rgba(47,227,227,0.10);color:var(--cyan);font-size:12px;font-weight:700;padding:5px 15px;border:1px solid var(--cyan-dim);border-radius:var(--pill);margin-bottom:16px;letter-spacing:0.05em;}
+.sec h2{font-family:var(--serif);font-weight:900;font-size:25px;line-height:1.42;margin-bottom:14px;color:#fff;}
+.sec h2 .g{color:var(--neon-b);}
+.sec>p{font-size:15px;color:var(--text);line-height:1.9;margin-bottom:14px;}
+.sec>p .hl{color:var(--neon-b);font-weight:500;}
+
+.steps{margin:16px 0 4px;counter-reset:s;}
+.steps .st{display:flex;gap:13px;margin-bottom:14px;font-size:14.5px;line-height:1.74;color:var(--text);}
+.steps .st::before{counter-increment:s;content:counter(s);flex-shrink:0;width:26px;height:26px;border-radius:50%;background:var(--neon);color:#fff;font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;margin-top:1px;box-shadow:0 0 14px rgba(255,46,99,0.4);}
+.steps .st b{color:var(--neon-b);}
+.warn{background:rgba(47,227,227,0.05);border:1px solid var(--cyan-dim);border-radius:12px;padding:13px 16px;margin:16px 0 0;font-size:13.5px;line-height:1.74;color:#bfeaea;}
+.warn b{color:var(--cyan);}
+
+/* 可複製區塊 */
+.cp{background:var(--code);border:1px solid var(--neon-dim);border-radius:var(--r-md);padding:16px 16px;margin:16px 0;position:relative;box-shadow:0 0 24px rgba(255,46,99,0.06) inset;}
+.cp .pl{font-family:var(--mono);font-size:10.5px;letter-spacing:0.1em;color:var(--cyan);margin-bottom:11px;max-width:calc(100% - 84px);}
+.cp pre{font-family:var(--mono);font-size:12px;line-height:1.85;color:var(--code-tx);white-space:pre-wrap;word-break:break-word;}
+.copy-btn{position:absolute;top:11px;right:11px;background:rgba(255,46,99,0.16);border:1px solid var(--neon);color:var(--neon-b);font-family:var(--sans);font-size:10.5px;font-weight:700;padding:5px 12px;border-radius:50px;cursor:pointer;transition:all .2s;letter-spacing:0.03em;z-index:2;}
+.copy-btn:hover,.copy-btn.done{background:var(--neon);color:#fff;}
+
+/* accordion */
+.cat-lead{font-size:14px;color:var(--dim);line-height:1.8;margin-bottom:18px;}
+.acc{display:flex;flex-direction:column;gap:10px;}
+details.ch{background:var(--card);border:1px solid var(--line);border-radius:var(--r-md);overflow:hidden;}
+details.ch[open]{border-color:var(--neon-dim);box-shadow:0 4px 22px rgba(0,0,0,0.4);}
+details.ch summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:13px;padding:16px 18px;user-select:none;}
+details.ch summary::-webkit-details-marker{display:none;}
+.ch-n{flex-shrink:0;width:26px;height:26px;border-radius:8px;background:rgba(255,46,99,0.14);border:1px solid var(--neon-dim);color:var(--neon-b);font-family:"Inter";font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;}
+.ch-t{flex:1;font-weight:700;font-size:15px;color:var(--text);line-height:1.4;}
+.ch-mk{flex-shrink:0;width:22px;height:22px;position:relative;}
+.ch-mk::before,.ch-mk::after{content:"";position:absolute;background:var(--neon-b);border-radius:2px;transition:transform .25s ease;}
+.ch-mk::before{top:10px;left:4px;width:14px;height:2px;}
+.ch-mk::after{top:4px;left:10px;width:2px;height:14px;}
+details.ch[open] .ch-mk::after{transform:rotate(90deg);opacity:0;}
+.ch-body{padding:2px 20px 20px;border-top:1px solid var(--line);}
+.ch-body>p{font-size:14px;line-height:1.85;color:var(--text);margin:13px 0;}
+.ch-body p .hl{color:var(--neon-b);font-weight:500;}
+
+/* ---- 後段完整 CTA ---- */
+.cta{position:relative;z-index:1;padding:46px 30px 54px;border-top:3px solid var(--neon-dim);}
+.cta-card{background:linear-gradient(160deg, var(--card) 0%, var(--card2) 100%);border:1px solid var(--neon-dim);border-radius:var(--r-lg);padding:32px 26px;box-shadow:0 0 40px rgba(255,46,99,0.08);}
+.cta-kicker{font-family:var(--mono);font-size:11px;letter-spacing:0.2em;color:var(--cyan);margin-bottom:14px;font-weight:500;}
+.cta-card h2{font-family:var(--serif);font-weight:900;font-size:25px;line-height:1.45;margin-bottom:10px;color:#fff;}
+.cta-card h2 .g{color:var(--neon-b);}
+.cta-lead{font-size:14.5px;color:var(--dim);line-height:1.85;margin-bottom:22px;}
+.fit{margin:18px 0;}
+.fit .f{display:flex;gap:10px;font-size:14px;line-height:1.7;margin-bottom:10px;color:var(--text);}
+.fit .f::before{content:"\2714";color:var(--cyan);font-weight:700;flex-shrink:0;}
+.gives{background:rgba(255,46,99,0.06);border:1px solid var(--line);border-radius:var(--r-md);padding:18px 20px;margin:20px 0;}
+.gives .gt{font-size:12px;font-weight:700;color:var(--neon-b);letter-spacing:0.05em;margin-bottom:12px;}
+.gives .gi{font-size:14px;line-height:1.75;margin-bottom:9px;padding-left:20px;position:relative;color:var(--text);}
+.gives .gi::before{content:"\2726";color:var(--neon-b);position:absolute;left:0;}
+.btn-wrap{text-align:center;margin-top:26px;}
+.skbtn{display:inline-flex;align-items:center;gap:8px;background:var(--neon);color:#fff;border-radius:var(--pill);padding:17px 46px;font-weight:900;font-size:18px;box-shadow:0 8px 30px rgba(255,46,99,0.36);transition:transform var(--bounce),box-shadow var(--bounce);position:relative;overflow:hidden;cursor:pointer;text-decoration:none;}
+.skbtn:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(255,46,99,0.5);}
+.skbtn:active{transform:translateY(0);}
+.skbtn::after{content:'';position:absolute;top:0;left:-100%;width:50%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.45),transparent);transform:skewX(-25deg);animation:shine 3.4s ease-in-out infinite;}
+@keyframes shine{0%{left:-100%;}22%{left:160%;}100%{left:160%;}}
+.btn-note{margin-top:14px;font-size:12.5px;color:var(--dim);text-align:center;}
+
+.footer{position:relative;z-index:1;padding:24px 30px 46px;text-align:center;}
+.footer .fa{font-style:italic;font-size:14px;color:var(--neon-b);font-weight:700;}
+.footer .fc{font-size:11px;color:var(--faint);margin-top:8px;letter-spacing:0.05em;}
+
+@media(max-width:680px){
+  .top-cta{display:block;position:fixed;top:0;left:0;right:0;z-index:40;box-shadow:0 2px 12px rgba(0,0,0,0.4);}
+  body{padding-top:42px;}
+  .hero{padding-top:48px;}
+  .hero h1{font-size:31px;}
+  .sec h2{font-size:22px;}
+}
+</style>
+</head>
+<body>
+<script>document.documentElement.className+=' js';</script>
+<div class="glow"><div class="g1"></div><div class="g2"></div></div>
+
+<div class="top-cta">
+  <a href="https://www.skool.com/d11-lab/about?ref=81fd135dd97643128bb641d5238e8ffb" target="_blank" rel="noopener">
+    <span>想學更多 AI 玩法 →</span><span class="tc-em">加入 奇點研究所 × D11</span>
+  </a>
+</div>
+<aside class="side-cta">
+  <div class="sk-k">NEXT STEP</div>
+  <h4>Prompt 都給你了<br><span class="g">想玩更多 AI 一起來</span></h4>
+  <p>我把這些 AI 工具跟 Prompt 都整理在社群裡，跟一群正在用 AI 做內容的人一起練。</p>
+  <a href="https://www.skool.com/d11-lab/about?ref=81fd135dd97643128bb641d5238e8ffb" target="_blank" rel="noopener">加入 奇點研究所 × D11</a>
+</aside>
+
+<div class="wrap">
+  <div class="hero">
+    <div class="kicker">AI × 自媒體 · PROMPT</div>
+    <h1>把你的照片變成<br><span class="g">90 年代復古動漫</span><span class="c">海報</span></h1>
+    <div class="hero-sub">一句 Prompt 把任何人拉回 City Hunter／AKIRA 那個年代<br>霓虹 顆粒 老海報的氛圍一次到位</div>
+    <div class="divider"></div>
+    <div class="author-card">
+      <div class="a">美麗K媽（@lovekaren0316）</div>
+      <div class="b">我自己邊顧小孩邊用 AI 做內容，把測過的 Prompt 整理在這<br>不用會技術 一張照片 貼上指令就能生</div>
+    </div>
+    <div class="src-note">風格參考對標 @paige.prompts，由 K媽 重新整理成可直接用的中文版做法</div>
+  </div>
+
+  <div class="sec fade">
+    <span class="sec-tag">怎麼用 · 3 步</span>
+    <h2>照這 3 步<br><span class="g">就能生出第一張</span></h2>
+    <div class="steps">
+      <div class="st"><b>選一張清楚的照片</b>　光線足、臉清楚，最好是半身、單人，AI 才能把長相穩住</div>
+      <div class="st"><b>複製下面的主 Prompt</b>　就是這篇要送你的那一句</div>
+      <div class="st"><b>打開 GPT Image（ChatGPT 生圖）</b>　把照片連同 Prompt 一起送出，一次生一張</div>
+    </div>
+    <div class="warn"><b>小提醒：</b>照片越清楚 長相越穩；一次只生一張 不滿意就重生一次，比一次要它生很多張更好控</div>
+  </div>
+
+  <div class="sec fade">
+    <span class="sec-tag">主 Prompt · 一鍵複製</span>
+    <h2>核心就這一段<br><span class="g">貼上去就會動</span></h2>
+    <p class="cat-lead">把照片丟進 GPT Image，連同這段一起送出。其他人想要的話，把這頁傳給他就好。</p>
+    <div class="cp"><button class="copy-btn" onclick="copyCp(this)">複製 Prompt</button><div class="pl">複製這段，連照片一起貼進 GPT Image</div><pre>A 1990s retro anime poster illustration of the person in the attached photo,
+preserve their facial likeness and keep the same outfit. Hand-painted cel-shaded
+anime style like a late-80s / early-90s OVA (City Hunter / Sailor Moon / AKIRA era):
+bold clean linework, flat cel shading, muted desaturated nostalgic color palette,
+film grain and light VHS texture, dramatic moody rim lighting. Repaint the photo's
+own background in the same retro style, with graffiti, small Japanese kanji and neon
+signage. Clean full-bleed flat image, no border, no paper texture. Vertical 4:5.</pre></div>
+  </div>
+
+  <div class="sec fade">
+    <span class="sec-tag">進階眉角 · 4 個關鍵</span>
+    <h2>同樣的風格<br><span class="g">差別都在這 4 個地方</span></h2>
+    <p class="cat-lead">點開每一個，把對應那句加進你的 Prompt，結果會穩很多。</p>
+    <div class="acc">
+      <details class="ch"><summary><span class="ch-n">1</span><span class="ch-t">鎖住長相跟穿著，不然會變成別人</span><span class="ch-mk"></span></summary>
+        <div class="ch-body">
+          <p>AI 很容易把臉跟衣服「自己改掉」<span class="hl">明確要它保留</span>長相跟原本的穿著，人才認得出來。</p>
+          <div class="cp"><button class="copy-btn" onclick="copyCp(this)">複製</button><div class="pl">加進 Prompt</div><pre>PRESERVE the facial likeness AND keep the SAME outfit as in the attached photo, clearly recognizable.</pre></div>
+        </div></details>
+      <details class="ch"><summary><span class="ch-n">2</span><span class="ch-t">背景照原圖去動漫化，張張才不同</span><span class="ch-mk"></span></summary>
+        <div class="ch-body">
+          <p>如果讓 AI 自己生背景，每張都長一樣<span class="hl">讓它照你原圖的背景</span>去動漫化，多張一起做時才會張張不同。</p>
+          <div class="cp"><button class="copy-btn" onclick="copyCp(this)">複製</button><div class="pl">加進 Prompt</div><pre>Repaint the photo's OWN background in the same retro anime style, keep its setting and composition, do not replace it with a generic scene.</pre></div>
+        </div></details>
+      <details class="ch"><summary><span class="ch-n">3</span><span class="ch-t">AKIRA 點綴 · 漢字霓虹的比例</span><span class="ch-mk"></span></summary>
+        <div class="ch-body">
+          <p>塗鴉、漢字、霓虹是味道來源<span class="hl">加太多會髒 加太少又沒味道</span>，請它「點到為止」最剛好。</p>
+          <div class="cp"><button class="copy-btn" onclick="copyCp(this)">複製</button><div class="pl">加進 Prompt</div><pre>Add tasteful graffiti, small Japanese kanji, neon signage and AKIRA-style red / cyan light accents, not too busy.</pre></div>
+        </div></details>
+      <details class="ch"><summary><span class="ch-n">4</span><span class="ch-t">提亮 + 去掉海報紙邊框</span><span class="ch-mk"></span></summary>
+        <div class="ch-body">
+          <p>不講通常會太暗、還會冒出一圈海報紙的邊<span class="hl">要它滿版、提亮</span>，畫面才乾淨。</p>
+          <div class="cp"><button class="copy-btn" onclick="copyCp(this)">複製</button><div class="pl">加進 Prompt</div><pre>Clean full-bleed flat image edge to edge, NO border, NO paper or poster texture. Brighten the overall exposure, evenly lit, lifted shadows, keep the mood but avoid heavy darkness.</pre></div>
+        </div></details>
+    </div>
+  </div>
+
+  <div class="cta fade">
+    <div class="cta-card">
+      <div class="cta-kicker">下一步</div>
+      <h2>Prompt 給你了<br><span class="g">想玩更多 AI 一起來</span></h2>
+      <div class="cta-lead">這只是一個玩法，我現在是結合 AI 跟自媒體在做內容，把好用的工具跟 Prompt 都丟在社群裡，一群人一起練比自己摸快多了。</div>
+      <div class="fit">
+        <div class="f">想用 AI 做內容、又怕自己卡住的你</div>
+        <div class="f">喜歡這種 AI 生圖玩法、想學更多花樣的你</div>
+        <div class="f">存了一堆工具，卻一直沒真的開始的你</div>
+      </div>
+      <div class="gives">
+        <div class="gt">進來你會拿到</div>
+        <div class="gi">更多可以直接套用的 AI 工具與 Prompt</div>
+        <div class="gi">AI ＋ 自媒體的完整做法，一步步帶著走</div>
+        <div class="gi">一群跟你一樣、邊生活邊做的人</div>
+      </div>
+      <div class="btn-wrap">
+        <a class="skbtn" href="https://www.skool.com/d11-lab/about?ref=81fd135dd97643128bb641d5238e8ffb" target="_blank" rel="noopener">加入 奇點研究所 × D11 →</a>
+        <div class="btn-note">先存起來 也歡迎把這頁傳給想玩的朋友</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="fa">@lovekaren0316</div>
+    <div class="fc">記錄一個媽媽把賺錢、變美、好好生活同時做到</div>
+  </div>
+</div>
+
+<script>
+function copyCp(btn){var pre=btn.parentElement.querySelector('pre');navigator.clipboard.writeText(pre.innerText).then(function(){var o=btn.textContent;btn.textContent='已複製 ✓';btn.classList.add('done');setTimeout(function(){btn.textContent=o;btn.classList.remove('done');},1800);}).catch(function(){btn.textContent='請手動選取';});}
+function revealOnScroll(){var vh=window.innerHeight||document.documentElement.clientHeight;var els=document.querySelectorAll('.fade:not(.vis)');for(var i=0;i<els.length;i++){if(els[i].getBoundingClientRect().top<vh*0.94){els[i].classList.add('vis');}}}
+window.addEventListener('scroll',revealOnScroll,{passive:true});window.addEventListener('resize',revealOnScroll);window.addEventListener('load',revealOnScroll);revealOnScroll();
+setTimeout(function(){document.querySelectorAll('.fade').forEach(function(e){e.classList.add('vis');});},2500);
+</script>
+</body>
+</html>
