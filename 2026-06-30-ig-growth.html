@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>K媽｜IG 成長策略 完整手冊</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;700;900&family=Noto+Sans+TC:wght@300;400;500;700;900&family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --gold:#B0863A; --gold-bright:#C89A4A; --gold-dim:rgba(176,134,58,0.30);
+  --bg:#ECE5DA; --bg2:#F4EEE5; --card:#FCF8F3; --card2:#F3EAE0;
+  --code:#2a2117; --code-tx:#f0e7da;
+  --text:#3B342C; --dim:#6f655a; --faint:#a99f92;
+  --line:rgba(70,50,20,0.15);
+  --r-md:16px; --r-lg:22px; --pill:50px;
+  --bounce:400ms cubic-bezier(0.34,1.56,0.64,1);
+  --serif:"Noto Serif TC",serif; --sans:"Noto Sans TC","Inter",sans-serif; --mono:"JetBrains Mono",monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:var(--sans);color:var(--text);line-height:1.85;overflow-x:hidden;
+  background:var(--bg);
+  background-image:radial-gradient(118% 54% at 50% 0%, rgba(176,134,58,0.16) 0%, rgba(176,134,58,0.05) 34%, rgba(244,241,234,0) 62%);
+  background-attachment:fixed;}
+.glow{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
+.g1{position:absolute;width:min(60vw,680px);height:min(60vw,680px);border-radius:50%;
+  background:radial-gradient(circle, rgba(176,134,58,0.13), rgba(176,134,58,0));top:-18%;right:-14%;filter:blur(20px);}
+.g2{position:absolute;width:min(50vw,560px);height:min(50vw,560px);border-radius:50%;
+  background:radial-gradient(circle, rgba(200,150,120,0.12), rgba(200,150,120,0));bottom:-14%;left:-12%;filter:blur(22px);}
+.wrap{max-width:720px;margin:0 auto;position:relative;min-height:100vh;}
+.js .fade{opacity:0;transform:translateY(28px);transition:opacity .6s ease,transform .6s ease;}
+.fade.vis{opacity:1;transform:translateY(0);}
+a{color:var(--gold);text-decoration:none;word-break:break-all;}
+
+.top-cta{display:none;}
+.top-cta a{display:flex;align-items:center;justify-content:center;gap:8px;
+  background:var(--gold);color:#fff;font-weight:800;font-size:13.5px;padding:11px 16px;text-align:center;letter-spacing:0.02em;}
+.top-cta .tc-em{font-weight:900;}
+.side-cta{display:none;}
+@media(min-width:1120px){
+  .side-cta{display:block;position:fixed;top:130px;right:max(24px,calc((100vw - 720px)/2 - 268px));
+    width:236px;z-index:30;background:linear-gradient(165deg,var(--card) 0%,var(--card2) 100%);
+    border:1px solid var(--gold-dim);border-left:3px solid var(--gold);border-radius:var(--r-md);
+    padding:20px 20px 22px;box-shadow:0 10px 34px rgba(120,90,30,0.13);}
+  .side-cta .sk-k{font-family:var(--mono);font-size:10px;letter-spacing:0.16em;color:var(--gold);margin-bottom:10px;font-weight:500;}
+  .side-cta h4{font-family:var(--serif);font-weight:900;font-size:17px;line-height:1.5;color:#39302c;margin-bottom:9px;}
+  .side-cta h4 .g{color:var(--gold);}
+  .side-cta p{font-size:12.5px;color:var(--dim);line-height:1.7;margin-bottom:16px;}
+  .side-cta a{display:block;text-align:center;background:var(--gold);color:#fff;font-weight:900;font-size:14px;padding:12px 14px;border-radius:var(--pill);box-shadow:0 6px 18px rgba(176,134,58,0.26);transition:transform var(--bounce);}
+  .side-cta a:hover{transform:translateY(-2px);}
+}
+
+.hero{position:relative;z-index:1;padding:64px 30px 40px;}
+.kicker{font-family:var(--mono);font-size:11px;letter-spacing:0.24em;color:var(--gold);margin-bottom:22px;font-weight:500;}
+.hero h1{font-family:var(--serif);font-weight:900;font-size:37px;line-height:1.36;margin-bottom:18px;color:#39302c;}
+.hero h1 .g{color:var(--gold);}
+.hero-sub{font-size:15px;color:var(--dim);line-height:1.85;margin-bottom:26px;}
+.divider{width:46px;height:3px;background:var(--gold);margin-bottom:26px;}
+.author-card{margin-top:28px;background:var(--card);border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:var(--r-md);padding:15px 20px;}
+.author-card .a{font-weight:700;color:var(--gold);font-size:15px;}
+.author-card .b{font-size:13px;color:var(--dim);margin-top:6px;line-height:1.8;}
+
+.nav{position:relative;z-index:1;margin:22px 30px 0;display:flex;flex-direction:column;gap:9px;}
+.nav a{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:13px 16px;display:flex;gap:11px;align-items:center;font-size:14px;color:var(--text);font-weight:600;}
+.nav a .num{width:24px;height:24px;flex-shrink:0;border-radius:7px;background:rgba(176,134,58,0.14);border:1px solid var(--gold-dim);color:var(--gold);font-family:"Inter";font-weight:800;font-size:12px;display:flex;align-items:center;justify-content:center;}
+
+.sec{position:relative;z-index:1;padding:38px 30px;border-top:1px solid var(--line);}
+.sec-tag{display:inline-block;background:rgba(176,134,58,0.13);color:var(--gold);font-size:12px;font-weight:700;padding:5px 15px;border:1px solid var(--gold-dim);border-radius:var(--pill);margin-bottom:16px;letter-spacing:0.05em;}
+.sec h2{font-family:var(--serif);font-weight:900;font-size:24px;line-height:1.42;margin-bottom:12px;color:#39302c;}
+.sec h2 .g{color:var(--gold);}
+.sec>p{font-size:15px;color:var(--text);line-height:1.9;margin-bottom:14px;}
+.h3{font-family:var(--serif);font-weight:700;font-size:18px;color:#39302c;margin:26px 0 10px;padding-top:6px;}
+.h3 .n{color:var(--gold);font-family:"Inter";margin-right:6px;}
+.lead{font-size:14.5px;color:var(--dim);line-height:1.85;margin-bottom:12px;}
+
+.bul{margin:12px 0;}
+.bul li{list-style:none;position:relative;padding-left:20px;font-size:14px;line-height:1.8;color:var(--text);margin-bottom:9px;}
+.bul li::before{content:"▸";position:absolute;left:0;color:var(--gold);font-weight:700;}
+.bul li b{color:var(--gold);}
+
+.src{margin:12px 0;}
+.src .s{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:13px 16px;margin-bottom:10px;}
+.src .s .st{font-weight:700;color:var(--gold);font-size:14px;margin-bottom:4px;}
+.src .s .sd{font-size:13.5px;color:var(--dim);line-height:1.7;}
+
+.tbl{width:100%;border-collapse:collapse;margin:16px 0;font-size:12.5px;overflow:hidden;border-radius:10px;}
+.tbl th{background:rgba(176,134,58,0.14);color:#7a5b1f;font-weight:800;text-align:left;padding:9px 11px;border:1px solid var(--line);}
+.tbl td{padding:9px 11px;border:1px solid var(--line);color:var(--text);line-height:1.65;vertical-align:top;background:var(--card);}
+.tbl td:first-child{font-weight:700;color:#39302c;}
+
+.insight{background:var(--card2);border:1px solid var(--gold-dim);border-left:3px solid var(--gold);border-radius:12px;padding:14px 18px;margin:18px 0;}
+.insight .it{font-size:13.7px;font-weight:500;line-height:1.72;color:#4a3f2e;}
+.insight .it b{color:var(--gold);}
+
+.cta{position:relative;z-index:1;padding:46px 30px 54px;border-top:3px solid var(--gold-dim);}
+.cta-card{background:linear-gradient(160deg, var(--card) 0%, var(--card2) 100%);border:1px solid var(--gold-dim);border-radius:var(--r-lg);padding:32px 26px;}
+.cta-kicker{font-family:var(--mono);font-size:11px;letter-spacing:0.2em;color:var(--gold);margin-bottom:14px;font-weight:500;}
+.cta-card h2{font-family:var(--serif);font-weight:900;font-size:24px;line-height:1.45;margin-bottom:10px;color:#39302c;}
+.cta-card h2 .g{color:var(--gold);}
+.cta-lead{font-size:14.5px;color:var(--dim);line-height:1.85;margin-bottom:22px;}
+.gives{background:rgba(176,134,58,0.07);border:1px solid var(--line);border-radius:var(--r-md);padding:18px 20px;margin:20px 0;}
+.gives .gt{font-size:12px;font-weight:700;color:var(--gold);letter-spacing:0.05em;margin-bottom:12px;}
+.gives .gi{font-size:14px;line-height:1.75;margin-bottom:9px;padding-left:20px;position:relative;color:var(--text);}
+.gives .gi::before{content:"\2726";color:var(--gold);position:absolute;left:0;}
+.btn-wrap{text-align:center;margin-top:26px;}
+.skbtn{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:#fff;border-radius:var(--pill);padding:17px 46px;font-weight:900;font-size:18px;box-shadow:0 8px 28px rgba(176,134,58,0.28);transition:transform var(--bounce),box-shadow var(--bounce);position:relative;overflow:hidden;cursor:pointer;text-decoration:none;}
+.skbtn:hover{transform:translateY(-3px);box-shadow:0 14px 36px rgba(176,134,58,0.40);}
+.skbtn::after{content:'';position:absolute;top:0;left:-100%;width:50%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.45),transparent);transform:skewX(-25deg);animation:shine 3.4s ease-in-out infinite;}
+@keyframes shine{0%{left:-100%;}22%{left:160%;}100%{left:160%;}}
+.btn-note{margin-top:14px;font-size:12.5px;color:var(--dim);text-align:center;}
+.footer{position:relative;z-index:1;padding:24px 30px 46px;text-align:center;}
+.footer .fa{font-style:italic;font-size:14px;color:var(--gold);font-weight:700;}
+.footer .fc{font-size:11px;color:var(--faint);margin-top:8px;letter-spacing:0.05em;}
+@media(max-width:680px){
+  .top-cta{display:block;position:fixed;top:0;left:0;right:0;z-index:40;box-shadow:0 2px 12px rgba(0,0,0,0.12);}
+  body{padding-top:42px;}
+  .hero{padding-top:48px;}
+  .hero h1{font-size:30px;}
+  .sec h2{font-size:21px;}
+  .tbl{font-size:11.5px;}
+  .tbl th,.tbl td{padding:7px 8px;}
+}
+</style>
+</head>
+<body>
+<script>document.documentElement.className+=' js';</script>
+<div class="glow"><div class="g1"></div><div class="g2"></div></div>
+
+<div class="top-cta">
+  <a href="https://www.skool.com/d11-lab/about?ref=81fd135dd97643128bb641d5238e8ffb" target="_blank" rel="noopener">
+    <span>想有人陪你一起長 →</span><span class="tc-em">加入 奇點研究所 × D11</span>
+  </a>
+</div>
+<aside class="side-cta">
+  <div class="sk-k">NEXT STEP</div>
+  <h4>手冊給你了<br><span class="g">剩下的是有沒有人陪你做</span></h4>
+  <p>把這套框架走成自己的節奏，最快的方式是走進一群正在做的人裡。</p>
+  <a href="https://www.skool.com/d11-lab/about?ref=81fd135dd97643128bb641d5238e8ffb" target="_blank" rel="noopener">加入 奇點研究所 × D11</a>
+</aside>
+
+<div class="wrap">
+  <div class="hero">
+    <div class="kicker">IG 成長策略 · 完整手冊</div>
+    <h1>IG 成長策略<br><span class="g">完整手冊</span></h1>
+    <div class="hero-sub">從 0 到穩定漲粉的系統化方法<br>我把自己在用的整理成一份 你可以直接對照著做</div>
+    <div class="divider"></div>
+    <div class="author-card">
+      <div class="a">美麗K媽（@lovekaren0316）</div>
+      <div class="b">記錄一個媽媽怎麼把賺錢 變美 好好生活同時做到<br><br>這份手冊整合三個核心模組 內容策略 帳號成長機制 發文節奏管理<br>不是理論 是可以直接照著執行的框架 你可以從頭讀 也可以直接跳到現在最卡的那一塊</div>
+    </div>
+  </div>
+
+  <nav class="nav">
+    <a href="#m1"><span class="num">1</span>內容策略 選題 Hook 輪播結構</a>
+    <a href="#m2"><span class="num">2</span>帳號成長機制 演算法 互動 複利</a>
+    <a href="#m3"><span class="num">3</span>發文節奏管理 頻率 時段 批次</a>
+  </nav>
+
+  <!-- 模組一 -->
+  <div class="sec fade" id="m1">
+    <span class="sec-tag">模組一</span>
+    <h2>內容策略</h2>
+    <p>內容是帳號的地基<br>漲粉的速度 取決於你的內容 對正確的人有多有用</p>
+
+    <div class="h3"><span class="n">1-1</span>選題邏輯</div>
+    <p class="lead">IG 的選題要同時滿足兩個條件</p>
+    <ul class="bul">
+      <li>對目標受眾有<b>直接價值</b> 可以解決問題 省時間 或學到東西</li>
+      <li>與你的<b>帳號定位一致</b> 不要什麼都發 發什麼都要像你</li>
+    </ul>
+    <div class="src">
+      <div class="s"><div class="st">來源 1 · 你自己的問題紀錄</div><div class="sd">把你過去一個月問過 AI 查過 Google 問過朋友的問題列出來 你的問題 就是你受眾的問題</div></div>
+      <div class="s"><div class="st">來源 2 · 留言區與私訊</div><div class="sd">粉絲問過你什麼 留言裡出現最多次的問題 就是下一篇輪播的選題 整理成 X 個方法解決 OOO 的格式</div></div>
+      <div class="s"><div class="st">來源 3 · 競品的高互動貼文</div><div class="sd">找到同類型帳號 篩出按讚加收藏都高的貼文 分析它解決了什麼問題 再做你自己版本的詮釋</div></div>
+    </div>
+    <div class="insight"><div class="it"><b>判斷標準：</b>這個主題 我的受眾看完後可以馬上做什麼 如果答不出來 就換題目</div></div>
+
+    <div class="h3"><span class="n">1-2</span>Hook 怎麼寫</div>
+    <p class="lead">滑 IG 的人平均 1.7 秒 決定要不要繼續看 封面標題是唯一的機會</p>
+    <table class="tbl">
+      <tr><th>類型</th><th>公式</th><th>範例</th></tr>
+      <tr><td>數字型</td><td>X 個你不知道的 ___</td><td>5 個你不知道的 ChatGPT 指令</td></tr>
+      <tr><td>痛點型</td><td>___ 的人 都在用這個方法</td><td>想省時間的人 都在用這個方法</td></tr>
+      <tr><td>反直覺型</td><td>大家都說 ___ 其實不對</td><td>大家都說每天發就會漲 其實不對</td></tr>
+      <tr><td>結果型</td><td>我用 ___ 做到了 ___</td><td>我用 AI 把剪片時間縮短 70%</td></tr>
+      <tr><td>資源型</td><td>免費 ___ 整理 直接存</td><td>免費 Prompt 資源整理 直接存</td></tr>
+    </table>
+    <div class="insight"><div class="it"><b>字數：</b>封面文字不超過 12 個字 字數越少 每個字的重量越重</div></div>
+
+    <div class="h3"><span class="n">1-3</span>輪播結構設計</div>
+    <p class="lead">輪播是 IG 收藏率最高的格式 好的輪播有清晰的資訊流</p>
+    <ul class="bul">
+      <li><b>第 1 張</b> Hook 讓人想繼續滑</li>
+      <li><b>第 2 到 3 張</b> 問題框架 讓人覺得這在說我</li>
+      <li><b>第 4 到 7 張</b> 解法內容 有用 具體 可執行</li>
+      <li><b>第 8 張</b> 總結或核心觀點 給個結論</li>
+      <li><b>最後一張</b> CTA 引導留言 追蹤 或索取資源</li>
+    </ul>
+    <table class="tbl">
+      <tr><th>內容類型</th><th>建議張數</th><th>原因</th></tr>
+      <tr><td>快速 Tip</td><td>5 到 6 張</td><td>資訊密度高 不需要太多鋪陳</td></tr>
+      <tr><td>工具介紹</td><td>7 到 8 張</td><td>需要場景說明加使用方式</td></tr>
+      <tr><td>工作流拆解</td><td>8 到 10 張</td><td>步驟多 每步需要獨立說明</td></tr>
+      <tr><td>觀點輸出</td><td>6 到 7 張</td><td>論點清晰 不要拖</td></tr>
+    </table>
+    <div class="insight"><div class="it"><b>獨立成立：</b>每一張都要能獨立看懂 有人從第 3 張開始看 他也要能理解你在說什麼</div></div>
+  </div>
+
+  <!-- 模組二 -->
+  <div class="sec fade" id="m2">
+    <span class="sec-tag">模組二</span>
+    <h2>帳號成長機制</h2>
+    <p>漲粉不是靠運氣<br>是靠演算法邏輯 加互動設計 加持續曝光的複利效果</p>
+
+    <div class="h3"><span class="n">2-1</span>IG 演算法怎麼運作</div>
+    <p class="lead">演算法在判斷一篇內容值不值得推給更多人 主要看這三個訊號</p>
+    <table class="tbl">
+      <tr><th>訊號</th><th>具體指標</th><th>你能做什麼</th></tr>
+      <tr><td>互動率</td><td>留言 分享 收藏 比按讚更重要</td><td>設計會觸發留言的 CTA 讓內容值得收藏</td></tr>
+      <tr><td>觀看完成率</td><td>輪播滑到最後一張的比例</td><td>每張都要有繼續滑的理由 中間不要放廣告感內容</td></tr>
+      <tr><td>帳號黏著度</td><td>受眾持續回來看你的頻率</td><td>固定發文節奏 讓追蹤者養成習慣</td></tr>
+    </table>
+    <div class="insight"><div class="it"><b>優先序：</b>收藏 大於 分享 大於 留言 大於 按讚 設計 CTA 時 優先引導收藏和分享 而不只是要人按讚</div></div>
+
+    <div class="h3"><span class="n">2-2</span>觸及率低的真正原因</div>
+    <p class="lead">大多數帳號觸及低 不是演算法針對你 而是這三個結構問題</p>
+    <div class="src">
+      <div class="s"><div class="st">原因 1 · 封面沒有停止滑動的理由</div><div class="sd">解法 封面測試 對比兩個不同 Hook 版本的封面 用限時動態投票</div></div>
+      <div class="s"><div class="st">原因 2 · 內容太廣或太窄</div><div class="sd">解法 每篇只解決一個具體問題 AI 工具大全 不如 Claude 最適合做這 3 件事</div></div>
+      <div class="s"><div class="st">原因 3 · CTA 沒有觸發動作的理由</div><div class="sd">解法 給留言一個明確的好處 留言 IG 我傳策略表給你 比 歡迎留言討論 有效 10 倍</div></div>
+    </div>
+
+    <div class="h3"><span class="n">2-3</span>互動率設計</div>
+    <p class="lead">高互動帳號不是靠運氣 是靠刻意設計的留言觸發機制</p>
+    <table class="tbl">
+      <tr><th>方式</th><th>類型</th><th>適合</th></tr>
+      <tr><td>留言 關鍵字</td><td>資源型 CTA</td><td>最直接 給明確好處 留言率最高 適合有資源可給的內容</td></tr>
+      <tr><td>你比較常用 A 還是 B</td><td>選邊站型</td><td>只需回一個字就能參與 適合工具比較類</td></tr>
+      <tr><td>我最常用 AI 做的事是 ___</td><td>填空型</td><td>讓人分享自己 留言品質高 也能幫你做受眾研究</td></tr>
+      <tr><td>你目前最卡在哪個步驟</td><td>問題型</td><td>建立深度連結 也能直接得到下一篇選題</td></tr>
+    </table>
+    <div class="insight"><div class="it"><b>只用一種：</b>每篇只用一種 CTA 同時放三種 是在逼人做選擇 結果三個都不做</div></div>
+
+    <div class="h3"><span class="n">2-4</span>漲粉的複利邏輯</div>
+    <p class="lead">IG 帳號的成長不是線性的 是複利結構</p>
+    <ul class="bul">
+      <li><b>前 50 篇</b> 建立基礎內容庫 讓每個新追蹤者有足夠內容可以探索</li>
+      <li><b>每一篇高收藏內容</b> 持續帶來長尾流量 不是發完就沒了</li>
+      <li><b>每一個留言回覆</b> 讓演算法判定你是活躍帳號</li>
+      <li><b>固定節奏</b> 讓追蹤者建立預期 提升回訪率</li>
+    </ul>
+    <div class="insight"><div class="it"><b>前 3 個月：</b>不要看粉絲數 看收藏率和留言品質 這兩個指標 決定 3 個月後的爆發速度</div></div>
+  </div>
+
+  <!-- 模組三 -->
+  <div class="sec fade" id="m3">
+    <span class="sec-tag">模組三</span>
+    <h2>發文節奏管理</h2>
+    <p>一致性比頻率更重要<br>每週 3 篇堅持 6 個月 比每週 7 篇做 2 週然後斷更有效</p>
+
+    <div class="h3"><span class="n">3-1</span>最佳發文頻率</div>
+    <table class="tbl">
+      <tr><th>情境</th><th>建議頻率</th><th>說明</th></tr>
+      <tr><td>剛起步 0 到 500 粉</td><td>每週 4 到 5 篇</td><td>快速建立內容庫 測試哪類主題有反應</td></tr>
+      <tr><td>成長期 500 到 5000 粉</td><td>每週 3 到 4 篇</td><td>維持節奏 開始優化高互動類型</td></tr>
+      <tr><td>穩定期 5000 粉以上</td><td>每週 2 到 3 篇</td><td>品質優先 每篇都要有具體目標</td></tr>
+    </table>
+    <div class="insight"><div class="it"><b>寧穩不衝：</b>寧可每週穩定 3 篇 也不要衝 7 篇然後斷更 演算法對不活躍帳號的懲罰 比你想的嚴重</div></div>
+
+    <div class="h3"><span class="n">3-2</span>每天最佳發文時段</div>
+    <p class="lead">整理出的各天黃金三時段 台灣時區</p>
+    <table class="tbl">
+      <tr><th>星期</th><th>時段 1</th><th>時段 2</th><th>時段 3</th></tr>
+      <tr><td>週一</td><td>7:30am</td><td>12:15pm</td><td>8:00pm</td></tr>
+      <tr><td>週二</td><td>8:15am</td><td>1:00pm</td><td>7:30pm</td></tr>
+      <tr><td>週三</td><td>9:00am</td><td>2:00pm</td><td>9:15pm</td></tr>
+      <tr><td>週四</td><td>8:45am</td><td>1:45pm</td><td>8:30pm</td></tr>
+      <tr><td>週五</td><td>7:00am</td><td>11:45am</td><td>6:15pm</td></tr>
+      <tr><td>週六</td><td>10:30am</td><td>3:00pm</td><td>8:00pm</td></tr>
+      <tr><td>週日</td><td>9:45am</td><td>1:30pm</td><td>7:45pm</td></tr>
+    </table>
+    <div class="insight"><div class="it"><b>這是參考值：</b>不是絕對 發布後觀察自己帳號的洞察數據 找出你的受眾最活躍的時間</div></div>
+
+    <div class="h3"><span class="n">3-3</span>批次製作工作流</div>
+    <p class="lead">不要每天從零開始 用批次生產把製作成本壓到最低 建議每週跑一次</p>
+    <table class="tbl">
+      <tr><th>步驟</th><th>時間</th><th>做什麼</th></tr>
+      <tr><td>Step 1 選題</td><td>15 分鐘</td><td>確認本週 3 到 4 個主題 每個對應一個具體問題加解法</td></tr>
+      <tr><td>Step 2 草稿</td><td>60 到 90 分鐘</td><td>用 AI 輔助起草 先完成所有篇的文字骨架 不要逐篇完成</td></tr>
+      <tr><td>Step 3 視覺</td><td>60 分鐘</td><td>集中製作本週所有輪播 風格統一 不要每篇換一種設計</td></tr>
+      <tr><td>Step 4 排程</td><td>10 分鐘</td><td>一次設定好本週所有貼文排程 不要手動發</td></tr>
+    </table>
+    <div class="insight"><div class="it"><b>真正的好處：</b>批次製作最大的好處不是省時間 是讓你進入創作狀態 品質比碎片時間高很多</div></div>
+
+    <div class="h3"><span class="n">3-4</span>內容規劃框架 月度</div>
+    <table class="tbl">
+      <tr><th>內容類型</th><th>比例</th><th>目的</th></tr>
+      <tr><td>教學型 工具 工作流 Prompt</td><td>50%</td><td>建立專業形象 帶來收藏和分享</td></tr>
+      <tr><td>觀點型 你的看法和洞見</td><td>25%</td><td>建立個人品牌 和追蹤者建立連結</td></tr>
+      <tr><td>資源整合型 清單 比較表</td><td>15%</td><td>高收藏率 持續帶來長尾流量</td></tr>
+      <tr><td>互動型 問問題 投票 選邊</td><td>10%</td><td>提升互動率 幫你做受眾研究</td></tr>
+    </table>
+  </div>
+
+  <!-- 快速對照表 -->
+  <div class="sec fade">
+    <span class="sec-tag">快速對照表</span>
+    <h2>常見問題 <span class="g">&amp; 解法</span></h2>
+    <table class="tbl">
+      <tr><th>症狀</th><th>根本原因</th><th>解法</th></tr>
+      <tr><td>觸及很低</td><td>封面沒有停止滑動的理由</td><td>重做封面 用數字或具體結果當 Hook</td></tr>
+      <tr><td>有觸及但沒收藏</td><td>內容看看就好</td><td>加入可直接套用的模板 清單或 Prompt</td></tr>
+      <tr><td>有收藏但沒追蹤</td><td>不知道你接下來會發什麼</td><td>在最後一張明確說你的帳號在分享什麼</td></tr>
+      <tr><td>有追蹤但留言少</td><td>CTA 不夠具體 沒有誘因</td><td>換成資源型 CTA 給一個明確好處</td></tr>
+      <tr><td>發文頻率不穩</td><td>沒有批次製作的系統</td><td>改用週度批次工作流 週一一次備齊</td></tr>
+      <tr><td>不知道要發什麼</td><td>選題沒有系統化來源</td><td>建立問題紀錄習慣 把日常問題變選題</td></tr>
+    </table>
+  </div>
+
+  <div class="cta fade">
+    <div class="cta-card">
+      <div class="cta-kicker">下一步</div>
+      <h2>手冊給你了<br><span class="g">剩下的就是開始做</span></h2>
+      <div class="cta-lead">這套框架我自己每週都在跑 但一個人做很容易斷 我現在是結合 AI 跟自媒體在做內容 把工具跟做法都丟在社群裡 一群人一起做 比自己摸快很多</div>
+      <div class="gives">
+        <div class="gt">進來你會拿到</div>
+        <div class="gi">更多可以直接套用的 AI 工具與 Prompt</div>
+        <div class="gi">AI 加自媒體的完整做法 一步步帶著走</div>
+        <div class="gi">一群跟你一樣 邊生活邊做的人</div>
+      </div>
+      <div class="btn-wrap">
+        <a class="skbtn" href="https://www.skool.com/d11-lab/about?ref=81fd135dd97643128bb641d5238e8ffb" target="_blank" rel="noopener">加入 奇點研究所 × D11 →</a>
+        <div class="btn-note">先存起來 也歡迎把這份手冊傳給需要的朋友</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="fa">@lovekaren0316</div>
+    <div class="fc">記錄一個媽媽把賺錢 變美 好好生活同時做到</div>
+  </div>
+</div>
+
+<script>
+function revealOnScroll(){var vh=window.innerHeight||document.documentElement.clientHeight;var els=document.querySelectorAll('.fade:not(.vis)');for(var i=0;i<els.length;i++){if(els[i].getBoundingClientRect().top<vh*0.94){els[i].classList.add('vis');}}}
+window.addEventListener('scroll',revealOnScroll,{passive:true});window.addEventListener('resize',revealOnScroll);window.addEventListener('load',revealOnScroll);revealOnScroll();
+setTimeout(function(){document.querySelectorAll('.fade').forEach(function(e){e.classList.add('vis');});},2500);
+</script>
+</body>
+</html>
