@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>K媽｜這 5 句話 孩子長大後就不會再說了 · 心理測驗解析</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;700;900&family=Noto+Sans+TC:wght@400;500;700;900&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* === 暖金琥珀版（黃金午後 · 時間流逝主題） === */
+  --skin-primary:   #D9973F;   /* 琥珀金，按鈕/標籤 */
+  --skin-accent:    #F0C077;   /* 淺金，次要點綴 */
+  --skin-highlight: #F3B85C;   /* mark 底色 */
+  --skin-ink:       #3A2410;   /* 近黑暖棕，邊框/陰影 */
+  --skin-cream:     #FFFBF2;   /* 卡片底 */
+  --skin-bg:        #FBF1E0;   /* 頁面底，暖奶油 */
+  --skin-warm:      #E8CD9E;   /* 邊框中間色 */
+  --skin-white:     #33200C;   /* 文字（深暖棕） */
+
+  --shadow-sm: 4px 4px 0 var(--skin-ink);
+  --shadow-md: 7px 7px 0 var(--skin-ink);
+  --shadow-lg: 11px 11px 0 var(--skin-ink);
+  --border-thick:  3px solid var(--skin-warm);
+  --border-medium: 2px solid var(--skin-warm);
+  --radius-md:16px; --radius-lg:24px; --radius-pill:50px;
+  --ease-bounce: 400ms cubic-bezier(0.34,1.56,0.64,1);
+  --serif:"Noto Serif TC",serif; --sans:"Noto Sans TC","Inter",sans-serif;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#FBF1E0; font-family:var(--sans); color:var(--skin-white); line-height:1.8; overflow-x:hidden; }
+.wrap { max-width:680px; margin:0 auto; position:relative; background:var(--skin-bg); }
+
+.top-line { position:absolute; top:0; left:0; width:100%; height:3px; z-index:20;
+  background:linear-gradient(to right, #F3B85C 0%, #F3B85C 66%, rgba(0,0,0,0) 100%); }
+
+.blob { position:absolute; border-radius:60% 40% 30% 70% / 60% 30% 70% 40%;
+  animation:morph 8s ease-in-out infinite; opacity:0.30; z-index:0; pointer-events:none; filter:blur(6px); }
+.blob--1 { width:min(70vw,420px); height:min(70vw,420px);
+  background:linear-gradient(135deg, #D9973F, #F0C077); top:-6%; right:-16%; }
+.blob--2 { width:min(60vw,360px); height:min(60vw,360px);
+  background:linear-gradient(135deg, #F0C077, #E8CD9E); bottom:8%; left:-18%; animation-delay:-4s; }
+@keyframes morph {
+  0%,100% { border-radius:60% 40% 30% 70% / 60% 30% 70% 40%; }
+  25% { border-radius:30% 60% 70% 40% / 50% 60% 30% 40%; }
+  50% { border-radius:50% 60% 30% 70% / 30% 40% 70% 60%; }
+  75% { border-radius:60% 30% 60% 40% / 70% 50% 40% 30%; }
+}
+
+.skin-mark { background:var(--skin-highlight); color:#3A2410; padding:0.08em 0.35em; border-radius:5px; display:inline-block; box-decoration-break:clone; }
+.fade-up { opacity:0; transform:translateY(32px); transition:opacity .6s ease, transform .6s ease; }
+.fade-up.visible { opacity:1; transform:translateY(0); }
+
+.hero { position:relative; z-index:1; padding:62px 28px 44px; text-align:center; }
+.hero-tag { display:inline-block; background:var(--skin-primary); color:#3A2410; border:var(--border-medium); border-radius:var(--radius-pill); padding:6px 16px; font-size:13px; font-weight:700; box-shadow:var(--shadow-sm); margin-bottom:22px; }
+.hero-title { font-family:var(--serif); font-weight:900; font-size:29px; line-height:1.5; color:var(--skin-white); }
+.hero-sub { margin-top:16px; font-size:14px; color:rgba(51,32,12,0.62); }
+
+.section { position:relative; z-index:1; padding:36px 28px; }
+.section-label { display:inline-block; background:var(--skin-primary); color:#3A2410; border:var(--border-medium); border-radius:var(--radius-pill); padding:4px 14px; font-size:12px; font-weight:700; margin-bottom:20px; box-shadow:var(--shadow-sm); }
+.quiz-q { font-family:var(--serif); font-size:21px; font-weight:700; line-height:1.6; margin-bottom:8px; }
+.quiz-sub { font-size:14px; color:rgba(51,32,12,0.55); margin-bottom:26px; font-weight:500; }
+
+.opt { background:var(--skin-cream); border:var(--border-thick); border-radius:var(--radius-md); box-shadow:var(--shadow-sm); padding:18px 20px; margin-bottom:18px; cursor:pointer; transition:transform var(--ease-bounce), box-shadow var(--ease-bounce); }
+.opt:hover { transform:translate(-3px,-3px); box-shadow:var(--shadow-md); }
+.opt.active { box-shadow:var(--shadow-md); }
+.opt-head { display:flex; align-items:center; gap:14px; font-size:17px; font-weight:700; }
+.opt-letter { display:inline-flex; align-items:center; justify-content:center; width:34px; height:34px; background:var(--skin-highlight); color:#3A2410; border:var(--border-medium); border-radius:50%; font-family:"Inter"; font-weight:700; font-size:16px; flex-shrink:0; }
+.opt-result { max-height:0; overflow:hidden; transition:max-height .45s ease, margin .3s, padding .3s; }
+.opt.active .opt-result { max-height:640px; margin-top:16px; padding-top:16px; border-top:2px dashed var(--skin-warm); }
+.res-type { display:inline-block; background:rgba(217,151,63,0.16); color:var(--skin-primary); font-size:13px; font-weight:700; padding:3px 12px; border-radius:var(--radius-pill); border:var(--border-medium); margin-bottom:12px; }
+.res-text { font-size:14.5px; color:rgba(51,32,12,0.88); line-height:1.85; margin-bottom:14px; }
+.res-gem { font-family:var(--serif); font-size:15.5px; font-weight:700; color:#8A5A18; line-height:1.6; background:rgba(217,151,63,0.12); border-left:4px solid var(--skin-primary); padding:12px 14px; border-radius:0 8px 8px 0; }
+
+.transition { text-align:center; padding:18px 0; position:relative; z-index:1; }
+.transition-text { display:inline-block; background:var(--skin-cream); border:var(--border-medium); border-radius:var(--radius-pill); padding:8px 20px; font-size:14px; font-weight:700; box-shadow:var(--shadow-sm); }
+
+.bridge { position:relative; z-index:1; padding:36px 28px; }
+.bridge-card { background:var(--skin-cream); border:var(--border-thick); border-radius:var(--radius-lg); box-shadow:var(--shadow-md); padding:28px 24px; }
+.bridge p { font-size:15px; color:rgba(51,32,12,0.88); line-height:1.9; margin-bottom:14px; }
+.bridge .em { font-family:var(--serif); font-size:19px; font-weight:900; line-height:1.6; margin:6px 0 16px; }
+
+.intro { position:relative; z-index:1; padding:36px 28px; }
+.intro-card { background:#FFF6E6; border:var(--border-thick); border-radius:var(--radius-lg); box-shadow:var(--shadow-md); padding:26px 24px; }
+.intro-name { font-family:var(--serif); font-size:20px; font-weight:900; margin-bottom:12px; }
+.intro-text { font-size:14.5px; color:rgba(51,32,12,0.88); line-height:1.9; }
+
+.cta { position:relative; z-index:1; padding:30px 28px 56px; text-align:center; }
+.cta-line { font-family:var(--serif); font-size:22px; font-weight:900; line-height:1.6; margin-bottom:10px; }
+.cta-sub { font-size:14.5px; color:rgba(51,32,12,0.55); margin-bottom:26px; line-height:1.8; font-weight:500; }
+.skin-btn { display:inline-flex; align-items:center; gap:8px; background:var(--skin-primary); color:#3A2410; border:var(--border-thick); border-radius:var(--radius-pill); padding:16px 44px; font-weight:900; font-size:18px; box-shadow:var(--shadow-md); transition:transform var(--ease-bounce), box-shadow var(--ease-bounce); position:relative; overflow:hidden; cursor:pointer; text-decoration:none; }
+.skin-btn:hover { transform:translate(-4px,-4px); box-shadow:var(--shadow-lg); }
+.skin-btn:active { transform:translate(0,0); box-shadow:var(--shadow-sm); }
+.skin-btn::after { content:''; position:absolute; top:0; left:-100%; width:50%; height:100%; background:linear-gradient(90deg,transparent,rgba(255,255,255,0.4),transparent); transform:skewX(-25deg); animation:shine 3s ease-in-out infinite; }
+@keyframes shine { 0%{left:-100%;} 20%{left:150%;} 100%{left:150%;} }
+.cta-note { margin-top:16px; font-size:12.5px; color:rgba(51,32,12,0.5); font-weight:500; }
+
+.footer { position:relative; z-index:1; padding:22px 28px 40px; text-align:center; }
+.footer-acc { font-style:italic; font-size:14px; color:var(--skin-primary); font-weight:700; }
+</style>
+<style>
+.side-cta{display:none;}
+@media(min-width:1120px){
+ .side-cta{display:block;position:fixed;top:140px;right:max(20px,calc((100vw - 680px)/2 - 220px));width:200px;z-index:40;background:var(--skin-cream);border:var(--border-thick);border-radius:var(--radius-lg);box-shadow:var(--shadow-md);padding:18px 18px 20px;text-align:center;}
+ .side-cta .fk{font-family:var(--sans);font-size:10px;letter-spacing:0.14em;color:var(--skin-primary);font-weight:700;margin-bottom:8px;}
+ .side-cta h4{font-family:var(--serif);font-size:16px;font-weight:900;color:var(--skin-white);line-height:1.5;margin-bottom:12px;}
+ .side-cta h4 .g{color:var(--skin-primary);}
+ .side-cta a{display:block;background:var(--skin-primary);color:#3A2410;border:var(--border-medium);border-radius:var(--radius-pill);padding:11px 14px;font-weight:900;font-size:14px;text-decoration:none;box-shadow:var(--shadow-sm);transition:transform var(--ease-bounce);}
+ .side-cta a:hover{transform:translate(-2px,-2px);}
+}
+</style>
+</head>
+<body>
+<aside class="side-cta">
+  <div class="fk">JOIN US</div>
+  <h4>跟我一起<br><span class="g">用 AI 做內容</span></h4>
+  <a href="https://www.skool.com/d11-lab/about?ref=81fd135dd97643128bb641d5238e8ffb" target="_blank" rel="noopener">加入社群 →</a>
+</aside>
+<div class="wrap">
+  <div class="top-line"></div>
+  <div class="blob blob--1"></div>
+  <div class="blob blob--2"></div>
+
+  <div class="hero">
+    <span class="hero-tag">#家庭育兒 · 心理測驗解析</span>
+    <div class="hero-title">孩子現在最常說的那句話<br><span class="skin-mark">藏著他此刻最愛你的方式</span></div>
+    <div class="hero-sub">這 5 句話 孩子長大後就不會再說了<br>看他現在最常說哪一句，就懂他正在用什麼方式愛你</div>
+  </div>
+
+  <div class="section fade-up">
+    <span class="section-label">點開你的選擇</span>
+    <div class="quiz-q">你家孩子現在最常說的<br>是哪一句</div>
+    <div class="quiz-sub">點下面那一句，看他正在用什麼方式愛你</div>
+
+    <div class="opt" onclick="toggle(this)">
+      <div class="opt-head"><span class="opt-letter">A</span>媽媽抱抱</div>
+      <div class="opt-result">
+        <span class="res-type">安全感</span>
+        <div class="res-text">你家孩子最常說「媽媽抱抱」<br>代表他正用最直接的方式跟你要安全感<br>累了、怕了、開心了，他不會分析情緒，他只知道回到你懷裡 一切都會好<br>你的擁抱 是他現在整個世界裡最安全的地方<br>但這句話有期限，總有一天他會長到你抱不動，也不好意思再讓你抱<br>所以現在他伸手，就多抱一下，抱久一點</div>
+        <div class="res-gem">🧡 能抱的日子，其實比你以為的短</div>
+      </div>
+    </div>    <div class="opt" onclick="toggle(this)">
+      <div class="opt-head"><span class="opt-letter">B</span>媽媽陪我</div>
+      <div class="opt-result">
+        <span class="res-type">陪伴</span>
+        <div class="res-text">你家孩子最常說「媽媽陪我」<br>代表現在的他，最想要的東西就是你這個人<br>不是玩具、不是卡通，是你坐在他旁邊<br>去哪都要牽著你，睡前一定要你陪，因為有你在，他什麼都敢<br>再過幾年，他會有自己的朋友、自己的世界<br>到時候換你說 陪陪媽媽好嗎，所以趁現在，多陪一段是一段</div>
+        <div class="res-gem">🧡 他現在要的不多，就是你在旁邊</div>
+      </div>
+    </div>    <div class="opt" onclick="toggle(this)">
+      <div class="opt-head"><span class="opt-letter">C</span>媽媽你看我</div>
+      <div class="opt-result">
+        <span class="res-type">被看見</span>
+        <div class="res-text">你家孩子最常喊「媽媽你看我」<br>代表他最需要的，是被你看見<br>學會一個新動作、畫了一張畫、跳了一下，他第一件事就是回頭找你的眼睛<br>因為你的目光，就是他全世界的掌聲<br>總有一天他不會再叫你看了，不是不愛你，是他學會了不需要你看<br>所以現在他喊你，放下手機，看他 3 秒就好</div>
+        <div class="res-gem">🧡 孩子最重要的觀眾，一直都是你</div>
+      </div>
+    </div>    <div class="opt" onclick="toggle(this)">
+      <div class="opt-head"><span class="opt-letter">D</span>媽媽一起玩</div>
+      <div class="opt-result">
+        <span class="res-type">共享快樂</span>
+        <div class="res-text">你家孩子最常說「媽媽一起玩」<br>代表在他心裡，最好玩的事都要跟你一起才算數<br>積木要你一起疊、遊戲要你一起玩，你參與了，快樂才完整<br>對他來說你不只是媽媽，還是他第一個玩伴、第一個隊友<br>但有一天你會發現，換你想找他玩，他說等一下<br>所以現在他拉你，就放下手邊的事，陪他瘋一場</div>
+        <div class="res-gem">🧡 現在被邀請的每一場，都是限量的</div>
+      </div>
+    </div>    <div class="opt" onclick="toggle(this)">
+      <div class="opt-head"><span class="opt-letter">E</span>媽媽我跟你說</div>
+      <div class="opt-result">
+        <span class="res-type">被信任</span>
+        <div class="res-text">你家孩子最常說「媽媽我跟你說」<br>代表你是他全世界第一個想分享的人<br>幼兒園的小事、路上一隻狗、一個他自己想出來的怪問題，他全都想第一個告訴你<br>因為在他心裡，你是最安全、最不會笑他的那個人<br>長大以後，話會越來越少，很多事要用問的他才說<br>所以現在他嘰嘰喳喳的每一句，都值得你好好聽完</div>
+        <div class="res-gem">🧡 他現在什麼都跟你說，是因為他全心信任你</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="transition"><span class="transition-text">繼續往下滑 ⬇️</span></div>
+
+  <div class="bridge fade-up">
+    <div class="bridge-card">
+      <p>不管他最常說的是哪一句</p>
+      <p class="em">這些話都不會永遠都在<br>而你不會知道<span class="skin-mark">哪一句是最後一次</span></p>
+      <p>所以他說的時候<br>多抱一下 多看一眼 多陪一下</p>
+    </div>
+  </div>
+
+  <div class="intro fade-up">
+    <div class="intro-card">
+      <div class="intro-name">HI，我是 <span class="skin-mark">K媽</span></div>
+      <div class="intro-text">我是一個媽媽，也用 AI ＋ 自媒體在記錄生活、經營內容<br><br>像這篇你剛剛滑過的圖文，其實就是我用 AI 一張一張做出來的<br>我把「怎麼用 AI 輕鬆做內容、把帳號經營起來」都整理在社群裡</div>
+    </div>
+  </div>
+
+  <div class="cta fade-up">
+    <div class="cta-line">連這篇圖文<br>都是我用 <span class="skin-mark">AI</span> 做出來的</div>
+    <div class="cta-sub">想學怎麼用 AI ＋ 自媒體，把內容輕鬆做起來<br>我都整理在這個社群裡，一群人一起做</div>
+    <a class="skin-btn" href="https://www.skool.com/d11-lab/about?ref=81fd135dd97643128bb641d5238e8ffb" target="_blank" rel="noopener">加入 奇點研究所 × D11</a>
+    <div class="cta-note">點擊加入社群，跟我一起用 AI 做內容</div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-acc">@lovekaren0316</div>
+  </div>
+</div>
+
+<script>
+function toggle(el) {
+  const wasActive = el.classList.contains('active');
+  document.querySelectorAll('.opt').forEach(o => o.classList.remove('active'));
+  if (!wasActive) el.classList.add('active');
+}
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
