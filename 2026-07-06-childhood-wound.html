@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>K媽｜童年創傷測驗 · 五型解析</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;700;900&family=Noto+Sans+TC:wght@400;500;700;900&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* === 柔霧藕粉療癒色 === */
+  --skin-primary:   #C98CA0;   /* 藕粉，按鈕/標籤 */
+  --skin-accent:    #E6B7C6;   /* 淺藕粉，次要 */
+  --skin-highlight: #EAC0CE;   /* mark 底色 */
+  --skin-ink:       #4A2E38;   /* 近黑暖褐，邊框/陰影 */
+  --skin-cream:     #FFFBF8;   /* 卡片底 */
+  --skin-bg:        #F7ECEE;   /* 頁面底，霧粉奶油 */
+  --skin-warm:      #E7CDD5;   /* 邊框中間色 */
+  --skin-white:     #3E2A32;   /* 文字，深藕褐 */
+
+  --shadow-sm: 4px 4px 0 var(--skin-ink);
+  --shadow-md: 7px 7px 0 var(--skin-ink);
+  --shadow-lg: 11px 11px 0 var(--skin-ink);
+  --border-thick:  3px solid var(--skin-warm);
+  --border-medium: 2px solid var(--skin-warm);
+  --radius-md:16px; --radius-lg:24px; --radius-pill:50px;
+  --ease-bounce: 400ms cubic-bezier(0.34,1.56,0.64,1);
+  --serif:"Noto Serif TC",serif; --sans:"Noto Sans TC","Inter",sans-serif;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#F7ECEE; font-family:var(--sans); color:var(--skin-white); line-height:1.8; overflow-x:hidden; }
+.wrap { max-width:680px; margin:0 auto; position:relative; background:var(--skin-bg); }
+.top-line { position:absolute; top:0; left:0; width:100%; height:3px; z-index:20;
+  background:linear-gradient(to right, #EAC0CE 0%, #EAC0CE 66%, rgba(0,0,0,0) 100%); }
+.blob { position:absolute; border-radius:60% 40% 30% 70% / 60% 30% 70% 40%;
+  animation:morph 8s ease-in-out infinite; opacity:0.30; z-index:0; pointer-events:none; filter:blur(6px); }
+.blob--1 { width:min(70vw,420px); height:min(70vw,420px);
+  background:linear-gradient(135deg, #C98CA0, #E6B7C6); top:-6%; right:-16%; }
+.blob--2 { width:min(60vw,360px); height:min(60vw,360px);
+  background:linear-gradient(135deg, #E6B7C6, #E7CDD5); bottom:8%; left:-18%; animation-delay:-4s; }
+@keyframes morph {
+  0%,100% { border-radius:60% 40% 30% 70% / 60% 30% 70% 40%; }
+  25% { border-radius:30% 60% 70% 40% / 50% 60% 30% 40%; }
+  50% { border-radius:50% 60% 30% 70% / 30% 40% 70% 60%; }
+  75% { border-radius:60% 30% 60% 40% / 70% 50% 40% 30%; }
+}
+.skin-mark { background:var(--skin-highlight); color:#3E2A32; padding:0.08em 0.35em; border-radius:5px; display:inline-block; box-decoration-break:clone; }
+.fade-up { opacity:0; transform:translateY(32px); transition:opacity .6s ease, transform .6s ease; }
+.fade-up.visible { opacity:1; transform:translateY(0); }
+
+.hero { position:relative; z-index:1; padding:62px 28px 44px; text-align:center; }
+.hero-tag { display:inline-block; background:var(--skin-primary); color:#fff; border:var(--border-medium); border-radius:var(--radius-pill); padding:6px 16px; font-size:13px; font-weight:700; box-shadow:var(--shadow-sm); margin-bottom:22px; }
+.hero-title { font-family:var(--serif); font-weight:900; font-size:28px; line-height:1.5; color:var(--skin-white); }
+.hero-sub { margin-top:16px; font-size:14px; color:rgba(62,42,50,0.62); line-height:1.85; }
+
+.section { position:relative; z-index:1; padding:34px 28px; }
+.section-label { display:inline-block; background:var(--skin-primary); color:#fff; border:var(--border-medium); border-radius:var(--radius-pill); padding:4px 14px; font-size:12px; font-weight:700; margin-bottom:20px; box-shadow:var(--shadow-sm); }
+.quiz-q { font-family:var(--serif); font-size:20px; font-weight:700; line-height:1.6; margin-bottom:8px; }
+.quiz-sub { font-size:14px; color:rgba(62,42,50,0.55); margin-bottom:26px; font-weight:500; }
+
+.opt { background:var(--skin-cream); border:var(--border-thick); border-radius:var(--radius-md); box-shadow:var(--shadow-sm); padding:18px 20px; margin-bottom:18px; cursor:pointer; transition:transform var(--ease-bounce), box-shadow var(--ease-bounce); }
+.opt:hover { transform:translate(-3px,-3px); box-shadow:var(--shadow-md); }
+.opt.active { box-shadow:var(--shadow-md); }
+.opt-head { display:flex; align-items:center; gap:14px; font-size:16.5px; font-weight:700; }
+.opt-letter { display:inline-flex; align-items:center; justify-content:center; width:34px; height:34px; background:var(--skin-highlight); color:#3E2A32; border:var(--border-medium); border-radius:50%; font-family:"Inter"; font-weight:700; font-size:16px; flex-shrink:0; }
+.opt-result { max-height:0; overflow:hidden; transition:max-height .5s ease, margin .3s, padding .3s; }
+.res-reveal { font-family:var(--serif); font-size:17px; font-weight:900; color:var(--skin-primary); margin-bottom:16px; }
+.res-reveal span { color:rgba(62,42,50,0.55); font-family:var(--sans); font-size:13px; font-weight:700; }
+.opt.active .opt-result { max-height:1200px; margin-top:16px; padding-top:16px; border-top:2px dashed var(--skin-warm); }
+.res-blk { margin-bottom:15px; }
+.res-h { font-size:13px; font-weight:700; color:var(--skin-primary); margin-bottom:6px; letter-spacing:0.03em; }
+.res-t { font-size:14.5px; color:rgba(62,42,50,0.9); line-height:1.85; }
+.res-list { list-style:none; margin-top:2px; }
+.res-list li { font-size:14px; color:rgba(62,42,50,0.9); line-height:1.7; padding-left:20px; position:relative; margin-bottom:7px; }
+.res-list li::before { content:"\2665"; color:var(--skin-primary); position:absolute; left:0; font-size:12px; }
+
+.transition { text-align:center; padding:14px 0; position:relative; z-index:1; }
+.transition-text { display:inline-block; background:var(--skin-cream); border:var(--border-medium); border-radius:var(--radius-pill); padding:8px 20px; font-size:14px; font-weight:700; box-shadow:var(--shadow-sm); }
+
+.bridge { position:relative; z-index:1; padding:34px 28px; }
+.bridge-card { background:var(--skin-cream); border:var(--border-thick); border-radius:var(--radius-lg); box-shadow:var(--shadow-md); padding:28px 24px; }
+.bridge p { font-size:15px; color:rgba(62,42,50,0.88); line-height:1.9; margin-bottom:14px; }
+.bridge .em { font-family:var(--serif); font-size:18px; font-weight:900; line-height:1.7; margin:6px 0 16px; }
+
+.intro { position:relative; z-index:1; padding:34px 28px; }
+.intro-card { background:#FDF3F6; border:var(--border-thick); border-radius:var(--radius-lg); box-shadow:var(--shadow-md); padding:26px 24px; }
+.intro-name { font-family:var(--serif); font-size:20px; font-weight:900; margin-bottom:12px; }
+.intro-text { font-size:14.5px; color:rgba(62,42,50,0.88); line-height:1.9; }
+
+.cta { position:relative; z-index:1; padding:26px 28px 56px; text-align:center; }
+.cta-line { font-family:var(--serif); font-size:21px; font-weight:900; line-height:1.6; margin-bottom:10px; }
+.cta-sub { font-size:14.5px; color:rgba(62,42,50,0.55); margin-bottom:26px; line-height:1.8; font-weight:500; }
+.skin-btn { display:inline-flex; align-items:center; gap:8px; background:var(--skin-primary); color:#fff; border:var(--border-thick); border-radius:var(--radius-pill); padding:16px 44px; font-weight:900; font-size:18px; box-shadow:var(--shadow-md); transition:transform var(--ease-bounce), box-shadow var(--ease-bounce); position:relative; overflow:hidden; cursor:pointer; text-decoration:none; }
+.skin-btn:hover { transform:translate(-4px,-4px); box-shadow:var(--shadow-lg); }
+.skin-btn::after { content:''; position:absolute; top:0; left:-100%; width:50%; height:100%; background:linear-gradient(90deg,transparent,rgba(255,255,255,0.4),transparent); transform:skewX(-25deg); animation:shine 3s ease-in-out infinite; }
+@keyframes shine { 0%{left:-100%;} 20%{left:150%;} 100%{left:150%;} }
+.cta-note { margin-top:16px; font-size:12.5px; color:rgba(62,42,50,0.5); font-weight:500; }
+.footer { position:relative; z-index:1; padding:22px 28px 40px; text-align:center; }
+.footer-acc { font-style:italic; font-size:14px; color:var(--skin-primary); font-weight:700; }
+
+.side-cta{display:none;}
+@media(min-width:1120px){
+ .side-cta{display:block;position:fixed;top:140px;right:max(20px,calc((100vw - 680px)/2 - 220px));width:200px;z-index:40;background:var(--skin-cream);border:var(--border-thick);border-radius:var(--radius-lg);box-shadow:var(--shadow-md);padding:18px 18px 20px;text-align:center;}
+ .side-cta .fk{font-family:var(--sans);font-size:10px;letter-spacing:0.14em;color:var(--skin-primary);font-weight:700;margin-bottom:8px;}
+ .side-cta h4{font-family:var(--serif);font-size:16px;font-weight:900;color:var(--skin-white);line-height:1.5;margin-bottom:12px;}
+ .side-cta h4 .g{color:var(--skin-primary);}
+ .side-cta a{display:block;background:var(--skin-primary);color:#fff;border:var(--border-medium);border-radius:var(--radius-pill);padding:11px 14px;font-weight:900;font-size:14px;text-decoration:none;box-shadow:var(--shadow-sm);transition:transform var(--ease-bounce);}
+ .side-cta a:hover{transform:translate(-2px,-2px);}
+}
+</style>
+</head>
+<body>
+<aside class="side-cta">
+  <div class="fk">JOIN US</div>
+  <h4>跟我一起<br><span class="g">用 AI 做內容</span></h4>
+  <a href="https://www.skool.com/d11-lab/about?ref=81fd135dd97643128bb641d5238e8ffb" target="_blank" rel="noopener">加入社群 →</a>
+</aside>
+<div class="wrap">
+  <div class="top-line"></div>
+  <div class="blob blob--1"></div>
+  <div class="blob blob--2"></div>
+
+  <div class="hero">
+    <span class="hero-tag">#童年創傷 · 五型解析</span>
+    <div class="hero-title">你選的那個符號<br><span class="skin-mark">藏著你最深的創傷</span></div>
+    <div class="hero-sub">剛剛那個讓你最不舒服的 不是隨便選的<br>它指向你心裡 一直沒被好好照顧的那一塊<br>往下找你選的字母 看看那是什麼 又能怎麼接住它</div>
+  </div>
+
+  <div class="section fade-up">
+    <span class="section-label">點開你選的字母</span>
+    <div class="quiz-q">你憑直覺選的 是哪一個符號</div>
+    <div class="quiz-sub">點下面你選的那一個 揭曉它藏著的創傷與療癒方向</div>
+
+    <div class="opt" onclick="toggle(this)">
+      <div class="opt-head"><span class="opt-letter">A</span>緊閉的門</div>
+      <div class="opt-result">
+        <div class="res-reveal"><span>你選的是</span><br>不被看見</div>
+        <div class="res-blk"><div class="res-h">小時候的你</div><div class="res-t">努力想被看見 但那扇門始終沒為你打開<br>你的付出 你的好 常常沒人回應</div></div>
+        <div class="res-blk"><div class="res-h">你可能會遇到的困難</div><div class="res-t">再努力都覺得自己不夠好<br>習慣被忽略也不敢出聲<br>永遠在等一個肯定</div></div>
+        <div class="res-blk"><div class="res-h">可以試著這樣做</div><ul class="res-list">
+          <li>少用「結果」定義自己 你的價值不是成績單</li>
+          <li>練習自己肯定自己 不再只等別人開門</li>
+          <li>說得出「我想被看見」 那不是討拍</li>
+          <li>從「證明自己」慢慢變成「相信自己」</li>
+        </ul></div>
+      </div>
+    </div>
+
+    <div class="opt" onclick="toggle(this)">
+      <div class="opt-head"><span class="opt-letter">B</span>纏住的線</div>
+      <div class="opt-result">
+        <div class="res-reveal"><span>你選的是</span><br>沒有自己</div>
+        <div class="res-blk"><div class="res-h">小時候的你</div><div class="res-t">被大人的情緒纏住 從小就要承接他們的痛<br>你的界線 被「都是為你好」一寸寸收走</div></div>
+        <div class="res-blk"><div class="res-h">你可能會遇到的困難</div><div class="res-t">被迫承擔別人的情緒<br>沒有自己的邊界<br>常常喘不過氣</div></div>
+        <div class="res-blk"><div class="res-h">可以試著這樣做</div><ul class="res-list">
+          <li>練習分辨「這是誰的情緒」 別人的痛不是你的責任</li>
+          <li>學會建立界線 拒絕不等於不孝</li>
+          <li>允許自己先喘口氣 再去回應別人</li>
+          <li>把那條纏住你的線 一根一根解開</li>
+        </ul></div>
+      </div>
+    </div>
+
+    <div class="opt" onclick="toggle(this)">
+      <div class="opt-head"><span class="opt-letter">C</span>裝不滿的獎盃</div>
+      <div class="opt-result">
+        <div class="res-reveal"><span>你選的是</span><br>不配得</div>
+        <div class="res-blk"><div class="res-h">小時候的你</div><div class="res-t">得到的愛 好像都有條件<br>要夠好 要不麻煩 要不佔位子 才被允許存在</div></div>
+        <div class="res-blk"><div class="res-h">你可能會遇到的困難</div><div class="res-t">必須優秀才覺得有價值<br>連休息都有罪惡感<br>得到好東西反而心虛</div></div>
+        <div class="res-blk"><div class="res-h">可以試著這樣做</div><ul class="res-list">
+          <li>練習相信「我光是存在 就已經夠好」</li>
+          <li>允許自己享受成功 不用急著說「只是運氣」</li>
+          <li>停止為「存在」道歉 你本來就有資格佔一個位子</li>
+          <li>把那個裝不滿的洞 用自我接納慢慢填</li>
+        </ul></div>
+      </div>
+    </div>
+
+    <div class="opt" onclick="toggle(this)">
+      <div class="opt-head"><span class="opt-letter">D</span>高牆</div>
+      <div class="opt-result">
+        <div class="res-reveal"><span>你選的是</span><br>不敢依賴</div>
+        <div class="res-blk"><div class="res-h">小時候的你</div><div class="res-t">沒人接住你 你只好自己長大<br>久了就築起一道牆 告訴自己「靠自己最安全」</div></div>
+        <div class="res-blk"><div class="res-h">你可能會遇到的困難</div><div class="res-t">什麼都自己扛<br>推開想靠近的人<br>再累也不敢求助</div></div>
+        <div class="res-blk"><div class="res-h">可以試著這樣做</div><ul class="res-list">
+          <li>練習承認「我也會累 我也需要人」</li>
+          <li>讓信任的人幫你一次 從小事開始</li>
+          <li>露出脆弱不會讓你變弱 反而更靠近人</li>
+          <li>那道牆可以留一扇門 你決定讓誰進來</li>
+        </ul></div>
+      </div>
+    </div>
+
+    <div class="opt" onclick="toggle(this)">
+      <div class="opt-head"><span class="opt-letter">E</span>撐給別人的傘</div>
+      <div class="opt-result">
+        <div class="res-reveal"><span>你選的是</span><br>把自己放最後</div>
+        <div class="res-blk"><div class="res-h">小時候的你</div><div class="res-t">你的愛 是從「被需要」換來的<br>只有照顧別人 成全別人 你才覺得自己有用</div></div>
+        <div class="res-blk"><div class="res-h">你可能會遇到的困難</div><div class="res-t">習慣察言觀色<br>壓抑自己的需求<br>無底線包容別人</div></div>
+        <div class="res-blk"><div class="res-h">可以試著這樣做</div><ul class="res-list">
+          <li>練習把傘先撐給自己 你也會淋濕</li>
+          <li>學會表達需求 說「我想要」不是自私</li>
+          <li>允許自己有情緒 不用永遠當那個懂事的人</li>
+          <li>停止習慣性委屈 你值得被同樣地愛</li>
+        </ul></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="transition"><span class="transition-text">繼續往下滑 ⬇️</span></div>
+
+  <div class="bridge fade-up">
+    <div class="bridge-card">
+      <p>不管你選的是哪一個<br>往回追 都連到兩件事</p>
+      <p class="em">父親 讓你懷疑「<span class="skin-mark">我能不能</span>」<br>母親 讓你懷疑「<span class="skin-mark">我配不配</span>」</p>
+      <p>看懂創傷 不是為了否定父母<br>是為了把那個 一直沒被照顧到的小孩 接回來</p>
+    </div>
+  </div>
+
+  <div class="intro fade-up">
+    <div class="intro-card">
+      <div class="intro-name">Hi 我是 <span class="skin-mark">K媽</span></div>
+      <div class="intro-text">我是一個媽媽 也用 AI ＋ 自媒體在記錄生活 經營內容<br><br>像這篇你剛剛滑過的圖文 其實就是我用 AI 一張一張做出來的<br>我把「怎麼用 AI 輕鬆做內容 把帳號經營起來」都整理在社群裡</div>
+    </div>
+  </div>
+
+  <div class="cta fade-up">
+    <div class="cta-line">連這篇圖文<br>都是我用 <span class="skin-mark">AI</span> 做出來的</div>
+    <div class="cta-sub">想學怎麼用 AI ＋ 自媒體 把內容輕鬆做起來<br>我都整理在這個社群裡 一群人一起玩</div>
+    <a class="skin-btn" href="https://www.skool.com/d11-lab/about?ref=81fd135dd97643128bb641d5238e8ffb" target="_blank" rel="noopener">加入 奇點研究所 × D11</a>
+    <div class="cta-note">點擊加入社群 跟我一起玩 AI</div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-acc">@lovekaren0316</div>
+  </div>
+</div>
+
+<script>
+function toggle(el) {
+  const wasActive = el.classList.contains('active');
+  document.querySelectorAll('.opt').forEach(o => o.classList.remove('active'));
+  if (!wasActive) el.classList.add('active');
+}
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
