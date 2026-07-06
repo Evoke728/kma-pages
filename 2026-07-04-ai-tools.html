@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>K媽｜36 個免費 AI 工具 完整連結包</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;700;900&family=Noto+Sans+TC:wght@300;400;500;700;900&family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --gold:#B0863A; --gold-bright:#C89A4A; --gold-dim:rgba(176,134,58,0.30);
+  --blue:#2C5FA8;
+  --bg:#ECE5DA; --bg2:#F4EEE5; --card:#FCF8F3; --card2:#F3EAE0;
+  --text:#3B342C; --dim:#6f655a; --faint:#a99f92;
+  --line:rgba(70,50,20,0.15);
+  --r-md:16px; --r-lg:22px; --pill:50px;
+  --bounce:400ms cubic-bezier(0.34,1.56,0.64,1);
+  --serif:"Noto Serif TC",serif; --sans:"Noto Sans TC","Inter",sans-serif; --mono:"JetBrains Mono",monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:var(--sans);color:var(--text);line-height:1.85;overflow-x:hidden;
+  background:var(--bg);
+  background-image:radial-gradient(118% 54% at 50% 0%, rgba(176,134,58,0.16) 0%, rgba(176,134,58,0.05) 34%, rgba(244,241,234,0) 62%);
+  background-attachment:fixed;}
+.glow{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
+.g1{position:absolute;width:min(60vw,680px);height:min(60vw,680px);border-radius:50%;
+  background:radial-gradient(circle, rgba(176,134,58,0.13), rgba(176,134,58,0));top:-18%;right:-14%;filter:blur(20px);}
+.g2{position:absolute;width:min(50vw,560px);height:min(50vw,560px);border-radius:50%;
+  background:radial-gradient(circle, rgba(44,95,168,0.10), rgba(44,95,168,0));bottom:-14%;left:-12%;filter:blur(22px);}
+.wrap{max-width:720px;margin:0 auto;position:relative;min-height:100vh;}
+.js .fade{opacity:0;transform:translateY(28px);transition:opacity .6s ease,transform .6s ease;}
+.fade.vis{opacity:1;transform:translateY(0);}
+a{color:var(--gold);text-decoration:none;}
+
+.side-cta{display:none;}
+@media(min-width:1120px){
+  .side-cta{display:block;position:fixed;top:130px;right:max(24px,calc((100vw - 720px)/2 - 268px));
+    width:236px;z-index:30;background:linear-gradient(165deg,var(--card) 0%,var(--card2) 100%);
+    border:1px solid var(--gold-dim);border-left:3px solid var(--gold);border-radius:var(--r-md);
+    padding:20px 20px 22px;box-shadow:0 10px 34px rgba(120,90,30,0.13);}
+  .side-cta .sk-k{font-family:var(--mono);font-size:10px;letter-spacing:0.16em;color:var(--gold);margin-bottom:10px;font-weight:500;}
+  .side-cta h4{font-family:var(--serif);font-weight:900;font-size:17px;line-height:1.5;color:#39302c;margin-bottom:9px;}
+  .side-cta h4 .g{color:var(--gold);}
+  .side-cta p{font-size:12.5px;color:var(--dim);line-height:1.7;margin-bottom:16px;}
+  .side-cta a{display:block;text-align:center;background:var(--gold);color:#fff;font-weight:900;font-size:14px;padding:12px 14px;border-radius:var(--pill);box-shadow:0 6px 18px rgba(176,134,58,0.26);transition:transform var(--bounce);}
+  .side-cta a:hover{transform:translateY(-2px);}
+}
+
+.hero{position:relative;z-index:1;padding:64px 30px 40px;}
+.kicker{font-family:var(--mono);font-size:11px;letter-spacing:0.24em;color:var(--gold);margin-bottom:22px;font-weight:500;}
+.hero h1{font-family:var(--serif);font-weight:900;font-size:36px;line-height:1.36;margin-bottom:18px;color:#39302c;}
+.hero h1 .g{color:var(--gold);}
+.hero-sub{font-size:15px;color:var(--dim);line-height:1.85;margin-bottom:26px;}
+.divider{width:46px;height:3px;background:var(--gold);margin-bottom:26px;}
+.author-card{margin-top:28px;background:var(--card);border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:var(--r-md);padding:15px 20px;}
+.author-card .a{font-weight:700;color:var(--gold);font-size:15px;}
+.author-card .b{font-size:13px;color:var(--dim);margin-top:6px;line-height:1.8;}
+
+.nav{position:relative;z-index:1;margin:22px 30px 0;display:grid;grid-template-columns:1fr 1fr;gap:9px;}
+.nav a{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:11px 14px;display:flex;gap:10px;align-items:center;font-size:13.5px;color:var(--text);font-weight:600;}
+.nav a .num{width:22px;height:22px;flex-shrink:0;border-radius:7px;background:rgba(176,134,58,0.14);border:1px solid var(--gold-dim);color:var(--gold);font-family:"Inter";font-weight:800;font-size:11px;display:flex;align-items:center;justify-content:center;}
+@media(max-width:520px){.nav{grid-template-columns:1fr;}}
+
+.sec{position:relative;z-index:1;padding:38px 30px;border-top:1px solid var(--line);}
+.sec-tag{display:inline-block;background:rgba(176,134,58,0.13);color:var(--gold);font-size:12px;font-weight:700;padding:5px 15px;border:1px solid var(--gold-dim);border-radius:var(--pill);margin-bottom:14px;letter-spacing:0.05em;}
+.sec h2{font-family:var(--serif);font-weight:900;font-size:23px;line-height:1.42;margin-bottom:6px;color:#39302c;}
+.sec h2 .g{color:var(--gold);}
+.sec .lead{font-size:13.5px;color:var(--dim);line-height:1.8;margin-bottom:18px;}
+
+.tools{display:flex;flex-direction:column;gap:10px;}
+a.tool{display:flex;align-items:center;gap:14px;background:var(--card);border:1px solid var(--line);border-radius:var(--r-md);padding:14px 18px;transition:transform var(--bounce),box-shadow var(--bounce),border-color .2s;}
+a.tool:hover{transform:translate(-2px,-2px);box-shadow:0 6px 20px rgba(120,90,30,0.12);border-color:var(--gold-dim);}
+.t-name{font-family:"Inter",var(--sans);font-weight:800;font-size:15.5px;color:var(--blue);min-width:150px;}
+.t-desc{font-size:13.5px;color:var(--dim);flex:1;line-height:1.6;}
+.t-arrow{color:var(--gold);font-weight:800;flex-shrink:0;}
+@media(max-width:520px){
+  a.tool{flex-wrap:wrap;gap:4px 14px;}
+  .t-name{min-width:0;}
+  .t-desc{flex-basis:100%;}
+}
+
+.cta{position:relative;z-index:1;padding:46px 30px 54px;border-top:3px solid var(--gold-dim);}
+.cta-card{background:linear-gradient(160deg, var(--card) 0%, var(--card2) 100%);border:1px solid var(--gold-dim);border-radius:var(--r-lg);padding:32px 26px;}
+.cta-kicker{font-family:var(--mono);font-size:11px;letter-spacing:0.2em;color:var(--gold);margin-bottom:14px;font-weight:500;}
+.cta-card h2{font-family:var(--serif);font-weight:900;font-size:24px;line-height:1.45;margin-bottom:10px;color:#39302c;}
+.cta-card h2 .g{color:var(--gold);}
+.cta-lead{font-size:14.5px;color:var(--dim);line-height:1.85;margin-bottom:22px;}
+.gives{background:rgba(176,134,58,0.07);border:1px solid var(--line);border-radius:var(--r-md);padding:18px 20px;margin:20px 0;}
+.gives .gt{font-size:12px;font-weight:700;color:var(--gold);letter-spacing:0.05em;margin-bottom:12px;}
+.gives .gi{font-size:14px;line-height:1.75;margin-bottom:9px;padding-left:20px;position:relative;color:var(--text);}
+.gives .gi::before{content:"\2726";color:var(--gold);position:absolute;left:0;}
+.btn-wrap{text-align:center;margin-top:26px;}
+.skbtn{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:#fff;border-radius:var(--pill);padding:17px 46px;font-weight:900;font-size:18px;box-shadow:0 8px 28px rgba(176,134,58,0.28);transition:transform var(--bounce),box-shadow var(--bounce);position:relative;overflow:hidden;cursor:pointer;text-decoration:none;}
+.skbtn:hover{transform:translateY(-3px);box-shadow:0 14px 36px rgba(176,134,58,0.40);}
+.skbtn::after{content:'';position:absolute;top:0;left:-100%;width:50%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.45),transparent);transform:skewX(-25deg);animation:shine 3.4s ease-in-out infinite;}
+@keyframes shine{0%{left:-100%;}22%{left:160%;}100%{left:160%;}}
+.btn-note{margin-top:14px;font-size:12.5px;color:var(--dim);text-align:center;}
+.footer{position:relative;z-index:1;padding:24px 30px 46px;text-align:center;}
+.footer .fa{font-style:italic;font-size:14px;color:var(--gold);font-weight:700;}
+.footer .fc{font-size:11px;color:var(--faint);margin-top:8px;letter-spacing:0.05em;}
+@media(max-width:680px){
+  .hero{padding-top:48px;}
+  .hero h1{font-size:29px;}
+  .sec h2{font-size:20px;}
+}
+</style>
+</head>
+<body>
+<script>document.documentElement.className+=' js';</script>
+<div class="glow"><div class="g1"></div><div class="g2"></div></div>
+
+<aside class="side-cta">
+  <div class="sk-k">NEXT STEP</div>
+  <h4>工具都給你了<br><span class="g">想學怎麼用起來</span></h4>
+  <p>我把 AI ＋ 自媒體的完整做法都整理在社群裡，一群人一起做比自己摸快。</p>
+  <a href="https://www.skool.com/d11-lab/about?ref=81fd135dd97643128bb641d5238e8ffb" target="_blank" rel="noopener">加入 奇點研究所 × D11</a>
+</aside>
+
+<div class="wrap">
+  <div class="hero">
+    <div class="kicker">AI 工具 · 完整連結包</div>
+    <h1>36 個免費 AI 工具<br><span class="g">完整連結包</span></h1>
+    <div class="hero-sub">不用信用卡 不用訂閱 點了直接用<br>照用途分成 6 類 要用的時候翻這頁就好</div>
+    <div class="divider"></div>
+    <div class="author-card">
+      <div class="a">美麗K媽（@lovekaren0316）</div>
+      <div class="b">我自己邊顧小孩邊用 AI 做內容 這些工具都是整理下來實際能免費開始的<br>先收藏這頁 之後要找工具不用再滑回貼文</div>
+    </div>
+  </div>
+
+  <nav class="nav">
+    <a href="#c1"><span class="num">1</span>文字寫作</a>
+    <a href="#c2"><span class="num">2</span>影片製作</a>
+    <a href="#c3"><span class="num">3</span>圖片設計</a>
+    <a href="#c4"><span class="num">4</span>聲音配音</a>
+    <a href="#c5"><span class="num">5</span>虛擬形象</a>
+    <a href="#c6"><span class="num">6</span>靈感研究</a>
+  </nav>
+
+  <div class="sec fade" id="c1">
+    <span class="sec-tag">一 · 文字寫作</span>
+    <h2>查資料 寫文案 <span class="g">做簡報</span></h2>
+    <p class="lead">從想內容到寫出來 這 6 個就夠</p>
+    <div class="tools">
+      <a class="tool" href="https://www.perplexity.ai" target="_blank" rel="noopener"><span class="t-name">Perplexity</span><span class="t-desc">查資料寫文案 附來源的 AI 搜尋</span><span class="t-arrow">→</span></a>
+      <a class="tool" href="https://chat.deepseek.com" target="_blank" rel="noopener"><span class="t-name">DeepSeek</span><span class="t-desc">免費推理最強 想選題想角度好用</span><span class="t-arrow">→</span></a>
+      <a class="tool" href="https://huggingface.co/chat" target="_blank" rel="noopener"><span class="t-name">HuggingChat</span><span class="t-desc">上百種開源模型免費用</span><span class="t-arrow">→</span></a>
+      <a class="tool" href="https://copilot.microsoft.com" target="_blank" rel="noopener"><span class="t-name">Copilot</span><span class="t-desc">微軟 AI 全能助手 寫作查找都行</span><span class="t-arrow">→</span></a>
+      <a class="tool" href="https://notebooklm.google.com" target="_blank" rel="noopener"><span class="t-name">NotebookLM</span><span class="t-desc">上傳資料變你的知識庫 還能生 Podcast</span><span class="t-arrow">→</span></a>
+      <a class="tool" href="https://gamma.app" target="_blank" rel="noopener"><span class="t-name">Gamma</span><span class="t-desc">一句話生出整份簡報</span><span class="t-arrow">→</span></a>
+    </div>
+  </div>
+
+  <div class="sec fade" id="c2">
+    <span class="sec-tag">二 · 影片製作</span>
+    <h2>剪輯 字幕 <span class="g">生成影片</span></h2>
+    <p class="lead">短影音從剪到生 一條龍</p>
+    <div class="tools">
+      <a class="tool" href="https://www.capcut.com" target="_blank" rel="noopener"><span class="t-name">CapCut</span><span class="t-desc">剪輯字幕一把抓 手機電腦都能用</span><span class="t-arrow">→</span></a>
+      <a class="tool" href="https://aistudio.google.com" target="_blank" rel="noopener"><span class="t-name">Veo 3 / AI Studio</span><span class="t-desc">Google 生成式影片 免費額度可玩</span><span class="t-arrow">→</span></a>
+      <a class="tool" href="https://www.veed.io" target="_blank" rel="noopener"><span class="t-name">VEED</span><span class="t-desc">線上剪片 字幕轉檔不用裝軟體</span><span class="t-arrow">→</span></a>
+      <a class="tool" href="https://www.descript.com" target="_blank" rel="noopener"><span class="t-name">Descript</span><span class="t-desc">改文字等於改影片 訪談剪輯神器</span><span class="t-arrow">→</span></a>
+      <a class="tool" href="https://creatify.ai" target="_blank" rel="noopener"><span class="t-name">Creatify</span><span class="t-desc">商品影片自動生成</span><span class="t-arrow">→</span></a>
+      <a class="tool" href="https://runwayml.com" target="_blank" rel="noopener"><span class="t-name">Runway</span><span class="t-desc">AI 影片特效與生成</span><span class="t-arrow">→</span></a>
+    </div>
+  </div>
+
+  <div class="sec fade" id="c3">
+    <span class="sec-tag">三 · 圖片設計</span>
+    <h2>生圖 去背 <span class="g">排版</span></h2>
+    <p class="lead">貼文圖跟封面 這 6 個做得完</p>
+    <div class="tools">
+      <a class="tool" href="https://ideogram.ai" target="_blank" rel="noopener"><span class="t-name">Ideogram</span><span class="t-desc">文字融圖最強 做字卡首選</span><span class="t-arrow">→</span></a>
+      <a class="tool" href="https://leonardo.ai" target="_blank" rel="noopener"><span class="t-name">Leonardo AI</span><span class="t-desc">每天有免費生圖額度</span><span class="t-arrow">→</span></a>
+      <a class="tool" href="https://designer.microsoft.com" target="_blank" rel="noopener"><span class="t-name">Microsoft Designer</span><span class="t-desc">免費用 DALL-E 生圖做設計</span><span class="t-arrow">→</span></a>
+      <a class="tool" href="https://www.remove.bg" target="_blank" rel="noopener"><span class="t-name">Remove.bg</span><span class="t-desc">一鍵去背 秒出結果</span><span class="t-arrow">→</span></a>
+      <a class="tool" href="https://www.canva.com" target="_blank" rel="noopener"><span class="t-name">Canva</span><span class="t-desc">排版設計全能 範本超多</span><span class="t-arrow">→</span></a>
+      <a class="tool" href="https://firefly.adobe.com" target="_blank" rel="noopener"><span class="t-name">Adobe Firefly</span><span class="t-desc">商用安心的 AI 生圖</span><span class="t-arrow">→</span></a>
+    </div>
+  </div>
+
+  <div class="sec fade" id="c4">
+    <span class="sec-tag">四 · 聲音配音</span>
+    <h2>配音 音樂 <span class="g">語音</span></h2>
+    <p class="lead">影片的聲音這裡全包</p>
+    <div class="tools">
+      <a class="tool" href="https://elevenlabs.io" target="_blank" rel="noopener"><span class="t-name">ElevenLabs</span><span class="t-desc">擬真配音 AI 語音天花板</span><span class="t-arrow">→</span></a>
+      <a class="tool" href="https://fish.audio" target="_blank" rel="noopener"><span class="t-name">Fish Audio</span><span class="t-desc">中文語音特別好用</span><span class="t-arrow">→</span></a>
+      <a class="tool" href="https://suno.com" target="_blank" rel="noopener"><span class="t-name">Suno</span><span class="t-desc">AI 寫歌 一句話生一首</span><span class="t-arrow">→</span></a>
+      <a class="tool" href="https://www.udio.com" target="_blank" rel="noopener"><span class="t-name">Udio</span><span class="t-desc">音樂生成 配樂自己做</span><span class="t-arrow">→</span></a>
+      <a class="tool" href="https://www.minimax.io/audio" target="_blank" rel="noopener"><span class="t-name">MiniMax Audio</span><span class="t-desc">高品質中文配音</span><span class="t-arrow">→</span></a>
+      <a class="tool" href="https://www.uberduck.ai" target="_blank" rel="noopener"><span class="t-name">Uberduck</span><span class="t-desc">免費玩配音 娛樂感強</span><span class="t-arrow">→</span></a>
+    </div>
+  </div>
+
+  <div class="sec fade" id="c5">
+    <span class="sec-tag">五 · 虛擬形象</span>
+    <h2>數位人 <span class="g">虛擬主播</span></h2>
+    <p class="lead">不想露臉 這 6 個幫你出鏡</p>
+    <div class="tools">
+      <a class="tool" href="https://www.heygen.com" target="_blank" rel="noopener"><span class="t-name">HeyGen</span><span class="t-desc">數位人影片 口型超自然</span><span class="t-arrow">→</span></a>
+      <a class="tool" href="https://www.synthesia.io" target="_blank" rel="noopener"><span class="t-name">Synthesia</span><span class="t-desc">虛擬主播 多語言影片</span><span class="t-arrow">→</span></a>
+      <a class="tool" href="https://www.a2e.ai" target="_blank" rel="noopener"><span class="t-name">a2e.ai</span><span class="t-desc">免費 Avatar 生成</span><span class="t-arrow">→</span></a>
+      <a class="tool" href="https://virbo.wondershare.com" target="_blank" rel="noopener"><span class="t-name">Virbo</span><span class="t-desc">口播數位人 帶貨介紹好用</span><span class="t-arrow">→</span></a>
+      <a class="tool" href="https://www.d-id.com" target="_blank" rel="noopener"><span class="t-name">D-ID</span><span class="t-desc">讓照片開口說話</span><span class="t-arrow">→</span></a>
+      <a class="tool" href="https://www.colossyan.com" target="_blank" rel="noopener"><span class="t-name">Colossyan</span><span class="t-desc">多語 Avatar 影片</span><span class="t-arrow">→</span></a>
+    </div>
+  </div>
+
+  <div class="sec fade" id="c6">
+    <span class="sec-tag">六 · 靈感研究</span>
+    <h2>選題 趨勢 <span class="g">受眾在想什麼</span></h2>
+    <p class="lead">不知道要發什麼的時候 來這裡挖</p>
+    <div class="tools">
+      <a class="tool" href="https://trends.google.com.tw" target="_blank" rel="noopener"><span class="t-name">Google Trends</span><span class="t-desc">追熱度 看大家在搜什麼</span><span class="t-arrow">→</span></a>
+      <a class="tool" href="https://answersocrates.com" target="_blank" rel="noopener"><span class="t-name">Answer Socrates</span><span class="t-desc">挖大家在問什麼 選題靈感庫</span><span class="t-arrow">→</span></a>
+      <a class="tool" href="https://explodingtopics.com" target="_blank" rel="noopener"><span class="t-name">Exploding Topics</span><span class="t-desc">趨勢預測 提早卡位</span><span class="t-arrow">→</span></a>
+      <a class="tool" href="https://www.reddit.com" target="_blank" rel="noopener"><span class="t-name">Reddit</span><span class="t-desc">看海外討論 挖第一手話題</span><span class="t-arrow">→</span></a>
+      <a class="tool" href="https://www.perplexity.ai" target="_blank" rel="noopener"><span class="t-name">Perplexity</span><span class="t-desc">即時研究 快速搞懂一個主題</span><span class="t-arrow">→</span></a>
+      <a class="tool" href="https://notebooklm.google.com" target="_blank" rel="noopener"><span class="t-name">NotebookLM</span><span class="t-desc">把蒐集的資料整理成靈感</span><span class="t-arrow">→</span></a>
+    </div>
+  </div>
+
+  <div class="cta fade">
+    <div class="cta-card">
+      <div class="cta-kicker">下一步</div>
+      <h2>工具是免費的<br><span class="g">會用才是你的</span></h2>
+      <div class="cta-lead">收藏了一堆工具 卻一直沒真的開始 是最可惜的事 我現在是結合 AI 跟自媒體在做內容 把完整做法都放在社群裡 一群人一起做比自己摸快很多</div>
+      <div class="gives">
+        <div class="gt">進來你會拿到</div>
+        <div class="gi">這些工具的實際用法與可直接套用的 Prompt</div>
+        <div class="gi">AI ＋ 自媒體的完整做法 一步步帶著走</div>
+        <div class="gi">一群跟你一樣 邊生活邊做的人</div>
+      </div>
+      <div class="btn-wrap">
+        <a class="skbtn" href="https://www.skool.com/d11-lab/about?ref=81fd135dd97643128bb641d5238e8ffb" target="_blank" rel="noopener">加入 奇點研究所 × D11 →</a>
+        <div class="btn-note">先存這頁 也歡迎把它傳給需要的朋友</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="fa">@lovekaren0316</div>
+    <div class="fc">記錄一個媽媽把賺錢 變美 好好生活同時做到</div>
+  </div>
+</div>
+
+<script>
+function revealOnScroll(){var vh=window.innerHeight||document.documentElement.clientHeight;var els=document.querySelectorAll('.fade:not(.vis)');for(var i=0;i<els.length;i++){if(els[i].getBoundingClientRect().top<vh*0.94){els[i].classList.add('vis');}}}
+window.addEventListener('scroll',revealOnScroll,{passive:true});window.addEventListener('resize',revealOnScroll);window.addEventListener('load',revealOnScroll);revealOnScroll();
+setTimeout(function(){document.querySelectorAll('.fade').forEach(function(e){e.classList.add('vis');});},2500);
+</script>
+</body>
+</html>
