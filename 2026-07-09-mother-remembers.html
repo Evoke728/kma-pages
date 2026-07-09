@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>K媽｜媽媽的焦慮測驗 · 五型解析 · A Mother's Fear · 5 Types</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;700;900&family=Noto+Sans+TC:wght@400;500;700;900&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* === 暖焦糖療癒色 === */
+  --skin-primary:   #BC7E42;   /* 焦糖，按鈕/標籤 */
+  --skin-accent:    #D6A66B;   /* 淺焦糖，次要 */
+  --skin-highlight: #ECD4AE;   /* mark 底色，焦糖奶油 */
+  --skin-ink:       #3E2A16;   /* 近黑暖褐，邊框/陰影 */
+  --skin-cream:     #FFFCF6;   /* 卡片底 */
+  --skin-bg:        #F6ECDC;   /* 頁面底，焦糖奶油 */
+  --skin-warm:      #E4CBA3;   /* 邊框中間色 */
+  --skin-white:     #3A2816;   /* 文字，深焦糖褐 */
+
+  --shadow-sm: 4px 4px 0 var(--skin-ink);
+  --shadow-md: 7px 7px 0 var(--skin-ink);
+  --shadow-lg: 11px 11px 0 var(--skin-ink);
+  --border-thick:  3px solid var(--skin-warm);
+  --border-medium: 2px solid var(--skin-warm);
+  --radius-md:16px; --radius-lg:24px; --radius-pill:50px;
+  --ease-bounce: 400ms cubic-bezier(0.34,1.56,0.64,1);
+  --serif:"Noto Serif TC",serif; --sans:"Noto Sans TC","Inter",sans-serif;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#F6ECDC; font-family:var(--sans); color:var(--skin-white); line-height:1.8; overflow-x:hidden; }
+.wrap { max-width:680px; margin:0 auto; position:relative; background:var(--skin-bg); }
+.top-line { position:absolute; top:0; left:0; width:100%; height:3px; z-index:20;
+  background:linear-gradient(to right, #C8D8BB 0%, #C8D8BB 66%, rgba(0,0,0,0) 100%); }
+.blob { position:absolute; border-radius:60% 40% 30% 70% / 60% 30% 70% 40%;
+  animation:morph 8s ease-in-out infinite; opacity:0.30; z-index:0; pointer-events:none; filter:blur(6px); }
+.blob--1 { width:min(70vw,420px); height:min(70vw,420px);
+  background:linear-gradient(135deg, #BC7E42, #D6A66B); top:-6%; right:-16%; }
+.blob--2 { width:min(60vw,360px); height:min(60vw,360px);
+  background:linear-gradient(135deg, #D6A66B, #E4CBA3); bottom:8%; left:-18%; animation-delay:-4s; }
+@keyframes morph {
+  0%,100% { border-radius:60% 40% 30% 70% / 60% 30% 70% 40%; }
+  25% { border-radius:30% 60% 70% 40% / 50% 60% 30% 40%; }
+  50% { border-radius:50% 60% 30% 70% / 30% 40% 70% 60%; }
+  75% { border-radius:60% 30% 60% 40% / 70% 50% 40% 30%; }
+}
+.skin-mark { background:var(--skin-highlight); color:#3E2A16; padding:0.08em 0.35em; border-radius:5px; display:inline-block; box-decoration-break:clone; }
+.en { display:block; font-family:var(--sans); font-weight:400; font-style:italic; color:rgba(58,40,22,0.58); line-height:1.6; }
+.fade-up { opacity:0; transform:translateY(32px); transition:opacity .6s ease, transform .6s ease; }
+.fade-up.visible { opacity:1; transform:translateY(0); }
+
+.hero { position:relative; z-index:1; padding:62px 28px 44px; text-align:center; }
+.hero-tag { display:inline-block; background:var(--skin-primary); color:#fff; border:var(--border-medium); border-radius:var(--radius-pill); padding:6px 16px; font-size:13px; font-weight:700; box-shadow:var(--shadow-sm); margin-bottom:22px; }
+.hero-title { font-family:var(--serif); font-weight:900; font-size:28px; line-height:1.5; color:var(--skin-white); }
+.hero-title .en { font-size:16px; margin-top:8px; }
+.hero-sub { margin-top:16px; font-size:14px; color:rgba(58,40,22,0.62); line-height:1.85; }
+.hero-sub .en { font-size:12.5px; margin-top:8px; }
+
+.section { position:relative; z-index:1; padding:34px 28px; }
+.section-label { display:inline-block; background:var(--skin-primary); color:#fff; border:var(--border-medium); border-radius:var(--radius-pill); padding:4px 14px; font-size:12px; font-weight:700; margin-bottom:20px; box-shadow:var(--shadow-sm); }
+.quiz-q { font-family:var(--serif); font-size:20px; font-weight:700; line-height:1.6; margin-bottom:8px; }
+.quiz-q .en { font-size:14px; margin-top:4px; }
+.quiz-sub { font-size:14px; color:rgba(58,40,22,0.55); margin-bottom:26px; font-weight:500; }
+.quiz-sub .en { font-size:12.5px; margin-top:3px; }
+
+.opt { background:var(--skin-cream); border:var(--border-thick); border-radius:var(--radius-md); box-shadow:var(--shadow-sm); padding:18px 20px; margin-bottom:18px; cursor:pointer; transition:transform var(--ease-bounce), box-shadow var(--ease-bounce); }
+.opt:hover { transform:translate(-3px,-3px); box-shadow:var(--shadow-md); }
+.opt.active { box-shadow:var(--shadow-md); }
+.opt-head { display:flex; align-items:center; gap:14px; font-size:16.5px; font-weight:700; }
+.opt-head .en { display:inline; font-style:italic; font-weight:500; color:rgba(58,40,22,0.5); font-size:13.5px; margin-left:6px; }
+.opt-letter { display:inline-flex; align-items:center; justify-content:center; width:34px; height:34px; background:var(--skin-highlight); color:#3E2A16; border:var(--border-medium); border-radius:50%; font-family:"Inter"; font-weight:700; font-size:16px; flex-shrink:0; }
+.opt-result { max-height:0; overflow:hidden; transition:max-height .5s ease, margin .3s, padding .3s; }
+.res-reveal { font-family:var(--serif); font-size:17px; font-weight:900; color:var(--skin-primary); margin-bottom:16px; }
+.res-reveal span { color:rgba(58,40,22,0.55); font-family:var(--sans); font-size:13px; font-weight:700; }
+.res-reveal .en { font-size:13px; font-weight:700; margin-top:3px; }
+.opt.active .opt-result { max-height:1400px; margin-top:16px; padding-top:16px; border-top:2px dashed var(--skin-warm); }
+.res-blk { margin-bottom:15px; }
+.res-h { font-size:13px; font-weight:700; color:var(--skin-primary); margin-bottom:6px; letter-spacing:0.03em; }
+.res-h .en { display:inline; font-style:italic; font-weight:500; color:rgba(58,40,22,0.5); margin-left:5px; }
+.res-t { font-size:14.5px; color:rgba(58,40,22,0.9); line-height:1.85; }
+.res-t .en { font-size:12.8px; margin-top:4px; }
+
+.transition { text-align:center; padding:14px 0; position:relative; z-index:1; }
+.transition-text { display:inline-block; background:var(--skin-cream); border:var(--border-medium); border-radius:var(--radius-pill); padding:8px 20px; font-size:14px; font-weight:700; box-shadow:var(--shadow-sm); }
+
+.bridge { position:relative; z-index:1; padding:34px 28px; }
+.bridge-card { background:var(--skin-cream); border:var(--border-thick); border-radius:var(--radius-lg); box-shadow:var(--shadow-md); padding:28px 24px; }
+.bridge p { font-size:15px; color:rgba(58,40,22,0.88); line-height:1.9; margin-bottom:14px; }
+.bridge p .en { font-size:13px; margin-top:5px; }
+.bridge .em { font-family:var(--serif); font-size:18px; font-weight:900; line-height:1.7; margin:6px 0 16px; }
+.bridge .em .en { font-size:14px; margin-top:6px; }
+
+.intro { position:relative; z-index:1; padding:34px 28px; }
+.intro-card { background:#FBF3E6; border:var(--border-thick); border-radius:var(--radius-lg); box-shadow:var(--shadow-md); padding:26px 24px; }
+.intro-name { font-family:var(--serif); font-size:20px; font-weight:900; margin-bottom:12px; }
+.intro-name .en { display:inline; font-size:15px; margin-left:6px; }
+.intro-text { font-size:14.5px; color:rgba(58,40,22,0.88); line-height:1.9; }
+.intro-text .en { font-size:12.8px; margin-top:6px; }
+
+.cta { position:relative; z-index:1; padding:26px 28px 56px; text-align:center; }
+.cta-line { font-family:var(--serif); font-size:21px; font-weight:900; line-height:1.6; margin-bottom:10px; }
+.cta-line .en { font-size:15px; margin-top:8px; }
+.cta-sub { font-size:14.5px; color:rgba(58,40,22,0.55); margin-bottom:26px; line-height:1.8; font-weight:500; }
+.cta-sub .en { font-size:12.8px; margin-top:6px; }
+.skin-btn { display:inline-flex; align-items:center; gap:8px; background:var(--skin-primary); color:#fff; border:var(--border-thick); border-radius:var(--radius-pill); padding:16px 44px; font-weight:900; font-size:18px; box-shadow:var(--shadow-md); transition:transform var(--ease-bounce), box-shadow var(--ease-bounce); position:relative; overflow:hidden; cursor:pointer; text-decoration:none; }
+.skin-btn:hover { transform:translate(-4px,-4px); box-shadow:var(--shadow-lg); }
+.skin-btn::after { content:''; position:absolute; top:0; left:-100%; width:50%; height:100%; background:linear-gradient(90deg,transparent,rgba(255,255,255,0.4),transparent); transform:skewX(-25deg); animation:shine 3s ease-in-out infinite; }
+@keyframes shine { 0%{left:-100%;} 20%{left:150%;} 100%{left:150%;} }
+.cta-note { margin-top:16px; font-size:12.5px; color:rgba(58,40,22,0.5); font-weight:500; }
+.cta-note .en { font-size:11.5px; margin-top:3px; }
+.footer { position:relative; z-index:1; padding:22px 28px 40px; text-align:center; }
+.footer-acc { font-style:italic; font-size:14px; color:var(--skin-primary); font-weight:700; }
+
+.side-cta{display:none;}
+@media(min-width:1120px){
+ .side-cta{display:block;position:fixed;top:140px;right:max(20px,calc((100vw - 680px)/2 - 220px));width:206px;z-index:40;background:var(--skin-cream);border:var(--border-thick);border-radius:var(--radius-lg);box-shadow:var(--shadow-md);padding:18px 18px 20px;text-align:center;}
+ .side-cta .fk{font-family:var(--sans);font-size:10px;letter-spacing:0.14em;color:var(--skin-primary);font-weight:700;margin-bottom:8px;}
+ .side-cta h4{font-family:var(--serif);font-size:16px;font-weight:900;color:var(--skin-white);line-height:1.5;margin-bottom:5px;}
+ .side-cta h4 .g{color:var(--skin-primary);}
+ .side-cta .en{font-size:11.5px;margin-bottom:12px;}
+ .side-cta a{display:block;background:var(--skin-primary);color:#fff;border:var(--border-medium);border-radius:var(--radius-pill);padding:11px 14px;font-weight:900;font-size:14px;text-decoration:none;box-shadow:var(--shadow-sm);transition:transform var(--ease-bounce);}
+ .side-cta a:hover{transform:translate(-2px,-2px);}
+}
+</style>
+</head>
+<body>
+<aside class="side-cta">
+  <div class="fk">JOIN US</div>
+  <h4>跟我一起<br><span class="g">用 AI 做內容</span></h4>
+  <span class="en">Make content with AI, together</span>
+  <a href="https://www.skool.com/d11-lab/about?ref=81fd135dd97643128bb641d5238e8ffb" target="_blank" rel="noopener">加入社群 · Join →</a>
+</aside>
+<div class="wrap">
+  <div class="blob blob--1"></div>
+  <div class="blob blob--2"></div>
+
+  <div class="hero">
+    <span class="hero-tag">#媽媽的焦慮 · 五型解析 · A Mother's Fear</span>
+    <div class="hero-title">你選的那個符號<br><span class="skin-mark">藏著你對孩子長大的焦慮</span>
+      <span class="en">The symbol you chose holds your fear of watching them grow</span></div>
+    <div class="hero-sub">剛剛那個最觸動你的符號 不是隨便選的<br>它指向你心裡 那份對孩子長大 說不出口的焦慮<br>往下找你選的字母 看看那是什麼
+      <span class="en">That symbol that moved you wasn't random — it points to a quiet fear about your child growing up. Find your letter below and see what it is.</span></div>
+  </div>
+
+  <div class="section fade-up">
+    <span class="section-label">點開你選的字母 · Tap your letter</span>
+    <div class="quiz-q">你憑直覺選的 是哪一個符號<span class="en">Which symbol did you pick</span></div>
+    <div class="quiz-sub">點下面你選的那一個 揭曉它藏著的焦慮與方向<span class="en">Tap the one you chose to reveal the fear behind it</span></div>
+
+    <div class="opt" onclick="toggle(this)">
+      <div class="opt-head"><span class="opt-letter">A</span>風箏<span class="en">The Kite</span></div>
+      <div class="opt-result">
+        <div class="res-reveal"><span>你選的是</span><br>獨立焦慮<span class="en">Being needed less</span></div>
+        <div class="res-blk"><div class="res-h">這種心情在說的是<span class="en">What it's saying</span></div><div class="res-t">你看著她越來越能自己來 一邊驕傲 一邊有點失落<span class="en">You're proud she can do it herself, and quietly a little lost</span></div></div>
+        <div class="res-blk"><div class="res-h">你可能會有的狀態<span class="en">You might notice</span></div><div class="res-t">她說「我自己可以」的時候 你會愣一下 不知道手該放哪<span class="en">When she says "I've got it," you freeze for a second, unsure where to put your hands</span></div></div>
+        <div class="res-blk"><div class="res-h">可以試著這樣做<span class="en">You could try</span></div><ul class="res-list">
+          <li>把「被需要」換個方式 從幫她做 變成在旁邊看她做<span class="en">Shift from doing it for her to watching her do it</span></li>
+          <li>她的獨立 是你養出來的 那是成績不是失去<span class="en">Her independence is something you grew — a win, not a loss</span></li>
+        </ul></div>
+      </div>
+    </div>
+
+    <div class="opt" onclick="toggle(this)">
+      <div class="opt-head"><span class="opt-letter">B</span>沙漏<span class="en">The Hourglass</span></div>
+      <div class="opt-result">
+        <div class="res-reveal"><span>你選的是</span><br>時間焦慮<span class="en">Time slipping away</span></div>
+        <div class="res-blk"><div class="res-h">這種心情在說的是<span class="en">What it's saying</span></div><div class="res-t">你常覺得 怎麼一轉眼她就這麼大了<span class="en">You keep wondering how she grew up so fast</span></div></div>
+        <div class="res-blk"><div class="res-h">你可能會有的狀態<span class="en">You might notice</span></div><div class="res-t">翻到舊照片會鼻酸 很想按暫停<span class="en">Old photos make your eyes sting, you wish you could hit pause</span></div></div>
+        <div class="res-blk"><div class="res-h">可以試著這樣做<span class="en">You could try</span></div><ul class="res-list">
+          <li>每天挑一個小畫面好好記住 時間留不住 但畫面可以<span class="en">Time you can't keep, but a moment you can — remember one each day</span></li>
+          <li>拍下來 寫下來 讓每個現在 有地方可以回去<span class="en">Photograph it, write it down, give each "now" a place to return to</span></li>
+        </ul></div>
+      </div>
+    </div>
+
+    <div class="opt" onclick="toggle(this)">
+      <div class="opt-head"><span class="opt-letter">C</span>變空的手<span class="en">Empty Hands</span></div>
+      <div class="opt-result">
+        <div class="res-reveal"><span>你選的是</span><br>不再被依賴<span class="en">No longer leaned on</span></div>
+        <div class="res-blk"><div class="res-h">這種心情在說的是<span class="en">What it's saying</span></div><div class="res-t">那個整天要你抱的重量 慢慢不見了<span class="en">The weight that always wanted holding is slowly gone</span></div></div>
+        <div class="res-blk"><div class="res-h">你可能會有的狀態<span class="en">You might notice</span></div><div class="res-t">她不再第一個找你 你心裡會有點空<span class="en">She stops coming to you first, and it leaves a quiet gap</span></div></div>
+        <div class="res-blk"><div class="res-h">可以試著這樣做<span class="en">You could try</span></div><ul class="res-list">
+          <li>把空出來的手 也還一點給自己 你不只是媽媽<span class="en">Give some of those freed-up hands back to yourself — you're more than a mom</span></li>
+          <li>被依賴會變少 但被愛不會 那份連結一直都在<span class="en">Being leaned on fades, being loved doesn't — that bond stays</span></li>
+        </ul></div>
+      </div>
+    </div>
+
+    <div class="opt" onclick="toggle(this)">
+      <div class="opt-head"><span class="opt-letter">D</span>門<span class="en">The Door</span></div>
+      <div class="opt-result">
+        <div class="res-reveal"><span>你選的是</span><br>分離焦慮<span class="en">Letting go</span></div>
+        <div class="res-blk"><div class="res-h">這種心情在說的是<span class="en">What it's saying</span></div><div class="res-t">你知道她總要往外面走 但還是捨不得<span class="en">You know she'll head out into the world, and still can't quite let go</span></div></div>
+        <div class="res-blk"><div class="res-h">你可能會有的狀態<span class="en">You might notice</span></div><div class="res-t">送她出門的背影 你會多看兩秒<span class="en">You watch her back a second longer at the door</span></div></div>
+        <div class="res-blk"><div class="res-h">可以試著這樣做<span class="en">You could try</span></div><ul class="res-list">
+          <li>把門開著 讓她知道 外面再遠 家都在<span class="en">Keep the door open — however far she goes, home is still here</span></li>
+          <li>你給的安全感 會變成她敢往外走的底氣<span class="en">The security you give becomes her courage to go out</span></li>
+        </ul></div>
+      </div>
+    </div>
+
+    <div class="opt" onclick="toggle(this)">
+      <div class="opt-head"><span class="opt-letter">E</span>舊照片<span class="en">The Old Photo</span></div>
+      <div class="opt-result">
+        <div class="res-reveal"><span>你選的是</span><br>懷念焦慮<span class="en">The little moments</span></div>
+        <div class="res-blk"><div class="res-h">這種心情在說的是<span class="en">What it's saying</span></div><div class="res-t">你最放不下的 是那些回不去的小事<span class="en">What you hold onto most are the tiny things you can't get back</span></div></div>
+        <div class="res-blk"><div class="res-h">你可能會有的狀態<span class="en">You might notice</span></div><div class="res-t">她小時候的口頭禪 味道 重量 你都還記得<span class="en">Her little catchphrases, her smell, her weight — you remember it all</span></div></div>
+        <div class="res-blk"><div class="res-h">可以試著這樣做<span class="en">You could try</span></div><ul class="res-list">
+          <li>把記得的寫下來 哪天她長大了 這些就是你們的寶藏<span class="en">Write them down — one day grown, these become yours together</span></li>
+          <li>你記得的每一幕 都是她被好好愛過的證據<span class="en">Every scene you remember is proof she was deeply loved</span></li>
+        </ul></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="transition"><span class="transition-text">繼續往下滑 · Keep scrolling ⬇️</span></div>
+
+  <div class="bridge fade-up">
+    <div class="bridge-card">
+      <p>不管你選的是哪一個<br>背後都是同一種心疼<span class="en">Whichever you chose, underneath is the same tender ache</span></p>
+      <p class="em">她會長大 這件事你攔不住<br>你能做的 是把每一個<span class="skin-mark">現在</span> 好好記住<span class="en">She will grow up, and you can't hold that back — what you can do is hold each "now" a little longer</span></p>
+      <p>焦慮 不是因為你不夠好<br>是因為你把她 愛得太深<span class="en">The fear isn't because you're not enough — it's because you love her so deeply</span></p>
+    </div>
+  </div>
+
+  <div class="intro fade-up">
+    <div class="intro-card">
+      <div class="intro-name">Hi 我是 <span class="skin-mark">K媽</span><span class="en">Hi, I'm K-Mom</span></div>
+      <div class="intro-text">我是一個媽媽 也用 AI ＋ 自媒體 記錄生活 經營內容<br><br>像你剛剛滑過的這整篇圖文 其實都是我用 AI 一張一張做出來的<br>我把「怎麼用 AI 輕鬆做內容 把帳號經營起來」都整理在社群裡<span class="en">I'm a mom, and I use AI + social content to record life and grow my account. This whole post you just scrolled — I made every image with AI. How to make content easily with AI and grow an account, it's all in the community.</span></div>
+    </div>
+  </div>
+
+  <div class="cta fade-up">
+    <div class="cta-line">這一整篇貼文<br>都是我用 <span class="skin-mark">AI</span> 做出來的<span class="en">This whole post was made with AI</span></div>
+    <div class="cta-sub">想學怎麼用 AI ＋ 自媒體 把內容輕鬆做起來<br>我都整理在這個社群裡 一群人一起玩<span class="en">Want to make content easily with AI + social? It's all in the community, a group of us playing together</span></div>
+    <a class="skin-btn" href="https://www.skool.com/d11-lab/about?ref=81fd135dd97643128bb641d5238e8ffb" target="_blank" rel="noopener">加入 奇點研究所 × D11</a>
+    <div class="cta-note">點擊加入社群 跟我一起玩 AI<span class="en">Tap to join and play with AI with me</span></div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-acc">@lovekaren0316</div>
+  </div>
+</div>
+
+<script>
+function toggle(el) {
+  const wasActive = el.classList.contains('active');
+  document.querySelectorAll('.opt').forEach(o => o.classList.remove('active'));
+  if (!wasActive) el.classList.add('active');
+}
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
