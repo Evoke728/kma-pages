@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>我把整個 IG 都交給了 Claude｜5 個 Prompt 直接複製就能用</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;700;900&family=Noto+Sans+TC:wght@300;400;500;700;900&family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blue:#365DAA; --blue-bright:#4E77CC; --blue-dim:rgba(54,93,170,0.30);
+  --bg:#F4F1EA; --bg2:#FBF8F2; --card:#FFFFFF; --card2:#FAF6EE;
+  --code:#12161f; --code-tx:#e6eaf2;
+  --text:#2c2a26; --dim:#6d6a62; --faint:#a8a39a;
+  --line:rgba(0,0,0,0.12);
+  --r-md:16px; --r-lg:22px; --pill:50px;
+  --bounce:400ms cubic-bezier(0.34,1.56,0.64,1);
+  --serif:"Noto Serif TC",serif; --sans:"Noto Sans TC","Inter",sans-serif; --mono:"JetBrains Mono",monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:var(--sans);color:var(--text);line-height:1.85;overflow-x:hidden;
+  background:var(--bg);
+  background-image:radial-gradient(118% 54% at 50% 0%, rgba(54,93,170,0.15) 0%, rgba(54,93,170,0.05) 34%, rgba(244,241,234,0) 62%);
+  background-attachment:fixed;}
+.glow{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
+.g1{position:absolute;width:min(60vw,680px);height:min(60vw,680px);border-radius:50%;
+  background:radial-gradient(circle, rgba(54,93,170,0.12), rgba(54,93,170,0));top:-18%;right:-14%;filter:blur(20px);}
+.g2{position:absolute;width:min(50vw,560px);height:min(50vw,560px);border-radius:50%;
+  background:radial-gradient(circle, rgba(120,150,210,0.12), rgba(120,150,210,0));bottom:-14%;left:-12%;filter:blur(22px);}
+.wrap{max-width:720px;margin:0 auto;position:relative;min-height:100vh;}
+.js .fade{opacity:0;transform:translateY(28px);transition:opacity .6s ease,transform .6s ease;}
+.fade.vis{opacity:1;transform:translateY(0);}
+a{color:var(--blue);text-decoration:none;word-break:break-all;}
+
+.top-cta{display:none;}
+.top-cta a{display:flex;align-items:center;justify-content:center;gap:8px;
+  background:var(--blue);color:#fff;font-weight:800;font-size:13.5px;
+  padding:11px 16px;text-align:center;letter-spacing:0.02em;}
+.top-cta .tc-em{font-weight:900;}
+
+.side-cta{display:none;}
+@media(min-width:1120px){
+  .side-cta{display:block;position:fixed;top:130px;right:max(24px,calc((100vw - 720px)/2 - 268px));
+    width:236px;z-index:30;background:linear-gradient(165deg,var(--card) 0%,var(--card2) 100%);
+    border:1px solid var(--blue-dim);border-left:3px solid var(--blue);border-radius:var(--r-md);
+    padding:20px 20px 22px;box-shadow:0 10px 34px rgba(40,70,140,0.13);}
+  .side-cta .sk-k{font-family:var(--mono);font-size:10px;letter-spacing:0.16em;color:var(--blue);margin-bottom:10px;font-weight:500;}
+  .side-cta h4{font-family:var(--serif);font-weight:900;font-size:17px;line-height:1.5;color:#2a2620;margin-bottom:9px;}
+  .side-cta h4 .g{color:var(--blue);}
+  .side-cta p{font-size:12.5px;color:var(--dim);line-height:1.7;margin-bottom:16px;}
+  .side-cta a{display:block;text-align:center;background:var(--blue);color:#fff;font-weight:900;
+    font-size:14px;padding:12px 14px;border-radius:var(--pill);box-shadow:0 6px 18px rgba(54,93,170,0.26);transition:transform var(--bounce);}
+  .side-cta a:hover{transform:translateY(-2px);}
+}
+
+.hero{position:relative;z-index:1;padding:64px 30px 40px;}
+.kicker{font-family:var(--mono);font-size:11px;letter-spacing:0.24em;color:var(--blue);margin-bottom:22px;font-weight:500;}
+.hero h1{font-family:var(--serif);font-weight:900;font-size:36px;line-height:1.36;margin-bottom:18px;color:#2a2620;}
+.hero h1 .g{color:var(--blue);}
+.hero-sub{font-size:15px;color:var(--dim);line-height:1.85;margin-bottom:26px;}
+.divider{width:46px;height:3px;background:var(--blue);margin-bottom:26px;}
+.stats{display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
+.stat{text-align:center;}
+.stat .n{font-family:"Inter";font-weight:800;font-size:30px;color:var(--blue);line-height:1;}
+.stat .l{font-size:11px;color:var(--dim);margin-top:6px;letter-spacing:0.04em;}
+.stat-op{font-size:20px;color:var(--faint);font-weight:300;}
+.author-card{margin-top:28px;background:var(--card);border:1px solid var(--line);border-left:3px solid var(--blue);border-radius:var(--r-md);padding:15px 20px;position:relative;z-index:1;}
+.author-card .a{font-weight:700;color:var(--blue);font-size:15px;}
+.author-card .b{font-size:13px;color:var(--dim);margin-top:3px;}
+
+.sec{position:relative;z-index:1;padding:38px 30px;border-top:1px solid var(--line);}
+.sec-tag{display:inline-block;background:rgba(54,93,170,0.12);color:var(--blue);font-size:12px;font-weight:700;padding:5px 15px;border:1px solid var(--blue-dim);border-radius:var(--pill);margin-bottom:16px;letter-spacing:0.05em;}
+.sec h2{font-family:var(--serif);font-weight:900;font-size:24px;line-height:1.42;margin-bottom:14px;color:#2a2620;}
+.sec h2 .g{color:var(--blue);}
+.sec>p{font-size:15px;color:var(--text);line-height:1.9;margin-bottom:14px;}
+.sec>p .hl{color:var(--blue);font-weight:500;}
+
+.steps{margin:14px 0 4px;counter-reset:s;}
+.steps .st{display:flex;gap:12px;margin-bottom:13px;font-size:14.5px;line-height:1.7;color:var(--text);}
+.steps .st::before{counter-increment:s;content:counter(s);flex-shrink:0;width:24px;height:24px;border-radius:50%;background:var(--blue);color:#fff;font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;margin-top:1px;}
+.steps .st b{color:var(--blue);}
+.tipline{font-size:13.5px;color:var(--dim);line-height:1.75;border-left:2px solid var(--blue-dim);padding-left:14px;margin:16px 0 2px;}
+.tipline b{color:var(--blue);}
+
+.acc{display:flex;flex-direction:column;gap:10px;}
+details.ch{background:var(--card);border:1px solid var(--line);border-radius:var(--r-md);overflow:hidden;}
+details.ch[open]{border-color:var(--blue-dim);box-shadow:0 4px 18px rgba(40,70,140,0.07);}
+details.ch summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:13px;padding:16px 18px;user-select:none;}
+details.ch summary::-webkit-details-marker{display:none;}
+.ch-n{flex-shrink:0;width:30px;height:30px;border-radius:8px;background:rgba(54,93,170,0.12);border:1px solid var(--blue-dim);color:var(--blue);font-family:"Inter";font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;}
+.ch-t{flex:1;font-weight:700;font-size:15px;color:var(--text);line-height:1.4;}
+.ch-t .zh{font-weight:500;color:var(--dim);font-size:13px;margin-left:4px;}
+.ch-tag{flex-shrink:0;font-family:var(--mono);font-size:10px;letter-spacing:0.03em;color:var(--blue);background:rgba(54,93,170,0.1);padding:3px 8px;border-radius:50px;}
+.ch-mk{flex-shrink:0;width:22px;height:22px;position:relative;}
+.ch-mk::before,.ch-mk::after{content:"";position:absolute;background:var(--blue);border-radius:2px;transition:transform .25s ease;}
+.ch-mk::before{top:10px;left:4px;width:14px;height:2px;}
+.ch-mk::after{top:4px;left:10px;width:2px;height:14px;}
+details.ch[open] .ch-mk::after{transform:rotate(90deg);opacity:0;}
+.ch-body{padding:4px 18px 18px;border-top:1px solid var(--line);}
+.ch-fit{font-size:13px;color:var(--dim);line-height:1.7;margin:12px 0 2px;}
+.ch-fit b{color:var(--blue);}
+
+.cp{background:var(--code);border:1px solid var(--blue-dim);border-radius:var(--r-md);padding:16px 16px;margin:12px 0 2px;position:relative;}
+.cp .pl{font-family:var(--mono);font-size:10.5px;letter-spacing:0.1em;color:var(--blue-bright);margin-bottom:11px;max-width:calc(100% - 70px);}
+.cp pre{font-family:var(--mono);font-size:12px;line-height:1.85;color:var(--code-tx);white-space:pre-wrap;word-break:break-word;}
+.copy-btn{position:absolute;top:11px;right:11px;background:rgba(78,119,204,0.18);border:1px solid var(--blue);color:var(--blue-bright);font-family:var(--sans);font-size:10.5px;font-weight:700;padding:5px 12px;border-radius:50px;cursor:pointer;transition:all .2s;letter-spacing:0.03em;z-index:2;}
+.copy-btn:hover{background:var(--blue);color:#fff;}
+.copy-btn.done{background:var(--blue);color:#fff;}
+.fillin{font-size:12.5px;color:var(--dim);line-height:1.7;margin-top:10px;border-left:2px solid var(--blue-dim);padding-left:12px;}
+.fillin b{color:var(--blue);}
+
+.mid-cta{position:relative;z-index:1;margin:0 30px;padding:30px 0;}
+.mid-card{background:linear-gradient(160deg,#0f1626 0%,#1b2740 100%);border:1px solid var(--blue-dim);border-radius:var(--r-lg);padding:28px 26px;text-align:center;position:relative;overflow:hidden;}
+.mid-card .mk{font-family:var(--mono);font-size:11px;letter-spacing:0.16em;color:var(--blue-bright);margin-bottom:12px;font-weight:500;}
+.mid-card h3{font-family:var(--serif);font-weight:900;font-size:21px;line-height:1.5;color:#fff;margin-bottom:10px;}
+.mid-card h3 .g{color:var(--blue-bright);}
+.mid-card p{font-size:13.5px;color:rgba(255,255,255,0.72);line-height:1.8;margin-bottom:20px;}
+.mid-card .skbtn{font-size:16px;padding:14px 38px;}
+
+.cta{position:relative;z-index:1;padding:46px 30px 54px;border-top:3px solid var(--blue-dim);}
+.cta-card{background:linear-gradient(160deg, var(--card) 0%, var(--card2) 100%);border:1px solid var(--blue-dim);border-radius:var(--r-lg);padding:32px 26px;}
+.cta-kicker{font-family:var(--mono);font-size:11px;letter-spacing:0.2em;color:var(--blue);margin-bottom:14px;font-weight:500;}
+.cta-card h2{font-family:var(--serif);font-weight:900;font-size:24px;line-height:1.45;margin-bottom:10px;color:#2a2620;}
+.cta-card h2 .g{color:var(--blue);}
+.cta-lead{font-size:14.5px;color:var(--dim);line-height:1.85;margin-bottom:22px;}
+.fit{margin:18px 0;}
+.fit .f{display:flex;gap:10px;font-size:14px;line-height:1.7;margin-bottom:10px;color:var(--text);}
+.fit .f::before{content:"\2714";color:var(--blue);font-weight:700;flex-shrink:0;}
+.gives{background:rgba(54,93,170,0.07);border:1px solid var(--line);border-radius:var(--r-md);padding:18px 20px;margin:20px 0;}
+.gives .gt{font-size:12px;font-weight:700;color:var(--blue);letter-spacing:0.05em;margin-bottom:12px;}
+.gives .gi{font-size:14px;line-height:1.75;margin-bottom:9px;padding-left:20px;position:relative;color:var(--text);}
+.gives .gi::before{content:"\2726";color:var(--blue);position:absolute;left:0;}
+.btn-wrap{text-align:center;margin-top:26px;}
+.skbtn{display:inline-flex;align-items:center;gap:8px;background:var(--blue);color:#fff;border-radius:var(--pill);padding:17px 46px;font-weight:900;font-size:18px;box-shadow:0 8px 28px rgba(54,93,170,0.28);transition:transform var(--bounce),box-shadow var(--bounce);position:relative;overflow:hidden;cursor:pointer;text-decoration:none;}
+.skbtn:hover{transform:translateY(-3px);box-shadow:0 14px 36px rgba(54,93,170,0.40);}
+.skbtn:active{transform:translateY(0);}
+.skbtn::after{content:'';position:absolute;top:0;left:-100%;width:50%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.45),transparent);transform:skewX(-25deg);animation:shine 3.4s ease-in-out infinite;}
+@keyframes shine{0%{left:-100%;}22%{left:160%;}100%{left:160%;}}
+.btn-note{margin-top:14px;font-size:12.5px;color:var(--dim);text-align:center;}
+
+.footer{position:relative;z-index:1;padding:24px 30px 46px;text-align:center;}
+.footer .fa{font-style:italic;font-size:14px;color:var(--blue);font-weight:700;}
+.footer .fc{font-size:11px;color:var(--faint);margin-top:8px;letter-spacing:0.05em;}
+
+@media(max-width:680px){
+  .top-cta{display:block;position:fixed;top:0;left:0;right:0;z-index:40;box-shadow:0 2px 12px rgba(0,0,0,0.12);}
+  body{padding-top:42px;}
+  .hero{padding-top:48px;}
+  .hero h1{font-size:30px;}
+  .sec h2{font-size:21px;}
+}
+</style>
+</head>
+<body>
+<script>document.documentElement.className+=' js';</script>
+<div class="glow"><div class="g1"></div><div class="g2"></div></div>
+
+<div class="top-cta">
+  <a href="https://www.skool.com/d11-lab/about" id="skool-top" target="_blank" rel="noopener">
+    <span>拿完這 5 個 Prompt 之後 →</span><span class="tc-em">加入 奇點研究所 × D11</span>
+  </a>
+</div>
+
+<aside class="side-cta">
+  <div class="sk-k">NEXT STEP</div>
+  <h4>把 AI<br><span class="g">當成你的團隊</span></h4>
+  <p>會複製 Prompt 只是開始，真正好玩的，在一群邊帶孩子邊用 AI 的媽媽裡面</p>
+  <a href="https://www.skool.com/d11-lab/about" id="skool-side" target="_blank" rel="noopener">加入 奇點研究所 × D11</a>
+</aside>
+
+<div class="wrap">
+
+  <div class="hero">
+    <div class="kicker">CLAUDE · IG PROMPT</div>
+    <h1>我把整個 IG<br>都交給了 <span class="g">Claude</span></h1>
+    <div class="hero-sub">從選題、寫 Hook、寫文案、改寫到定位，這 5 個 Prompt 我天天在用，複製下來、換上你自己的內容就能跑<br>一個全職媽媽，也能一個人把整個 IG 顧起來</div>
+    <div class="divider"></div>
+    <div class="stats">
+      <div class="stat"><div class="n">5</div><div class="l">個 · Prompt</div></div>
+      <div class="stat-op">·</div>
+      <div class="stat"><div class="n">1</div><div class="l">條龍 · 選題到發文</div></div>
+      <div class="stat-op">·</div>
+      <div class="stat"><div class="n">$0</div><div class="l">複製就能用</div></div>
+    </div>
+    <div class="author-card"><div class="a">美麗K媽</div><div class="b">一個全職媽媽，把 AI 當團隊，在 IG 一步一步慢慢長大</div></div>
+  </div>
+
+  <!-- 怎麼用 -->
+  <div class="sec fade">
+    <span class="sec-tag">開始之前 · 怎麼用</span>
+    <h2>不用工具、不用付費<br>貼上<span class="g">就能用</span></h2>
+    <p>這 5 個 Prompt，貼進 <span class="hl">Claude 或 ChatGPT</span> 都行，模型都讀得懂，我自己是用 Claude</p>
+    <p>每一個 Prompt 最後都留了一小段填空，把它換成<span class="hl">你自己的利基、受眾、內容</span>，再送出就好</p>
+    <div class="steps">
+      <div class="st">複製整段 Prompt，貼進 <b>Claude 或 ChatGPT</b></div>
+      <div class="st">把最後的填空，換成你自己的狀況</div>
+      <div class="st">接著貼上你要處理的內容，送出</div>
+    </div>
+    <div class="tipline"><b>順序是有設計的：</b>先用 1 選題、再用 2 寫 Hook、需要的話用 3 換成無臉版、用 4 把內容改到耐看、最後用 5 讓它有專業感，一路接著用就是一條龍</div>
+  </div>
+
+  <!-- 5 個 Prompt -->
+  <div class="sec fade">
+    <span class="sec-tag">5 個 Prompt · 一路接著用</span>
+    <h2>從一句話選題<br><span class="g">到整篇發出去</span></h2>
+    <p>點開複製，貼進去，換上你的內容就能跑</p>
+    <div class="acc">
+
+      <details class="ch" open><summary><span class="ch-n">1</span><span class="ch-t">選題<span class="zh">找出會紅又沒人做的題目</span></span><span class="ch-tag">Prompt 1</span><span class="ch-mk"></span></summary>
+      <div class="ch-body">
+        <div class="ch-fit"><b>用在：</b>不知道要發什麼、選題老是撞同一批的時候</div>
+        <div class="cp"><button class="copy-btn" onclick="copyCp(this)">複製</button><div class="pl">貼進 Claude 或 ChatGPT，換上你的填空</div><pre>扮演一位有 10 年經驗的資深 IG 成長策略師 專門服務過 50 個從 0 成長到 10 萬追蹤的帳號
+
+你的任務
+分析我的利基市場 找出目前 7 個最飽和 最讓觀眾滑過去的內容模式 然後產出 10 個打破這些模式 同時維持演算法相容性的原創貼文創意
+
+每個創意必須包含以下 5 個項目
+① 核心概念 這篇在說什麼
+② 開場 Hook 讓人停下來的第一句話
+③ 最適合的格式 輪播 Reel 單圖
+④ 為什麼這個創意感覺新鮮 差異點在哪
+⑤ 為什麼會讓人收藏或分享 留存邏輯
+
+最後 幫我排出最有潛力的前 3 名 並說明理由</pre></div>
+        <div class="fillin"><b>換成你的：</b>利基市場＝你的跑道在哪裡／受眾＝你在跟誰說話／目標＝你想要什麼結果</div>
+      </div></details>
+
+      <details class="ch"><summary><span class="ch-n">2</span><span class="ch-t">寫 Hook<span class="zh">讓人停下來的第一句</span></span><span class="ch-tag">Prompt 2</span><span class="ch-mk"></span></summary>
+      <div class="ch-body">
+        <div class="ch-fit"><b>用在：</b>想好主題了，但開頭那句抓不住人</div>
+        <div class="cp"><button class="copy-btn" onclick="copyCp(this)">複製</button><div class="pl">貼進 Claude 或 ChatGPT，換上你的填空</div><pre>扮演一位專精 IG 病毒式傳播的頂級文案寫手 你寫過的 Hook 平均讓完播率提升 40%
+
+你的任務
+針對我給你的這個創意 生成 15 個開場 Hook 平均分配到以下 5 種類型 每種 3 個
+好奇心型 讓人想知道後面在說什麼
+反向思考型 說出大多數人想不到的角度
+情緒張力型 讓人有感覺 想繼續看
+具體數字型 用數據讓人停下來
+低調權威型 不炫耀 但讓人感覺你真的懂
+
+每個 Hook 的規則
+不能用標題黨或誇張承諾
+讀起來要像真人說話 不像 AI 生的
+長度控制在 15 字以內
+
+最後排出最強的前 5 名 並說明每一個強在哪裡</pre></div>
+        <div class="fillin"><b>換成你的：</b>創意＝你想做的主題／受眾＝你的目標觀眾／語氣＝你想呈現的說話風格</div>
+      </div></details>
+
+      <details class="ch"><summary><span class="ch-n">3</span><span class="ch-t">無臉內容<span class="zh">不露臉也能做</span></span><span class="ch-tag">Prompt 3</span><span class="ch-mk"></span></summary>
+      <div class="ch-body">
+        <div class="ch-fit"><b>用在：</b>不想露臉、沒有設備，也想把內容做出來</div>
+        <div class="cp"><button class="copy-btn" onclick="copyCp(this)">複製</button><div class="pl">貼進 Claude 或 ChatGPT，換上你的填空</div><pre>扮演一位 IG 無臉內容策略師 專門幫不想露臉 沒有專業設備的創作者做出高觸及的內容
+
+你的任務
+把我給你的這個創意 轉化成 3 種完全不同的無臉內容版本
+版本一 輪播貼文
+版本二 純文字 Reel 螢幕文字 無需配音
+版本三 無聲視覺貼文 靜態或慢動作
+
+每個版本必須提供
+① 完整內容結構 每一張 每一幕說什麼
+② 螢幕上顯示的文字 逐字稿
+③ 視覺方向 背景 字型 顏色建議
+④ 說明文案 caption 怎麼寫
+⑤ CTA 結尾怎麼讓人留言或收藏
+
+限制 不露臉 不配音 不跟風 不需複雜剪輯</pre></div>
+        <div class="fillin"><b>換成你的：</b>創意／受眾／目標＝這組內容想達到什麼效果</div>
+      </div></details>
+
+      <details class="ch"><summary><span class="ch-n">4</span><span class="ch-t">留存優化<span class="zh">把內容改到耐看、被收藏</span></span><span class="ch-tag">Prompt 4</span><span class="ch-mk"></span></summary>
+      <div class="ch-body">
+        <div class="ch-fit"><b>用在：</b>內容有了，但看的人留不住、也不收藏</div>
+        <div class="cp"><button class="copy-btn" onclick="copyCp(this)">複製</button><div class="pl">貼進 Claude 或 ChatGPT，換上你的填空</div><pre>扮演一位 IG 留存優化專家 你的專長是把普通內容改寫成讓人看完 收藏 甚至二刷的版本
+
+你的任務
+幫我改寫這份內容 同時最大化以下 4 個指標
+① 觀看時長 讓人捨不得滑走
+② 完播率 每一行都要帶動下一行
+③ 收藏數 讓人覺得 這個之後會用到
+④ 分享數 讓人覺得 這個要傳給朋友看
+
+改寫規則
+刪掉所有弱句 廢話 填充詞
+每一行結尾要讓人想繼續讀下一行
+保持自然口語 精準 完全不推銷
+改完後條列說明改了什麼 為什麼這樣更好</pre></div>
+        <div class="fillin"><b>換成你的：</b>內容＝把想優化的草稿貼在這裡／語氣＝你現有的說話風格／受眾＝你的目標觀眾</div>
+      </div></details>
+
+      <details class="ch"><summary><span class="ch-n">5</span><span class="ch-t">品牌定位<span class="zh">有專業感又不像在說教</span></span><span class="ch-tag">Prompt 5</span><span class="ch-mk"></span></summary>
+      <div class="ch-body">
+        <div class="ch-fit"><b>用在：</b>想讓內容有專業感，又不想顯得高高在上</div>
+        <div class="cp"><button class="copy-btn" onclick="copyCp(this)">複製</button><div class="pl">貼進 Claude 或 ChatGPT，換上你的填空</div><pre>扮演一位頂級品牌定位顧問 專門幫個人 IP 在不自吹自擂的情況下建立真實的專業權威感
+
+你的任務
+幫我改寫這份內容 讓它傳遞出能力與權威 同時做到
+不像在教人 不像大師在說話
+不炫耀數字 不刻意強調成就
+不顯得自大或高高在上
+讀起來像一個真正懂的人在說真話
+
+輸出 3 個改寫版本
+版本一 優雅版 有質感 有留白
+版本二 直接版 短句 快節奏 有力道
+版本三 高端感版 精準用字 低調但有份量
+
+每個版本改完後 說明這個版本適合什麼場合</pre></div>
+        <div class="fillin"><b>換成你的：</b>內容＝把想改寫的草稿貼在這裡／受眾＝你的目標觀眾／品牌語氣＝你現在的說話風格</div>
+      </div></details>
+
+    </div>
+  </div>
+
+  <!-- 後段 CTA -->
+  <div class="cta fade">
+    <div class="cta-card">
+      <div class="cta-kicker">下一步</div>
+      <h2>Prompt 你拿走了，<span class="g">接下來換我陪你把它用起來</span></h2>
+      <div class="cta-lead">這 5 個 Prompt 解決的是「怎麼開始」，但把 AI 真的變成你每天的幫手、用它一個人把 IG 做起來，這條路你不用自己慢慢摸</div>
+      <div class="fit">
+        <div class="f">想用 AI 一個人把整個 IG 顧起來的媽媽</div>
+        <div class="f">存了一堆 Prompt，卻從來沒真的用起來的人</div>
+        <div class="f">想把顧小孩的空檔，慢慢變成一份收入的你</div>
+      </div>
+      <div class="gives">
+        <div class="gt">進來你會拿到</div>
+        <div class="gi">一套從選題到發文的完整 AI 流程</div>
+        <div class="gi">可以直接抄的 Prompt 跟工具，不只這 5 個</div>
+        <div class="gi">一群跟你一樣、邊帶孩子邊用 AI 的媽媽</div>
+      </div>
+      <div class="btn-wrap">
+        <a class="skbtn" href="https://www.skool.com/d11-lab/about" id="skool-link" target="_blank" rel="noopener">加入 奇點研究所 × D11 →</a>
+        <div class="btn-note">一個週末就能上手，你只是還沒開始，不是真的做不到</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="fa">@lovekaren0316</div>
+    <div class="fc">每週分享可以直接用的 AI 工具跟 Prompt</div>
+  </div>
+
+</div>
+
+<script>
+function copyCp(btn){
+  var pre = btn.parentElement.querySelector('pre');
+  var text = pre.innerText;
+  navigator.clipboard.writeText(text).then(function(){
+    var old = btn.textContent;
+    btn.textContent = '已複製 ✓'; btn.classList.add('done');
+    setTimeout(function(){ btn.textContent = old; btn.classList.remove('done'); }, 1800);
+  }).catch(function(){ btn.textContent = '請手動選取'; });
+}
+function revealOnScroll(){
+  var vh = window.innerHeight || document.documentElement.clientHeight;
+  var els = document.querySelectorAll('.fade:not(.vis)');
+  for(var i=0;i<els.length;i++){
+    if(els[i].getBoundingClientRect().top < vh*0.94){ els[i].classList.add('vis'); }
+  }
+}
+window.addEventListener('scroll', revealOnScroll, {passive:true});
+window.addEventListener('resize', revealOnScroll);
+window.addEventListener('load', revealOnScroll);
+revealOnScroll();
+setTimeout(function(){
+  var all = document.querySelectorAll('.fade');
+  for(var i=0;i<all.length;i++){ all[i].classList.add('vis'); }
+}, 2500);
+</script>
+
+<!--
+═══════════════════════════════════════════
+落地頁設定備註（不顯示，給操盤手）
+═══════════════════════════════════════════
+· 用途：「我把 IG 交給 Claude · 5 個 Prompt」輪播（W26 #25）的 CTA 承接頁——留言「AI」後 DM 自動回傳此連結
+· 內容：5 個 Prompt（選題／寫 Hook／無臉內容／留存優化／品牌定位）照輪播原文，可複製，每個附填空提示
+· 底改自 Jason chatgpt隱藏指令 landing 版型（可複製手風琴＋三段 CTA）
+· 視覺：K媽 米色手寫藍系（米色 #F4F1EA + 藍 #365DAA），對應輪播調性
+· K媽 禁區：文案無句號驚嘆號破折號；Prompt 區塊為原文照登
+· 三段 Skool CTA（統一 奇點研究所 × D11）：
+    前段 → 桌機右側吸附小卡 .side-cta（id=skool-side）／手機頂部細橫幅 .top-cta（id=skool-top）
+    中段 → 穿插卡 .mid-cta（id=skool-mid）
+    後段 → 頁尾完整卡 .cta（id=skool-link）
+· Skool 連結：https://www.skool.com/d11-lab/about，換社群統一改這四個 id 的 href
+═══════════════════════════════════════════
+-->
+</body>
+</html>
