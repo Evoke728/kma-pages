@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>K媽｜你戴的那副面具 · 四面具解析</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;700;900&family=Noto+Sans+TC:wght@400;500;700;900&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* === 暖焦糖療癒色 === */
+  --skin-primary:   #B5764A;   /* 焦糖，按鈕/標籤 */
+  --skin-accent:    #D0A06B;   /* 淺焦糖，次要 */
+  --skin-highlight: #E7C79A;   /* mark 底色 */
+  --skin-ink:       #3A2717;   /* 近黑暖褐，邊框/陰影 */
+  --skin-cream:     #FFFBF4;   /* 卡片底 */
+  --skin-bg:        #F2E6D2;   /* 頁面底，暖奶油 */
+  --skin-warm:      #DFC7A0;   /* 邊框中間色 */
+  --skin-white:     #3A281B;   /* 文字，深焦褐 */
+
+  --shadow-sm: 4px 4px 0 var(--skin-ink);
+  --shadow-md: 7px 7px 0 var(--skin-ink);
+  --shadow-lg: 11px 11px 0 var(--skin-ink);
+  --border-thick:  3px solid var(--skin-warm);
+  --border-medium: 2px solid var(--skin-warm);
+  --radius-md:16px; --radius-lg:24px; --radius-pill:50px;
+  --ease-bounce: 400ms cubic-bezier(0.34,1.56,0.64,1);
+  --serif:"Noto Serif TC",serif; --sans:"Noto Sans TC","Inter",sans-serif;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#F2E6D2; font-family:var(--sans); color:var(--skin-white); line-height:1.8; overflow-x:hidden; }
+.wrap { max-width:680px; margin:0 auto; position:relative; background:var(--skin-bg); }
+.blob { position:absolute; border-radius:60% 40% 30% 70% / 60% 30% 70% 40%;
+  animation:morph 8s ease-in-out infinite; opacity:0.30; z-index:0; pointer-events:none; filter:blur(6px); }
+.blob--1 { width:min(70vw,420px); height:min(70vw,420px);
+  background:linear-gradient(135deg, #B5764A, #D0A06B); top:-6%; right:-16%; }
+.blob--2 { width:min(60vw,360px); height:min(60vw,360px);
+  background:linear-gradient(135deg, #D0A06B, #DFC7A0); bottom:8%; left:-18%; animation-delay:-4s; }
+@keyframes morph {
+  0%,100% { border-radius:60% 40% 30% 70% / 60% 30% 70% 40%; }
+  25% { border-radius:30% 60% 70% 40% / 50% 60% 30% 40%; }
+  50% { border-radius:50% 60% 30% 70% / 30% 40% 70% 60%; }
+  75% { border-radius:60% 30% 60% 40% / 70% 50% 40% 30%; }
+}
+.skin-mark { background:var(--skin-highlight); color:#3A281B; padding:0.08em 0.35em; border-radius:5px; display:inline-block; box-decoration-break:clone; }
+.fade-up { opacity:0; transform:translateY(32px); transition:opacity .6s ease, transform .6s ease; }
+.fade-up.visible { opacity:1; transform:translateY(0); }
+
+.hero { position:relative; z-index:1; padding:62px 28px 44px; text-align:center; }
+.hero-tag { display:inline-block; background:var(--skin-primary); color:#fff; border:var(--border-medium); border-radius:var(--radius-pill); padding:6px 16px; font-size:13px; font-weight:700; box-shadow:var(--shadow-sm); margin-bottom:22px; }
+.hero-title { font-family:var(--serif); font-weight:900; font-size:28px; line-height:1.5; color:var(--skin-white); }
+.hero-sub { margin-top:16px; font-size:14px; color:rgba(58,40,27,0.62); line-height:1.85; }
+
+.section { position:relative; z-index:1; padding:34px 28px; }
+.section-label { display:inline-block; background:var(--skin-primary); color:#fff; border:var(--border-medium); border-radius:var(--radius-pill); padding:4px 14px; font-size:12px; font-weight:700; margin-bottom:20px; box-shadow:var(--shadow-sm); }
+.quiz-q { font-family:var(--serif); font-size:20px; font-weight:700; line-height:1.6; margin-bottom:8px; }
+.quiz-sub { font-size:14px; color:rgba(58,40,27,0.55); margin-bottom:26px; font-weight:500; }
+
+.opt { background:var(--skin-cream); border:var(--border-thick); border-radius:var(--radius-md); box-shadow:var(--shadow-sm); padding:18px 20px; margin-bottom:18px; cursor:pointer; transition:transform var(--ease-bounce), box-shadow var(--ease-bounce); }
+.opt:hover { transform:translate(-3px,-3px); box-shadow:var(--shadow-md); }
+.opt.active { box-shadow:var(--shadow-md); }
+.opt-head { display:flex; align-items:center; gap:14px; font-size:16.5px; font-weight:700; }
+.opt-letter { display:inline-flex; align-items:center; justify-content:center; width:34px; height:34px; background:var(--skin-highlight); color:#3A281B; border:var(--border-medium); border-radius:50%; font-family:"Inter"; font-weight:700; font-size:16px; flex-shrink:0; }
+.opt-result { max-height:0; overflow:hidden; transition:max-height .5s ease, margin .3s, padding .3s; }
+.res-reveal { font-family:var(--serif); font-size:17px; font-weight:900; color:var(--skin-primary); margin-bottom:16px; }
+.res-reveal span { color:rgba(58,40,27,0.55); font-family:var(--sans); font-size:13px; font-weight:700; }
+.opt.active .opt-result { max-height:1200px; margin-top:16px; padding-top:16px; border-top:2px dashed var(--skin-warm); }
+.res-blk { margin-bottom:15px; }
+.res-h { font-size:13px; font-weight:700; color:var(--skin-primary); margin-bottom:6px; letter-spacing:0.03em; }
+.res-t { font-size:14.5px; color:rgba(58,40,27,0.9); line-height:1.85; }
+.res-list { list-style:none; margin-top:2px; }
+.res-list li { font-size:14px; color:rgba(58,40,27,0.9); line-height:1.7; padding-left:20px; position:relative; margin-bottom:7px; }
+.res-list li::before { content:"\2665"; color:var(--skin-primary); position:absolute; left:0; font-size:12px; }
+
+.transition { text-align:center; padding:14px 0; position:relative; z-index:1; }
+.transition-text { display:inline-block; background:var(--skin-cream); border:var(--border-medium); border-radius:var(--radius-pill); padding:8px 20px; font-size:14px; font-weight:700; box-shadow:var(--shadow-sm); }
+
+.bridge { position:relative; z-index:1; padding:34px 28px; }
+.bridge-card { background:var(--skin-cream); border:var(--border-thick); border-radius:var(--radius-lg); box-shadow:var(--shadow-md); padding:28px 24px; }
+.bridge p { font-size:15px; color:rgba(58,40,27,0.88); line-height:1.9; margin-bottom:14px; }
+.bridge .em { font-family:var(--serif); font-size:18px; font-weight:900; line-height:1.7; margin:6px 0 16px; }
+
+.intro { position:relative; z-index:1; padding:34px 28px; }
+.intro-card { background:#FDF5EA; border:var(--border-thick); border-radius:var(--radius-lg); box-shadow:var(--shadow-md); padding:26px 24px; }
+.intro-name { font-family:var(--serif); font-size:20px; font-weight:900; margin-bottom:12px; }
+.intro-text { font-size:14.5px; color:rgba(58,40,27,0.88); line-height:1.9; }
+
+.cta { position:relative; z-index:1; padding:26px 28px 56px; text-align:center; }
+.cta-line { font-family:var(--serif); font-size:21px; font-weight:900; line-height:1.6; margin-bottom:10px; }
+.cta-sub { font-size:14.5px; color:rgba(58,40,27,0.55); margin-bottom:26px; line-height:1.8; font-weight:500; }
+.skin-btn { display:inline-flex; align-items:center; gap:8px; background:var(--skin-primary); color:#fff; border:var(--border-thick); border-radius:var(--radius-pill); padding:16px 44px; font-weight:900; font-size:18px; box-shadow:var(--shadow-md); transition:transform var(--ease-bounce), box-shadow var(--ease-bounce); position:relative; overflow:hidden; cursor:pointer; text-decoration:none; }
+.skin-btn:hover { transform:translate(-4px,-4px); box-shadow:var(--shadow-lg); }
+.skin-btn::after { content:''; position:absolute; top:0; left:-100%; width:50%; height:100%; background:linear-gradient(90deg,transparent,rgba(255,255,255,0.4),transparent); transform:skewX(-25deg); animation:shine 3s ease-in-out infinite; }
+@keyframes shine { 0%{left:-100%;} 20%{left:150%;} 100%{left:150%;} }
+.cta-note { margin-top:16px; font-size:12.5px; color:rgba(58,40,27,0.5); font-weight:500; }
+.footer { position:relative; z-index:1; padding:22px 28px 40px; text-align:center; }
+.footer-acc { font-style:italic; font-size:14px; color:var(--skin-primary); font-weight:700; }
+
+.side-cta{display:none;}
+@media(min-width:1120px){
+ .side-cta{display:block;position:fixed;top:140px;right:max(20px,calc((100vw - 680px)/2 - 220px));width:200px;z-index:40;background:var(--skin-cream);border:var(--border-thick);border-radius:var(--radius-lg);box-shadow:var(--shadow-md);padding:18px 18px 20px;text-align:center;}
+ .side-cta .fk{font-family:var(--sans);font-size:10px;letter-spacing:0.14em;color:var(--skin-primary);font-weight:700;margin-bottom:8px;}
+ .side-cta h4{font-family:var(--serif);font-size:16px;font-weight:900;color:var(--skin-white);line-height:1.5;margin-bottom:12px;}
+ .side-cta h4 .g{color:var(--skin-primary);}
+ .side-cta a{display:block;background:var(--skin-primary);color:#fff;border:var(--border-medium);border-radius:var(--radius-pill);padding:11px 14px;font-weight:900;font-size:14px;text-decoration:none;box-shadow:var(--shadow-sm);transition:transform var(--ease-bounce);}
+ .side-cta a:hover{transform:translate(-2px,-2px);}
+}
+</style>
+</head>
+<body>
+<aside class="side-cta">
+  <div class="fk">JOIN US</div>
+  <h4>跟我一起<br><span class="g">用 AI 做內容</span></h4>
+  <a href="https://www.skool.com/d11-lab" target="_blank" rel="noopener">加入社群 →</a>
+</aside>
+<div class="wrap">
+  <div class="blob blob--1"></div>
+  <div class="blob blob--2"></div>
+
+  <div class="hero">
+    <span class="hero-tag">#生日月份 · 四面具解析</span>
+    <div class="hero-title">你戴的那副面具<br><span class="skin-mark">藏著一句沒說出口的真話</span></div>
+    <div class="hero-sub">剛剛你選的那副面具 不是隨便選的<br>它罩著的 是一句你憋很久 卻一直沒說出口的真話<br>往下找你選的字母 看看面具底下 你真正想說的是什麼</div>
+  </div>
+
+  <div class="section fade-up">
+    <span class="section-label">點開你選的面具</span>
+    <div class="quiz-q">你憑直覺選的 是哪一副面具</div>
+    <div class="quiz-sub">點下面你選的那一副 揭曉面具底下你沒說出口的真話</div>
+
+    <div class="opt" onclick="toggle(this)">
+      <div class="opt-head"><span class="opt-letter">A</span>微笑面具</div>
+      <div class="opt-result">
+        <div class="res-reveal"><span>你戴的是</span><br>微笑面具「我沒事」</div>
+        <div class="res-blk"><div class="res-h">你的面具</div><div class="res-t">你總是笑著說我沒事<br>把難過藏在上揚的嘴角後面 讓人以為你真的很好</div></div>
+        <div class="res-blk"><div class="res-h">面具底下你真正想說的</div><div class="res-t">我好累 好想有一次不用假裝<br>我說我沒事的時候 其實最需要一個擁抱</div></div>
+        <div class="res-blk"><div class="res-h">你可以試著這樣做</div><ul class="res-list">
+          <li>對一個安全的人 說一次「我今天不太好」</li>
+          <li>難過不需要先證明它值得 你可以直接說出來</li>
+        </ul></div>
+      </div>
+    </div>
+
+    <div class="opt" onclick="toggle(this)">
+      <div class="opt-head"><span class="opt-letter">B</span>堅強面具</div>
+      <div class="opt-result">
+        <div class="res-reveal"><span>你戴的是</span><br>堅強面具「我可以」</div>
+        <div class="res-blk"><div class="res-h">你的面具</div><div class="res-t">什麼都自己扛 一問就說我可以<br>你怕示弱一次 就被看成撐不起來的人</div></div>
+        <div class="res-blk"><div class="res-h">面具底下你真正想說的</div><div class="res-t">我的堅強是被逼出來的 沒人問過我累不累<br>好想有一次 是別人先說「放著我來」</div></div>
+        <div class="res-blk"><div class="res-h">你可以試著這樣做</div><ul class="res-list">
+          <li>把「我可以」換成「我需要一點幫忙」</li>
+          <li>求助不會讓你變弱 那是把力氣留給更重要的事</li>
+        </ul></div>
+      </div>
+    </div>
+
+    <div class="opt" onclick="toggle(this)">
+      <div class="opt-head"><span class="opt-letter">C</span>乖巧面具</div>
+      <div class="opt-result">
+        <div class="res-reveal"><span>你戴的是</span><br>乖巧面具「我都配合」</div>
+        <div class="res-blk"><div class="res-h">你的面具</div><div class="res-t">習慣把別人放前面 什麼都說我都好<br>久了 連自己都以為真的沒有意見</div></div>
+        <div class="res-blk"><div class="res-h">面具底下你真正想說的</div><div class="res-t">我也有想要的 只是好久沒人問我想要什麼<br>也想有一次 是別人先想到我</div></div>
+        <div class="res-blk"><div class="res-h">你可以試著這樣做</div><ul class="res-list">
+          <li>說出一個「我想要」 先從一件小事開始</li>
+          <li>你的需要 跟別人的一樣重要</li>
+        </ul></div>
+      </div>
+    </div>
+
+    <div class="opt" onclick="toggle(this)">
+      <div class="opt-head"><span class="opt-letter">D</span>淡定面具</div>
+      <div class="opt-result">
+        <div class="res-reveal"><span>你戴的是</span><br>淡定面具「無所謂」</div>
+        <div class="res-blk"><div class="res-h">你的面具</div><div class="res-t">什麼都說無所謂 我習慣了<br>用不在乎把在乎藏起來 怕一認真就被說太敏感</div></div>
+        <div class="res-blk"><div class="res-h">面具底下你真正想說的</div><div class="res-t">其實那些話我都記得 我太在乎了<br>只是學會把感受縮到最小 這樣就不會受傷</div></div>
+        <div class="res-blk"><div class="res-h">你可以試著這樣做</div><ul class="res-list">
+          <li>承認一次「其實我有在意」</li>
+          <li>你的感受 值得被當一回事</li>
+        </ul></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="transition"><span class="transition-text">繼續往下滑 ⬇️</span></div>
+
+  <div class="bridge fade-up">
+    <div class="bridge-card">
+      <p>你會戴上這副面具 不是因為你假<br>是因為你有一些累 有一些委屈 有一些壓力<br>一直沒有說出來</p>
+      <p class="em">你把「<span class="skin-mark">我沒事</span>」說得太習慣<br>習慣到 連你自己都快忘了面具底下的樣子</p>
+      <p>但那句沒說出口的真話 才是最真實的你<br>也是最該被好好對待的那一部分</p>
+      <p class="em">你可以拿下面具了<br>你的真相 <span class="skin-mark">值得被聽見</span></p>
+    </div>
+  </div>
+
+  <div class="intro fade-up">
+    <div class="intro-card">
+      <div class="intro-name">Hi 我是 <span class="skin-mark">K媽</span></div>
+      <div class="intro-text">我是一個媽媽 也用 AI ＋ 自媒體在記錄生活 經營內容<br><br>像這篇你剛剛滑過的圖文 其實就是我用 AI 一張一張做出來的<br>我把「怎麼用 AI 輕鬆做內容 把帳號經營起來」都整理在社群裡</div>
+    </div>
+  </div>
+
+  <div class="cta fade-up">
+    <div class="cta-line">連這篇圖文<br>都是我用 <span class="skin-mark">AI</span> 做出來的</div>
+    <div class="cta-sub">想學怎麼用 AI ＋ 自媒體 把內容輕鬆做起來<br>我都整理在這個社群裡 一群人一起玩</div>
+    <a class="skin-btn" href="https://www.skool.com/d11-lab" target="_blank" rel="noopener">加入 奇點研究所 × D11</a>
+    <div class="cta-note">點擊加入社群 跟我一起玩 AI</div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-acc">@lovekaren0316</div>
+  </div>
+</div>
+
+<script>
+function toggle(el) {
+  const wasActive = el.classList.contains('active');
+  document.querySelectorAll('.opt').forEach(o => o.classList.remove('active'));
+  if (!wasActive) el.classList.add('active');
+}
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
