@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>K媽｜測測看你最近的改變 · 四型解析</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;700;900&family=Noto+Sans+TC:wght@400;500;700;900&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --skin-primary:   #A05A34;
+  --skin-accent:    #C68B52;
+  --skin-highlight: #F0D9A8;
+  --skin-ink:       #2B1D14;
+  --skin-cream:     #FEF9F0;
+  --skin-bg:        #F3E7D2;
+  --skin-warm:      #D9C29C;
+  --skin-white:     #2B1D14;
+  --shadow-sm: 4px 4px 0 var(--skin-ink);
+  --shadow-md: 7px 7px 0 var(--skin-ink);
+  --shadow-lg: 11px 11px 0 var(--skin-ink);
+  --border-thick:  3px solid var(--skin-warm);
+  --border-medium: 2px solid var(--skin-warm);
+  --radius-md:16px; --radius-lg:24px; --radius-pill:50px;
+  --ease-bounce: 400ms cubic-bezier(0.34,1.56,0.64,1);
+  --serif:"Noto Serif TC",serif; --sans:"Noto Sans TC","Inter",sans-serif;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:var(--skin-bg); font-family:var(--sans); color:var(--skin-white); line-height:1.8; overflow-x:hidden; }
+.wrap { max-width:680px; margin:0 auto; position:relative; background:var(--skin-bg); }
+.blob { position:absolute; border-radius:60% 40% 30% 70% / 60% 30% 70% 40%;
+  animation:morph 8s ease-in-out infinite; opacity:0.30; z-index:0; pointer-events:none; filter:blur(6px); }
+.blob--1 { width:min(70vw,420px); height:min(70vw,420px);
+  background:linear-gradient(135deg, #A05A34, #C68B52); top:-6%; right:-16%; }
+.blob--2 { width:min(60vw,360px); height:min(60vw,360px);
+  background:linear-gradient(135deg, #C68B52, #D9C29C); bottom:8%; left:-18%; animation-delay:-4s; }
+@keyframes morph {
+  0%,100% { border-radius:60% 40% 30% 70% / 60% 30% 70% 40%; }
+  25% { border-radius:30% 60% 70% 40% / 50% 60% 30% 40%; }
+  50% { border-radius:50% 60% 30% 70% / 30% 40% 70% 60%; }
+  75% { border-radius:60% 30% 60% 40% / 70% 50% 40% 30%; }
+}
+.skin-mark { background:var(--skin-highlight); color:var(--skin-ink); padding:0.08em 0.35em; border-radius:5px; display:inline-block; box-decoration-break:clone; }
+.fade-up { opacity:0; transform:translateY(32px); transition:opacity .6s ease, transform .6s ease; }
+.fade-up.visible { opacity:1; transform:translateY(0); }
+.hero { position:relative; z-index:1; padding:62px 28px 44px; text-align:center; }
+.hero-tag { display:inline-block; background:var(--skin-primary); color:#fff; border:var(--border-medium); border-radius:var(--radius-pill); padding:6px 16px; font-size:13px; font-weight:700; box-shadow:var(--shadow-sm); margin-bottom:22px; }
+.hero-title { font-family:var(--serif); font-weight:900; font-size:28px; line-height:1.5; color:var(--skin-white); }
+.hero-sub { margin-top:16px; font-size:14px; color:rgba(43,29,20,0.62); line-height:1.85; }
+.section { position:relative; z-index:1; padding:34px 28px; }
+.section-label { display:inline-block; background:var(--skin-primary); color:#fff; border:var(--border-medium); border-radius:var(--radius-pill); padding:4px 14px; font-size:12px; font-weight:700; margin-bottom:20px; box-shadow:var(--shadow-sm); }
+.quiz-q { font-family:var(--serif); font-size:20px; font-weight:700; line-height:1.6; margin-bottom:8px; }
+.quiz-sub { font-size:14px; color:rgba(43,29,20,0.55); margin-bottom:26px; font-weight:500; }
+.opt { background:var(--skin-cream); border:var(--border-thick); border-radius:var(--radius-md); box-shadow:var(--shadow-sm); padding:18px 20px; margin-bottom:18px; cursor:pointer; transition:transform var(--ease-bounce), box-shadow var(--ease-bounce); }
+.opt:hover { transform:translate(-3px,-3px); box-shadow:var(--shadow-md); }
+.opt.active { box-shadow:var(--shadow-md); }
+.opt-head { display:flex; align-items:center; gap:14px; font-size:16.5px; font-weight:700; }
+.opt-letter { display:inline-flex; align-items:center; justify-content:center; width:34px; height:34px; background:var(--skin-highlight); color:var(--skin-ink); border:var(--border-medium); border-radius:50%; font-family:"Inter"; font-weight:700; font-size:16px; flex-shrink:0; }
+.opt-result { max-height:0; overflow:hidden; transition:max-height .5s ease, margin .3s, padding .3s; }
+.res-reveal { font-family:var(--serif); font-size:17px; font-weight:900; color:var(--skin-primary); margin-bottom:16px; }
+.res-reveal span { color:rgba(43,29,20,0.55); font-family:var(--sans); font-size:13px; font-weight:700; }
+.opt.active .opt-result { max-height:1800px; margin-top:16px; padding-top:16px; border-top:2px dashed var(--skin-warm); }
+.res-blk { margin-bottom:15px; }
+.res-h { font-size:13px; font-weight:700; color:var(--skin-primary); margin-bottom:6px; letter-spacing:0.03em; }
+.res-t { font-size:14.5px; color:rgba(43,29,20,0.9); line-height:1.85; }
+.res-quote { font-family:var(--serif); font-size:15px; font-weight:700; color:var(--skin-white); background:#FBF1E0; border-left:4px solid var(--skin-primary); border-radius:8px; padding:12px 16px; margin-top:10px; line-height:1.8; }
+.transition { text-align:center; padding:14px 0; position:relative; z-index:1; }
+.transition-text { display:inline-block; background:var(--skin-cream); border:var(--border-medium); border-radius:var(--radius-pill); padding:8px 20px; font-size:14px; font-weight:700; box-shadow:var(--shadow-sm); }
+.bridge { position:relative; z-index:1; padding:34px 28px; }
+.bridge-card { background:var(--skin-cream); border:var(--border-thick); border-radius:var(--radius-lg); box-shadow:var(--shadow-md); padding:28px 24px; }
+.bridge p { font-size:15px; color:rgba(43,29,20,0.88); line-height:1.9; margin-bottom:14px; }
+.bridge .em { font-family:var(--serif); font-size:18px; font-weight:900; line-height:1.7; margin:6px 0 16px; }
+.intro { position:relative; z-index:1; padding:34px 28px; }
+.intro-card { background:#FBF1E0; border:var(--border-thick); border-radius:var(--radius-lg); box-shadow:var(--shadow-md); padding:26px 24px; }
+.intro-name { font-family:var(--serif); font-size:20px; font-weight:900; margin-bottom:12px; }
+.intro-text { font-size:14.5px; color:rgba(43,29,20,0.88); line-height:1.9; }
+.cta { position:relative; z-index:1; padding:26px 28px 56px; text-align:center; }
+.cta-line { font-family:var(--serif); font-size:21px; font-weight:900; line-height:1.6; margin-bottom:10px; }
+.cta-sub { font-size:14.5px; color:rgba(43,29,20,0.55); margin-bottom:26px; line-height:1.8; font-weight:500; }
+.skin-btn { display:inline-flex; align-items:center; gap:8px; background:var(--skin-primary); color:#fff; border:var(--border-thick); border-radius:var(--radius-pill); padding:16px 44px; font-weight:900; font-size:18px; box-shadow:var(--shadow-md); transition:transform var(--ease-bounce), box-shadow var(--ease-bounce); position:relative; overflow:hidden; cursor:pointer; text-decoration:none; }
+.skin-btn:hover { transform:translate(-4px,-4px); box-shadow:var(--shadow-lg); }
+.skin-btn::after { content:''; position:absolute; top:0; left:-100%; width:50%; height:100%; background:linear-gradient(90deg,transparent,rgba(255,255,255,0.4),transparent); transform:skewX(-25deg); animation:shine 3s ease-in-out infinite; }
+@keyframes shine { 0%{left:-100%;} 20%{left:150%;} 100%{left:150%;} }
+.cta-note { margin-top:16px; font-size:12.5px; color:rgba(43,29,20,0.5); font-weight:500; }
+.footer { position:relative; z-index:1; padding:22px 28px 40px; text-align:center; }
+.footer-acc { font-style:italic; font-size:14px; color:var(--skin-primary); font-weight:700; }
+.side-cta{display:none;}
+@media(min-width:1120px){
+ .side-cta{display:block;position:fixed;top:140px;right:max(20px,calc((100vw - 680px)/2 - 220px));width:200px;z-index:40;background:var(--skin-cream);border:var(--border-thick);border-radius:var(--radius-lg);box-shadow:var(--shadow-md);padding:18px 18px 20px;text-align:center;}
+ .side-cta .fk{font-family:var(--sans);font-size:10px;letter-spacing:0.14em;color:var(--skin-primary);font-weight:700;margin-bottom:8px;}
+ .side-cta h4{font-family:var(--serif);font-size:16px;font-weight:900;color:var(--skin-white);line-height:1.5;margin-bottom:12px;}
+ .side-cta h4 .g{color:var(--skin-primary);}
+ .side-cta a{display:block;background:var(--skin-primary);color:#fff;border:var(--border-medium);border-radius:var(--radius-pill);padding:11px 14px;font-weight:900;font-size:14px;text-decoration:none;box-shadow:var(--shadow-sm);transition:transform var(--ease-bounce);}
+ .side-cta a:hover{transform:translate(-2px,-2px);}
+}
+</style>
+</head>
+<body>
+<aside class="side-cta">
+  <div class="fk">JOIN US</div>
+  <h4>跟我一起<br><span class="g">用 AI 做內容</span></h4>
+  <a href="https://www.skool.com/d11-lab" target="_blank" rel="noopener">加入社群 →</a>
+</aside>
+<div class="wrap">
+  <div class="blob blob--1"></div>
+  <div class="blob blob--2"></div>
+
+  <div class="hero">
+    <span class="hero-tag">#家庭育兒 · 四型解析</span>
+    <div class="hero-title">你選的那樣東西<br><span class="skin-mark">藏著你這幾年變了哪一塊</span></div>
+    <div class="hero-sub">剛剛你憑直覺選的那一個 不是隨便選的<br>它藏著你自己也說不太出來的那個變化<br>往下找你選的字母 看看你變的是什麼</div>
+  </div>
+
+  <div class="section fade-up">
+    <span class="section-label">點開你選的字母</span>
+    <div class="quiz-q">你憑直覺選的 是哪一樣東西</div>
+    <div class="quiz-sub">點下面你選的那一個 看它藏著你這幾年的改變</div>
+
+    <div class="opt" onclick="toggle(this)">
+      <div class="opt-head"><span class="opt-letter">A</span>一團解不開的死結</div>
+      <div class="opt-result">
+        <div class="res-reveal"><span>你變的是</span><br>耐性</div>
+        <div class="res-blk"><div class="res-h">你為什麼被它吸住</div><div class="res-t">因為你最近常有那種感覺 越用力越解不開 事情沒有比較少 你的線卻越拉越緊</div></div>
+        <div class="res-blk"><div class="res-h">你心裡在想</div><div class="res-t">我怎麼變得這麼容易煩 以前不是這樣的</div></div>
+        <div class="res-blk"><div class="res-h">真正發生的事</div><div class="res-t">你的耐性沒有變少 是被用掉了 這幾年你同時在扛的事情變多了 家裡的 小孩的 工作的 全部扣的是同一個帳戶</div></div>
+        <div class="res-blk"><div class="res-h">所以</div><div class="res-t">你不是脾氣變差 是你長期在透支</div></div>
+        <div class="res-blk"><div class="res-h">這很正常</div><div class="res-t">幾乎每個走到這個階段的女人都會經過這一段 你不是特別難相處的那一個</div></div>
+        <div class="res-blk"><div class="res-h">你可以做的</div><div class="res-t">與其逼自己再忍 不如把耐性花在真正重要的地方 剩下的先放著</div></div>
+        <div class="res-quote">耐性不是變少了 是被用完了</div>
+      </div>
+    </div>
+
+    <div class="opt" onclick="toggle(this)">
+      <div class="opt-head"><span class="opt-letter">B</span>一株好久沒澆水的盆栽</div>
+      <div class="opt-result">
+        <div class="res-reveal"><span>你變的是</span><br>熱情</div>
+        <div class="res-blk"><div class="res-h">你為什麼被它吸住</div><div class="res-t">因為你一眼就看出它缺水 那是你自己也很久沒被好好澆過的感覺</div></div>
+        <div class="res-blk"><div class="res-h">你心裡在想</div><div class="res-t">我怎麼變得這麼淡 以前對什麼都有興趣</div></div>
+        <div class="res-blk"><div class="res-h">真正發生的事</div><div class="res-t">不是你變無趣 是你的力氣先被拿去撐重要的事了 人在長期負重的時候會自動把想做的事關掉 只留下必須做的事</div></div>
+        <div class="res-blk"><div class="res-h">所以</div><div class="res-t">你不是失去熱情 是還沒輪到你</div></div>
+        <div class="res-blk"><div class="res-h">這很正常</div><div class="res-t">那是身體在保護你 不是你變懶</div></div>
+        <div class="res-blk"><div class="res-h">你可以做的</div><div class="res-t">先不用急著找回熱情 先把力氣還一點給自己 興致會自己回來</div></div>
+        <div class="res-quote">不是你不想了 是你先把力氣讓給別人了</div>
+      </div>
+    </div>
+
+    <div class="opt" onclick="toggle(this)">
+      <div class="opt-head"><span class="opt-letter">C</span>一個裝滿別人東西的籃子</div>
+      <div class="opt-result">
+        <div class="res-reveal"><span>你變的是</span><br>重心</div>
+        <div class="res-blk"><div class="res-h">你為什麼被它吸住</div><div class="res-t">因為你打開它的時候 發現裡面裝的都不是自己的東西 你的那份不知道放到哪去了</div></div>
+        <div class="res-blk"><div class="res-h">你心裡在想</div><div class="res-t">我是不是變自私了</div></div>
+        <div class="res-blk"><div class="res-h">真正發生的事</div><div class="res-t">你以前把自己排最後 是因為你以為那樣才叫愛 現在你會想留一點給自己 是因為你發現空的人給不出東西</div></div>
+        <div class="res-blk"><div class="res-h">所以</div><div class="res-t">這不是自私 是你終於開始把自己算進去</div></div>
+        <div class="res-blk"><div class="res-h">這很正常</div><div class="res-t">會走到這一步的女人 通常都先把自己耗到見底過一次</div></div>
+        <div class="res-blk"><div class="res-h">你可以做的</div><div class="res-t">不用整個翻過來 先從每天留一小段完全屬於你的時間開始</div></div>
+        <div class="res-quote">把自己算進去 不叫自私</div>
+      </div>
+    </div>
+
+    <div class="opt" onclick="toggle(this)">
+      <div class="opt-head"><span class="opt-letter">D</span>一封寫好卻沒寄出的信</div>
+      <div class="opt-result">
+        <div class="res-reveal"><span>你變的是</span><br>距離</div>
+        <div class="res-blk"><div class="res-h">你為什麼被它吸住</div><div class="res-t">因為你也有很多話 寫好了 想好了 最後還是收回口袋裡沒有拿出來</div></div>
+        <div class="res-blk"><div class="res-h">你心裡在想</div><div class="res-t">我是不是不愛他了 怎麼越來越懶得講</div></div>
+        <div class="res-blk"><div class="res-h">真正發生的事</div><div class="res-t">你不是不想講 是講過很多次沒有下文 人會在說了也沒用重複幾次之後 自動省下開口的力氣</div></div>
+        <div class="res-blk"><div class="res-h">所以</div><div class="res-t">那不是冷掉 是你在保護自己不要再失望</div></div>
+        <div class="res-blk"><div class="res-h">這很正常</div><div class="res-t">沉默通常不是感情的終點 是話卡住的地方</div></div>
+        <div class="res-blk"><div class="res-h">你可以做的</div><div class="res-t">先挑一件最小的事說出口 不用一次把積了很久的都倒出來</div></div>
+        <div class="res-quote">不想講 常常是因為講過太多次</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="transition"><span class="transition-text">繼續往下滑 ⬇️</span></div>
+
+  <div class="bridge fade-up">
+    <div class="bridge-card">
+      <p>你變了<br><span class="skin-mark">不是你變差了</span></p>
+      <p class="em">是這幾年你經歷的事<br>把你變成另一個版本</p>
+      <p class="em">這件事本來就會發生<br>在每個女人身上都會</p>
+    </div>
+  </div>
+
+  <div class="intro fade-up">
+    <div class="intro-card">
+      <div class="intro-name">Hi 我是 <span class="skin-mark">K媽</span></div>
+      <div class="intro-text">我是一個媽媽 也用 AI ＋ 自媒體在記錄生活 經營內容<br><br>像這篇你剛剛滑過的圖文 其實就是我用 AI 一張一張做出來的<br>我把怎麼用 AI 輕鬆做內容 把帳號經營起來 都整理在社群裡</div>
+    </div>
+  </div>
+
+  <div class="cta fade-up">
+    <div class="cta-line">連這篇圖文<br>都是我用 <span class="skin-mark">AI</span> 做出來的</div>
+    <div class="cta-sub">想學怎麼用 AI ＋ 自媒體 把內容輕鬆做起來<br>我都整理在這個社群裡 一群人一起玩</div>
+    <a class="skin-btn" href="https://www.skool.com/d11-lab" target="_blank" rel="noopener">加入 奇點研究所 × D11</a>
+    <div class="cta-note">點擊加入社群 跟我一起玩 AI</div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-acc">@lovekaren0316</div>
+  </div>
+</div>
+
+<script>
+function toggle(el) {
+  const wasActive = el.classList.contains('active');
+  document.querySelectorAll('.opt').forEach(o => o.classList.remove('active'));
+  if (!wasActive) el.classList.add('active');
+}
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
