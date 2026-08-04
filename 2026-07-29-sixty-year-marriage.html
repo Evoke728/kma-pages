@@ -3,6 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-X8R1V9WXX3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-X8R1V9WXX3', { content_group: 'K媽' });
+</script>
 <title>K媽｜測測看你最近的改變 · 四型解析</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;700;900&family=Noto+Sans+TC:wght@400;500;700;900&family=Inter:wght@400;700&display=swap" rel="stylesheet">
 <style>
@@ -58,11 +66,29 @@ body { background:var(--skin-bg); font-family:var(--sans); color:var(--skin-whit
 .opt-result { max-height:0; overflow:hidden; transition:max-height .5s ease, margin .3s, padding .3s; }
 .res-reveal { font-family:var(--serif); font-size:17px; font-weight:900; color:var(--skin-primary); margin-bottom:16px; }
 .res-reveal span { color:rgba(43,29,20,0.55); font-family:var(--sans); font-size:13px; font-weight:700; }
-.opt.active .opt-result { max-height:1800px; margin-top:16px; padding-top:16px; border-top:2px dashed var(--skin-warm); }
+.opt.active .opt-result { max-height:3600px; margin-top:16px; padding-top:16px; border-top:2px dashed var(--skin-warm); }
 .res-blk { margin-bottom:15px; }
 .res-h { font-size:13px; font-weight:700; color:var(--skin-primary); margin-bottom:6px; letter-spacing:0.03em; }
 .res-t { font-size:14.5px; color:rgba(43,29,20,0.9); line-height:1.85; }
 .res-quote { font-family:var(--serif); font-size:15px; font-weight:700; color:var(--skin-white); background:#FBF1E0; border-left:4px solid var(--skin-primary); border-radius:8px; padding:12px 16px; margin-top:10px; line-height:1.8; }
+.gem { margin-top:24px; padding-top:20px; border-top:2px dashed var(--skin-warm); }
+.gem-label { display:inline-block; background:var(--skin-highlight); color:var(--skin-ink); border:var(--border-medium); border-radius:var(--radius-pill); padding:3px 13px; font-size:11.5px; font-weight:700; margin-bottom:13px; }
+.gem-intro { font-size:14px; color:rgba(43,29,20,0.78); line-height:1.9; margin-bottom:15px; }
+.gem-bridge { font-size:14.5px; color:rgba(43,29,20,0.92); line-height:1.9; margin-bottom:18px; padding-left:13px; border-left:3px solid var(--skin-highlight); font-weight:500; }
+.gem-card { background:#FBF1E0; border:var(--border-medium); border-radius:var(--radius-md); box-shadow:var(--shadow-sm); padding:18px 20px; }
+.gem-head { display:flex; flex-direction:row-reverse; align-items:center; gap:14px; }
+.gem-img-link { display:block; flex-shrink:0; width:clamp(88px,25vw,108px); transition:transform var(--ease-bounce); }
+.gem-img-link:hover { transform:translate(-3px,-3px); }
+.gem-img { display:block; width:100%; height:auto; aspect-ratio:1/1; object-fit:cover; border:var(--border-medium); border-radius:12px; background:var(--skin-warm); box-shadow:var(--shadow-sm); }
+@media (min-width:640px) { .gem-img-link { width:216px; } }
+.gem-head-txt { min-width:0; flex:1; }
+.gem-name { font-family:var(--serif); font-size:17.5px; font-weight:900; color:var(--skin-primary); line-height:1.5; }
+.gem-stones { font-size:12px; color:rgba(43,29,20,0.5); font-weight:500; margin-top:4px; line-height:1.7; }
+.gem-why { font-size:14px; color:rgba(43,29,20,0.88); line-height:1.85; margin:13px 0 17px; }
+.gem-btn { display:inline-flex; align-items:center; gap:7px; background:var(--skin-primary); color:#fff; border:var(--border-medium); border-radius:var(--radius-pill); padding:11px 28px; font-weight:900; font-size:14.5px; text-decoration:none; box-shadow:var(--shadow-sm); transition:transform var(--ease-bounce), box-shadow var(--ease-bounce); }
+.gem-btn:hover { transform:translate(-3px,-3px); box-shadow:var(--shadow-md); }
+.gem-more { margin-top:18px; font-size:13.5px; color:rgba(43,29,20,0.62); font-weight:500; line-height:1.8; }
+.gem-more a { color:var(--skin-primary); font-weight:700; text-decoration:none; border-bottom:2px solid var(--skin-highlight); }
 .transition { text-align:center; padding:14px 0; position:relative; z-index:1; }
 .transition-text { display:inline-block; background:var(--skin-cream); border:var(--border-medium); border-radius:var(--radius-pill); padding:8px 20px; font-size:14px; font-weight:700; box-shadow:var(--shadow-sm); }
 .bridge { position:relative; z-index:1; padding:34px 28px; }
@@ -73,6 +99,7 @@ body { background:var(--skin-bg); font-family:var(--sans); color:var(--skin-whit
 .intro-card { background:#FBF1E0; border:var(--border-thick); border-radius:var(--radius-lg); box-shadow:var(--shadow-md); padding:26px 24px; }
 .intro-name { font-family:var(--serif); font-size:20px; font-weight:900; margin-bottom:12px; }
 .intro-text { font-size:14.5px; color:rgba(43,29,20,0.88); line-height:1.9; }
+.intro-text a { color:var(--skin-primary); font-weight:700; text-decoration:none; border-bottom:2px solid var(--skin-highlight); }
 .cta { position:relative; z-index:1; padding:26px 28px 56px; text-align:center; }
 .cta-line { font-family:var(--serif); font-size:21px; font-weight:900; line-height:1.6; margin-bottom:10px; }
 .cta-sub { font-size:14.5px; color:rgba(43,29,20,0.55); margin-bottom:26px; line-height:1.8; font-weight:500; }
@@ -96,9 +123,9 @@ body { background:var(--skin-bg); font-family:var(--sans); color:var(--skin-whit
 </head>
 <body>
 <aside class="side-cta">
-  <div class="fk">JOIN US</div>
-  <h4>跟我一起<br><span class="g">用 AI 做內容</span></h4>
-  <a href="https://www.skool.com/d11-lab" target="_blank" rel="noopener">加入社群 →</a>
+  <div class="fk">FOREST CRYSTAL</div>
+  <h4>被用掉的那一塊，<br><span class="g">讓水晶幫你補回來</span></h4>
+  <a href="https://omnicrystal.store/shop/?utm_source=Karen&amp;utm_medium=message" target="_blank" rel="noopener">看水晶 →</a>
 </aside>
 <div class="wrap">
   <div class="blob blob--1"></div>
@@ -115,7 +142,7 @@ body { background:var(--skin-bg); font-family:var(--sans); color:var(--skin-whit
     <div class="quiz-q">你憑直覺選的 是哪一樣東西</div>
     <div class="quiz-sub">點下面你選的那一個 看它藏著你這幾年的改變</div>
 
-    <div class="opt" onclick="toggle(this)">
+    <div class="opt" onclick="toggle(this, event)">
       <div class="opt-head"><span class="opt-letter">A</span>一團解不開的死結</div>
       <div class="opt-result">
         <div class="res-reveal"><span>你變的是</span><br>耐性</div>
@@ -126,10 +153,27 @@ body { background:var(--skin-bg); font-family:var(--sans); color:var(--skin-whit
         <div class="res-blk"><div class="res-h">這很正常</div><div class="res-t">幾乎每個走到這個階段的女人都會經過這一段 你不是特別難相處的那一個</div></div>
         <div class="res-blk"><div class="res-h">你可以做的</div><div class="res-t">與其逼自己再忍 不如把耐性花在真正重要的地方 剩下的先放著</div></div>
         <div class="res-quote">耐性不是變少了 是被用完了</div>
+        <div class="gem">
+          <span class="gem-label">被用掉的那一塊，讓水晶幫你補回來</span>
+          <div class="gem-intro">每一種水晶，都對應一種能量<br>有的養氣，有的顧情緒，有的補活力<br>挑水晶的邏輯很簡單，這幾年哪裡被用得比較多，就先補哪裡<br><br>它不會幫你把日子過輕鬆<br>但戴在手上每天都看得到，你會記得自己正在把力氣找回來</div>
+          <div class="gem-bridge">你剛剛選的是那一團解不開的死結，代表你變的是耐性，不是脾氣<br>這幾年你同時扛的事情太多，線越拉越緊<br>所以下面這一條，補的就是舒緩情緒跟身體的緊繃感</div>
+          <div class="gem-card">
+            <div class="gem-head">
+              <a class="gem-img-link" href="https://omnicrystal.store/shop/destiny-crystals/five-elements/a3/?utm_source=Karen&amp;utm_medium=message" target="_blank" rel="noopener"><img class="gem-img" src="img/crystals/senlin-baozang.jpg" alt="森林寶藏水晶手鍊" width="800" height="800" loading="lazy"></a>
+              <div class="gem-head-txt">
+                <div class="gem-name">森林寶藏</div>
+                <div class="gem-stones">白水晶貔貅 x 孔雀石 x 葡萄石</div>
+              </div>
+            </div>
+            <div class="gem-why">孔雀石是拿來緩解壓力的那一顆，讓越拉越緊的線慢慢鬆開<br>葡萄石平衡情緒，緩和那種一點小事就煩躁的感覺<br><br>它不會幫你把該扛的事情變少<br>但戴著它，你會記得耐性不是你的問題，是它被你用完了，該找時間補回來</div>
+            <a class="gem-btn" href="https://omnicrystal.store/shop/destiny-crystals/five-elements/a3/?utm_source=Karen&amp;utm_medium=message" target="_blank" rel="noopener">看看這一款 →</a>
+          </div>
+          <div class="gem-more">想看看其他適合你的<br><a href="https://omnicrystal.store/shop/?filter_%e8%83%bd%e9%87%8f%e5%8a%9f%e6%95%88=%e8%88%92%e7%b7%a9%e6%83%85%e7%b7%92&amp;utm_source=Karen&amp;utm_medium=message" target="_blank" rel="noopener">舒緩情緒能量的水晶 →</a></div>
+        </div>
       </div>
     </div>
 
-    <div class="opt" onclick="toggle(this)">
+    <div class="opt" onclick="toggle(this, event)">
       <div class="opt-head"><span class="opt-letter">B</span>一株好久沒澆水的盆栽</div>
       <div class="opt-result">
         <div class="res-reveal"><span>你變的是</span><br>熱情</div>
@@ -140,10 +184,27 @@ body { background:var(--skin-bg); font-family:var(--sans); color:var(--skin-whit
         <div class="res-blk"><div class="res-h">這很正常</div><div class="res-t">那是身體在保護你 不是你變懶</div></div>
         <div class="res-blk"><div class="res-h">你可以做的</div><div class="res-t">先不用急著找回熱情 先把力氣還一點給自己 興致會自己回來</div></div>
         <div class="res-quote">不是你不想了 是你先把力氣讓給別人了</div>
+        <div class="gem">
+          <span class="gem-label">被用掉的那一塊，讓水晶幫你補回來</span>
+          <div class="gem-intro">每一種水晶，都對應一種能量<br>有的養氣，有的顧情緒，有的補活力<br>挑水晶的邏輯很簡單，這幾年哪裡被用得比較多，就先補哪裡<br><br>它不會幫你把日子過輕鬆<br>但戴在手上每天都看得到，你會記得自己正在把力氣找回來</div>
+          <div class="gem-bridge">你剛剛選的是那一株好久沒澆水的盆栽，代表你變的是熱情，不是興趣<br>力氣先被拿去撐重要的事了，還沒輪到你自己<br>所以下面這一條，補的就是活力跟好心情</div>
+          <div class="gem-card">
+            <div class="gem-head">
+              <a class="gem-img-link" href="https://omnicrystal.store/shop/destiny-crystals/five-elements/a7/?utm_source=Karen&amp;utm_medium=message" target="_blank" rel="noopener"><img class="gem-img" src="img/crystals/ganjue-henhao.jpg" alt="感覺很好水晶手鍊" width="800" height="800" loading="lazy"></a>
+              <div class="gem-head-txt">
+                <div class="gem-name">感覺很好</div>
+                <div class="gem-stones">白水晶貔貅 x 青金石 x 藍月光</div>
+              </div>
+            </div>
+            <div class="gem-why">青金石帶來的是活力，把關掉的興致慢慢打開<br>藍月光平衡情緒，讓心情不要一直卡在那種淡淡的感覺裡<br><br>它不會幫你變回以前那個什麼都有興趣的人<br>但戴著它，你會記得那份熱情沒有不見，只是先讓給別人了，該輪到你了</div>
+            <a class="gem-btn" href="https://omnicrystal.store/shop/destiny-crystals/five-elements/a7/?utm_source=Karen&amp;utm_medium=message" target="_blank" rel="noopener">看看這一款 →</a>
+          </div>
+          <div class="gem-more">想看看其他適合你的<br><a href="https://omnicrystal.store/shop/?filter_%e8%83%bd%e9%87%8f%e5%8a%9f%e6%95%88=%e6%8f%90%e5%8d%87%e5%96%9c%e6%82%85%e6%84%9f&amp;utm_source=Karen&amp;utm_medium=message" target="_blank" rel="noopener">提升喜悅感能量的水晶 →</a></div>
+        </div>
       </div>
     </div>
 
-    <div class="opt" onclick="toggle(this)">
+    <div class="opt" onclick="toggle(this, event)">
       <div class="opt-head"><span class="opt-letter">C</span>一個裝滿別人東西的籃子</div>
       <div class="opt-result">
         <div class="res-reveal"><span>你變的是</span><br>重心</div>
@@ -154,10 +215,27 @@ body { background:var(--skin-bg); font-family:var(--sans); color:var(--skin-whit
         <div class="res-blk"><div class="res-h">這很正常</div><div class="res-t">會走到這一步的女人 通常都先把自己耗到見底過一次</div></div>
         <div class="res-blk"><div class="res-h">你可以做的</div><div class="res-t">不用整個翻過來 先從每天留一小段完全屬於你的時間開始</div></div>
         <div class="res-quote">把自己算進去 不叫自私</div>
+        <div class="gem">
+          <span class="gem-label">被用掉的那一塊，讓水晶幫你補回來</span>
+          <div class="gem-intro">每一種水晶，都對應一種能量<br>有的養氣，有的顧情緒，有的補活力<br>挑水晶的邏輯很簡單，這幾年哪裡被用得比較多，就先補哪裡<br><br>它不會幫你把日子過輕鬆<br>但戴在手上每天都看得到，你會記得自己正在把力氣找回來</div>
+          <div class="gem-bridge">你剛剛選的是那個裝滿別人東西的籃子，代表你變的是重心，不是自私<br>你開始想把自己算進去，這是你終於學會的事<br>所以下面這一條，補的就是留一點份量給自己</div>
+          <div class="gem-card">
+            <div class="gem-head">
+              <a class="gem-img-link" href="https://omnicrystal.store/shop/destiny-crystals/five-elements/a4/?utm_source=Karen&amp;utm_medium=message" target="_blank" rel="noopener"><img class="gem-img" src="img/crystals/yilishabai-nvwang.jpg" alt="伊莉莎白女王水晶手鍊" width="800" height="800" loading="lazy"></a>
+              <div class="gem-head-txt">
+                <div class="gem-name">伊莉莎白女王</div>
+                <div class="gem-stones">八角粉晶 x 白阿賽 x 粉水晶</div>
+              </div>
+            </div>
+            <div class="gem-why">粉水晶對應心輪，是拿來把愛留一點給自己的那一顆<br>白阿賽淨化，讓你不用一直繃著也能安心<br><br>它不會幫你把籃子清空重排<br>但戴著它，你會記得把自己算進去，從來就不叫自私</div>
+            <a class="gem-btn" href="https://omnicrystal.store/shop/destiny-crystals/five-elements/a4/?utm_source=Karen&amp;utm_medium=message" target="_blank" rel="noopener">看看這一款 →</a>
+          </div>
+          <div class="gem-more">想看看其他適合你的<br><a href="https://omnicrystal.store/shop/?filter_%e8%83%bd%e9%87%8f%e5%8a%9f%e6%95%88=%e6%83%85%e6%84%9f%e5%8d%87%e6%ba%ab&amp;utm_source=Karen&amp;utm_medium=message" target="_blank" rel="noopener">情感升溫能量的水晶 →</a></div>
+        </div>
       </div>
     </div>
 
-    <div class="opt" onclick="toggle(this)">
+    <div class="opt" onclick="toggle(this, event)">
       <div class="opt-head"><span class="opt-letter">D</span>一封寫好卻沒寄出的信</div>
       <div class="opt-result">
         <div class="res-reveal"><span>你變的是</span><br>距離</div>
@@ -168,6 +246,23 @@ body { background:var(--skin-bg); font-family:var(--sans); color:var(--skin-whit
         <div class="res-blk"><div class="res-h">這很正常</div><div class="res-t">沉默通常不是感情的終點 是話卡住的地方</div></div>
         <div class="res-blk"><div class="res-h">你可以做的</div><div class="res-t">先挑一件最小的事說出口 不用一次把積了很久的都倒出來</div></div>
         <div class="res-quote">不想講 常常是因為講過太多次</div>
+        <div class="gem">
+          <span class="gem-label">被用掉的那一塊，讓水晶幫你補回來</span>
+          <div class="gem-intro">每一種水晶，都對應一種能量<br>有的養氣，有的顧情緒，有的補活力<br>挑水晶的邏輯很簡單，這幾年哪裡被用得比較多，就先補哪裡<br><br>它不會幫你把日子過輕鬆<br>但戴在手上每天都看得到，你會記得自己正在把力氣找回來</div>
+          <div class="gem-bridge">你剛剛選的是那一封寫好卻沒寄出的信，代表你變的是距離，不是感情<br>不是不想講，是講過很多次沒有下文<br>所以下面這一條，補的就是把話說出口的那份勇氣</div>
+          <div class="gem-card">
+            <div class="gem-head">
+              <a class="gem-img-link" href="https://omnicrystal.store/shop/destiny-crystals/zodiac/d7/?utm_source=Karen&amp;utm_medium=message" target="_blank" rel="noopener"><img class="gem-img" src="img/crystals/bingchuan-zhiguangyu.jpg" alt="冰川之光語水晶手鍊" width="800" height="800" loading="lazy"></a>
+              <div class="gem-head-txt">
+                <div class="gem-name">冰川之光語</div>
+                <div class="gem-stones">海藍寶 x 白阿賽 x 藍月光 x 白水晶</div>
+              </div>
+            </div>
+            <div class="gem-why">海藍寶活化喉輪，是拿來補開口的勇氣的那一顆<br>藍月光安撫情緒，讓話不用憋到最後才敢講<br><br>它不會幫你把該講的話講出來<br>但戴著它，你會記得沉默不是終點，只是話卡住的地方，你隨時可以重新開口</div>
+            <a class="gem-btn" href="https://omnicrystal.store/shop/destiny-crystals/zodiac/d7/?utm_source=Karen&amp;utm_medium=message" target="_blank" rel="noopener">看看這一款 →</a>
+          </div>
+          <div class="gem-more">想看看其他適合你的<br><a href="https://omnicrystal.store/shop/?filter_%e8%83%bd%e9%87%8f%e5%8a%9f%e6%95%88=%e6%ba%9d%e9%80%9a%e8%a1%a8%e9%81%94&amp;utm_source=Karen&amp;utm_medium=message" target="_blank" rel="noopener">溝通表達能量的水晶 →</a></div>
+        </div>
       </div>
     </div>
   </div>
@@ -185,15 +280,15 @@ body { background:var(--skin-bg); font-family:var(--sans); color:var(--skin-whit
   <div class="intro fade-up">
     <div class="intro-card">
       <div class="intro-name">Hi 我是 <span class="skin-mark">K媽</span></div>
-      <div class="intro-text">我是一個媽媽 也用 AI ＋ 自媒體在記錄生活 經營內容<br><br>像這篇你剛剛滑過的圖文 其實就是我用 AI 一張一張做出來的<br>我把怎麼用 AI 輕鬆做內容 把帳號經營起來 都整理在社群裡</div>
+      <div class="intro-text">我是一個媽媽 也用 AI ＋ 自媒體在記錄生活 經營內容<br><br>像這篇你剛剛滑過的圖文 其實就是我用 AI 一張一張做出來的<br>我把怎麼用 AI 輕鬆做內容 把帳號經營起來 都整理在<a href="https://www.skool.com/d11-lab" target="_blank" rel="noopener">社群</a>裡</div>
     </div>
   </div>
 
   <div class="cta fade-up">
-    <div class="cta-line">連這篇圖文<br>都是我用 <span class="skin-mark">AI</span> 做出來的</div>
-    <div class="cta-sub">想學怎麼用 AI ＋ 自媒體 把內容輕鬆做起來<br>我都整理在這個社群裡 一群人一起玩</div>
-    <a class="skin-btn" href="https://www.skool.com/d11-lab" target="_blank" rel="noopener">加入 奇點研究所 × D11</a>
-    <div class="cta-note">點擊加入社群 跟我一起玩 AI</div>
+    <div class="cta-line">想挑一條<br>真的<span class="skin-mark">適合你</span>的水晶</div>
+    <div class="cta-sub">官網上還有很多款，可以照你想補的能量、星座或五行去找<br>不知道從哪裡看起的話，先把全部款式滑過一遍</div>
+    <a class="skin-btn" href="https://omnicrystal.store/shop/?utm_source=Karen&amp;utm_medium=message" target="_blank" rel="noopener">看看森靈水晶官網</a>
+    <div class="cta-note">點擊前往官網，慢慢挑你的那一條</div>
   </div>
 
   <div class="footer">
@@ -202,7 +297,8 @@ body { background:var(--skin-bg); font-family:var(--sans); color:var(--skin-whit
 </div>
 
 <script>
-function toggle(el) {
+function toggle(el, evt) {
+  if (evt && evt.target.closest('.gem')) return; // 點水晶區塊不收合，但事件仍正常冒泡給 GA4
   const wasActive = el.classList.contains('active');
   document.querySelectorAll('.opt').forEach(o => o.classList.remove('active'));
   if (!wasActive) el.classList.add('active');
