@@ -142,7 +142,7 @@ body { background:#F2E6D2; font-family:var(--sans); color:var(--skin-white); lin
     <div class="quiz-q">你憑直覺選的，是哪一種擁抱？</div>
     <div class="quiz-sub">點下面你選的那一個，看它藏著你最缺的是什麼</div>
 
-    <div class="opt" onclick="toggle(this)">
+    <div class="opt" onclick="toggle(this, event)">
       <div class="opt-head"><span class="opt-letter">A</span>從背後，緊緊環抱你</div>
       <div class="opt-result">
         <div class="res-reveal"><span>你心裡最缺的是</span><br>被堅定的選擇</div>
@@ -154,7 +154,7 @@ body { background:#F2E6D2; font-family:var(--sans); color:var(--skin-white); lin
         <div class="res-blk"><div class="res-h">給你的提醒</div><div class="res-t">先試著相信，願意留下來的人是因為想留，你值得被一個人穩穩地放在第一位</div></div>
         <div class="res-quote">越怕被丟下的人，越假裝自己一個人也可以</div>
 
-        <div class="gem" onclick="event.stopPropagation()">
+        <div class="gem">
           <span class="gem-label">缺的那一塊，讓水晶幫你補回來</span>
           <div class="gem-intro">每一種水晶，都對應一種能量<br>有的安神，有的顧情緒，有的顧人緣<br>挑水晶的邏輯其實很簡單，你現在最缺哪一塊，就補哪一塊<br><br>它不會替你把事情解決掉<br>但戴在手上每天都看得到，你會記得自己正在調整什麼</div>
           <div class="gem-bridge">你剛剛選的是從背後抱住你的那一種<br>代表你心裡最缺的，是被堅定地選擇<br>你要的是那種「我不會走」的踏實感<br>所以下面這一條，補的就是安神跟安全感</div>
@@ -174,7 +174,7 @@ body { background:#F2E6D2; font-family:var(--sans); color:var(--skin-white); lin
       </div>
     </div>
 
-    <div class="opt" onclick="toggle(this)">
+    <div class="opt" onclick="toggle(this, event)">
       <div class="opt-head"><span class="opt-letter">B</span>面對面，用力把你抱進懷裡</div>
       <div class="opt-result">
         <div class="res-reveal"><span>你心裡最缺的是</span><br>有人懂你的累</div>
@@ -186,7 +186,7 @@ body { background:#F2E6D2; font-family:var(--sans); color:var(--skin-white); lin
         <div class="res-blk"><div class="res-h">給你的提醒</div><div class="res-t">你總是把別人放在前面，別忘了你也值得被好好照顧，試著偶爾示弱，你會遇到那個願意真正陪你的人</div></div>
         <div class="res-quote">很多懂事的人，其實都在等一句「你可以不用那麼累」</div>
 
-        <div class="gem" onclick="event.stopPropagation()">
+        <div class="gem">
           <span class="gem-label">缺的那一塊，讓水晶幫你補回來</span>
           <div class="gem-intro">每一種水晶，都對應一種能量<br>有的安神，有的顧情緒，有的顧人緣<br>挑水晶的邏輯其實很簡單，你現在最缺哪一塊，就補哪一塊<br><br>它不會替你把事情解決掉<br>但戴在手上每天都看得到，你會記得自己正在調整什麼</div>
           <div class="gem-bridge">你剛剛選的是面對面用力抱住你的那一種<br>代表你心裡最缺的，是有人懂你的累<br>你已經撐很久了，該輪到你被顧一下<br>所以下面這一條，補的是情緒跟力氣</div>
@@ -206,7 +206,7 @@ body { background:#F2E6D2; font-family:var(--sans); color:var(--skin-white); lin
       </div>
     </div>
 
-    <div class="opt" onclick="toggle(this)">
+    <div class="opt" onclick="toggle(this, event)">
       <div class="opt-head"><span class="opt-letter">C</span>輕輕拍著你的背</div>
       <div class="opt-result">
         <div class="res-reveal"><span>你心裡最缺的是</span><br>有人搭把手</div>
@@ -218,7 +218,7 @@ body { background:#F2E6D2; font-family:var(--sans); color:var(--skin-white); lin
         <div class="res-blk"><div class="res-h">給你的提醒</div><div class="res-t">試著開口一次，說出「可以幫我嗎」，求助不會讓你變弱，那是把力氣留給更重要的事</div></div>
         <div class="res-quote">最堅強的人，往往最需要有人輕輕拍拍他的背</div>
 
-        <div class="gem" onclick="event.stopPropagation()">
+        <div class="gem">
           <span class="gem-label">缺的那一塊，讓水晶幫你補回來</span>
           <div class="gem-intro">每一種水晶，都對應一種能量<br>有的安神，有的顧情緒，有的顧人緣<br>挑水晶的邏輯其實很簡單，你現在最缺哪一塊，就補哪一塊<br><br>它不會替你把事情解決掉<br>但戴在手上每天都看得到，你會記得自己正在調整什麼</div>
           <div class="gem-bridge">你剛剛選的是輕拍你背的那一種<br>代表你心裡最缺的，是有人搭把手<br>你不是做不來，你只是太久沒人問你需不需要幫忙<br>所以下面這一條，補的是貴人運</div>
@@ -238,7 +238,7 @@ body { background:#F2E6D2; font-family:var(--sans); color:var(--skin-white); lin
       </div>
     </div>
 
-    <div class="opt" onclick="toggle(this)">
+    <div class="opt" onclick="toggle(this, event)">
       <div class="opt-head"><span class="opt-letter">D</span>安靜地，靠著彼此</div>
       <div class="opt-result">
         <div class="res-reveal"><span>你心裡最缺的是</span><br>穩定的陪伴</div>
@@ -250,7 +250,7 @@ body { background:#F2E6D2; font-family:var(--sans); color:var(--skin-white); lin
         <div class="res-blk"><div class="res-h">給你的提醒</div><div class="res-t">安穩不是理所當然，記得也讓對方知道，你也想一直在，好的關係，是兩個人都想留</div></div>
         <div class="res-quote">真正的安全感，是安靜下來也不怕被離開</div>
 
-        <div class="gem" onclick="event.stopPropagation()">
+        <div class="gem">
           <span class="gem-label">缺的那一塊，讓水晶幫你補回來</span>
           <div class="gem-intro">每一種水晶，都對應一種能量<br>有的安神，有的顧情緒，有的顧人緣<br>挑水晶的邏輯其實很簡單，你現在最缺哪一塊，就補哪一塊<br><br>它不會替你把事情解決掉<br>但戴在手上每天都看得到，你會記得自己正在調整什麼</div>
           <div class="gem-bridge">你剛剛選的是安靜靠著彼此的那一種<br>代表你心裡最缺的，是穩定的陪伴<br>你怕的是變動，是好好的突然就沒了<br>所以下面這一條，補的是安定</div>
@@ -301,7 +301,8 @@ body { background:#F2E6D2; font-family:var(--sans); color:var(--skin-white); lin
 </div>
 
 <script>
-function toggle(el) {
+function toggle(el, evt) {
+  if (evt && evt.target.closest('.gem')) return; // 點水晶區塊不收合，但事件仍正常冒泡給 GA4
   const wasActive = el.classList.contains('active');
   document.querySelectorAll('.opt').forEach(o => o.classList.remove('active'));
   if (!wasActive) el.classList.add('active');
