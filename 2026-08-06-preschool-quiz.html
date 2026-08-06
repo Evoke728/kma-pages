@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-X8R1V9WXX3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-X8R1V9WXX3', { content_group: 'K媽' });
+</script>
+<title>K媽｜孩子自己走進教室那一刻 · 四型解析</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;700;900&family=Noto+Sans+TC:wght@400;500;700;900&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --skin-primary:   #B5764A;
+  --skin-accent:    #D0A06B;
+  --skin-highlight: #E7C79A;
+  --skin-ink:       #3A2717;
+  --skin-cream:     #FFFBF4;
+  --skin-bg:        #F2E6D2;
+  --skin-warm:      #DFC7A0;
+  --skin-white:     #3A281B;
+  --shadow-sm: 4px 4px 0 var(--skin-ink);
+  --shadow-md: 7px 7px 0 var(--skin-ink);
+  --shadow-lg: 11px 11px 0 var(--skin-ink);
+  --border-thick:  3px solid var(--skin-warm);
+  --border-medium: 2px solid var(--skin-warm);
+  --radius-md:16px; --radius-lg:24px; --radius-pill:50px;
+  --ease-bounce: 400ms cubic-bezier(0.34,1.56,0.64,1);
+  --serif:"Noto Serif TC",serif; --sans:"Noto Sans TC","Inter",sans-serif;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#F2E6D2; font-family:var(--sans); color:var(--skin-white); line-height:1.8; overflow-x:hidden; }
+.wrap { max-width:680px; margin:0 auto; position:relative; background:var(--skin-bg); }
+.blob { position:absolute; border-radius:60% 40% 30% 70% / 60% 30% 70% 40%;
+  animation:morph 8s ease-in-out infinite; opacity:0.30; z-index:0; pointer-events:none; filter:blur(6px); }
+.blob--1 { width:min(70vw,420px); height:min(70vw,420px);
+  background:linear-gradient(135deg, #B5764A, #D0A06B); top:-6%; right:-16%; }
+.blob--2 { width:min(60vw,360px); height:min(60vw,360px);
+  background:linear-gradient(135deg, #D0A06B, #DFC7A0); bottom:8%; left:-18%; animation-delay:-4s; }
+@keyframes morph {
+  0%,100% { border-radius:60% 40% 30% 70% / 60% 30% 70% 40%; }
+  25% { border-radius:30% 60% 70% 40% / 50% 60% 30% 40%; }
+  50% { border-radius:50% 60% 30% 70% / 30% 40% 70% 60%; }
+  75% { border-radius:60% 30% 60% 40% / 70% 50% 40% 30%; }
+}
+.skin-mark { background:var(--skin-highlight); color:#3A281B; padding:0.08em 0.35em; border-radius:5px; display:inline-block; box-decoration-break:clone; }
+.fade-up { opacity:0; transform:translateY(32px); transition:opacity .6s ease, transform .6s ease; }
+.fade-up.visible { opacity:1; transform:translateY(0); }
+.hero { position:relative; z-index:1; padding:62px 28px 44px; text-align:center; }
+.hero-tag { display:inline-block; background:var(--skin-primary); color:#fff; border:var(--border-medium); border-radius:var(--radius-pill); padding:6px 16px; font-size:13px; font-weight:700; box-shadow:var(--shadow-sm); margin-bottom:22px; }
+.hero-title { font-family:var(--serif); font-weight:900; font-size:28px; line-height:1.5; color:var(--skin-white); }
+.hero-sub { margin-top:16px; font-size:14px; color:rgba(58,40,27,0.62); line-height:1.85; }
+.section { position:relative; z-index:1; padding:34px 28px; }
+.section-label { display:inline-block; background:var(--skin-primary); color:#fff; border:var(--border-medium); border-radius:var(--radius-pill); padding:4px 14px; font-size:12px; font-weight:700; margin-bottom:20px; box-shadow:var(--shadow-sm); }
+.quiz-q { font-family:var(--serif); font-size:20px; font-weight:700; line-height:1.6; margin-bottom:8px; }
+.quiz-sub { font-size:14px; color:rgba(58,40,27,0.55); margin-bottom:26px; font-weight:500; }
+.opt { background:var(--skin-cream); border:var(--border-thick); border-radius:var(--radius-md); box-shadow:var(--shadow-sm); padding:18px 20px; margin-bottom:18px; cursor:pointer; transition:transform var(--ease-bounce), box-shadow var(--ease-bounce); }
+.opt:hover { transform:translate(-3px,-3px); box-shadow:var(--shadow-md); }
+.opt.active { box-shadow:var(--shadow-md); }
+.opt-head { display:flex; align-items:center; gap:14px; font-size:16.5px; font-weight:700; }
+.opt-letter { display:inline-flex; align-items:center; justify-content:center; width:34px; height:34px; background:var(--skin-highlight); color:#3A281B; border:var(--border-medium); border-radius:50%; font-family:"Inter"; font-weight:700; font-size:16px; flex-shrink:0; }
+.opt-result { max-height:0; overflow:hidden; transition:max-height .5s ease, margin .3s, padding .3s; }
+.res-reveal { font-family:var(--serif); font-size:17px; font-weight:900; color:var(--skin-primary); margin-bottom:16px; }
+.res-reveal span { color:rgba(58,40,27,0.55); font-family:var(--sans); font-size:13px; font-weight:700; }
+.opt.active .opt-result { max-height:1600px; margin-top:16px; padding-top:16px; border-top:2px dashed var(--skin-warm); }
+.res-blk { margin-bottom:15px; }
+.res-h { font-size:13px; font-weight:700; color:var(--skin-primary); margin-bottom:6px; letter-spacing:0.03em; }
+.res-t { font-size:14.5px; color:rgba(58,40,27,0.9); line-height:1.85; }
+.res-quote { font-family:var(--serif); font-size:15px; font-weight:700; color:var(--skin-white); background:#FDF5EA; border-left:4px solid var(--skin-primary); border-radius:8px; padding:12px 16px; margin-top:10px; line-height:1.8; }
+.transition { text-align:center; padding:14px 0; position:relative; z-index:1; }
+.transition-text { display:inline-block; background:var(--skin-cream); border:var(--border-medium); border-radius:var(--radius-pill); padding:8px 20px; font-size:14px; font-weight:700; box-shadow:var(--shadow-sm); }
+.bridge { position:relative; z-index:1; padding:34px 28px; }
+.bridge-card { background:var(--skin-cream); border:var(--border-thick); border-radius:var(--radius-lg); box-shadow:var(--shadow-md); padding:28px 24px; }
+.bridge p { font-size:15px; color:rgba(58,40,27,0.88); line-height:1.9; margin-bottom:14px; }
+.bridge .em { font-family:var(--serif); font-size:18px; font-weight:900; line-height:1.7; margin:6px 0 16px; }
+.intro { position:relative; z-index:1; padding:34px 28px; }
+.intro-card { background:#FDF5EA; border:var(--border-thick); border-radius:var(--radius-lg); box-shadow:var(--shadow-md); padding:26px 24px; }
+.intro-name { font-family:var(--serif); font-size:20px; font-weight:900; margin-bottom:12px; }
+.intro-text { font-size:14.5px; color:rgba(58,40,27,0.88); line-height:1.9; }
+.cta { position:relative; z-index:1; padding:26px 28px 56px; text-align:center; }
+.cta-line { font-family:var(--serif); font-size:21px; font-weight:900; line-height:1.6; margin-bottom:10px; }
+.cta-sub { font-size:14.5px; color:rgba(58,40,27,0.55); margin-bottom:26px; line-height:1.8; font-weight:500; }
+.skin-btn { display:inline-flex; align-items:center; gap:8px; background:var(--skin-primary); color:#fff; border:var(--border-thick); border-radius:var(--radius-pill); padding:16px 44px; font-weight:900; font-size:18px; box-shadow:var(--shadow-md); transition:transform var(--ease-bounce), box-shadow var(--ease-bounce); position:relative; overflow:hidden; cursor:pointer; text-decoration:none; }
+.skin-btn:hover { transform:translate(-4px,-4px); box-shadow:var(--shadow-lg); }
+.skin-btn::after { content:''; position:absolute; top:0; left:-100%; width:50%; height:100%; background:linear-gradient(90deg,transparent,rgba(255,255,255,0.4),transparent); transform:skewX(-25deg); animation:shine 3s ease-in-out infinite; }
+@keyframes shine { 0%{left:-100%;} 20%{left:150%;} 100%{left:150%;} }
+.cta-note { margin-top:16px; font-size:12.5px; color:rgba(58,40,27,0.5); font-weight:500; }
+.footer { position:relative; z-index:1; padding:22px 28px 40px; text-align:center; }
+.footer-acc { font-style:italic; font-size:14px; color:var(--skin-primary); font-weight:700; }
+.side-cta{display:none;}
+@media(min-width:1120px){
+ .side-cta{display:block;position:fixed;top:140px;right:max(20px,calc((100vw - 680px)/2 - 220px));width:200px;z-index:40;background:var(--skin-cream);border:var(--border-thick);border-radius:var(--radius-lg);box-shadow:var(--shadow-md);padding:18px 18px 20px;text-align:center;}
+ .side-cta .fk{font-family:var(--sans);font-size:10px;letter-spacing:0.14em;color:var(--skin-primary);font-weight:700;margin-bottom:8px;}
+ .side-cta h4{font-family:var(--serif);font-size:16px;font-weight:900;color:var(--skin-white);line-height:1.5;margin-bottom:12px;}
+ .side-cta h4 .g{color:var(--skin-primary);}
+ .side-cta a{display:block;background:var(--skin-primary);color:#fff;border:var(--border-medium);border-radius:var(--radius-pill);padding:11px 14px;font-weight:900;font-size:14px;text-decoration:none;box-shadow:var(--shadow-sm);transition:transform var(--ease-bounce);}
+ .side-cta a:hover{transform:translate(-2px,-2px);}
+}
+</style>
+</head>
+<body>
+<aside class="side-cta">
+  <div class="fk">JOIN US</div>
+  <h4>跟我一起<br><span class="g">用 AI 做內容</span></h4>
+  <a href="https://www.skool.com/d11-lab" target="_blank" rel="noopener">加入社群 →</a>
+</aside>
+<div class="wrap">
+  <div class="blob blob--1"></div>
+  <div class="blob blob--2"></div>
+
+  <div class="hero">
+    <span class="hero-tag">#家庭育兒 · 四型解析</span>
+    <div class="hero-title">你當下的第一個反應<br><span class="skin-mark">藏著你這幾年怎麼過來的</span></div>
+    <div class="hero-sub">剛剛你憑直覺選的那一個，不是隨便選的<br>它藏著你把多少心力，放進了這個孩子身上<br>往下找你選的字母</div>
+  </div>
+
+  <div class="section fade-up">
+    <span class="section-label">點開你選的字母</span>
+    <div class="quiz-q">如果孩子明天要自己走進教室，不用你牽他了，你猜你會是什麼反應</div>
+    <div class="quiz-sub">點下面你選的那一個，看它藏著你這幾年怎麼過來的</div>
+
+    <div class="opt" onclick="toggle(this)">
+      <div class="opt-head"><span class="opt-letter">A</span>就覺得很欣慰，這代表他長大了</div>
+      <div class="opt-result">
+        <div class="res-reveal"><span>你最想要的是</span><br>看見他能靠自己站著</div>
+        <div class="res-blk"><div class="res-h">你的內心話</div><div class="res-t">他真的長大了</div></div>
+        <div class="res-blk"><div class="res-h">你的內心想法</div><div class="res-t">那一刻你第一個想到的是他做得到，而不是自己會不會捨不得，你很習慣把鏡頭對準孩子，很少對準自己</div></div>
+        <div class="res-blk"><div class="res-h">你的渴望</div><div class="res-t">你想確認這幾年沒有白花，他敢自己走進去，是你一天一天陪出來的</div></div>
+        <div class="res-blk"><div class="res-h">其實你不是這樣的人</div><div class="res-t">你會難過，你只是把難過往後放，先讓開心佔滿那一刻</div></div>
+        <div class="res-blk"><div class="res-h">你最想聽到的</div><div class="res-t">其實很簡單，就是一句，妳把他帶得很好</div></div>
+        <div class="res-blk"><div class="res-h">給你的提醒</div><div class="res-t">欣慰是真的，那一點空也是真的，兩個可以同時在，不用急著把後面那個蓋過去</div></div>
+        <div class="res-quote">他敢放開手往前走，是因為你一直在後面</div>
+      </div>
+    </div>
+
+    <div class="opt" onclick="toggle(this)">
+      <div class="opt-head"><span class="opt-letter">B</span>心裡會有點空，其實還是捨不得</div>
+      <div class="opt-result">
+        <div class="res-reveal"><span>你最想要的是</span><br>再多當幾天那個被需要的人</div>
+        <div class="res-blk"><div class="res-h">你的內心話</div><div class="res-t">怎麼這麼快</div></div>
+        <div class="res-blk"><div class="res-h">你的內心想法</div><div class="res-t">你知道這是好事，但那句我自己走進去就好，還是讓你在原地站了一下，空掉的不是行程，是那個一直有人抓著你手的位置</div></div>
+        <div class="res-blk"><div class="res-h">你的渴望</div><div class="res-t">你希望他偶爾還是會回頭找你一下，就算只有一秒</div></div>
+        <div class="res-blk"><div class="res-h">其實你不是這樣的人</div><div class="res-t">你這幾年把整個人都放進去了，突然被鬆開，手當然會空一陣子</div></div>
+        <div class="res-blk"><div class="res-h">你最想聽到的</div><div class="res-t">其實很簡單，就是一句，妳可以慢慢適應，不用馬上習慣</div></div>
+        <div class="res-blk"><div class="res-h">給你的提醒</div><div class="res-t">空一陣子沒關係，那是你認真愛過的證據，可以開始找一件只屬於你自己的事，把手放上去</div></div>
+        <div class="res-quote">手空出來的那一段時間，是留給你自己的</div>
+      </div>
+    </div>
+
+    <div class="opt" onclick="toggle(this)">
+      <div class="opt-head"><span class="opt-letter">C</span>反而會有點擔心，怕他是硬撐著說沒關係</div>
+      <div class="opt-result">
+        <div class="res-reveal"><span>你最想要的是</span><br>確定他是真的可以，而不是在忍</div>
+        <div class="res-blk"><div class="res-h">你的內心話</div><div class="res-t">他是真的可以嗎</div></div>
+        <div class="res-blk"><div class="res-h">你的內心想法</div><div class="res-t">你會反覆想他說那句話時的表情和語氣，怕他只是想讓你安心才說沒關係</div></div>
+        <div class="res-blk"><div class="res-h">你的渴望</div><div class="res-t">你希望他知道，撐不住的時候可以回頭，你不會覺得那是退步</div></div>
+        <div class="res-blk"><div class="res-h">其實你不是這樣的人</div><div class="res-t">你信任他，你只是太知道硬撐是什麼感覺，因為你自己就常常這樣</div></div>
+        <div class="res-blk"><div class="res-h">你最想聽到的</div><div class="res-t">其實很簡單，就是一句，他真的可以，妳也可以放心</div></div>
+        <div class="res-blk"><div class="res-h">給你的提醒</div><div class="res-t">你可以直接問他，今天有沒有哪一段有點想找媽媽，把用猜的變成用問的，你會少擔心很多</div></div>
+        <div class="res-quote">你怕他硬撐，是因為你太懂硬撐的滋味</div>
+      </div>
+    </div>
+
+    <div class="opt" onclick="toggle(this)">
+      <div class="opt-head"><span class="opt-letter">D</span>當下沒想太多，反而是自己事後才鼻酸</div>
+      <div class="opt-result">
+        <div class="res-reveal"><span>你最想要的是</span><br>有個地方可以把情緒放下來</div>
+        <div class="res-blk"><div class="res-h">你的內心話</div><div class="res-t">那時候怎麼沒感覺</div></div>
+        <div class="res-blk"><div class="res-h">你的內心想法</div><div class="res-t">當下你在看時間，看書包，看他有沒有走好，等回到車上或回到家，才突然被那個畫面追上</div></div>
+        <div class="res-blk"><div class="res-h">你的渴望</div><div class="res-t">你希望那天晚上有人問你一句，妳今天還好嗎</div></div>
+        <div class="res-blk"><div class="res-h">其實你不是這樣的人</div><div class="res-t">你不慢半拍，你只是永遠把自己排在最後一個處理</div></div>
+        <div class="res-blk"><div class="res-h">你最想聽到的</div><div class="res-t">其實很簡單，就是一句，妳今天也辛苦了</div></div>
+        <div class="res-blk"><div class="res-h">給你的提醒</div><div class="res-t">情緒晚到不代表比較小，晚上那一下鼻酸，可以講給誰聽，不用自己吞完</div></div>
+        <div class="res-quote">你把所有人都顧好了，剩下那一個也需要你顧</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="transition"><span class="transition-text">繼續往下滑 ⬇️</span></div>
+
+  <div class="bridge fade-up">
+    <div class="bridge-card">
+      <p>你選的那一個<br>是同一件事的 <span class="skin-mark">不同表面</span></p>
+      <p class="em">這四種反應，沒有哪一種比較好<br>它們講的都是同一件事，你很在乎</p>
+      <p class="em">在陪他長大的這幾年<br>你也可以把一點注意力，轉回自己身上</p>
+    </div>
+  </div>
+
+  <div class="intro fade-up">
+    <div class="intro-card">
+      <div class="intro-name">Hi 我是 <span class="skin-mark">K媽</span></div>
+      <div class="intro-text">我是一個媽媽，也用 AI ＋ 自媒體在記錄生活，經營內容<br><br>像這篇你剛剛滑過的圖文，其實就是我用 AI 一張一張做出來的<br>我把「怎麼用 AI 輕鬆做內容，把帳號經營起來」都整理在社群裡</div>
+    </div>
+  </div>
+
+  <div class="cta fade-up">
+    <div class="cta-line">連這篇圖文<br>都是我用 <span class="skin-mark">AI</span> 做出來的</div>
+    <div class="cta-sub">想學怎麼用 AI ＋ 自媒體，把內容輕鬆做起來<br>我都整理在這個社群裡，一群人一起玩</div>
+    <a class="skin-btn" href="https://www.skool.com/d11-lab" target="_blank" rel="noopener">加入 奇點研究所 × D11</a>
+    <div class="cta-note">點擊加入社群，跟我一起玩 AI</div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-acc">@lovekaren0316</div>
+  </div>
+</div>
+
+<script>
+function toggle(el) {
+  const wasActive = el.classList.contains('active');
+  document.querySelectorAll('.opt').forEach(o => o.classList.remove('active'));
+  if (!wasActive) el.classList.add('active');
+}
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
