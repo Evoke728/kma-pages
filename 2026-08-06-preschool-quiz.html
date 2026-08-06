@@ -91,6 +91,14 @@ body { background:#F2E6D2; font-family:var(--sans); color:var(--skin-white); lin
 .cta-note { margin-top:16px; font-size:12.5px; color:rgba(58,40,27,0.5); font-weight:500; }
 .footer { position:relative; z-index:1; padding:22px 28px 40px; text-align:center; }
 .footer-acc { font-style:italic; font-size:14px; color:var(--skin-primary); font-weight:700; }
+.plist { position:relative; z-index:1; padding:0 28px 6px; }
+.plist-card { background:var(--skin-cream); border:var(--border-thick); border-radius:var(--radius-lg); box-shadow:var(--shadow-md); padding:24px 22px; margin-bottom:18px; }
+.plist-h { font-family:var(--serif); font-size:17px; font-weight:900; line-height:1.6; margin-bottom:14px; }
+.plist ul { list-style:none; }
+.plist li { position:relative; padding-left:22px; font-size:14.5px; color:rgba(58,40,27,0.9); line-height:1.85; margin-bottom:10px; }
+.plist li:last-child { margin-bottom:0; }
+.plist li::before { content:''; position:absolute; left:4px; top:0.72em; width:8px; height:8px; background:var(--skin-primary); border-radius:50%; }
+.footer-line { margin-top:6px; font-size:13px; color:rgba(58,40,27,0.55); font-weight:500; }
 .side-cta{display:none;}
 @media(min-width:1120px){
  .side-cta{display:block;position:fixed;top:140px;right:max(20px,calc((100vw - 680px)/2 - 220px));width:200px;z-index:40;background:var(--skin-cream);border:var(--border-thick);border-radius:var(--radius-lg);box-shadow:var(--shadow-md);padding:18px 18px 20px;text-align:center;}
@@ -105,7 +113,7 @@ body { background:#F2E6D2; font-family:var(--sans); color:var(--skin-white); lin
 <body>
 <aside class="side-cta">
   <div class="fk">JOIN US</div>
-  <h4>跟我一起<br><span class="g">用 AI 做內容</span></h4>
+  <h4>時間不多<br><span class="g">也能做內容</span></h4>
   <a href="https://www.skool.com/d11-lab" target="_blank" rel="noopener">加入社群 →</a>
 </aside>
 <div class="wrap">
@@ -190,22 +198,49 @@ body { background:#F2E6D2; font-family:var(--sans); color:var(--skin-white); lin
     </div>
   </div>
 
+  <div class="bridge fade-up">
+    <div class="bridge-card">
+      <p class="em">孩子開始自己走了<br>你手上會多出 <span class="skin-mark">一點時間</span></p>
+      <p>那些時間很碎<br>一次可能只有半小時，也可能只有二十分鐘<br>以前這種長度什麼都做不了，現在可以</p>
+    </div>
+  </div>
+
   <div class="intro fade-up">
     <div class="intro-card">
       <div class="intro-name">Hi 我是 <span class="skin-mark">K媽</span></div>
-      <div class="intro-text">我是一個媽媽，也用 AI ＋ 自媒體在記錄生活，經營內容<br><br>像這篇你剛剛滑過的圖文，其實就是我用 AI 一張一張做出來的<br>我把「怎麼用 AI 輕鬆做內容，把帳號經營起來」都整理在社群裡</div>
+      <div class="intro-text">我是一個媽媽，同時在做自媒體<br>我沒有比較會排時間，我只是把大部分的事情都交給 AI 做了<br><br>像你剛剛滑過的那九張圖，從文字到插畫，都是我用 AI 一張一張做出來的</div>
+    </div>
+  </div>
+
+  <div class="plist fade-up">
+    <div class="plist-card">
+      <div class="plist-h">這是給誰的</div>
+      <ul>
+        <li>對自媒體有興趣，但每天只擠得出零碎時間的人</li>
+        <li>有很多話想講，卻不知道怎麼變成一篇貼文的你</li>
+        <li>對 AI 有興趣，存了一堆教學，一次都沒真的做出來過的人</li>
+      </ul>
+    </div>
+    <div class="plist-card">
+      <div class="plist-h">加入奇點研究所，你會拿到</div>
+      <ul>
+        <li>我每天在用的那套流程，從選題、寫文案到生圖，一條走完</li>
+        <li>實測過真的能用的 AI 工具跟自動化，每週更新</li>
+        <li>一群跟你一樣，時間不多但還是想做點什麼的人</li>
+      </ul>
     </div>
   </div>
 
   <div class="cta fade-up">
-    <div class="cta-line">連這篇圖文<br>都是我用 <span class="skin-mark">AI</span> 做出來的</div>
-    <div class="cta-sub">想學怎麼用 AI ＋ 自媒體，把內容輕鬆做起來<br>我都整理在這個社群裡，一群人一起玩</div>
+    <div class="cta-line">時間不多<br>也能把內容 <span class="skin-mark">做出來</span></div>
+    <div class="cta-sub">沒有什麼厲害的技巧，就是一套流程<br>每次照著跑一遍</div>
     <a class="skin-btn" href="https://www.skool.com/d11-lab" target="_blank" rel="noopener">加入 奇點研究所 × D11</a>
-    <div class="cta-note">點擊加入社群，跟我一起玩 AI</div>
+    <div class="cta-note">我做這篇用的那套流程，都在裡面</div>
   </div>
 
   <div class="footer">
-    <div class="footer-acc">@lovekaren0316</div>
+    <div class="footer-acc">K媽 @lovekaren0316</div>
+    <div class="footer-line">一個媽媽，時間永遠不夠用，用 AI 結合自媒體解放時間</div>
   </div>
 </div>
 
