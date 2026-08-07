@@ -27,13 +27,32 @@
 body{font-family:var(--sans);color:var(--text);line-height:2.1;background:var(--bg);
   background-image:radial-gradient(110% 42% at 50% 0%, rgba(168,132,51,0.10) 0%, rgba(250,246,238,0) 62%);
   background-attachment:fixed;-webkit-font-smoothing:antialiased;}
-.wrap{max-width:660px;margin:0 auto;}
+.wrap{max-width:660px;margin:0 auto;position:relative;z-index:1;}
 .fade{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;}
 .fade.vis{opacity:1;transform:translateY(0);}
 
-/* ===== B｜報導式抬頭 ===== */
-.masthead{display:flex;align-items:center;justify-content:space-between;gap:12px;
-  padding:16px 26px;border-bottom:2px solid var(--ink);}
+/* ===== 背景漂浮物件 ===== */
+.bg-blobs{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
+.blob{position:absolute;border-radius:60% 40% 30% 70% / 60% 30% 70% 40%;
+  animation:morph 13s ease-in-out infinite;filter:blur(20px);}
+.blob1{width:min(46vw,560px);height:min(46vw,560px);opacity:0.30;
+  background:linear-gradient(135deg,#EFD79A,#E2C36B);top:6%;right:-11%;}
+.blob2{width:min(40vw,470px);height:min(40vw,470px);opacity:0.26;
+  background:linear-gradient(135deg,#F2E4BF,#E7D296);bottom:-6%;left:-12%;animation-delay:-6.5s;}
+.blob3{width:min(26vw,300px);height:min(26vw,300px);opacity:0.20;
+  background:linear-gradient(135deg,#E8D9B6,#DCC58C);top:46%;right:8%;animation-delay:-3.2s;animation-duration:17s;}
+@keyframes morph{
+  0%,100%{border-radius:60% 40% 30% 70% / 60% 30% 70% 40%;transform:translate(0,0) rotate(0deg);}
+  25%{border-radius:30% 60% 70% 40% / 50% 60% 30% 40%;transform:translate(-14px,18px) rotate(4deg);}
+  50%{border-radius:50% 60% 30% 70% / 30% 40% 70% 60%;transform:translate(10px,-14px) rotate(-3deg);}
+  75%{border-radius:60% 30% 60% 40% / 70% 50% 40% 30%;transform:translate(16px,10px) rotate(2deg);}}
+@media(prefers-reduced-motion:reduce){.blob{animation:none;}}
+
+/* ===== B｜報導式抬頭（橫條貫穿全螢幕）===== */
+.masthead{position:relative;z-index:2;border-bottom:2px solid var(--ink);
+  background:rgba(250,246,238,0.88);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);}
+.masthead-in{max-width:660px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:16px 26px;}
 .masthead .brand{font-family:var(--serif);font-weight:900;font-size:16px;letter-spacing:0.04em;}
 .masthead .tag{font-size:10.5px;font-weight:700;background:var(--ink);color:#FBF7EF;
   padding:4px 11px;border-radius:3px;letter-spacing:0.1em;white-space:nowrap;}
@@ -101,18 +120,54 @@ body{font-family:var(--sans);color:var(--text);line-height:2.1;background:var(--
 @keyframes shine{0%{left:-100%;}20%{left:150%;}100%{left:150%;}}
 .cta-note{margin-top:14px;font-size:12.5px;color:var(--dim);}
 
+/* ===== 右側懸浮導流卡 ===== */
+.fab{position:fixed;right:12px;bottom:18px;z-index:60;display:block;width:178px;
+  background:var(--card);border:3px solid var(--ink);border-radius:16px;
+  box-shadow:6px 6px 0 var(--ink);padding:13px 14px 12px;text-decoration:none;color:var(--text);
+  opacity:0;transform:translateY(16px);pointer-events:none;
+  transition:opacity .35s ease, transform .35s var(--bounce), box-shadow .2s ease;}
+.fab.on{opacity:1;transform:translateY(0);pointer-events:auto;}
+.fab:hover{box-shadow:9px 9px 0 var(--ink);}
+.fab:active{box-shadow:2px 2px 0 var(--ink);}
+.fab-kick{display:block;font-family:var(--mono);font-size:9px;letter-spacing:0.16em;color:var(--gold);font-weight:600;margin-bottom:3px;}
+.fab-title{display:block;font-family:var(--serif);font-size:15.5px;font-weight:900;line-height:1.45;}
+.fab-title .fi{font-size:14px;margin-right:4px;}
+.fab-list{list-style:none;margin:8px 0 10px;padding:8px 0 0;border-top:1px dashed var(--line);}
+.fab-list li{position:relative;padding-left:12px;font-size:11px;line-height:1.6;color:var(--dim);margin-bottom:3px;}
+.fab-list li::before{content:'';position:absolute;left:0;top:7px;width:5px;height:5px;background:var(--gold);border-radius:1px;}
+.fab-list li.d{display:none;}
+.fab-btn{display:block;background:var(--gold);color:#FFF8E6;border:2px solid var(--ink);border-radius:var(--pill);
+  text-align:center;padding:8px 6px;font-size:12.5px;font-weight:900;line-height:1.3;}
+@media(min-width:920px){
+  .fab{right:28px;bottom:auto;top:50%;width:236px;padding:18px 18px 16px;border-radius:20px;
+    transform:translateY(calc(-50% + 16px));}
+  .fab.on{transform:translateY(-50%);}
+  .fab-kick{font-size:10px;}
+  .fab-title{font-size:19px;}
+  .fab-title .fi{font-size:17px;}
+  .fab-list{margin:11px 0 14px;padding-top:11px;}
+  .fab-list li{font-size:12.5px;padding-left:14px;margin-bottom:5px;}
+  .fab-list li.d{display:list-item;}
+  .fab-btn{padding:11px 8px;font-size:14px;}
+}
+@media(prefers-reduced-motion:reduce){.fab{transition:opacity .2s ease;}}
+
 .footer{padding:30px 26px 46px;}
 .footer .fa{font-style:italic;font-size:14px;color:var(--gold);font-weight:700;text-align:center;}
 .footer .disc{font-size:11.5px;color:#9E947E;margin-top:16px;line-height:1.85;}
 </style>
 </head>
 <body>
-<div class="wrap">
+<div class="bg-blobs"><div class="blob blob1"></div><div class="blob blob2"></div><div class="blob blob3"></div></div>
 
-  <div class="masthead">
+<div class="masthead">
+  <div class="masthead-in">
     <div class="brand">美麗K媽</div>
     <div class="tag">她 的 故 事</div>
   </div>
+</div>
+
+<div class="wrap">
 
   <div class="head">
     <h1>我把家顧得很好，<br>卻把自己顧丟了</h1>
@@ -161,13 +216,6 @@ body{font-family:var(--sans);color:var(--text);line-height:2.1;background:var(--
     <p>是我又開始有那種「今天我學到東西了」的感覺<br>那感覺我已經三年沒有過了</p>
     <p>再往後，我看得懂圖了，做對了一些判斷，也開始賺到錢</p>
     <p>我也賠過<br>第一次賠的時候我沒有慌，因為課裡就講過會有這一天<br>我把那次記下來，隔天丟到社群問教練我哪裡看錯</p>
-
-    <div class="quote">
-      有天晚上我老公問我在看什麼<br>
-      我跟他解釋了十分鐘<br>
-      講完我才發現，那是三年來第一次<br>
-      我在跟他講一件他不知道的事
-    </div>
 
     <figure class="ph l">
       <img src="img/crypto-story-02.jpg" alt="K媽坐在筆電前看線圖" loading="lazy" width="520" height="650">
@@ -228,9 +276,32 @@ body{font-family:var(--sans);color:var(--text);line-height:2.1;background:var(--
     <div class="disc">本頁分享的是個人學習經驗，不構成投資建議。加密貨幣交易具高度風險，價格波動可能造成本金損失。課程與社群內分享的任何點位、策略僅供學習參考，不保證獲利，交易決定與結果由您自行負責。本學院不提供代操服務。</div>
   </div>
 </div>
+
+<a class="fab" id="fab" href="https://line.me/R/oaMessage/@341vxnvi/?%E6%88%91%E6%BA%96%E5%82%99%E5%A5%BD%E4%BA%86" target="_blank" rel="noopener">
+  <span class="fab-kick">NEW STUDENT</span>
+  <span class="fab-title"><span class="fi">💬</span>新手免費入門課</span>
+  <ul class="fab-list">
+    <li>完全免費，交易所贊助</li>
+    <li>一天 10 到 15 分鐘</li>
+    <li class="d">卡住有教練可以問</li>
+  </ul>
+  <span class="fab-btn">加 LINE 了解</span>
+</a>
+
 <script>
 var ob=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting) e.target.classList.add('vis'); }); },{threshold:0.06});
 document.querySelectorAll('.fade').forEach(function(el){ ob.observe(el); });
+
+var fab=document.getElementById('fab'), ctaBlock=document.querySelector('.cta');
+function updFab(){
+  var scrolled = window.pageYOffset > 460;
+  var r = ctaBlock.getBoundingClientRect();
+  var ctaInView = r.top < window.innerHeight - 60 && r.bottom > 0;
+  fab.classList.toggle('on', scrolled && !ctaInView);
+}
+window.addEventListener('scroll', updFab, {passive:true});
+window.addEventListener('resize', updFab);
+updFab();
 </script>
 </body>
 </html>
