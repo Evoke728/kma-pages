@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-X8R1V9WXX3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-X8R1V9WXX3', { content_group: 'K媽' });
+</script>
+<title>K媽｜你家小孩最常拉你玩哪一種 · 四型解析</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;700;900&family=Noto+Sans+TC:wght@400;500;700;900&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --skin-primary:   #B5764A;
+  --skin-accent:    #D0A06B;
+  --skin-highlight: #E7C79A;
+  --skin-ink:       #3A2717;
+  --skin-cream:     #FFFBF4;
+  --skin-bg:        #F2E6D2;
+  --skin-warm:      #DFC7A0;
+  --skin-white:     #3A281B;
+  --shadow-sm: 4px 4px 0 var(--skin-ink);
+  --shadow-md: 7px 7px 0 var(--skin-ink);
+  --shadow-lg: 11px 11px 0 var(--skin-ink);
+  --border-thick:  3px solid var(--skin-warm);
+  --border-medium: 2px solid var(--skin-warm);
+  --radius-md:16px; --radius-lg:24px; --radius-pill:50px;
+  --ease-bounce: 400ms cubic-bezier(0.34,1.56,0.64,1);
+  --serif:"Noto Serif TC",serif; --sans:"Noto Sans TC","Inter",sans-serif;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#F2E6D2; font-family:var(--sans); color:var(--skin-white); line-height:1.8; overflow-x:hidden; }
+.wrap { max-width:680px; margin:0 auto; position:relative; background:var(--skin-bg); }
+.blob { position:absolute; border-radius:60% 40% 30% 70% / 60% 30% 70% 40%;
+  animation:morph 8s ease-in-out infinite; opacity:0.30; z-index:0; pointer-events:none; filter:blur(6px); }
+.blob--1 { width:min(70vw,420px); height:min(70vw,420px);
+  background:linear-gradient(135deg, #B5764A, #D0A06B); top:-6%; right:-16%; }
+.blob--2 { width:min(60vw,360px); height:min(60vw,360px);
+  background:linear-gradient(135deg, #D0A06B, #DFC7A0); bottom:8%; left:-18%; animation-delay:-4s; }
+@keyframes morph {
+  0%,100% { border-radius:60% 40% 30% 70% / 60% 30% 70% 40%; }
+  25% { border-radius:30% 60% 70% 40% / 50% 60% 30% 40%; }
+  50% { border-radius:50% 60% 30% 70% / 30% 40% 70% 60%; }
+  75% { border-radius:60% 30% 60% 40% / 70% 50% 40% 30%; }
+}
+.skin-mark { background:var(--skin-highlight); color:#3A281B; padding:0.08em 0.35em; border-radius:5px; display:inline-block; box-decoration-break:clone; }
+.fade-up { opacity:0; transform:translateY(32px); transition:opacity .6s ease, transform .6s ease; }
+.fade-up.visible { opacity:1; transform:translateY(0); }
+.hero { position:relative; z-index:1; padding:62px 28px 44px; text-align:center; }
+.hero-tag { display:inline-block; background:var(--skin-primary); color:#fff; border:var(--border-medium); border-radius:var(--radius-pill); padding:6px 16px; font-size:13px; font-weight:700; box-shadow:var(--shadow-sm); margin-bottom:22px; }
+.hero-title { font-family:var(--serif); font-weight:900; font-size:28px; line-height:1.5; color:var(--skin-white); }
+.hero-sub { margin-top:16px; font-size:14px; color:rgba(58,40,27,0.62); line-height:1.85; }
+.section { position:relative; z-index:1; padding:34px 28px; }
+.section-label { display:inline-block; background:var(--skin-primary); color:#fff; border:var(--border-medium); border-radius:var(--radius-pill); padding:4px 14px; font-size:12px; font-weight:700; margin-bottom:20px; box-shadow:var(--shadow-sm); }
+.quiz-q { font-family:var(--serif); font-size:20px; font-weight:700; line-height:1.6; margin-bottom:8px; }
+.quiz-sub { font-size:14px; color:rgba(58,40,27,0.55); margin-bottom:26px; font-weight:500; }
+.opt { background:var(--skin-cream); border:var(--border-thick); border-radius:var(--radius-md); box-shadow:var(--shadow-sm); padding:18px 20px; margin-bottom:18px; cursor:pointer; transition:transform var(--ease-bounce), box-shadow var(--ease-bounce); }
+.opt:hover { transform:translate(-3px,-3px); box-shadow:var(--shadow-md); }
+.opt.active { box-shadow:var(--shadow-md); }
+.opt-head { display:flex; align-items:center; gap:14px; font-size:16.5px; font-weight:700; }
+.opt-letter { display:inline-flex; align-items:center; justify-content:center; width:34px; height:34px; background:var(--skin-highlight); color:#3A281B; border:var(--border-medium); border-radius:50%; font-family:"Inter"; font-weight:700; font-size:16px; flex-shrink:0; }
+.opt-result { max-height:0; overflow:hidden; transition:max-height .5s ease, margin .3s, padding .3s; }
+.res-reveal { font-family:var(--serif); font-size:17px; font-weight:900; color:var(--skin-primary); margin-bottom:16px; }
+.res-reveal span { color:rgba(58,40,27,0.55); font-family:var(--sans); font-size:13px; font-weight:700; }
+.opt.active .opt-result { max-height:1800px; margin-top:16px; padding-top:16px; border-top:2px dashed var(--skin-warm); }
+.res-blk { margin-bottom:15px; }
+.res-h { font-size:13px; font-weight:700; color:var(--skin-primary); margin-bottom:6px; letter-spacing:0.03em; }
+.res-t { font-size:14.5px; color:rgba(58,40,27,0.9); line-height:1.85; }
+.res-quote { font-family:var(--serif); font-size:15px; font-weight:700; color:var(--skin-white); background:#FDF5EA; border-left:4px solid var(--skin-primary); border-radius:8px; padding:12px 16px; margin-top:10px; line-height:1.8; }
+.transition { text-align:center; padding:14px 0; position:relative; z-index:1; }
+.transition-text { display:inline-block; background:var(--skin-cream); border:var(--border-medium); border-radius:var(--radius-pill); padding:8px 20px; font-size:14px; font-weight:700; box-shadow:var(--shadow-sm); }
+.bridge { position:relative; z-index:1; padding:34px 28px; }
+.bridge-card { background:var(--skin-cream); border:var(--border-thick); border-radius:var(--radius-lg); box-shadow:var(--shadow-md); padding:28px 24px; }
+.bridge p { font-size:15px; color:rgba(58,40,27,0.88); line-height:1.9; margin-bottom:14px; }
+.bridge .em { font-family:var(--serif); font-size:18px; font-weight:900; line-height:1.7; margin:6px 0 16px; }
+.intro { position:relative; z-index:1; padding:34px 28px; }
+.intro-card { background:#FDF5EA; border:var(--border-thick); border-radius:var(--radius-lg); box-shadow:var(--shadow-md); padding:26px 24px; }
+.intro-name { font-family:var(--serif); font-size:20px; font-weight:900; margin-bottom:12px; }
+.intro-text { font-size:14.5px; color:rgba(58,40,27,0.88); line-height:1.9; }
+.cta { position:relative; z-index:1; padding:26px 28px 56px; text-align:center; }
+.cta-line { font-family:var(--serif); font-size:21px; font-weight:900; line-height:1.6; margin-bottom:10px; }
+.cta-sub { font-size:14.5px; color:rgba(58,40,27,0.55); margin-bottom:26px; line-height:1.8; font-weight:500; }
+.skin-btn { display:inline-flex; align-items:center; gap:8px; background:var(--skin-primary); color:#fff; border:var(--border-thick); border-radius:var(--radius-pill); padding:16px 44px; font-weight:900; font-size:18px; box-shadow:var(--shadow-md); transition:transform var(--ease-bounce), box-shadow var(--ease-bounce); position:relative; overflow:hidden; cursor:pointer; text-decoration:none; }
+.skin-btn:hover { transform:translate(-4px,-4px); box-shadow:var(--shadow-lg); }
+.skin-btn::after { content:''; position:absolute; top:0; left:-100%; width:50%; height:100%; background:linear-gradient(90deg,transparent,rgba(255,255,255,0.4),transparent); transform:skewX(-25deg); animation:shine 3s ease-in-out infinite; }
+@keyframes shine { 0%{left:-100%;} 20%{left:150%;} 100%{left:150%;} }
+.cta-note { margin-top:16px; font-size:12.5px; color:rgba(58,40,27,0.5); font-weight:500; }
+.footer { position:relative; z-index:1; padding:22px 28px 40px; text-align:center; }
+.footer-acc { font-style:italic; font-size:14px; color:var(--skin-primary); font-weight:700; }
+.side-cta{display:none;}
+@media(min-width:1120px){
+ .side-cta{display:block;position:fixed;top:140px;right:max(20px,calc((100vw - 680px)/2 - 220px));width:200px;z-index:40;background:var(--skin-cream);border:var(--border-thick);border-radius:var(--radius-lg);box-shadow:var(--shadow-md);padding:18px 18px 20px;text-align:center;}
+ .side-cta .fk{font-family:var(--sans);font-size:10px;letter-spacing:0.14em;color:var(--skin-primary);font-weight:700;margin-bottom:8px;}
+ .side-cta h4{font-family:var(--serif);font-size:16px;font-weight:900;color:var(--skin-white);line-height:1.5;margin-bottom:12px;}
+ .side-cta h4 .g{color:var(--skin-primary);}
+ .side-cta a{display:block;background:var(--skin-primary);color:#fff;border:var(--border-medium);border-radius:var(--radius-pill);padding:11px 14px;font-weight:900;font-size:14px;text-decoration:none;box-shadow:var(--shadow-sm);transition:transform var(--ease-bounce);}
+ .side-cta a:hover{transform:translate(-2px,-2px);}
+}
+</style>
+</head>
+<body>
+<aside class="side-cta">
+  <div class="fk">JOIN US</div>
+  <h4>跟我一起<br><span class="g">用 AI 做內容</span></h4>
+  <a href="https://www.skool.com/d11-lab" target="_blank" rel="noopener">加入社群 →</a>
+</aside>
+<div class="wrap">
+  <div class="blob blob--1"></div>
+  <div class="blob blob--2"></div>
+
+  <div class="hero">
+    <span class="hero-tag">#家庭育兒 · 四型解析</span>
+    <div class="hero-title">他拉你玩的那一種<br><span class="skin-mark">藏著他正在跟你要的東西</span></div>
+    <div class="hero-sub">剛剛你憑直覺選的那一個，是他最常用的邀請方式<br>四種邀請，他要的東西完全不一樣<br>往下找你選的字母，看看他在跟你要什麼</div>
+  </div>
+
+  <div class="section fade-up">
+    <span class="section-label">點開你選的字母</span>
+    <div class="quiz-q">你家小孩最常拉你玩哪一種</div>
+    <div class="quiz-sub">點下面你選的那一個，看他真正想要的是什麼</div>
+
+    <div class="opt" onclick="toggle(this)">
+      <div class="opt-head"><span class="opt-letter">A</span>一地的玩具，要你當另一個角色</div>
+      <div class="opt-result">
+        <div class="res-reveal"><span>他跟你要的是</span><br>你走進他寫好的那個故事裡</div>
+        <div class="res-blk"><div class="res-h">他的內心話</div><div class="res-t">你當這隻，我當那隻，你要先說話</div></div>
+        <div class="res-blk"><div class="res-h">他為什麼這樣邀請你</div><div class="res-t">他來找你之前，角色已經分好，劇情也想好了，你一坐下來開口，那個世界就成立了；你沒坐下來，它就只是一地的塑膠玩具</div></div>
+        <div class="res-blk"><div class="res-h">他真正要的</div><div class="res-t">照他的設定演，中途不要改規則</div></div>
+        <div class="res-blk"><div class="res-h">你可能誤會的</div><div class="res-t">你以為他要人陪，可是你坐在旁邊看他玩，他還是會不高興，因為他缺的是一個會開口講台詞的人</div></div>
+        <div class="res-blk"><div class="res-h">他最想聽到你說的</div><div class="res-t">其實很簡單，就是一句「那我是誰，我要說什麼」</div></div>
+        <div class="res-blk"><div class="res-h">今天可以怎麼做</div><div class="res-t">問他你演誰，然後照他說的演，就算劇情跳來跳去也先別糾正，三分鐘就夠</div></div>
+        <div class="res-quote">你坐下來開口的那一秒，那個世界才成立</div>
+      </div>
+    </div>
+
+    <div class="opt" onclick="toggle(this)">
+      <div class="opt-head"><span class="opt-letter">B</span>紙箱和棉被，要你進去他蓋的地方</div>
+      <div class="opt-result">
+        <div class="res-reveal"><span>他跟你要的是</span><br>你承認他蓋的那個地方是真的</div>
+        <div class="res-blk"><div class="res-h">他的內心話</div><div class="res-t">你進來，這裡是我蓋的</div></div>
+        <div class="res-blk"><div class="res-h">他為什麼這樣邀請你</div><div class="res-t">他花了很久把箱子擺好、把棉被架起來，那是他第一個真正屬於自己、也是自己做出來的地方，他想找一個人願意鑽進去</div></div>
+        <div class="res-blk"><div class="res-h">他真正要的</div><div class="res-t">你的身體真的進去，坐在裡面</div></div>
+        <div class="res-blk"><div class="res-h">你可能誤會的</div><div class="res-t">你以為在外面說一句好棒就夠了，但對他來說，站在外面的人跟鑽進來的人，是完全不同的兩種人</div></div>
+        <div class="res-blk"><div class="res-h">他最想聽到你說的</div><div class="res-t">其實很簡單，就是一句「我可以進去嗎」</div></div>
+        <div class="res-blk"><div class="res-h">今天可以怎麼做</div><div class="res-t">不要在外面誇，蹲下來爬進去坐五分鐘，問他這裡是哪裡、這扇門通到哪</div></div>
+        <div class="res-quote">他蓋的那個地方，要有人進去才算數</div>
+      </div>
+    </div>
+
+    <div class="opt" onclick="toggle(this)">
+      <div class="opt-head"><span class="opt-letter">C</span>追跑跳，要你當對手</div>
+      <div class="opt-result">
+        <div class="res-reveal"><span>他跟你要的是</span><br>你認真跟他比一場</div>
+        <div class="res-blk"><div class="res-h">他的內心話</div><div class="res-t">再一次，這次我一定贏</div></div>
+        <div class="res-blk"><div class="res-h">他為什麼這樣邀請你</div><div class="res-t">這個年紀的孩子是用身體在確認自己有多少力氣，他找上你，是因為在他認識的人裡面，你是最強的那一個</div></div>
+        <div class="res-blk"><div class="res-h">他真正要的</div><div class="res-t">你真的用力，讓他贏得有感覺</div></div>
+        <div class="res-blk"><div class="res-h">你可能誤會的</div><div class="res-t">你以為讓他贏他就會開心，可是放水他看得出來，贏得太容易，那場比賽對他就沒有意義了</div></div>
+        <div class="res-blk"><div class="res-h">他最想聽到你說的</div><div class="res-t">其實很簡單，就是一句「這次我認真了喔」</div></div>
+        <div class="res-blk"><div class="res-h">今天可以怎麼做</div><div class="res-t">認真跑一次，讓他追一段再輸給他，輸的時候要有反應，喘一下、蹲下來說你贏了</div></div>
+        <div class="res-quote">贏得太容易的那一場，他不會記得</div>
+      </div>
+    </div>
+
+    <div class="opt" onclick="toggle(this)">
+      <div class="opt-head"><span class="opt-letter">D</span>講不完的故事，要你當唯一的聽眾</div>
+      <div class="opt-result">
+        <div class="res-reveal"><span>他跟你要的是</span><br>你聽他講完，中間不要接話</div>
+        <div class="res-blk"><div class="res-h">他的內心話</div><div class="res-t">等一下，我還沒講完</div></div>
+        <div class="res-blk"><div class="res-h">他為什麼這樣邀請你</div><div class="res-t">他腦子裡的東西比嘴巴快很多，講出來會跳、會重複、會突然換人，他正在練習把心裡那些畫面，變成別人聽得懂的話</div></div>
+        <div class="res-blk"><div class="res-h">他真正要的</div><div class="res-t">你等他把整段講完</div></div>
+        <div class="res-blk"><div class="res-h">你可能誤會的</div><div class="res-t">你以為幫他把話接順是在幫他，可是你一接話他就停了，他要的是把話講完整的機會，不是講得對</div></div>
+        <div class="res-blk"><div class="res-h">他最想聽到你說的</div><div class="res-t">其實很簡單，就是一句「然後呢」</div></div>
+        <div class="res-blk"><div class="res-h">今天可以怎麼做</div><div class="res-t">他開始講的時候，手上那件事先放下，全程只回「然後呢」跟「真的喔」，順序亂掉也不要幫他排</div></div>
+        <div class="res-quote">他講得亂七八糟的那幾年，是他在學怎麼被聽懂</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="transition"><span class="transition-text">繼續往下滑 ⬇️</span></div>
+
+  <div class="bridge fade-up">
+    <div class="bridge-card">
+      <p>四種邀請<br>他要的其實都是 <span class="skin-mark">同一件事</span></p>
+      <p class="em">他要你真的走進去<br>不管是他的故事、他蓋的地方，還是他講到一半的那段話</p>
+      <p class="em">他還會開口拉你的日子<br>沒有你想的那麼多</p>
+    </div>
+  </div>
+
+  <div class="intro fade-up">
+    <div class="intro-card">
+      <div class="intro-name">Hi 我是 <span class="skin-mark">K媽</span></div>
+      <div class="intro-text">我是一個媽媽，也用 AI ＋ 自媒體在記錄生活、經營內容<br><br>像你剛剛滑過的那八張圖，其實就是我用 AI 一張一張做出來的<br><br>我用 AI 把做圖跟寫文案的時間壓得很短<br>省下來的那些時間，剛好就是可以坐在地上陪她玩的時間</div>
+    </div>
+  </div>
+
+  <div class="cta fade-up">
+    <div class="cta-line">連那八張圖<br>都是我用 <span class="skin-mark">AI</span> 做出來的</div>
+    <div class="cta-sub">想學怎麼用 AI ＋ 自媒體把內容輕鬆做起來<br>我都整理在這個社群裡，一群人一起玩</div>
+    <a class="skin-btn" href="https://www.skool.com/d11-lab" target="_blank" rel="noopener">加入 奇點研究所 × D11</a>
+    <div class="cta-note">點擊加入社群，跟我一起玩 AI</div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-acc">@lovekaren0316</div>
+  </div>
+</div>
+
+<script>
+function toggle(el) {
+  const wasActive = el.classList.contains('active');
+  document.querySelectorAll('.opt').forEach(o => o.classList.remove('active'));
+  if (!wasActive) el.classList.add('active');
+}
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
