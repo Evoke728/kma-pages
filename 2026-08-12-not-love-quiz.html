@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-X8R1V9WXX3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-X8R1V9WXX3', { content_group: 'K媽' });
+</script>
+<title>K媽｜半夜兩點你最想要哪一樣 · 四型解析</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;700;900&family=Noto+Sans+TC:wght@400;500;700;900&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --skin-primary:   #B5764A;
+  --skin-accent:    #D0A06B;
+  --skin-highlight: #E7C79A;
+  --skin-ink:       #3A2717;
+  --skin-cream:     #FFFBF4;
+  --skin-bg:        #F2E6D2;
+  --skin-warm:      #DFC7A0;
+  --skin-white:     #3A281B;
+  --shadow-sm: 4px 4px 0 var(--skin-ink);
+  --shadow-md: 7px 7px 0 var(--skin-ink);
+  --shadow-lg: 11px 11px 0 var(--skin-ink);
+  --border-thick:  3px solid var(--skin-warm);
+  --border-medium: 2px solid var(--skin-warm);
+  --radius-md:16px; --radius-lg:24px; --radius-pill:50px;
+  --ease-bounce: 400ms cubic-bezier(0.34,1.56,0.64,1);
+  --serif:"Noto Serif TC",serif; --sans:"Noto Sans TC","Inter",sans-serif;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#F2E6D2; font-family:var(--sans); color:var(--skin-white); line-height:1.8; overflow-x:hidden; }
+.wrap { max-width:680px; margin:0 auto; position:relative; background:var(--skin-bg); }
+.blob { position:absolute; border-radius:60% 40% 30% 70% / 60% 30% 70% 40%;
+  animation:morph 8s ease-in-out infinite; opacity:0.30; z-index:0; pointer-events:none; filter:blur(6px); }
+.blob--1 { width:min(70vw,420px); height:min(70vw,420px);
+  background:linear-gradient(135deg, #B5764A, #D0A06B); top:-6%; right:-16%; }
+.blob--2 { width:min(60vw,360px); height:min(60vw,360px);
+  background:linear-gradient(135deg, #D0A06B, #DFC7A0); bottom:8%; left:-18%; animation-delay:-4s; }
+@keyframes morph {
+  0%,100% { border-radius:60% 40% 30% 70% / 60% 30% 70% 40%; }
+  25% { border-radius:30% 60% 70% 40% / 50% 60% 30% 40%; }
+  50% { border-radius:50% 60% 30% 70% / 30% 40% 70% 60%; }
+  75% { border-radius:60% 30% 60% 40% / 70% 50% 40% 30%; }
+}
+.skin-mark { background:var(--skin-highlight); color:#3A281B; padding:0.08em 0.35em; border-radius:5px; display:inline-block; box-decoration-break:clone; }
+.fade-up { opacity:0; transform:translateY(32px); transition:opacity .6s ease, transform .6s ease; }
+.fade-up.visible { opacity:1; transform:translateY(0); }
+.hero { position:relative; z-index:1; padding:62px 28px 44px; text-align:center; }
+.hero-tag { display:inline-block; background:var(--skin-primary); color:#fff; border:var(--border-medium); border-radius:var(--radius-pill); padding:6px 16px; font-size:13px; font-weight:700; box-shadow:var(--shadow-sm); margin-bottom:22px; }
+.hero-title { font-family:var(--serif); font-weight:900; font-size:28px; line-height:1.5; color:var(--skin-white); }
+.hero-sub { margin-top:16px; font-size:14px; color:rgba(58,40,27,0.62); line-height:1.85; }
+.section { position:relative; z-index:1; padding:34px 28px; }
+.section-label { display:inline-block; background:var(--skin-primary); color:#fff; border:var(--border-medium); border-radius:var(--radius-pill); padding:4px 14px; font-size:12px; font-weight:700; margin-bottom:20px; box-shadow:var(--shadow-sm); }
+.quiz-q { font-family:var(--serif); font-size:20px; font-weight:700; line-height:1.6; margin-bottom:8px; }
+.quiz-sub { font-size:14px; color:rgba(58,40,27,0.55); margin-bottom:26px; font-weight:500; }
+.opt { background:var(--skin-cream); border:var(--border-thick); border-radius:var(--radius-md); box-shadow:var(--shadow-sm); padding:18px 20px; margin-bottom:18px; cursor:pointer; transition:transform var(--ease-bounce), box-shadow var(--ease-bounce); }
+.opt:hover { transform:translate(-3px,-3px); box-shadow:var(--shadow-md); }
+.opt.active { box-shadow:var(--shadow-md); }
+.opt-head { display:flex; align-items:center; gap:14px; font-size:16.5px; font-weight:700; }
+.opt-letter { display:inline-flex; align-items:center; justify-content:center; width:34px; height:34px; background:var(--skin-highlight); color:#3A281B; border:var(--border-medium); border-radius:50%; font-family:"Inter"; font-weight:700; font-size:16px; flex-shrink:0; }
+.opt-result { max-height:0; overflow:hidden; transition:max-height .5s ease, margin .3s, padding .3s; }
+.res-reveal { font-family:var(--serif); font-size:17px; font-weight:900; color:var(--skin-primary); margin-bottom:16px; }
+.res-reveal span { color:rgba(58,40,27,0.55); font-family:var(--sans); font-size:13px; font-weight:700; }
+.opt.active .opt-result { max-height:3600px; margin-top:16px; padding-top:16px; border-top:2px dashed var(--skin-warm); }
+.res-blk { margin-bottom:15px; }
+.res-h { font-size:13px; font-weight:700; color:var(--skin-primary); margin-bottom:6px; letter-spacing:0.03em; }
+.res-t { font-size:14.5px; color:rgba(58,40,27,0.9); line-height:1.85; }
+.res-quote { font-family:var(--serif); font-size:15px; font-weight:700; color:var(--skin-white); background:#FDF5EA; border-left:4px solid var(--skin-primary); border-radius:8px; padding:12px 16px; margin-top:10px; line-height:1.8; }
+.gem { margin-top:24px; padding-top:20px; border-top:2px dashed var(--skin-warm); }
+.gem-label { display:inline-block; background:var(--skin-highlight); color:#3A281B; border:var(--border-medium); border-radius:var(--radius-pill); padding:3px 13px; font-size:11.5px; font-weight:700; margin-bottom:13px; }
+.gem-intro { font-size:14px; color:rgba(58,40,27,0.78); line-height:1.9; margin-bottom:15px; }
+.gem-bridge { font-size:14.5px; color:rgba(58,40,27,0.92); line-height:1.9; margin-bottom:18px; padding-left:13px; border-left:3px solid var(--skin-highlight); font-weight:500; }
+.gem-card { background:#FDF5EA; border:var(--border-medium); border-radius:var(--radius-md); box-shadow:var(--shadow-sm); padding:18px 20px; }
+.gem-head { display:flex; flex-direction:row-reverse; align-items:center; gap:14px; }
+.gem-img-link { display:block; flex-shrink:0; width:clamp(88px,25vw,108px); transition:transform var(--ease-bounce); }
+.gem-img-link:hover { transform:translate(-3px,-3px); }
+.gem-img { display:block; width:100%; height:auto; aspect-ratio:1/1; object-fit:cover; border:var(--border-medium); border-radius:12px; background:var(--skin-warm); box-shadow:var(--shadow-sm); }
+@media (min-width:640px) { .gem-img-link { width:216px; } }
+.gem-head-txt { min-width:0; flex:1; }
+.gem-name { font-family:var(--serif); font-size:17.5px; font-weight:900; color:var(--skin-primary); line-height:1.5; }
+.gem-stones { font-size:12px; color:rgba(58,40,27,0.5); font-weight:500; margin-top:4px; line-height:1.7; }
+.gem-why { font-size:14px; color:rgba(58,40,27,0.88); line-height:1.85; margin:13px 0 17px; }
+.gem-btn { display:inline-flex; align-items:center; gap:7px; background:var(--skin-primary); color:#fff; border:var(--border-medium); border-radius:var(--radius-pill); padding:11px 28px; font-weight:900; font-size:14.5px; text-decoration:none; box-shadow:var(--shadow-sm); transition:transform var(--ease-bounce), box-shadow var(--ease-bounce); }
+.gem-btn:hover { transform:translate(-3px,-3px); box-shadow:var(--shadow-md); }
+.gem-code { margin-top:14px; background:var(--skin-highlight); border:2px dashed var(--skin-primary); border-radius:var(--radius-md); padding:13px 17px; display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; }
+.gem-code-txt { font-size:14px; color:var(--skin-ink); line-height:1.75; font-weight:500; }
+.gem-code-txt b { font-family:var(--serif); font-size:16.5px; font-weight:900; color:var(--skin-primary); letter-spacing:0.08em; }
+.gem-code-btn { flex-shrink:0; background:var(--skin-cream); color:var(--skin-primary); border:2px solid var(--skin-primary); border-radius:var(--radius-pill); padding:7px 17px; font-family:var(--sans); font-size:12.5px; font-weight:900; cursor:pointer; transition:transform var(--ease-bounce), background var(--ease-bounce); }
+.gem-code-btn:hover { transform:translate(-2px,-2px); }
+.gem-code-btn.done { background:var(--skin-primary); color:#fff; }
+.gem-more { margin-top:18px; font-size:13.5px; color:rgba(58,40,27,0.62); font-weight:500; line-height:1.8; }
+.gem-more a { color:var(--skin-primary); font-weight:700; text-decoration:none; border-bottom:2px solid var(--skin-highlight); }
+.transition { text-align:center; padding:14px 0; position:relative; z-index:1; }
+.transition-text { display:inline-block; background:var(--skin-cream); border:var(--border-medium); border-radius:var(--radius-pill); padding:8px 20px; font-size:14px; font-weight:700; box-shadow:var(--shadow-sm); }
+.bridge { position:relative; z-index:1; padding:34px 28px; }
+.bridge-card { background:var(--skin-cream); border:var(--border-thick); border-radius:var(--radius-lg); box-shadow:var(--shadow-md); padding:28px 24px; }
+.bridge p { font-size:15px; color:rgba(58,40,27,0.88); line-height:1.9; margin-bottom:14px; }
+.bridge .em { font-family:var(--serif); font-size:18px; font-weight:900; line-height:1.7; margin:6px 0 16px; }
+.intro { position:relative; z-index:1; padding:34px 28px; }
+.intro-card { background:#FDF5EA; border:var(--border-thick); border-radius:var(--radius-lg); box-shadow:var(--shadow-md); padding:26px 24px; }
+.intro-name { font-family:var(--serif); font-size:20px; font-weight:900; margin-bottom:12px; }
+.intro-text { font-size:14.5px; color:rgba(58,40,27,0.88); line-height:1.9; }
+.intro-text a { color:var(--skin-primary); font-weight:700; text-decoration:none; border-bottom:2px solid var(--skin-highlight); }
+.cta { position:relative; z-index:1; padding:26px 28px 56px; text-align:center; }
+.cta-line { font-family:var(--serif); font-size:21px; font-weight:900; line-height:1.6; margin-bottom:10px; }
+.cta-sub { font-size:14.5px; color:rgba(58,40,27,0.55); margin-bottom:26px; line-height:1.8; font-weight:500; }
+.skin-btn { display:inline-flex; align-items:center; gap:8px; background:var(--skin-primary); color:#fff; border:var(--border-thick); border-radius:var(--radius-pill); padding:16px 44px; font-weight:900; font-size:18px; box-shadow:var(--shadow-md); transition:transform var(--ease-bounce), box-shadow var(--ease-bounce); position:relative; overflow:hidden; cursor:pointer; text-decoration:none; }
+.skin-btn:hover { transform:translate(-4px,-4px); box-shadow:var(--shadow-lg); }
+.skin-btn::after { content:''; position:absolute; top:0; left:-100%; width:50%; height:100%; background:linear-gradient(90deg,transparent,rgba(255,255,255,0.4),transparent); transform:skewX(-25deg); animation:shine 3s ease-in-out infinite; }
+@keyframes shine { 0%{left:-100%;} 20%{left:150%;} 100%{left:150%;} }
+.cta-note { margin-top:16px; font-size:12.5px; color:rgba(58,40,27,0.5); font-weight:500; }
+.footer { position:relative; z-index:1; padding:22px 28px 40px; text-align:center; }
+.footer-acc { font-style:italic; font-size:14px; color:var(--skin-primary); font-weight:700; }
+.side-cta{display:none;}
+@media(min-width:1120px){
+ .side-cta{display:block;position:fixed;top:140px;right:max(20px,calc((100vw - 680px)/2 - 220px));width:200px;z-index:40;background:var(--skin-cream);border:var(--border-thick);border-radius:var(--radius-lg);box-shadow:var(--shadow-md);padding:18px 18px 20px;text-align:center;}
+ .side-cta .fk{font-family:var(--sans);font-size:10px;letter-spacing:0.14em;color:var(--skin-primary);font-weight:700;margin-bottom:8px;}
+ .side-cta h4{font-family:var(--serif);font-size:16px;font-weight:900;color:var(--skin-white);line-height:1.5;margin-bottom:12px;}
+ .side-cta h4 .g{color:var(--skin-primary);}
+ .side-cta a{display:block;background:var(--skin-primary);color:#fff;border:var(--border-medium);border-radius:var(--radius-pill);padding:11px 14px;font-weight:900;font-size:14px;text-decoration:none;box-shadow:var(--shadow-sm);transition:transform var(--ease-bounce);}
+ .side-cta a:hover{transform:translate(-2px,-2px);}
+}
+</style>
+</head>
+<body>
+<aside class="side-cta">
+  <div class="fk">FOREST CRYSTAL</div>
+  <h4>缺的那一塊，<br><span class="g">讓水晶幫你補回來</span></h4>
+  <a href="https://omnicrystal.store/shop/?utm_source=Karen&amp;utm_medium=message" target="_blank" rel="noopener">看水晶 →</a>
+</aside>
+<div class="wrap">
+  <div class="blob blob--1"></div>
+  <div class="blob blob--2"></div>
+
+  <div class="hero">
+    <span class="hero-tag">#感情經營 · 四型解析</span>
+    <div class="hero-title">半夜兩點你想要的那一樣<br><span class="skin-mark">就是你缺的那一塊</span></div>
+    <div class="hero-sub">剛剛你憑直覺選的那一個，不是隨便選的<br>四樣東西很小，指的卻是四種不一樣的空<br>往下找你選的字母，看它在講你什麼</div>
+  </div>
+
+  <div class="section fade-up">
+    <span class="section-label">點開你選的字母</span>
+    <div class="quiz-q">半夜兩點你醒著，最希望房間裡有哪一樣？</div>
+    <div class="quiz-sub">點下面你選的那一個，看它藏著你缺的是什麼</div>
+
+    <div class="opt" onclick="toggle(this, event)">
+      <div class="opt-head"><span class="opt-letter">A</span>還亮著的一盞燈</div>
+      <div class="opt-result">
+        <div class="res-reveal"><span>你缺的那一塊</span><br>有人陪你醒著，話還可以講</div>
+        <div class="res-blk"><div class="res-h">你的內心話</div><div class="res-t">這件事我到底要不要講</div></div>
+        <div class="res-blk"><div class="res-h">你的內心想法</div><div class="res-t">你不是沒有話，你是每次話到嘴邊就想說算了，明天再說吧，然後明天又有新的事</div></div>
+        <div class="res-blk"><div class="res-h">你真正想要的</div><div class="res-t">有話可以當下講出口，不用一個人吞到天亮</div></div>
+        <div class="res-blk"><div class="res-h">你要的其實是</div><div class="res-t">不是他多會安慰，是那盞燈還亮著，代表你還可以開口</div></div>
+        <div class="res-blk"><div class="res-h">其實你不是這樣的人</div><div class="res-t">你不悶，你只是被打斷過太多次，久到你自己先把話收起來</div></div>
+        <div class="res-blk"><div class="res-h">你最想聽到的</div><div class="res-t">其實很簡單，就是一句「你說，我還沒睡」</div></div>
+        <div class="res-blk"><div class="res-h">給你的提醒</div><div class="res-t">不用等到最好的時機，也不用整理成他聽得懂的樣子，先講出來，講得亂也沒關係</div></div>
+        <div class="res-quote">話沒有講出口，不會自己消失<br>它只是換個地方壓著你</div>
+
+        <div class="gem">
+          <span class="gem-label">缺的那一塊，讓水晶幫你補回來</span>
+          <div class="gem-intro">每一種水晶，都對應一種能量<br>有的幫你把話說出口，有的顧情緒，有的補溫度<br>挑水晶的邏輯其實很簡單，你現在最缺哪一塊，就補哪一塊<br><br>它不會替你把話講完<br>但戴在手上每天都看得到，你會記得自己正在調整什麼</div>
+          <div class="gem-bridge">你剛剛選的是那盞還亮著的燈<br>代表你缺的不是話，是把話講出口的那一下力氣<br>吞回去的次數多了，人會自己先閉嘴<br>所以下面這一條，補的是開口跟表達</div>
+          <div class="gem-card">
+            <div class="gem-head">
+              <a class="gem-img-link" href="https://omnicrystal.store/shop/destiny-crystals/zodiac/c3/?utm_source=Karen&amp;utm_medium=message" target="_blank" rel="noopener"><img class="gem-img" src="img/crystals/mengxiang-chuansheng.jpg" alt="夢想傳聲水晶手鍊" width="800" height="800" loading="lazy"></a>
+              <div class="gem-head-txt">
+                <div class="gem-name">夢想傳聲</div>
+                <div class="gem-stones">海藍寶 x 金耀石</div>
+              </div>
+            </div>
+            <div class="gem-why">海藍寶主的是喉輪，對應的就是把想講的講出來這件事<br>金耀石把干擾擋掉，讓你不用先猜對方會怎麼想才敢開口<br><br>戴著它不會讓對話變容易<br>但每天扣上的時候<br>你會記得，講得亂也比吞回去好</div>
+            <a class="gem-btn" href="https://omnicrystal.store/shop/destiny-crystals/zodiac/c3/?utm_source=Karen&amp;utm_medium=message" target="_blank" rel="noopener">看看這一款 →</a>
+          </div>
+          <div class="gem-code">
+            <div class="gem-code-txt">使用專屬折扣碼「<b>Karen</b>」可折 $100</div>
+            <button class="gem-code-btn" type="button" onclick="copyCode(this)">複製</button>
+          </div>
+          <div class="gem-more">想看看其他適合你的<br><a href="https://omnicrystal.store/shop/?filter_%e8%83%bd%e9%87%8f%e5%8a%9f%e6%95%88=%e6%ba%9d%e9%80%9a%e8%a1%a8%e9%81%94&amp;utm_source=Karen&amp;utm_medium=message" target="_blank" rel="noopener">溝通表達能量的水晶 →</a></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="opt" onclick="toggle(this, event)">
+      <div class="opt-head"><span class="opt-letter">B</span>被蓋回來的那條被子</div>
+      <div class="opt-result">
+        <div class="res-reveal"><span>你缺的那一塊</span><br>有人注意到你冷</div>
+        <div class="res-blk"><div class="res-h">你的內心話</div><div class="res-t">有沒有人發現我不太對</div></div>
+        <div class="res-blk"><div class="res-h">你的內心想法</div><div class="res-t">你很會裝沒事，裝到連自己都快信了，可是你心裡一直在等，有沒有人會發現</div></div>
+        <div class="res-blk"><div class="res-h">你真正想要的</div><div class="res-t">不用開口，就有人看出你今天不太好</div></div>
+        <div class="res-blk"><div class="res-h">你要的其實是</div><div class="res-t">不是他問你怎麼了，是他不用問，就伸手把被子拉回你身上</div></div>
+        <div class="res-blk"><div class="res-h">其實你不是這樣的人</div><div class="res-t">你不難搞，你只是太習慣自己處理，久到你以為說出來會麻煩別人</div></div>
+        <div class="res-blk"><div class="res-h">你最想聽到的</div><div class="res-t">其實很簡單，就是一句「你不用解釋，我在」</div></div>
+        <div class="res-blk"><div class="res-h">給你的提醒</div><div class="res-t">先讓自己承認一次「我今天不好」，不用等別人看出來，你可以先對自己說</div></div>
+        <div class="res-quote">你不是想被安慰<br>你只是想被看見</div>
+
+        <div class="gem">
+          <span class="gem-label">缺的那一塊，讓水晶幫你補回來</span>
+          <div class="gem-intro">每一種水晶，都對應一種能量<br>有的幫你把話說出口，有的顧情緒，有的補溫度<br>挑水晶的邏輯其實很簡單，你現在最缺哪一塊，就補哪一塊<br><br>它不會替你把話講完<br>但戴在手上每天都看得到，你會記得自己正在調整什麼</div>
+          <div class="gem-bridge">你剛剛選的是被蓋回來的那條被子<br>代表你缺的是有人注意到你的溫度<br>你很會撐，撐到大家都以為你不需要<br>所以下面這一條，補的是情感的溫度跟被在乎的感覺</div>
+          <div class="gem-card">
+            <div class="gem-head">
+              <a class="gem-img-link" href="https://omnicrystal.store/shop/destiny-crystals/zodiac/d4/?utm_source=Karen&amp;utm_medium=message" target="_blank" rel="noopener"><img class="gem-img" src="img/crystals/xiyue-hexuan.jpg" alt="喜悅和旋水晶手鍊" width="800" height="800" loading="lazy"></a>
+              <div class="gem-head-txt">
+                <div class="gem-name">喜悅和旋</div>
+                <div class="gem-stones">托帕石 x 粉水晶 x 海藍寶</div>
+              </div>
+            </div>
+            <div class="gem-why">粉水晶對應心輪，顧的是關係裡的溫度<br>托帕石把心情慢慢帶亮，不讓你一直卡在那種淡淡的感覺裡<br>海藍寶讓你在需要的時候比較說得出口<br><br>戴著它不會讓誰突然變細心<br>但每天低頭看到它<br>你會記得，你的不舒服值得被說出來</div>
+            <a class="gem-btn" href="https://omnicrystal.store/shop/destiny-crystals/zodiac/d4/?utm_source=Karen&amp;utm_medium=message" target="_blank" rel="noopener">看看這一款 →</a>
+          </div>
+          <div class="gem-code">
+            <div class="gem-code-txt">使用專屬折扣碼「<b>Karen</b>」可折 $100</div>
+            <button class="gem-code-btn" type="button" onclick="copyCode(this)">複製</button>
+          </div>
+          <div class="gem-more">想看看其他適合你的<br><a href="https://omnicrystal.store/shop/?filter_%e8%83%bd%e9%87%8f%e5%8a%9f%e6%95%88=%e6%83%85%e6%84%9f%e5%8d%87%e6%ba%ab&amp;utm_source=Karen&amp;utm_medium=message" target="_blank" rel="noopener">情感升溫能量的水晶 →</a></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="opt" onclick="toggle(this, event)">
+      <div class="opt-head"><span class="opt-letter">C</span>桌上那杯還溫的水</div>
+      <div class="opt-result">
+        <div class="res-reveal"><span>你缺的那一塊</span><br>有人先想到你</div>
+        <div class="res-blk"><div class="res-h">你的內心話</div><div class="res-t">我說過的，你有在聽嗎</div></div>
+        <div class="res-blk"><div class="res-h">你的內心想法</div><div class="res-t">你不太提要求，因為你覺得那些都是小事，可是那些小事被記得的時候，你心裡是會軟一下的</div></div>
+        <div class="res-blk"><div class="res-h">你真正想要的</div><div class="res-t">你隨口說的那些小事，有人記得</div></div>
+        <div class="res-blk"><div class="res-h">你要的其實是</div><div class="res-t">不是大禮，是他經過的時候順手想到你，那杯水還溫著，就代表他先想到你了</div></div>
+        <div class="res-blk"><div class="res-h">其實你不是這樣的人</div><div class="res-t">你不好養，你只是很少被記得，久到你把期待調得很低，低到自己都不敢說</div></div>
+        <div class="res-blk"><div class="res-h">你最想聽到的</div><div class="res-t">其實很簡單，就是一句「你上次說想吃的，我買了」</div></div>
+        <div class="res-blk"><div class="res-h">給你的提醒</div><div class="res-t">你可以把想要的講出來，不用等人猜，講出來不會讓它變得比較不珍貴</div></div>
+        <div class="res-quote">被記得的那些小事<br>才是有人真的把你放在心上</div>
+
+        <div class="gem">
+          <span class="gem-label">缺的那一塊，讓水晶幫你補回來</span>
+          <div class="gem-intro">每一種水晶，都對應一種能量<br>有的幫你把話說出口，有的顧情緒，有的補溫度<br>挑水晶的邏輯其實很簡單，你現在最缺哪一塊，就補哪一塊<br><br>它不會替你把話講完<br>但戴在手上每天都看得到，你會記得自己正在調整什麼</div>
+          <div class="gem-bridge">你剛剛選的是那杯還溫的水<br>代表你缺的是在這個家裡被放在心上的感覺<br>你把每個人的事都記得，輪到自己就變成小事<br>所以下面這一條，補的是家裡那份互相惦記的暖</div>
+          <div class="gem-card">
+            <div class="gem-head">
+              <a class="gem-img-link" href="https://omnicrystal.store/shop/destiny-crystals/zodiac/d5/?utm_source=Karen&amp;utm_medium=message" target="_blank" rel="noopener"><img class="gem-img" src="img/crystals/hongyun-wufu.jpg" alt="鴻運五福水晶手鍊" width="800" height="800" loading="lazy"></a>
+              <div class="gem-head-txt">
+                <div class="gem-name">鴻運五福</div>
+                <div class="gem-stones">粉晶貔貅 x 粉水晶 x 紅玉髓 x 紫水晶 x 紅虎眼</div>
+              </div>
+            </div>
+            <div class="gem-why">粉晶貔貅跟粉水晶顧的是家裡的和氣，讓相處不要只剩公事公辦<br>紅玉髓補一點生氣，紅虎眼把日子撐住<br>紫水晶主貴人，讓願意對你好的人比較容易靠近<br><br>戴著它不會讓誰突然變得記性很好<br>但每天扣上的時候<br>你會記得，你的小事也值得有人記住</div>
+            <a class="gem-btn" href="https://omnicrystal.store/shop/destiny-crystals/zodiac/d5/?utm_source=Karen&amp;utm_medium=message" target="_blank" rel="noopener">看看這一款 →</a>
+          </div>
+          <div class="gem-code">
+            <div class="gem-code-txt">使用專屬折扣碼「<b>Karen</b>」可折 $100</div>
+            <button class="gem-code-btn" type="button" onclick="copyCode(this)">複製</button>
+          </div>
+          <div class="gem-more">想看看其他適合你的<br><a href="https://omnicrystal.store/shop/?filter_%e8%83%bd%e9%87%8f%e5%8a%9f%e6%95%88=%e5%ae%b6%e5%ba%ad%e5%b9%b8%e7%a6%8f&amp;utm_source=Karen&amp;utm_medium=message" target="_blank" rel="noopener">家庭幸福能量的水晶 →</a></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="opt" onclick="toggle(this, event)">
+      <div class="opt-head"><span class="opt-letter">D</span>沒有關上的門</div>
+      <div class="opt-result">
+        <div class="res-reveal"><span>你缺的那一塊</span><br>他沒有走</div>
+        <div class="res-blk"><div class="res-h">你的內心話</div><div class="res-t">如果我搞砸了，你還會在嗎</div></div>
+        <div class="res-blk"><div class="res-h">你的內心想法</div><div class="res-t">你很怕吵架，不是怕輸，是怕吵完他就不回頭了，所以你常常先讓步，先收起來</div></div>
+        <div class="res-blk"><div class="res-h">你真正想要的</div><div class="res-t">知道就算最糟的樣子被看見，他也不會走</div></div>
+        <div class="res-blk"><div class="res-h">你要的其實是</div><div class="res-t">不是他保證什麼，是那扇門一直開著，你隨時回頭他都在</div></div>
+        <div class="res-blk"><div class="res-h">其實你不是這樣的人</div><div class="res-t">你不黏，你只是被留下過，久到你把每次不對勁都當成他要走的前兆</div></div>
+        <div class="res-blk"><div class="res-h">你最想聽到的</div><div class="res-t">其實很簡單，就是一句「沒關係，我不會走」</div></div>
+        <div class="res-blk"><div class="res-h">給你的提醒</div><div class="res-t">先自己站住，不是叫你不要依賴，是讓你知道就算真的有人走了，你也還在</div></div>
+        <div class="res-quote">真正讓人安心的<br>是知道就算最糟的那面被看見，也不會被丟下</div>
+
+        <div class="gem">
+          <span class="gem-label">缺的那一塊，讓水晶幫你補回來</span>
+          <div class="gem-intro">每一種水晶，都對應一種能量<br>有的幫你把話說出口，有的顧情緒，有的補溫度<br>挑水晶的邏輯其實很簡單，你現在最缺哪一塊，就補哪一塊<br><br>它不會替你把話講完<br>但戴在手上每天都看得到，你會記得自己正在調整什麼</div>
+          <div class="gem-bridge">你剛剛選的是那扇沒關上的門<br>代表你缺的是那種不用一直提心吊膽的踏實<br>你不是想綁住誰，你只是繃了很久<br>所以下面這一條，補的是把心裡的緊鬆開</div>
+          <div class="gem-card">
+            <div class="gem-head">
+              <a class="gem-img-link" href="https://omnicrystal.store/shop/destiny-crystals/five-elements/a9/?utm_source=Karen&amp;utm_medium=message" target="_blank" rel="noopener"><img class="gem-img" src="img/crystals/wuxian-taiji.jpg" alt="無限太極水晶手鍊" width="800" height="800" loading="lazy"></a>
+              <div class="gem-head-txt">
+                <div class="gem-name">無限太極</div>
+                <div class="gem-stones">紫水晶 x 金曜石 x 白水晶</div>
+              </div>
+            </div>
+            <div class="gem-why">紫水晶顧的是心裡那股一直繃著的緊<br>金曜石把亂糟糟的雜訊擋在外面，讓你不用一直腦補最壞的畫面<br>白水晶把整體的氣場擦乾淨<br><br>戴著它不會給你任何保證<br>但每天低頭看到那抹紫<br>你會記得，就算門真的關了，你自己還站得住</div>
+            <a class="gem-btn" href="https://omnicrystal.store/shop/destiny-crystals/five-elements/a9/?utm_source=Karen&amp;utm_medium=message" target="_blank" rel="noopener">看看這一款 →</a>
+          </div>
+          <div class="gem-code">
+            <div class="gem-code-txt">使用專屬折扣碼「<b>Karen</b>」可折 $100</div>
+            <button class="gem-code-btn" type="button" onclick="copyCode(this)">複製</button>
+          </div>
+          <div class="gem-more">想看看其他適合你的<br><a href="https://omnicrystal.store/shop/?filter_%e8%83%bd%e9%87%8f%e5%8a%9f%e6%95%88=%e8%88%92%e7%b7%a9%e6%83%85%e7%b7%92&amp;utm_source=Karen&amp;utm_medium=message" target="_blank" rel="noopener">舒緩情緒能量的水晶 →</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="transition"><span class="transition-text">繼續往下滑 ⬇️</span></div>
+
+  <div class="bridge fade-up">
+    <div class="bridge-card">
+      <p>你選的那一樣，不是你缺的東西<br>是你心裡 <span class="skin-mark">一直沒被補上的那一塊</span></p>
+      <p>那些看得見的親密<br>睡在一起、每天有話講、假日出去<br>你們可能都做到了<br>可是你還是覺得少了什麼</p>
+      <p class="em">你不是想太多<br>也不是太貪心</p>
+      <p class="em">那個少的東西有名字<br>剛剛你已經把它選出來了</p>
+    </div>
+  </div>
+
+  <div class="intro fade-up">
+    <div class="intro-card">
+      <div class="intro-name">Hi 我是 <span class="skin-mark">K媽</span></div>
+      <div class="intro-text">我是一個媽媽，也用 AI ＋ 自媒體在記錄生活、經營內容<br><br>像這篇你剛剛滑過的圖文，其實就是我用 AI 一張一張做出來的<br>我把「怎麼用 AI 輕鬆做內容，把帳號經營起來」都整理在<a href="https://www.skool.com/d11-lab" target="_blank" rel="noopener">社群</a>裡</div>
+    </div>
+  </div>
+
+  <div class="cta fade-up">
+    <div class="cta-line">想挑一條<br>真的<span class="skin-mark">適合你</span>的水晶</div>
+    <div class="cta-sub">官網上還有很多款，可以照你想補的能量、星座或五行去找<br>不知道從哪裡看起的話，先把全部款式滑過一遍</div>
+    <a class="skin-btn" href="https://omnicrystal.store/shop/?utm_source=Karen&amp;utm_medium=message" target="_blank" rel="noopener">看看森靈水晶官網</a>
+    <div class="cta-note">點擊前往官網，慢慢挑你的那一條</div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-acc">@lovekaren0316</div>
+  </div>
+</div>
+
+<script>
+function toggle(el, evt) {
+  if (evt && evt.target.closest('.gem')) return; // 點水晶區塊不收合，但事件仍正常冒泡給 GA4
+  const wasActive = el.classList.contains('active');
+  document.querySelectorAll('.opt').forEach(o => o.classList.remove('active'));
+  if (!wasActive) el.classList.add('active');
+}
+function copyCode(btn) {
+  const done = () => {
+    btn.textContent = '已複製';
+    btn.classList.add('done');
+    setTimeout(() => { btn.textContent = '複製'; btn.classList.remove('done'); }, 1600);
+  };
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText('Karen').then(done).catch(() => fallbackCopy(done));
+  } else {
+    fallbackCopy(done);
+  }
+}
+function fallbackCopy(done) {
+  const ta = document.createElement('textarea');
+  ta.value = 'Karen';
+  ta.style.cssText = 'position:fixed;top:-9999px';
+  document.body.appendChild(ta);
+  ta.select();
+  try { document.execCommand('copy'); done(); } catch (e) {}
+  document.body.removeChild(ta);
+}
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
