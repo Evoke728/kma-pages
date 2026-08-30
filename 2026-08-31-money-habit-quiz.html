@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="理財知識 — 你的錢每個月都跑去哪">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-X8R1V9WXX3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  // ▼ 每頁只改 ip_code / page_slug / page_kind 三個值（追蹤邏輯全在頁尾標準塊，不用動）
+  gtag('config', 'G-X8R1V9WXX3', {
+    content_group: 'K媽',
+    ip_code: 'kma',
+    page_slug: '2026-08-31-money-habit-quiz',
+    page_kind: 'quiz'
+  });
+</script>
+<title>K媽｜薪水進來的第一件事 · 四型解析</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;700;900&family=Noto+Sans+TC:wght@400;500;700;900&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --skin-primary:   #B5764A;
+  --skin-accent:    #D0A06B;
+  --skin-highlight: #E7C79A;
+  --skin-ink:       #3A2717;
+  --skin-cream:     #FFFBF4;
+  --skin-bg:        #F2E6D2;
+  --skin-warm:      #DFC7A0;
+  --skin-white:     #3A281B;
+  --shadow-sm: 4px 4px 0 var(--skin-ink);
+  --shadow-md: 7px 7px 0 var(--skin-ink);
+  --shadow-lg: 11px 11px 0 var(--skin-ink);
+  --border-thick:  3px solid var(--skin-warm);
+  --border-medium: 2px solid var(--skin-warm);
+  --radius-md:16px; --radius-lg:24px; --radius-pill:50px;
+  --ease-bounce: 400ms cubic-bezier(0.34,1.56,0.64,1);
+  --serif:"Noto Serif TC",serif; --sans:"Noto Sans TC","Inter",sans-serif;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#F2E6D2; font-family:var(--sans); color:var(--skin-white); line-height:1.8; overflow-x:hidden; }
+.wrap { max-width:680px; margin:0 auto; position:relative; background:var(--skin-bg); }
+.blob { position:absolute; border-radius:60% 40% 30% 70% / 60% 30% 70% 40%;
+  animation:morph 8s ease-in-out infinite; opacity:0.30; z-index:0; pointer-events:none; filter:blur(6px); }
+.blob--1 { width:min(70vw,420px); height:min(70vw,420px);
+  background:linear-gradient(135deg, #B5764A, #D0A06B); top:-6%; right:-16%; }
+.blob--2 { width:min(60vw,360px); height:min(60vw,360px);
+  background:linear-gradient(135deg, #D0A06B, #DFC7A0); bottom:8%; left:-18%; animation-delay:-4s; }
+@keyframes morph {
+  0%,100% { border-radius:60% 40% 30% 70% / 60% 30% 70% 40%; }
+  25% { border-radius:30% 60% 70% 40% / 50% 60% 30% 40%; }
+  50% { border-radius:50% 60% 30% 70% / 30% 40% 70% 60%; }
+  75% { border-radius:60% 30% 60% 40% / 70% 50% 40% 30%; }
+}
+.skin-mark { background:var(--skin-highlight); color:#3A281B; padding:0.08em 0.35em; border-radius:5px; display:inline-block; box-decoration-break:clone; }
+.fade-up { opacity:0; transform:translateY(32px); transition:opacity .6s ease, transform .6s ease; }
+.fade-up.visible { opacity:1; transform:translateY(0); }
+.hero { position:relative; z-index:1; padding:62px 28px 44px; text-align:center; }
+.hero-tag { display:inline-block; background:var(--skin-primary); color:#fff; border:var(--border-medium); border-radius:var(--radius-pill); padding:6px 16px; font-size:13px; font-weight:700; box-shadow:var(--shadow-sm); margin-bottom:22px; }
+.hero-title { font-family:var(--serif); font-weight:900; font-size:28px; line-height:1.5; color:var(--skin-white); }
+.hero-sub { margin-top:16px; font-size:14px; color:rgba(58,40,27,0.62); line-height:1.85; }
+.section { position:relative; z-index:1; padding:34px 28px; }
+.section-label { display:inline-block; background:var(--skin-primary); color:#fff; border:var(--border-medium); border-radius:var(--radius-pill); padding:4px 14px; font-size:12px; font-weight:700; margin-bottom:20px; box-shadow:var(--shadow-sm); }
+.quiz-q { font-family:var(--serif); font-size:20px; font-weight:700; line-height:1.6; margin-bottom:8px; }
+.quiz-sub { font-size:14px; color:rgba(58,40,27,0.55); margin-bottom:26px; font-weight:500; }
+.opt { background:var(--skin-cream); border:var(--border-thick); border-radius:var(--radius-md); box-shadow:var(--shadow-sm); padding:18px 20px; margin-bottom:18px; cursor:pointer; transition:transform var(--ease-bounce), box-shadow var(--ease-bounce); }
+.opt:hover { transform:translate(-3px,-3px); box-shadow:var(--shadow-md); }
+.opt.active { box-shadow:var(--shadow-md); }
+.opt-head { display:flex; align-items:center; gap:14px; font-size:16.5px; font-weight:700; }
+.opt-letter { display:inline-flex; align-items:center; justify-content:center; width:34px; height:34px; background:var(--skin-highlight); color:#3A281B; border:var(--border-medium); border-radius:50%; font-family:"Inter"; font-weight:700; font-size:16px; flex-shrink:0; }
+.opt-result { max-height:0; overflow:hidden; transition:max-height .5s ease, margin .3s, padding .3s; }
+.res-reveal { font-family:var(--serif); font-size:17px; font-weight:900; color:var(--skin-primary); margin-bottom:16px; }
+.res-reveal span { color:rgba(58,40,27,0.55); font-family:var(--sans); font-size:13px; font-weight:700; }
+.opt.active .opt-result { max-height:1800px; margin-top:16px; padding-top:16px; border-top:2px dashed var(--skin-warm); }
+.res-blk { margin-bottom:15px; }
+.res-h { font-size:13px; font-weight:700; color:var(--skin-primary); margin-bottom:6px; letter-spacing:0.03em; }
+.res-t { font-size:14.5px; color:rgba(58,40,27,0.9); line-height:1.85; }
+.res-quote { font-family:var(--serif); font-size:15px; font-weight:700; color:var(--skin-white); background:#FDF5EA; border-left:4px solid var(--skin-primary); border-radius:8px; padding:12px 16px; margin-top:10px; line-height:1.8; }
+.gem { margin-top:24px; padding-top:20px; border-top:2px dashed var(--skin-warm); }
+.gem-label { display:inline-block; background:var(--skin-highlight); color:#3A281B; border:var(--border-medium); border-radius:var(--radius-pill); padding:3px 13px; font-size:11.5px; font-weight:700; margin-bottom:13px; }
+.gem-intro { font-size:14px; color:rgba(58,40,27,0.78); line-height:1.9; margin-bottom:15px; }
+.gem-bridge { font-size:14.5px; color:rgba(58,40,27,0.92); line-height:1.9; margin-bottom:18px; padding-left:13px; border-left:3px solid var(--skin-highlight); font-weight:500; }
+.gem-card { background:#FDF5EA; border:var(--border-medium); border-radius:var(--radius-md); box-shadow:var(--shadow-sm); padding:18px 20px; }
+.gem-head { display:flex; flex-direction:row-reverse; align-items:center; gap:14px; }
+.gem-img-link { display:block; flex-shrink:0; width:clamp(88px,25vw,108px); transition:transform var(--ease-bounce); }
+.gem-img-link:hover { transform:translate(-3px,-3px); }
+.gem-img { display:block; width:100%; height:auto; aspect-ratio:1/1; object-fit:cover; border:var(--border-medium); border-radius:12px; background:var(--skin-warm); box-shadow:var(--shadow-sm); }
+@media (min-width:640px) { .gem-img-link { width:216px; } }
+.gem-head-txt { min-width:0; flex:1; }
+.gem-name { font-family:var(--serif); font-size:17.5px; font-weight:900; color:var(--skin-primary); line-height:1.5; }
+.gem-stones { font-size:12px; color:rgba(58,40,27,0.5); font-weight:500; margin-top:4px; line-height:1.7; }
+.gem-why { font-size:14px; color:rgba(58,40,27,0.88); line-height:1.85; margin:13px 0 17px; }
+.gem-btn { display:inline-flex; align-items:center; gap:7px; background:var(--skin-primary); color:#fff; border:var(--border-medium); border-radius:var(--radius-pill); padding:11px 28px; font-weight:900; font-size:14.5px; text-decoration:none; box-shadow:var(--shadow-sm); transition:transform var(--ease-bounce), box-shadow var(--ease-bounce); }
+.gem-btn:hover { transform:translate(-3px,-3px); box-shadow:var(--shadow-md); }
+.gem-code { margin-top:14px; background:var(--skin-highlight); border:2px dashed var(--skin-primary); border-radius:var(--radius-md); padding:13px 17px; display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; }
+.gem-code-txt { font-size:14px; color:var(--skin-ink); line-height:1.75; font-weight:500; }
+.gem-code-txt b { font-family:var(--serif); font-size:16.5px; font-weight:900; color:var(--skin-primary); letter-spacing:0.08em; }
+.gem-code-btn { flex-shrink:0; background:var(--skin-cream); color:var(--skin-primary); border:2px solid var(--skin-primary); border-radius:var(--radius-pill); padding:7px 17px; font-family:var(--sans); font-size:12.5px; font-weight:900; cursor:pointer; transition:transform var(--ease-bounce), background var(--ease-bounce); }
+.gem-code-btn:hover { transform:translate(-2px,-2px); }
+.gem-code-btn.done { background:var(--skin-primary); color:#fff; }
+.gem-more { margin-top:18px; font-size:13.5px; color:rgba(58,40,27,0.62); font-weight:500; line-height:1.8; }
+.gem-more a { color:var(--skin-primary); font-weight:700; text-decoration:none; border-bottom:2px solid var(--skin-highlight); }
+.transition { text-align:center; padding:14px 0; position:relative; z-index:1; }
+.transition-text { display:inline-block; background:var(--skin-cream); border:var(--border-medium); border-radius:var(--radius-pill); padding:8px 20px; font-size:14px; font-weight:700; box-shadow:var(--shadow-sm); }
+.bridge { position:relative; z-index:1; padding:34px 28px; }
+.bridge-card { background:var(--skin-cream); border:var(--border-thick); border-radius:var(--radius-lg); box-shadow:var(--shadow-md); padding:28px 24px; }
+.bridge p { font-size:15px; color:rgba(58,40,27,0.88); line-height:1.9; margin-bottom:14px; }
+.bridge .em { font-family:var(--serif); font-size:18px; font-weight:900; line-height:1.7; margin:6px 0 16px; }
+.intro { position:relative; z-index:1; padding:34px 28px; }
+.intro-card { background:#FDF5EA; border:var(--border-thick); border-radius:var(--radius-lg); box-shadow:var(--shadow-md); padding:26px 24px; }
+.intro-name { font-family:var(--serif); font-size:20px; font-weight:900; margin-bottom:12px; }
+.intro-text { font-size:14.5px; color:rgba(58,40,27,0.88); line-height:1.9; }
+.cta { position:relative; z-index:1; padding:26px 28px 56px; text-align:center; }
+.cta-line { font-family:var(--serif); font-size:21px; font-weight:900; line-height:1.6; margin-bottom:10px; }
+.cta-sub { font-size:14.5px; color:rgba(58,40,27,0.55); margin-bottom:26px; line-height:1.8; font-weight:500; }
+.skin-btn { display:inline-flex; align-items:center; gap:8px; background:var(--skin-primary); color:#fff; border:var(--border-thick); border-radius:var(--radius-pill); padding:16px 44px; font-weight:900; font-size:18px; box-shadow:var(--shadow-md); transition:transform var(--ease-bounce), box-shadow var(--ease-bounce); position:relative; overflow:hidden; cursor:pointer; text-decoration:none; }
+.skin-btn:hover { transform:translate(-4px,-4px); box-shadow:var(--shadow-lg); }
+.skin-btn::after { content:''; position:absolute; top:0; left:-100%; width:50%; height:100%; background:linear-gradient(90deg,transparent,rgba(255,255,255,0.4),transparent); transform:skewX(-25deg); animation:shine 3s ease-in-out infinite; }
+@keyframes shine { 0%{left:-100%;} 20%{left:150%;} 100%{left:150%;} }
+.cta-note { margin-top:16px; font-size:12.5px; color:rgba(58,40,27,0.5); font-weight:500; }
+.footer { position:relative; z-index:1; padding:22px 28px 40px; text-align:center; }
+.footer-acc { font-style:italic; font-size:14px; color:var(--skin-primary); font-weight:700; }
+.mcta{position:fixed;left:0;right:0;bottom:0;z-index:45;background:var(--skin-cream);border-top:var(--border-thick);box-shadow:0 -4px 16px rgba(58,40,27,0.12);padding:9px 12px;padding-bottom:calc(9px + env(safe-area-inset-bottom));display:flex;align-items:center;gap:9px;box-sizing:border-box;max-width:100vw;overflow:hidden;}
+.mcta .t{flex:1 1 auto;min-width:0;font-size:11.5px;line-height:1.5;color:rgba(58,40,27,0.78);}
+.mcta .t b{color:var(--skin-primary);font-weight:900;}
+.mcta a{flex:0 0 auto;background:var(--skin-primary);color:#fff;border:var(--border-medium);border-radius:var(--radius-pill);padding:9px 13px;font-weight:900;font-size:12.5px;line-height:1.3;text-decoration:none;box-shadow:var(--shadow-sm);white-space:nowrap;}
+.wrap{padding-bottom:88px;}
+@media(min-width:1120px){.mcta{display:none;} .wrap{padding-bottom:0;}}
+.side-cta{display:none;}
+@media(min-width:1120px){
+ .side-cta{display:block;position:fixed;top:140px;right:max(20px,calc((100vw - 680px)/2 - 220px));width:200px;z-index:40;background:var(--skin-cream);border:var(--border-thick);border-radius:var(--radius-lg);box-shadow:var(--shadow-md);padding:18px 18px 20px;text-align:center;}
+ .side-cta .fk{font-family:var(--sans);font-size:10px;letter-spacing:0.14em;color:var(--skin-primary);font-weight:700;margin-bottom:8px;}
+ .side-cta h4{font-family:var(--serif);font-size:16px;font-weight:900;color:var(--skin-white);line-height:1.5;margin-bottom:12px;}
+ .side-cta h4 .g{color:var(--skin-primary);}
+ .side-cta p{font-size:11.5px;line-height:1.7;color:rgba(58,40,27,0.62);margin:0 0 12px;}
+ .side-cta a{display:block;background:var(--skin-primary);color:#fff;border:var(--border-medium);border-radius:var(--radius-pill);padding:11px 14px;font-weight:900;font-size:14px;text-decoration:none;box-shadow:var(--shadow-sm);transition:transform var(--ease-bounce);}
+ .side-cta a:hover{transform:translate(-2px,-2px);}
+}
+</style>
+</head>
+<body>
+<aside class="side-cta">
+  <div class="fk">ASSET CHECK</div>
+  <h4>加入後有專人<br><span class="g">免費幫你做資產健檢</span></h4>
+  <p>把收入、支出、存款跟負債攤開看一遍<br>再告訴你下一步先動哪裡</p>
+  <a href="https://line.me/R/ti/p/@537fzsck" target="_blank" rel="noopener">加入我的 LINE →</a>
+</aside>
+<div class="mcta">
+  <div class="t">加入後有專人<br>免費幫你做<b>資產健檢</b></div>
+  <a href="https://line.me/R/ti/p/@537fzsck" target="_blank" rel="noopener">加入我的 LINE</a>
+</div>
+<div class="wrap">
+  <div class="blob blob--1"></div>
+  <div class="blob blob--2"></div>
+
+  <div class="hero">
+    <span class="hero-tag">#理財知識 · 四型解析</span>
+    <div class="hero-title">薪水進來那天你做的第一件事<br><span class="skin-mark">就是你的理財習慣</span></div>
+    <div class="hero-sub">那四個選項沒有一個是隨便放的<br>你停在哪一個，代表你的錢每個月都跑去哪<br>往下找你選的字母</div>
+  </div>
+
+  <div class="section fade-up">
+    <span class="section-label">點開你選的字母</span>
+    <div class="quiz-q">這個月薪水入帳那天，你第一件事會做什麼</div>
+    <div class="quiz-sub">點下面你選的那一個，看它在講你哪一面</div>
+
+    <div class="opt" data-letter="A" data-type="pay_first" onclick="toggle(this, event)">
+      <div class="opt-head"><span class="opt-letter">A</span>先把帳單繳一繳</div>
+      <div class="opt-result">
+        <div class="res-reveal"><span>你是</span><br>錢一進來就先流出去的人</div>
+        <div class="res-blk"><div class="res-h">你心裡常出現的那句話</div><div class="res-t">先繳完再說，剩下的再看</div></div>
+        <div class="res-blk"><div class="res-h">你為什麼會停在這一個</div><div class="res-t">你會先繳帳單，是因為你心裡有一個順序，欠人的東西要先清掉<br>這個順序讓你晚上睡得著，也讓你每個月都從零開始一次</div></div>
+        <div class="res-blk"><div class="res-h">最耗你的地方</div><div class="res-t">每個月還沒開始，你的錢就先少一塊<br>你會存，只是每一次都還沒輪到你</div></div>
+        <div class="res-blk"><div class="res-h">你可能誤會的</div><div class="res-t">你以為繳完就代表這個月安全了<br>安全的只有這個月，下個月的你還是站在同一個位置</div></div>
+        <div class="res-blk"><div class="res-h">你其實需要聽到的</div><div class="res-t">帳單會一直來，它不會因為你繳得快就變少<br>你可以在繳之前先留一小塊給自己，那一塊才會長大</div></div>
+        <div class="res-blk"><div class="res-h">這禮拜可以做的一件事</div><div class="res-t">把每個月跑不掉的支出全部寫在同一張紙上<br>不用算，光是看到全部攤開，你就知道要先動哪一項</div></div>
+        <div class="res-quote">錢每個月都經過你，只是從來沒停下來過</div>
+      </div>
+    </div>
+
+    <div class="opt" data-letter="B" data-type="check_left" onclick="toggle(this, event)">
+      <div class="opt-head"><span class="opt-letter">B</span>先看看還剩多少</div>
+      <div class="opt-result">
+        <div class="res-reveal"><span>你是</span><br>用剩下的在過日子的人</div>
+        <div class="res-blk"><div class="res-h">你心裡常出現的那句話</div><div class="res-t">先看一下還剩多少，再決定這個月怎麼過</div></div>
+        <div class="res-blk"><div class="res-h">你為什麼會停在這一個</div><div class="res-t">你會先看餘額，是因為你想知道自己站在哪裡<br>這是好習慣，只是你看到的永遠是結果，不是安排</div></div>
+        <div class="res-blk"><div class="res-h">最耗你的地方</div><div class="res-t">你每個月都在確認同一件事，然後每個月都得到同一個答案<br>看得越清楚，越覺得自己動不了</div></div>
+        <div class="res-blk"><div class="res-h">你可能誤會的</div><div class="res-t">你以為看得夠清楚就不會出事<br>看清楚跟改變是兩件事，數字不會因為你多看兩次就變多</div></div>
+        <div class="res-blk"><div class="res-h">你其實需要聽到的</div><div class="res-t">把順序調過來就好<br>先決定要留多少，再看剩下的怎麼用，同一筆錢，位置不一樣結果差很多</div></div>
+        <div class="res-blk"><div class="res-h">這禮拜可以做的一件事</div><div class="res-t">薪水進來的當天，先轉一筆到另一個帳戶<br>金額小沒關係，重點是把順序換過來</div></div>
+        <div class="res-quote">剩多少就過多少，你的生活一直在被別人決定</div>
+      </div>
+    </div>
+
+    <div class="opt" data-letter="C" data-type="save_first" onclick="toggle(this, event)">
+      <div class="opt-head"><span class="opt-letter">C</span>先撥一筆出來不動它</div>
+      <div class="opt-result">
+        <div class="res-reveal"><span>你是</span><br>讓錢先站住的人</div>
+        <div class="res-blk"><div class="res-h">你心裡常出現的那句話</div><div class="res-t">這筆先放著，其他的再說</div></div>
+        <div class="res-blk"><div class="res-h">你為什麼會停在這一個</div><div class="res-t">你會先撥一筆出來，代表你已經知道錢要先有自己的位置<br>大部分人卡在這一步，你已經過了</div></div>
+        <div class="res-blk"><div class="res-h">最耗你的地方</div><div class="res-t">你存得住，但那筆錢也只是躺著<br>你隱約知道它在變薄，卻不知道下一步要做什麼</div></div>
+        <div class="res-blk"><div class="res-h">你可能誤會的</div><div class="res-t">你以為存下來就等於安全<br>放著不動的錢每年都在變薄，你看得到它，不代表它的價值沒變</div></div>
+        <div class="res-blk"><div class="res-h">你其實需要聽到的</div><div class="res-t">留下來是第一步，讓它替你工作是第二步<br>你缺的只剩下第二步該怎麼做</div></div>
+        <div class="res-blk"><div class="res-h">這禮拜可以做的一件事</div><div class="res-t">把你存下來那筆錢查一下，放在哪裡、一年長多少<br>知道數字，你才有得比較</div></div>
+        <div class="res-quote">你已經做完最難的那一步，接下來是讓那筆錢也去上班</div>
+      </div>
+    </div>
+
+    <div class="opt" data-letter="D" data-type="buy_first" onclick="toggle(this, event)">
+      <div class="opt-head"><span class="opt-letter">D</span>先買一直想買的那個</div>
+      <div class="opt-result">
+        <div class="res-reveal"><span>你是</span><br>把錢花在當下的人</div>
+        <div class="res-blk"><div class="res-h">你心裡常出現的那句話</div><div class="res-t">忍很久了，這次先買</div></div>
+        <div class="res-blk"><div class="res-h">你為什麼會停在這一個</div><div class="res-t">你會先買，是因為你知道日子要有東西撐著<br>會累的人才需要一點回報，這件事本身沒有問題</div></div>
+        <div class="res-blk"><div class="res-h">最耗你的地方</div><div class="res-t">買的當下很值得，月底看到餘額又後悔一次<br>你花掉的力氣都在這個來回</div></div>
+        <div class="res-blk"><div class="res-h">你可能誤會的</div><div class="res-t">你以為問題出在買太多<br>問題出在買之前沒有先留，順序對了，你會買得比現在更爽快</div></div>
+        <div class="res-blk"><div class="res-h">你其實需要聽到的</div><div class="res-t">你可以繼續買<br>只要花的是留完之後剩下的，你在結帳的時候就不用心虛</div></div>
+        <div class="res-blk"><div class="res-h">這禮拜可以做的一件事</div><div class="res-t">挑一筆你每個月都在花、但其實沒有很想要的錢<br>停一次，看看你會不會真的不舒服</div></div>
+        <div class="res-quote">你很清楚自己要什麼，只是還沒替以後的自己留位置</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="transition"><span class="transition-text">繼續往下滑 ⬇️</span></div>
+
+  <div class="bridge fade-up">
+    <div class="bridge-card">
+      <p>四個答案<br>問的都是 <span class="skin-mark">同一件事</span></p>
+      <p class="em">錢進來以後，誰先決定它去哪</p>
+      <p class="em">沒有人替它安排<br>它就會被別人的帳單、別人的商品<br>別人的系統帶走</p>
+      <p class="em">那些錢最後都變成別人的收入</p>
+    </div>
+  </div>
+
+  <div class="intro fade-up">
+    <div class="intro-card">
+      <div class="intro-name">Hi 我是 <span class="skin-mark">K媽</span></div>
+      <div class="intro-text">HI，我是K媽，記錄一個媽媽如何把「賺錢、變美、好好生活」這三件事同時做到<br><br>錢的事我也是重新學過一次<br>學會之後最大的改變，是我終於知道錢進來以後要先去哪裡</div>
+    </div>
+  </div>
+
+  <div class="cta fade-up">
+    <div class="cta-line">想知道自己的錢<br>現在<span class="skin-mark">放對位置了嗎</span></div>
+    <div class="cta-sub">加入之後會有專人幫你做一次免費的資產健檢<br>把你現在的收入、支出、存款跟負債攤開看一遍<br>再告訴你下一步先動哪裡</div>
+    <a class="skin-btn" href="https://line.me/R/ti/p/@537fzsck" target="_blank" rel="noopener">加入我的 LINE</a>
+    <div class="cta-note">健檢免費，不用先準備任何資料</div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-acc">@lovekaren0316</div>
+  </div>
+</div>
+
+<script>
+/* ===== 落地頁追蹤標準塊 v1（全 IP 共用，逐頁照抄不用改） ===== */
+var PARTNERS = {
+  'omnicrystal.store': 'forest_crystal',
+  'skool.com': 'skool',
+  'lin.ee': 'line', 'line.me': 'line',
+  'shopee.tw': 'shopee', 'instagram.com': 'instagram'
+};
+function ev(name, params) {
+  if (typeof gtag === 'function') gtag('event', name, params || {});
+}
+function optCtx(node) {
+  var o = node && node.closest('[data-letter]');
+  return o ? { option_letter: o.dataset.letter, option_type: o.dataset.type || '' } : {};
+}
+function areaOf(a) {
+  if (a.closest('.gem-card')) return a.classList.contains('gem-btn') ? 'card_button' : 'card_image';
+  if (a.closest('.gem-more')) return 'more_link';
+  if (a.closest('.side-cta')) return 'side';
+  if (a.closest('.cta')) return 'footer';
+  return 'body';
+}
+document.addEventListener('click', function (e) {
+  var a = e.target.closest('a[href]');
+  if (!a || !a.hostname || a.hostname === location.hostname) return;
+  var partner = '';
+  for (var host in PARTNERS) {
+    if (a.hostname.indexOf(host) !== -1) { partner = PARTNERS[host]; break; }
+  }
+  var card = a.closest('.opt');
+  var nameEl = card ? card.querySelector('.gem-name') : null;
+  var tagEl = card ? card.querySelector('.gem-more a') : null;
+  ev('outbound_click', Object.assign({
+    partner: partner || a.hostname,
+    click_area: areaOf(a),
+    product_name: nameEl ? nameEl.textContent.trim() : '',
+    product_tag: tagEl ? tagEl.textContent.replace('能量的水晶', '').replace('→', '').trim() : ''
+  }, optCtx(a)));
+});
+/* ===== 標準塊結束 ===== */
+function toggle(el, evt) {
+  if (evt && evt.target.closest('.gem')) return; // 點水晶區塊不收合，但事件仍正常冒泡給 GA4
+  const wasActive = el.classList.contains('active');
+  document.querySelectorAll('.opt').forEach(o => o.classList.remove('active'));
+  if (!wasActive) {
+    el.classList.add('active');
+    ev('quiz_option_open', { option_letter: el.dataset.letter, option_type: el.dataset.type });
+  }
+}
+function copyCode(btn) {
+  const opt = btn.closest('.opt');
+  ev('code_copy', Object.assign({ partner: 'forest_crystal', code_value: 'Karen' }, optCtx(btn)));
+  const done = () => {
+    btn.textContent = '已複製';
+    btn.classList.add('done');
+    setTimeout(() => { btn.textContent = '複製'; btn.classList.remove('done'); }, 1600);
+  };
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText('Karen').then(done).catch(() => fallbackCopy(done));
+  } else {
+    fallbackCopy(done);
+  }
+}
+function fallbackCopy(done) {
+  const ta = document.createElement('textarea');
+  ta.value = 'Karen';
+  ta.style.cssText = 'position:fixed;top:-9999px';
+  document.body.appendChild(ta);
+  ta.select();
+  try { document.execCommand('copy'); done(); } catch (e) {}
+  document.body.removeChild(ta);
+}
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
