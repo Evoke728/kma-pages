@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="家庭育兒 — 你家小孩最像哪種小怪獸，點開看他其實在做什麼，還有可以怎麼跟他說">
+<meta property="og:title" content="K媽｜你家小孩最像哪種小怪獸">
+<meta property="og:description" content="家庭育兒 — 你家小孩最像哪種小怪獸，點開看他其實在做什麼，還有可以怎麼跟他說">
+<meta property="og:type" content="website">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-X8R1V9WXX3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-X8R1V9WXX3', {
+    content_group: 'K媽',
+    ip_code: 'kma',
+    page_slug: '2026-09-09-monster-kid-quiz',
+    page_kind: 'quiz_accordion'
+  });
+</script>
+<title>K媽｜你家小孩最像哪種小怪獸</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;700;900&family=Noto+Sans+TC:wght@400;500;700;900&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --skin-primary:   #B5764A;
+  --skin-accent:    #D0A06B;
+  --skin-highlight: #E7C79A;
+  --skin-ink:       #3A2717;
+  --skin-cream:     #FFFBF4;
+  --skin-bg:        #F2E6D2;
+  --skin-warm:      #DFC7A0;
+  --skin-white:     #3A281B;
+  --shadow-sm: 4px 4px 0 var(--skin-ink);
+  --shadow-md: 7px 7px 0 var(--skin-ink);
+  --shadow-lg: 11px 11px 0 var(--skin-ink);
+  --border-thick:  3px solid var(--skin-warm);
+  --border-medium: 2px solid var(--skin-warm);
+  --radius-md:16px; --radius-lg:24px; --radius-pill:50px;
+  --ease-bounce: 400ms cubic-bezier(0.34,1.56,0.64,1);
+  --serif:"Noto Serif TC",serif; --sans:"Noto Sans TC","Inter",sans-serif;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#F2E6D2; font-family:var(--sans); color:var(--skin-white); line-height:1.8; overflow-x:hidden; }
+.wrap { max-width:680px; margin:0 auto; position:relative; background:var(--skin-bg); min-height:100vh; }
+.blob { position:absolute; border-radius:60% 40% 30% 70% / 60% 30% 70% 40%;
+  animation:morph 8s ease-in-out infinite; opacity:0.30; z-index:0; pointer-events:none; filter:blur(6px); }
+.blob--1 { width:min(70vw,420px); height:min(70vw,420px);
+  background:linear-gradient(135deg, #B5764A, #D0A06B); top:-6%; right:-16%; }
+.blob--2 { width:min(60vw,360px); height:min(60vw,360px);
+  background:linear-gradient(135deg, #D0A06B, #DFC7A0); bottom:8%; left:-18%; animation-delay:-4s; }
+@keyframes morph {
+  0%,100% { border-radius:60% 40% 30% 70% / 60% 30% 70% 40%; }
+  25% { border-radius:30% 60% 70% 40% / 50% 60% 30% 40%; }
+  50% { border-radius:50% 60% 30% 70% / 30% 40% 70% 60%; }
+  75% { border-radius:60% 30% 60% 40% / 70% 50% 40% 30%; }
+}
+.skin-mark { background:var(--skin-highlight); color:#3A281B; padding:0.08em 0.35em; border-radius:5px; display:inline-block; box-decoration-break:clone; }
+.fade-up { opacity:0; transform:translateY(32px); transition:opacity .6s ease, transform .6s ease; }
+.fade-up.visible { opacity:1; transform:translateY(0); }
+.rel { position:relative; z-index:1; }
+
+/* ---------- 封面 ---------- */
+.hero { padding:70px 28px 20px; text-align:center; }
+.hero-tag { display:inline-block; background:var(--skin-primary); color:#fff; border:var(--border-medium); border-radius:var(--radius-pill); padding:6px 16px; font-size:13px; font-weight:700; box-shadow:var(--shadow-sm); margin-bottom:22px; }
+.hero-title { font-family:var(--serif); font-weight:900; font-size:28px; line-height:1.55; }
+.hero-sub { margin-top:18px; font-size:14.5px; color:rgba(58,40,27,0.62); line-height:1.9; }
+.hero-intro { background:var(--skin-cream); border:var(--border-medium); border-radius:var(--radius-lg); box-shadow:var(--shadow-sm); padding:18px 20px; margin:32px 0 6px; text-align:left; }
+.hero-intro-name { font-family:var(--serif); font-size:16px; font-weight:900; margin-bottom:6px; }
+.hero-intro-body { font-size:13.5px; color:rgba(58,40,27,0.72); line-height:1.8; }
+
+/* ---------- 題目區 ---------- */
+.qbody { padding:20px 28px 8px; text-align:center; }
+.qnum { display:inline-block; background:var(--skin-primary); color:#fff; border:var(--border-medium); border-radius:var(--radius-pill); padding:4px 14px; font-size:12px; font-weight:700; margin-bottom:18px; box-shadow:var(--shadow-sm); }
+.quiz-q { font-family:var(--serif); font-size:22px; font-weight:900; line-height:1.6; margin-bottom:8px; }
+.quiz-sub { font-size:14px; color:rgba(58,40,27,0.55); font-weight:500; }
+
+/* ---------- 四選一手風琴 ---------- */
+.picks { padding:22px 28px 10px; }
+.pick { background:var(--skin-cream); border:var(--border-thick); border-radius:var(--radius-md); box-shadow:var(--shadow-sm); margin-bottom:18px; cursor:pointer; overflow:hidden; transition:transform var(--ease-bounce), box-shadow var(--ease-bounce); }
+.pick:hover { transform:translate(-3px,-3px); box-shadow:var(--shadow-md); }
+.pick.open { background:var(--skin-highlight); box-shadow:var(--shadow-md); transform:translate(-3px,-3px); }
+.pick-head { padding:18px 20px; display:flex; align-items:center; gap:14px; }
+.pick-letter { display:inline-flex; align-items:center; justify-content:center; width:34px; height:34px; background:var(--skin-highlight); color:#3A281B; border:var(--border-medium); border-radius:50%; font-family:"Inter"; font-weight:700; font-size:16px; flex-shrink:0; }
+.pick.open .pick-letter { background:var(--skin-primary); color:#fff; }
+.pick-text { font-size:16px; font-weight:700; line-height:1.65; flex:1; }
+.pick-sub { display:block; font-size:12.5px; font-weight:500; color:rgba(58,40,27,0.55); margin-top:2px; }
+.pick-arrow { color:var(--skin-primary); font-weight:900; font-size:18px; transition:transform var(--ease-bounce); flex-shrink:0; }
+.pick.open .pick-arrow { transform:rotate(180deg); }
+.pick-body { max-height:0; overflow:hidden; transition:max-height .6s ease; }
+.pick.open .pick-body { max-height:3600px; }
+.pick-body-in { padding:4px 20px 24px; }
+
+.res-kicker { font-size:12px; font-weight:700; letter-spacing:0.12em; color:var(--skin-primary); margin:6px 0 8px; }
+.res-title { font-family:var(--serif); font-size:19px; font-weight:900; line-height:1.5; margin-bottom:14px; }
+.res-quote { font-family:var(--serif); font-size:14.5px; font-weight:700; background:#FDF5EA; border-left:4px solid var(--skin-primary); border-radius:8px; padding:12px 16px; margin-bottom:18px; line-height:1.8; }
+.card-inner { background:#FDF5EA; border:var(--border-medium); border-radius:var(--radius-md); padding:18px 18px; margin-bottom:16px; }
+.res-blk { margin-bottom:16px; }
+.res-blk:last-child { margin-bottom:0; }
+.res-h { font-size:12.5px; font-weight:700; color:var(--skin-primary); margin-bottom:5px; letter-spacing:0.02em; }
+.res-t { font-size:14px; color:rgba(58,40,27,0.9); line-height:1.8; }
+.say { background:var(--skin-cream); border:1px dashed var(--skin-warm); border-radius:10px; padding:9px 13px; margin:7px 0 12px; font-size:13.5px; line-height:1.75; color:rgba(58,40,27,0.92); }
+.say b { font-family:var(--serif); color:var(--skin-primary); font-weight:900; }
+
+/* ---------- 水晶 ---------- */
+.gem-label { display:inline-block; background:var(--skin-highlight); color:#3A281B; border:var(--border-medium); border-radius:var(--radius-pill); padding:3px 13px; font-size:11px; font-weight:700; margin-bottom:12px; }
+.gem-bridge { font-size:14px; color:rgba(58,40,27,0.92); line-height:1.85; margin-bottom:16px; padding-left:12px; border-left:3px solid var(--skin-primary); font-weight:500; }
+.gem-card { background:var(--skin-cream); border:var(--border-medium); border-radius:var(--radius-md); box-shadow:var(--shadow-sm); padding:16px 18px; }
+.gem-head { display:flex; flex-direction:row-reverse; align-items:center; gap:12px; }
+.gem-img-link { display:block; flex-shrink:0; width:clamp(80px,22vw,96px); transition:transform var(--ease-bounce); }
+.gem-img-link:hover { transform:translate(-3px,-3px); }
+.gem-img { display:block; width:100%; height:auto; aspect-ratio:1/1; object-fit:cover; border:var(--border-medium); border-radius:12px; background:var(--skin-warm); box-shadow:var(--shadow-sm); }
+.gem-head-txt { min-width:0; flex:1; }
+.gem-name { font-family:var(--serif); font-size:16.5px; font-weight:900; color:var(--skin-primary); line-height:1.5; }
+.gem-stones { font-size:11.5px; color:rgba(58,40,27,0.5); font-weight:500; margin-top:4px; line-height:1.7; }
+.gem-why { font-size:13.5px; color:rgba(58,40,27,0.88); line-height:1.8; margin:12px 0 15px; }
+.gem-btn { display:inline-flex; align-items:center; gap:7px; background:var(--skin-primary); color:#fff; border:var(--border-medium); border-radius:var(--radius-pill); padding:10px 24px; font-weight:900; font-size:14px; text-decoration:none; box-shadow:var(--shadow-sm); transition:transform var(--ease-bounce), box-shadow var(--ease-bounce); }
+.gem-btn:hover { transform:translate(-3px,-3px); box-shadow:var(--shadow-md); }
+.gem-code { margin-top:13px; background:var(--skin-highlight); border:2px dashed var(--skin-primary); border-radius:var(--radius-md); padding:12px 15px; display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap; }
+.gem-code-txt { font-size:13.5px; color:var(--skin-ink); line-height:1.7; font-weight:500; }
+.gem-code-txt b { font-family:var(--serif); font-size:16px; font-weight:900; color:var(--skin-primary); letter-spacing:0.08em; }
+.gem-code-btn { flex-shrink:0; background:var(--skin-cream); color:var(--skin-primary); border:2px solid var(--skin-primary); border-radius:var(--radius-pill); padding:6px 15px; font-family:var(--sans); font-size:12px; font-weight:900; cursor:pointer; transition:transform var(--ease-bounce), background var(--ease-bounce); }
+.gem-code-btn:hover { transform:translate(-2px,-2px); }
+.gem-code-btn.done { background:var(--skin-primary); color:#fff; }
+.gem-more { margin-top:16px; font-size:13px; color:rgba(58,40,27,0.62); font-weight:500; line-height:1.8; }
+.gem-more a { color:var(--skin-primary); font-weight:700; text-decoration:none; border-bottom:2px solid var(--skin-highlight); }
+
+/* ---------- 共用區塊 ---------- */
+.bridge { padding:20px 28px; }
+.bridge-card { background:var(--skin-cream); border:var(--border-thick); border-radius:var(--radius-lg); box-shadow:var(--shadow-md); padding:28px 24px; }
+.bridge p { font-size:15px; color:rgba(58,40,27,0.88); line-height:1.9; margin-bottom:14px; }
+.bridge .em { font-family:var(--serif); font-size:18px; font-weight:900; line-height:1.7; margin:6px 0 16px; }
+.intro { padding:20px 28px; }
+.intro-card { background:#FDF5EA; border:var(--border-thick); border-radius:var(--radius-lg); box-shadow:var(--shadow-md); padding:26px 24px; }
+.intro-name { font-family:var(--serif); font-size:20px; font-weight:900; margin-bottom:12px; }
+.intro-text { font-size:14.5px; color:rgba(58,40,27,0.88); line-height:1.9; }
+.cta { padding:26px 28px 46px; text-align:center; }
+.cta-line { font-family:var(--serif); font-size:21px; font-weight:900; line-height:1.6; margin-bottom:10px; }
+.cta-sub { font-size:14.5px; color:rgba(58,40,27,0.55); margin-bottom:26px; line-height:1.8; font-weight:500; }
+.skin-btn { display:inline-flex; align-items:center; gap:8px; background:var(--skin-primary); color:#fff; border:var(--border-thick); border-radius:var(--radius-pill); padding:16px 44px; font-weight:900; font-size:18px; box-shadow:var(--shadow-md); transition:transform var(--ease-bounce), box-shadow var(--ease-bounce); position:relative; overflow:hidden; cursor:pointer; text-decoration:none; }
+.skin-btn:hover { transform:translate(-4px,-4px); box-shadow:var(--shadow-lg); }
+.skin-btn::after { content:''; position:absolute; top:0; left:-100%; width:50%; height:100%; background:linear-gradient(90deg,transparent,rgba(255,255,255,0.4),transparent); transform:skewX(-25deg); animation:shine 3s ease-in-out infinite; }
+@keyframes shine { 0%{left:-100%;} 20%{left:150%;} 100%{left:150%;} }
+.cta-note { margin-top:16px; font-size:12.5px; color:rgba(58,40,27,0.5); font-weight:500; }
+.disclaimer { padding:0 28px 26px; text-align:center; font-size:11.5px; color:rgba(58,40,27,0.4); line-height:1.8; }
+.footer { padding:12px 28px 40px; text-align:center; }
+.footer-acc { font-style:italic; font-size:14px; color:var(--skin-primary); font-weight:700; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="blob blob--1"></div>
+  <div class="blob blob--2"></div>
+
+  <div class="rel">
+    <div class="hero">
+      <div class="hero-tag">家庭育兒 · 心理測驗</div>
+      <div class="hero-title">你家小孩最像哪種<br><span class="skin-mark">小怪獸</span></div>
+      <div class="hero-sub">點開你選的那一隻<br>看他其實在做什麼，還有可以怎麼跟他說</div>
+      <div class="hero-intro">
+        <div class="hero-intro-name">Hi 我是 <span class="skin-mark">K媽</span></div>
+        <div class="hero-intro-body">我是一個媽媽，也用 AI ＋ 自媒體<br>在記錄生活、經營內容</div>
+      </div>
+    </div>
+
+    <div class="qbody">
+      <div class="qnum">小怪獸 · 測驗</div>
+      <div class="quiz-q">憑直覺選一隻<br>哪一種最像你家那個</div>
+      <div class="quiz-sub">不用想太久，點開最像的那一個</div>
+    </div>
+
+    <div class="picks" id="picks"></div>
+
+    <div class="bridge fade-up">
+      <div class="bridge-card">
+        <p>四隻小怪獸<br>問的都是 <span class="skin-mark">同一件事</span></p>
+        <p class="em">他為什麼要這樣</p>
+        <p class="em">大部分難搞的行為底下<br>都有一個他自己說不出來的需求</p>
+        <p class="em">你聽懂那個需求<br>講法就會自己變</p>
+      </div>
+    </div>
+
+    <div class="intro fade-up">
+      <div class="intro-card">
+        <div class="intro-name">Hi 我是 <span class="skin-mark">K媽</span></div>
+        <div class="intro-text">你剛剛滑過的那幾張圖，是我用 AI 一張一張做出來的<br><br>帶娃的那些小事，講出來別人只覺得還好<br>畫出來才看得見，那些小事在你身上有多重</div>
+      </div>
+    </div>
+
+    <div class="cta fade-up">
+      <div class="cta-line">想挑一條<br>真的<span class="skin-mark">適合你</span>的水晶</div>
+      <div class="cta-sub">官網上還有很多款，可以照你想補的能量、星座或五行去找<br>不知道從哪裡看起的話，先把全部款式滑過一遍</div>
+      <a class="skin-btn" href="https://omnicrystal.store/shop/?utm_source=Karen&utm_medium=message" target="_blank" rel="noopener">看看森靈水晶官網</a>
+      <div class="cta-note">點擊前往官網，慢慢挑你的那一條</div>
+    </div>
+
+    <div class="disclaimer">本測驗為娛樂與親職參考用途，不代表任何醫療或心理診斷</div>
+    <div class="footer"><div class="footer-acc">@lovekaren0316</div></div>
+  </div>
+</div>
+
+<script>
+var IMG_BASE = 'https://evoke728.github.io/kma-pages/';
+function gemImg(x){ return /^https?:/.test(x) ? x : IMG_BASE + x; }
+
+var TYPES = {
+  "A": {
+    "pick": "小惡魔",
+    "picksub": "越說不行越要做",
+    "reveal": "小惡魔型｜他在測那條線",
+    "quote": "他真正想要的，是一個不會變的答案",
+    "what": "你說不行，他看著你，把手慢慢伸過去，做完還回頭看你的臉<br>你會覺得他是故意的，因為他做之前還看了你一眼<br>他確實是故意的，只是他真正在確認的，是這條線今天跟昨天一不一樣<br><br>小孩要靠重複測試，才會相信一條規則是穩定的<br>所以同一件事他會試很多次，每一次都在問同一個問題：你會不會改答案",
+    "why": "這種時候大人通常會加重語氣，或者把理由講得更清楚<br>但他測的是答案會不會變，理由講得再好也不影響那個答案<br>你解釋越多，他越覺得這件事還有得談",
+    "how": [
+      ["答案縮短、固定、每次一樣", "不行，這個會受傷", "講一次就好，不重複解釋"],
+      ["他再伸手，不再講話，直接用手擋下來", "", "動作比語言穩定，他讀的是這個"],
+      ["事後幫他把剛剛的行為說出來", "你剛剛在試我會不會改答案，我不會改，這件事一直都是不行", ""]
+    ],
+    "bridge": "你家的是小惡魔型<br>你每天在做的，是把同一條線用同樣的語氣再講一次<br>所以下面這一條，補的是講界線時不被激怒的那份穩",
+    "gem": {
+      "name": "感覺很好",
+      "stones": "白水晶貔貅 x 青金石 x 藍月光",
+      "img": "img/crystals/ganjue-henhao.jpg",
+      "alt": "感覺很好水晶手鍊",
+      "url": "https://omnicrystal.store/shop/destiny-crystals/five-elements/a7/?utm_source=Karen&utm_medium=message",
+      "gemwhy": "青金石對應喉輪，顧的是把話說出口這件事，讓那條界線講得出來也講得穩<br>藍月光讓情緒不會悶著發酵，他第五次來試的時候你不會一次爆掉<br>白水晶讓精神不受外界干擾，你比較不會被那個挑釁的眼神帶著走<br><br>戴著它不會讓他突然不再試探<br>但每天扣上的時候<br>你會記得，你只需要給同一個答案，不需要說服他同意",
+      "moreLabel": "溝通表達能量的水晶 →",
+      "moreUrl": "https://omnicrystal.store/shop/?filter_%e8%83%bd%e9%87%8f%e5%8a%9f%e6%95%88=%e6%ba%9d%e9%80%9a%e8%a1%a8%e9%81%94&utm_source=Karen&utm_medium=message"
+    }
+  },
+  "B": {
+    "pick": "小恐龍",
+    "picksub": "橫衝直撞停不下來",
+    "reveal": "小恐龍型｜他的煞車還在長",
+    "quote": "他的電池比你大，這件事跟乖不乖沒有關係",
+    "what": "跑跳撞翻，你叫他慢一點，他答應了，三秒後又衝出去<br>他答應你的時候是真心的，只是身體比腦子快<br><br>學齡前的衝動控制本來就還在發育<br>他聽懂了，但是停不下來",
+    "why": "「慢一點」「小心一點」都是抽象的<br>他腦中沒有畫面可以照做，等於什麼都沒收到",
+    "how": [
+      ["把抽象換成他做得到的動作", "走路，腳踩地板", "比「不要跑」有用"],
+      ["先給出口再給限制", "我們先在公園跑十分鐘，等一下進超市要用走的", ""],
+      ["到了不能跑的地方，給他一個任務", "你幫我推推車", "手上有事，身體就不會亂衝"]
+    ],
+    "bridge": "你家的是小恐龍型<br>你每天要用自己的體力，去接一顆比你大的電池<br>所以下面這一條，補的是被消耗掉的那份力氣",
+    "gem": {
+      "name": "朱雀祥瑞",
+      "stones": "紅膠花 x 白水晶 x 白阿賽 x 太陽石 x 紅玉隨",
+      "img": "img/crystals/zhuque-xiangrui.jpg",
+      "alt": "朱雀祥瑞水晶手鍊",
+      "url": "https://omnicrystal.store/shop/destiny-crystals/five-elements/a10/?utm_source=Karen&utm_medium=message",
+      "gemwhy": "太陽石跟紅玉隨補的是活力，商品文案寫的就是增強活力與自信<br>紅膠花雙尖水晶帶南方的熱情，讓你不用整天被拖著跑<br>白水晶跟白阿賽把雜訊擋在外面，力氣才不會花在不重要的地方<br><br>戴著它不會讓他的電池變小<br>但每天低頭看到它<br>你會記得，先幫自己充電這件事，本來就該排在前面",
+      "moreLabel": "身體健康能量的水晶 →",
+      "moreUrl": "https://omnicrystal.store/shop/?filter_%e8%83%bd%e9%87%8f%e5%8a%9f%e6%95%88=%e8%ba%ab%e9%ab%94%e5%81%a5%e5%ba%b7&utm_source=Karen&utm_medium=message"
+    }
+  },
+  "C": {
+    "pick": "小狼人",
+    "picksub": "一秒炸毛哭到天崩地裂",
+    "reveal": "小狼人型｜他的情緒煞車還沒長好",
+    "quote": "他在爆炸的那幾分鐘，是真的暫時失去了講理的能力",
+    "what": "前一秒還好好的，一件小事整個炸開，哭到停不下來<br>事後問他，他自己也說不出為什麼<br><br>爆炸的當下他的腦是斷線的<br>那個時候講道理，他是真的接收不到",
+    "why": "在他斷線的時候問「你到底為什麼哭」「這有什麼好哭的」<br>等於要一台當機的電腦跑程式<br>那個時候他答不出來，因為那個功能暫時關掉了",
+    "how": [
+      ["爆炸中只做一件事，講他在感覺什麼", "你現在很生氣", "然後陪著，不用逼他馬上停"],
+      ["平靜之後才講事情", "剛剛你很生氣，生氣可以，但不可以打人，下次可以跟我說", ""],
+      ["事前預告可以少掉一半的爆炸", "再玩五分鐘我們就要走了", "他需要時間切換"]
+    ],
+    "bridge": "你家的是小狼人型<br>你每天要在他斷線的時候，先穩住自己那條線<br>所以下面這一條，補的是被磨掉的耐性",
+    "gem": {
+      "name": "紫氣東來",
+      "stones": "紫水晶 x 葡萄石",
+      "img": "img/crystals/ziqi-donglai.jpg",
+      "alt": "紫氣東來水晶手鍊",
+      "url": "https://omnicrystal.store/shop/destiny-crystals/five-elements/a1/?utm_source=Karen&utm_medium=message",
+      "gemwhy": "紫水晶的商品文案寫的是舒緩緊張、敏感、平衡情緒能量，對到的就是他炸開時你自己的那條神經<br>葡萄石溫和，幫你在當下先不急著講道理<br>八角切面代表八方來運，也代表你不會只剩一個出口<br><br>戴著它不會讓他少哭幾次<br>但每天扣上的時候<br>你會記得，先陪他把情緒走完，再講事情，順序對了他才聽得進去",
+      "moreLabel": "舒緩情緒能量的水晶 →",
+      "moreUrl": "https://omnicrystal.store/shop/?filter_%e8%83%bd%e9%87%8f%e5%8a%9f%e6%95%88=%e8%88%92%e7%b7%a9%e6%83%85%e7%b7%92&utm_source=Karen&utm_medium=message"
+    }
+  },
+  "D": {
+    "pick": "小吸血鬼",
+    "picksub": "越晚越有精神",
+    "reveal": "小吸血鬼型｜他在拖那一刻",
+    "quote": "他真正在拖的，是跟你分開的那一刻",
+    "what": "該睡的時候整個人活過來，要喝水、要尿尿、要再講一個故事<br>白天卻叫不醒<br><br>他的生理時鐘還沒對上大人的世界<br>而且對小孩來說，睡覺等於跟你分開，他在延後那一刻",
+    "why": "「快點睡」是要他做一件他控制不了的事<br>越催他越亢奮，因為他感覺得到你在急",
+    "how": [
+      ["把目標從睡著換成安靜的陪伴", "不用睡，我們躺著就好", "先拿掉表現壓力"],
+      ["睡前先處理分開這件事", "我就在門外，你醒來我都會在", ""],
+      ["固定順序比固定時間有用", "", "洗澡、故事、關燈，每天同一個順序，順序就是他的訊號"]
+    ],
+    "bridge": "你家的是小吸血鬼型<br>你每天最後一段力氣，都花在那場睡前拉鋸<br>所以下面這一條，補的是睡前那段安定",
+    "gem": {
+      "name": "森林寶藏",
+      "stones": "白水晶貔貅 x 孔雀石 x 葡萄石",
+      "img": "img/crystals/senlin-baozang.jpg",
+      "alt": "森林寶藏水晶手鍊",
+      "url": "https://omnicrystal.store/shop/destiny-crystals/five-elements/a3/?utm_source=Karen&utm_medium=message",
+      "gemwhy": "商品文案寫的是緩解壓力和焦慮、讓躁動的心回歸平靜，那正好是睡前那段拉鋸<br>孔雀石跟葡萄石讓你在第五次被叫回房間的時候，還有一點餘裕<br>白水晶貔貅把一天累積的雜訊守在門外<br><br>戴著它不會讓他今天就自己睡著<br>但每天扣上的時候<br>你會記得，他拖的就是那幾分鐘的陪伴，而你給得起",
+      "moreLabel": "淨化磁場能量的水晶 →",
+      "moreUrl": "https://omnicrystal.store/shop/?filter_%e8%83%bd%e9%87%8f%e5%8a%9f%e6%95%88=%e6%b7%a8%e5%8c%96%e7%a3%81%e5%a0%b4&utm_source=Karen&utm_medium=message"
+    }
+  }
+};
+
+function ev(name, params){ if (typeof gtag === 'function') gtag('event', name, params || {}); }
+
+function blockHTML(h, t){
+  return '<div class="res-blk"><div class="res-h">' + h + '</div><div class="res-t">' + t + '</div></div>';
+}
+function howHTML(list){
+  var s = '<div class="res-blk"><div class="res-h">可以怎麼說</div>';
+  list.forEach(function(item, i){
+    s += '<div class="res-t">' + (i+1) + '. ' + item[0] + '</div>';
+    if (item[1]) s += '<div class="say">「<b>' + item[1] + '</b>」' + (item[2] ? '<br>' + item[2] : '') + '</div>';
+    else if (item[2]) s += '<div class="say">' + item[2] + '</div>';
+  });
+  return s + '</div>';
+}
+
+function bodyHTML(k, T){
+  return ''
+    + '<div class="pick-body-in">'
+    + '  <div class="res-kicker">你選的是</div>'
+    + '  <div class="res-title">' + T.reveal + '</div>'
+    + '  <div class="res-quote">' + T.quote + '</div>'
+    + '  <div class="card-inner">'
+    +      blockHTML('他在做什麼', T.what)
+    +      blockHTML('為什麼你原本的講法沒用', T.why)
+    +      howHTML(T.how)
+    + '  </div>'
+    + '  <div class="gem-label">FOREST CRYSTAL · 森靈水晶</div>'
+    + '  <div class="gem-bridge">' + T.bridge + '</div>'
+    + '  <div class="gem-card">'
+    + '    <div class="gem-head">'
+    + '      <a class="gem-img-link" href="' + T.gem.url + '" target="_blank" rel="noopener"><img class="gem-img" src="' + gemImg(T.gem.img) + '" alt="' + T.gem.alt + '"></a>'
+    + '      <div class="gem-head-txt"><div class="gem-name">' + T.gem.name + '</div><div class="gem-stones">' + T.gem.stones + '</div></div>'
+    + '    </div>'
+    + '    <div class="gem-why">' + T.gem.gemwhy + '</div>'
+    + '    <a class="gem-btn" href="' + T.gem.url + '" target="_blank" rel="noopener">看看這一款 →</a>'
+    + '  </div>'
+    + '  <div class="gem-code"><div class="gem-code-txt">使用專屬折扣碼「<b>Karen</b>」可折 $100</div><button class="gem-code-btn" type="button" onclick="copyCode(event)">複製</button></div>'
+    + '  <div class="gem-more">想看看其他適合你的<br><a href="' + T.gem.moreUrl + '" target="_blank" rel="noopener">' + T.gem.moreLabel + '</a></div>'
+    + '</div>';
+}
+
+var box = document.getElementById('picks');
+Object.keys(TYPES).forEach(function(k){
+  var T = TYPES[k];
+  var d = document.createElement('div');
+  d.className = 'pick';
+  d.id = 'pick-' + k;
+  d.innerHTML =
+      '<div class="pick-head"><span class="pick-letter">' + k + '</span><span class="pick-text">' + T.pick + '<span class="pick-sub">' + T.picksub + '</span></span><span class="pick-arrow">⌄</span></div>'
+    + '<div class="pick-body">' + bodyHTML(k, T) + '</div>';
+  d.querySelector('.pick-head').onclick = function(){
+    var wasOpen = d.classList.contains('open');
+    d.classList.toggle('open');
+    if (!wasOpen){
+      ev('quiz_option_open', { option_letter: k });
+      history.replaceState(null, '', '#r=' + k);
+      setTimeout(function(){ d.scrollIntoView({behavior:'smooth', block:'start'}); }, 80);
+    }
+  };
+  box.appendChild(d);
+});
+
+(function(){
+  var m = location.hash.match(/r=([A-D])/);
+  if (m){
+    var el = document.getElementById('pick-' + m[1]);
+    if (el){ el.classList.add('open'); setTimeout(function(){ el.scrollIntoView({behavior:'instant', block:'start'}); }, 50); }
+  }
+})();
+
+function copyCode(e){
+  e.stopPropagation();
+  var btn = e.currentTarget;
+  ev('code_copy', { partner:'forest_crystal', code_value:'Karen' });
+  var done = function(){
+    btn.textContent = '已複製'; btn.classList.add('done');
+    setTimeout(function(){ btn.textContent = '複製'; btn.classList.remove('done'); }, 1600);
+  };
+  if (navigator.clipboard && window.isSecureContext){
+    navigator.clipboard.writeText('Karen').then(done).catch(function(){ fallbackCopy(done); });
+  } else { fallbackCopy(done); }
+}
+function fallbackCopy(done){
+  var ta = document.createElement('textarea');
+  ta.value = 'Karen'; ta.style.cssText = 'position:fixed;top:-9999px';
+  document.body.appendChild(ta); ta.select();
+  try { document.execCommand('copy'); done(); } catch(e){}
+  document.body.removeChild(ta);
+}
+var observer = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){ if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-up').forEach(function(el){ observer.observe(el); });
+</script>
+</body>
+</html>
