@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="家庭育兒 — 三題測出孩子離家那天，你真正的反應是什麼">
+<meta property="og:title" content="K媽｜如果有一天孩子搬出去了 · 三題測驗">
+<meta property="og:description" content="家庭育兒 — 三題測出孩子離家那天，你真正的反應是什麼">
+<meta property="og:type" content="website">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-X8R1V9WXX3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-X8R1V9WXX3', {
+    content_group: 'K媽',
+    ip_code: 'kma',
+    page_slug: '2026-09-16-kid-moves-out-quiz',
+    page_kind: 'quiz_funnel'
+  });
+</script>
+<title>K媽｜如果有一天孩子搬出去了 · 三題測驗</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;700;900&family=Noto+Sans+TC:wght@400;500;700;900&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --skin-primary:   #B5764A;
+  --skin-accent:    #D0A06B;
+  --skin-highlight: #E7C79A;
+  --skin-ink:       #3A2717;
+  --skin-cream:     #FFFBF4;
+  --skin-bg:        #F2E6D2;
+  --skin-warm:      #DFC7A0;
+  --skin-white:     #3A281B;
+  --shadow-sm: 4px 4px 0 var(--skin-ink);
+  --shadow-md: 7px 7px 0 var(--skin-ink);
+  --shadow-lg: 11px 11px 0 var(--skin-ink);
+  --border-thick:  3px solid var(--skin-warm);
+  --border-medium: 2px solid var(--skin-warm);
+  --radius-md:16px; --radius-lg:24px; --radius-pill:50px;
+  --ease-bounce: 400ms cubic-bezier(0.34,1.56,0.64,1);
+  --serif:"Noto Serif TC",serif; --sans:"Noto Sans TC","Inter",sans-serif;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#F2E6D2; font-family:var(--sans); color:var(--skin-white); line-height:1.8; overflow-x:hidden; }
+.wrap { max-width:680px; margin:0 auto; position:relative; background:var(--skin-bg); min-height:100vh; }
+.blob { position:absolute; border-radius:60% 40% 30% 70% / 60% 30% 70% 40%;
+  animation:morph 8s ease-in-out infinite; opacity:0.30; z-index:0; pointer-events:none; filter:blur(6px); }
+.blob--1 { width:min(70vw,420px); height:min(70vw,420px);
+  background:linear-gradient(135deg, #B5764A, #D0A06B); top:-6%; right:-16%; }
+.blob--2 { width:min(60vw,360px); height:min(60vw,360px);
+  background:linear-gradient(135deg, #D0A06B, #DFC7A0); bottom:8%; left:-18%; animation-delay:-4s; }
+@keyframes morph {
+  0%,100% { border-radius:60% 40% 30% 70% / 60% 30% 70% 40%; }
+  25% { border-radius:30% 60% 70% 40% / 50% 60% 30% 40%; }
+  50% { border-radius:50% 60% 30% 70% / 30% 40% 70% 60%; }
+  75% { border-radius:60% 30% 60% 40% / 70% 50% 40% 30%; }
+}
+.skin-mark { background:var(--skin-highlight); color:#3A281B; padding:0.08em 0.35em; border-radius:5px; display:inline-block; box-decoration-break:clone; }
+.fade-up { opacity:0; transform:translateY(32px); transition:opacity .6s ease, transform .6s ease; }
+.fade-up.visible { opacity:1; transform:translateY(0); }
+
+/* ---------- 畫面切換 ---------- */
+.screen { display:none; position:relative; z-index:1; }
+.screen.on { display:block; animation:screenIn .45s ease both; }
+@keyframes screenIn { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:none; } }
+
+/* ---------- 封面 ---------- */
+.hero { padding:70px 28px 44px; text-align:center; }
+.hero-tag { display:inline-block; background:var(--skin-primary); color:#fff; border:var(--border-medium); border-radius:var(--radius-pill); padding:6px 16px; font-size:13px; font-weight:700; box-shadow:var(--shadow-sm); margin-bottom:22px; }
+.hero-title { font-family:var(--serif); font-weight:900; font-size:28px; line-height:1.55; }
+.hero-sub { margin-top:18px; font-size:14.5px; color:rgba(58,40,27,0.62); line-height:1.9; }
+.hero-intro { background:var(--skin-cream); border:var(--border-medium); border-radius:var(--radius-lg); box-shadow:var(--shadow-sm); padding:18px 20px; margin:32px 0 6px; }
+.hero-intro-name { font-family:var(--serif); font-size:16px; font-weight:900; margin-bottom:6px; }
+.hero-intro-body { font-size:13.5px; color:rgba(58,40,27,0.72); line-height:1.8; }
+
+/* ---------- 進度 ---------- */
+.qhead { padding:34px 28px 0; display:flex; align-items:center; justify-content:space-between; font-size:12.5px; font-weight:700; letter-spacing:0.06em; color:rgba(58,40,27,0.55); }
+.qbar { margin:12px 28px 0; height:8px; background:rgba(58,40,27,0.10); border:2px solid var(--skin-warm); border-radius:var(--radius-pill); overflow:hidden; }
+.qbar-fill { height:100%; width:0; background:linear-gradient(90deg,var(--skin-accent),var(--skin-primary)); transition:width .45s var(--ease-bounce); }
+
+/* ---------- 題目 ---------- */
+.qbody { padding:30px 28px 40px; }
+.qnum { display:inline-block; background:var(--skin-primary); color:#fff; border:var(--border-medium); border-radius:var(--radius-pill); padding:4px 14px; font-size:12px; font-weight:700; margin-bottom:18px; box-shadow:var(--shadow-sm); }
+.quiz-q { font-family:var(--serif); font-size:22px; font-weight:900; line-height:1.6; margin-bottom:8px; }
+.quiz-sub { font-size:14px; color:rgba(58,40,27,0.55); margin-bottom:26px; font-weight:500; }
+.pick { background:var(--skin-cream); border:var(--border-thick); border-radius:var(--radius-md); box-shadow:var(--shadow-sm); padding:18px 20px; margin-bottom:16px; cursor:pointer; transition:transform var(--ease-bounce), box-shadow var(--ease-bounce), background var(--ease-bounce); display:flex; align-items:center; gap:14px; }
+.pick:hover { transform:translate(-3px,-3px); box-shadow:var(--shadow-md); }
+.pick.sel { background:var(--skin-highlight); box-shadow:var(--shadow-md); transform:translate(-3px,-3px); }
+.pick-letter { display:inline-flex; align-items:center; justify-content:center; width:34px; height:34px; background:var(--skin-highlight); color:#3A281B; border:var(--border-medium); border-radius:50%; font-family:"Inter"; font-weight:700; font-size:16px; flex-shrink:0; }
+.pick.sel .pick-letter { background:var(--skin-primary); color:#fff; }
+.pick-text { font-size:16px; font-weight:700; line-height:1.65; }
+.qfoot { margin-top:26px; text-align:center; }
+.qback { display:inline-block; margin-top:16px; font-size:13px; font-weight:700; color:rgba(58,40,27,0.5); cursor:pointer; border-bottom:2px solid var(--skin-warm); }
+
+/* ---------- 計算中 ---------- */
+.calc { padding:120px 28px; text-align:center; }
+.calc-ring { width:56px; height:56px; margin:0 auto 22px; border:5px solid var(--skin-warm); border-top-color:var(--skin-primary); border-radius:50%; animation:spin .9s linear infinite; }
+@keyframes spin { to { transform:rotate(360deg); } }
+.calc-text { font-family:var(--serif); font-size:17px; font-weight:700; color:rgba(58,40,27,0.7); }
+
+/* ---------- 結果 ---------- */
+.res-head { padding:52px 28px 10px; text-align:center; }
+.res-kicker { font-size:12.5px; font-weight:700; letter-spacing:0.14em; color:var(--skin-primary); margin-bottom:14px; }
+.res-title { font-family:var(--serif); font-size:27px; font-weight:900; line-height:1.55; }
+.res-title span { color:rgba(58,40,27,0.5); font-family:var(--sans); font-size:14px; font-weight:700; display:block; margin-bottom:8px; }
+.res-quote { font-family:var(--serif); font-size:15.5px; font-weight:700; background:#FDF5EA; border-left:4px solid var(--skin-primary); border-radius:8px; padding:13px 17px; margin:22px 28px 0; line-height:1.8; }
+.section { padding:30px 28px; }
+.card { background:var(--skin-cream); border:var(--border-thick); border-radius:var(--radius-lg); box-shadow:var(--shadow-md); padding:24px 22px; }
+.res-blk { margin-bottom:18px; }
+.res-blk:last-child { margin-bottom:0; }
+.res-h { font-size:13px; font-weight:700; color:var(--skin-primary); margin-bottom:6px; letter-spacing:0.03em; }
+.res-h em { font-style:normal; font-size:11px; color:rgba(58,40,27,0.42); font-weight:700; margin-left:6px; }
+.res-t { font-size:14.5px; color:rgba(58,40,27,0.9); line-height:1.85; }
+
+/* ---------- 水晶 ---------- */
+.gem { padding:8px 28px 30px; }
+.gem-label { display:inline-block; background:var(--skin-highlight); color:#3A281B; border:var(--border-medium); border-radius:var(--radius-pill); padding:3px 13px; font-size:11.5px; font-weight:700; margin-bottom:13px; }
+.gem-intro { font-size:14px; color:rgba(58,40,27,0.78); line-height:1.9; margin-bottom:15px; }
+.gem-bridge { font-size:14.5px; color:rgba(58,40,27,0.92); line-height:1.9; margin-bottom:18px; padding-left:13px; border-left:3px solid var(--skin-highlight); font-weight:500; }
+.gem-card { background:#FDF5EA; border:var(--border-medium); border-radius:var(--radius-md); box-shadow:var(--shadow-sm); padding:18px 20px; }
+.gem-head { display:flex; flex-direction:row-reverse; align-items:center; gap:14px; }
+.gem-img-link { display:block; flex-shrink:0; width:clamp(88px,25vw,108px); transition:transform var(--ease-bounce); }
+.gem-img-link:hover { transform:translate(-3px,-3px); }
+.gem-img { display:block; width:100%; height:auto; aspect-ratio:1/1; object-fit:cover; border:var(--border-medium); border-radius:12px; background:var(--skin-warm); box-shadow:var(--shadow-sm); }
+@media (min-width:640px) { .gem-img-link { width:216px; } }
+.gem-head-txt { min-width:0; flex:1; }
+.gem-name { font-family:var(--serif); font-size:17.5px; font-weight:900; color:var(--skin-primary); line-height:1.5; }
+.gem-stones { font-size:12px; color:rgba(58,40,27,0.5); font-weight:500; margin-top:4px; line-height:1.7; }
+.gem-why { font-size:14px; color:rgba(58,40,27,0.88); line-height:1.85; margin:13px 0 17px; }
+.gem-btn { display:inline-flex; align-items:center; gap:7px; background:var(--skin-primary); color:#fff; border:var(--border-medium); border-radius:var(--radius-pill); padding:11px 28px; font-weight:900; font-size:14.5px; text-decoration:none; box-shadow:var(--shadow-sm); transition:transform var(--ease-bounce), box-shadow var(--ease-bounce); }
+.gem-btn:hover { transform:translate(-3px,-3px); box-shadow:var(--shadow-md); }
+.gem-code { margin-top:14px; background:var(--skin-highlight); border:2px dashed var(--skin-primary); border-radius:var(--radius-md); padding:13px 17px; display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; }
+.gem-code-txt { font-size:14px; color:var(--skin-ink); line-height:1.75; font-weight:500; }
+.gem-code-txt b { font-family:var(--serif); font-size:16.5px; font-weight:900; color:var(--skin-primary); letter-spacing:0.08em; }
+.gem-code-btn { flex-shrink:0; background:var(--skin-cream); color:var(--skin-primary); border:2px solid var(--skin-primary); border-radius:var(--radius-pill); padding:7px 17px; font-family:var(--sans); font-size:12.5px; font-weight:900; cursor:pointer; transition:transform var(--ease-bounce), background var(--ease-bounce); }
+.gem-code-btn:hover { transform:translate(-2px,-2px); }
+.gem-code-btn.done { background:var(--skin-primary); color:#fff; }
+.gem-more { margin-top:18px; font-size:13.5px; color:rgba(58,40,27,0.62); font-weight:500; line-height:1.8; }
+.gem-more a { color:var(--skin-primary); font-weight:700; text-decoration:none; border-bottom:2px solid var(--skin-highlight); }
+
+/* ---------- 其他型 ---------- */
+.others { padding:6px 28px 30px; }
+.others-h { font-family:var(--serif); font-size:18px; font-weight:900; margin-bottom:6px; }
+.others-sub { font-size:13.5px; color:rgba(58,40,27,0.55); margin-bottom:18px; font-weight:500; }
+.oth { background:var(--skin-cream); border:var(--border-medium); border-radius:var(--radius-md); box-shadow:var(--shadow-sm); padding:15px 18px; margin-bottom:13px; cursor:pointer; }
+.oth-head { display:flex; align-items:center; gap:12px; font-size:15px; font-weight:700; }
+.oth-letter { display:inline-flex; align-items:center; justify-content:center; width:29px; height:29px; background:var(--skin-highlight); color:#3A281B; border:var(--border-medium); border-radius:50%; font-family:"Inter"; font-weight:700; font-size:14px; flex-shrink:0; }
+.oth-arrow { margin-left:auto; color:var(--skin-primary); font-weight:900; transition:transform var(--ease-bounce); }
+.oth.open .oth-arrow { transform:rotate(180deg); }
+.oth-body { max-height:0; overflow:hidden; transition:max-height .5s ease, margin .3s, padding .3s; }
+.oth.open .oth-body { max-height:900px; margin-top:13px; padding-top:13px; border-top:2px dashed var(--skin-warm); }
+
+.transition { text-align:center; padding:14px 0; }
+.transition-text { display:inline-block; background:var(--skin-cream); border:var(--border-medium); border-radius:var(--radius-pill); padding:8px 20px; font-size:14px; font-weight:700; box-shadow:var(--shadow-sm); }
+.bridge { padding:30px 28px; }
+.bridge-card { background:var(--skin-cream); border:var(--border-thick); border-radius:var(--radius-lg); box-shadow:var(--shadow-md); padding:28px 24px; }
+.bridge p { font-size:15px; color:rgba(58,40,27,0.88); line-height:1.9; margin-bottom:14px; }
+.bridge .em { font-family:var(--serif); font-size:18px; font-weight:900; line-height:1.7; margin:6px 0 16px; }
+.intro { padding:30px 28px; }
+.intro-card { background:#FDF5EA; border:var(--border-thick); border-radius:var(--radius-lg); box-shadow:var(--shadow-md); padding:26px 24px; }
+.intro-name { font-family:var(--serif); font-size:20px; font-weight:900; margin-bottom:12px; }
+.intro-text { font-size:14.5px; color:rgba(58,40,27,0.88); line-height:1.9; }
+.cta { padding:26px 28px 46px; text-align:center; }
+.cta-line { font-family:var(--serif); font-size:21px; font-weight:900; line-height:1.6; margin-bottom:10px; }
+.cta-sub { font-size:14.5px; color:rgba(58,40,27,0.55); margin-bottom:26px; line-height:1.8; font-weight:500; }
+.skin-btn { display:inline-flex; align-items:center; gap:8px; background:var(--skin-primary); color:#fff; border:var(--border-thick); border-radius:var(--radius-pill); padding:16px 44px; font-weight:900; font-size:18px; box-shadow:var(--shadow-md); transition:transform var(--ease-bounce), box-shadow var(--ease-bounce); position:relative; overflow:hidden; cursor:pointer; text-decoration:none; }
+.skin-btn:hover { transform:translate(-4px,-4px); box-shadow:var(--shadow-lg); }
+.skin-btn::after { content:''; position:absolute; top:0; left:-100%; width:50%; height:100%; background:linear-gradient(90deg,transparent,rgba(255,255,255,0.4),transparent); transform:skewX(-25deg); animation:shine 3s ease-in-out infinite; }
+@keyframes shine { 0%{left:-100%;} 20%{left:150%;} 100%{left:150%;} }
+.cta-note { margin-top:16px; font-size:12.5px; color:rgba(58,40,27,0.5); font-weight:500; }
+.retake { text-align:center; padding:0 28px 18px; }
+.retake span { font-size:13.5px; font-weight:700; color:rgba(58,40,27,0.5); cursor:pointer; border-bottom:2px solid var(--skin-warm); }
+.disclaimer { padding:0 28px 26px; text-align:center; font-size:11.5px; color:rgba(58,40,27,0.4); line-height:1.8; }
+.footer { padding:12px 28px 40px; text-align:center; }
+.footer-acc { font-style:italic; font-size:14px; color:var(--skin-primary); font-weight:700; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="blob blob--1"></div>
+  <div class="blob blob--2"></div>
+
+  <!-- ========== 封面 ========== -->
+  <section class="screen on" id="sc-intro">
+    <div class="hero">
+      <div class="hero-tag">家庭育兒 · 心理測驗</div>
+      <div class="hero-title">你第一個想到的那個反應<br><span class="skin-mark">是你這幾年怎麼過來的</span></div>
+      <div class="hero-sub">三題，大約三十秒<br>不用留任何資料</div>
+      <div class="hero-intro">
+        <div class="hero-intro-name">Hi 我是 <span class="skin-mark">K媽</span></div>
+        <div class="hero-intro-body">我是一個媽媽，也用 AI ＋ 自媒體<br>在記錄生活、經營內容</div>
+      </div>
+      <div style="margin-top:22px"><a class="skin-btn" id="btn-start">開始測驗</a></div>
+      <div class="cta-note">第一題就是你在貼文上看到的那題</div>
+    </div>
+  </section>
+
+  <!-- ========== 題目 ========== -->
+  <section class="screen" id="sc-q">
+    <div class="qhead"><span id="q-label">孩子搬出去 · 測驗</span><span id="q-count">1 / 3</span></div>
+    <div class="qbar"><div class="qbar-fill" id="q-fill"></div></div>
+    <div class="qbody">
+      <div class="qnum" id="q-num">QUESTION 01</div>
+      <div class="quiz-q" id="q-title"></div>
+      <div class="quiz-sub" id="q-sub"></div>
+      <div id="q-opts"></div>
+      <div class="qfoot">
+        <a class="skin-btn" id="btn-next" style="opacity:.4;pointer-events:none">下一題</a>
+        <div><span class="qback" id="btn-back">回上一題</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 計算中 ========== -->
+  <section class="screen" id="sc-calc">
+    <div class="calc">
+      <div class="calc-ring"></div>
+      <div class="calc-text">正在對照你的三個答案</div>
+    </div>
+  </section>
+
+  <!-- ========== 結果 ========== -->
+  <section class="screen" id="sc-result">
+    <div class="res-head">
+      <div class="res-kicker">YOUR RESULT</div>
+      <div class="res-title"><span>你現在把自己看成</span><b id="r-reveal"></b></div>
+    </div>
+    <div class="res-quote" id="r-quote"></div>
+
+    <div class="section"><div class="card" id="r-blocks"></div></div>
+
+    <div class="gem">
+      <div class="gem-label">FOREST CRYSTAL · 森靈水晶</div>
+      <div class="gem-intro">每一種水晶，都對應一種能量<br>有的顧情緒，有的補力氣，有的把你的心願撐住<br>挑水晶的邏輯其實很簡單，你現在最缺哪一塊，就補哪一塊<br><br>它不會替你把日子過完<br>但戴在手上每天都看得到，你會記得自己正在調整什麼</div>
+      <div class="gem-bridge" id="r-bridge"></div>
+      <div class="gem-card">
+        <div class="gem-head">
+          <a class="gem-img-link" id="r-gem-img-link" target="_blank" rel="noopener"><img class="gem-img" id="r-gem-img" width="800" height="800" alt=""></a>
+          <div class="gem-head-txt">
+            <div class="gem-name" id="r-gem-name"></div>
+            <div class="gem-stones" id="r-gem-stones"></div>
+          </div>
+        </div>
+        <div class="gem-why" id="r-gem-why"></div>
+        <a class="gem-btn" id="r-gem-btn" target="_blank" rel="noopener">看看這一款 →</a>
+      </div>
+      <div class="gem-code">
+        <div class="gem-code-txt">使用專屬折扣碼「<b>Karen</b>」可折 $100</div>
+        <button class="gem-code-btn" type="button" onclick="copyCode(this)">複製</button>
+      </div>
+      <div class="gem-more">想看看其他適合你的<br><a id="r-gem-more" target="_blank" rel="noopener"></a></div>
+    </div>
+
+    <div class="others">
+      <div class="others-h">另外三種，你身邊一定有人是</div>
+      <div class="others-sub">點開看看，也許你會想到某一個人</div>
+      <div id="r-others"></div>
+    </div>
+
+    <div class="transition"><span class="transition-text">繼續往下滑 ⬇️</span></div>
+
+    <div class="bridge fade-up">
+      <div class="bridge-card">
+        <p>四個反應<br>問的都是 <span class="skin-mark">同一件事</span></p>
+        <p class="em">他不在了以後，你還剩下什麼</p>
+        <p class="em">你會是那個反應<br>是這幾年你一直把自己排在最後<br>排久了就變成理所當然</p>
+        <p class="em">理所當然很久的事<br>也可以從這禮拜開始改</p>
+      </div>
+    </div>
+
+    <div class="intro fade-up">
+      <div class="intro-card">
+        <div class="intro-name">Hi 我是 <span class="skin-mark">K媽</span></div>
+        <div class="intro-text">你剛剛滑過的那十一張圖，是我用 AI 一張一張做出來的<br><br>有些話講出來很空，畫成圖你反而會停在那裡<br>會停下來，通常是因為那張剛好講到你</div>
+      </div>
+    </div>
+
+    <div class="cta fade-up">
+      <div class="cta-line">想挑一條<br>真的<span class="skin-mark">適合你</span>的水晶</div>
+      <div class="cta-sub">官網上還有很多款，可以照你想補的能量、星座或五行去找<br>不知道從哪裡看起的話，先把全部款式滑過一遍</div>
+      <a class="skin-btn" href="https://omnicrystal.store/shop/?utm_source=Karen&utm_medium=message" target="_blank" rel="noopener">看看森靈水晶官網</a>
+      <div class="cta-note">點擊前往官網，慢慢挑你的那一條</div>
+    </div>
+
+    <div class="retake"><span id="btn-retake">重新測一次</span></div>
+    <div class="disclaimer">本測驗為娛樂與自我探索用途，不代表任何醫療或心理診斷</div>
+  </section>
+
+  <div class="footer"><div class="footer-acc">@lovekaren0316</div></div>
+</div>
+
+<script>
+var IMG_BASE = '';
+
+/* ===== 內容資料（由 scripts/landing/render.py 注入，勿手改） ===== */
+var D = {
+  "q1": {
+    "title": "如果有一天<br>孩子搬出去了<br>你猜你會是什麼反應",
+    "sub": "不用想太久，選第一個看了會停住的",
+    "opts": [
+      {
+        "k": "A",
+        "t": "會鬆一口氣，終於有自己的時間了"
+      },
+      {
+        "k": "B",
+        "t": "前幾天還好，過一陣子才開始受不了"
+      },
+      {
+        "k": "C",
+        "t": "房間一直維持原樣，誰都不准動"
+      },
+      {
+        "k": "D",
+        "t": "表面上很好，只是常常煮太多飯"
+      }
+    ]
+  },
+  "q2": {
+    "title": "最近讓你最沒力的<br>是哪一種",
+    "sub": "想這禮拜最想躺平的那個時刻",
+    "opts": [
+      {
+        "k": "a",
+        "t": "事情一件接一件，永遠做不完"
+      },
+      {
+        "k": "b",
+        "t": "你做了那麼多，沒有人發現"
+      },
+      {
+        "k": "c",
+        "t": "想講的話講到一半，最後自己吞回去"
+      },
+      {
+        "k": "d",
+        "t": "已經很久沒有一段時間是你自己的"
+      }
+    ]
+  },
+  "q3": {
+    "title": "如果這禮拜可以多一樣東西<br>你想要哪一個",
+    "sub": "選你現在最缺的那一個",
+    "opts": [
+      {
+        "k": "a",
+        "t": "一段沒有人找你的時間"
+      },
+      {
+        "k": "b",
+        "t": "有人問你今天過得怎麼樣"
+      },
+      {
+        "k": "c",
+        "t": "一件做完看得到成果的事"
+      },
+      {
+        "k": "d",
+        "t": "一次不用先想別人的選擇"
+      }
+    ]
+  },
+  "drain": {
+    "a": "你不是不會休息，是一坐下來就想到還有什麼沒做<br>身體停了，腦子還在跑清單",
+    "b": "做完沒有人知道，這件事比事情本身還耗<br>久了你會開始覺得，講了也沒差",
+    "c": "話到嘴邊又收回去，一天收個五六次<br>收回去的不會不見，它們堆在你身上",
+    "d": "你的一天被切成好幾段，每一段都嵌在別人的行程裡<br>沒有哪一段是完整的，所以怎麼睡都不夠"
+  },
+  "action": {
+    "a": "跟家人講你要出門一小時，不用說去哪<br>時間到就回來，講過一次下次會更容易開口",
+    "b": "找一個人，把你最近在忙的事講給他聽<br>不用講結論，講過程就好",
+    "c": "挑一件二十分鐘做得完的事，做完把它寫下來<br>寫下來你才看得到自己有在動",
+    "d": "這禮拜有一次要做決定的時候，先問自己想怎樣<br>只要一次就好，問完再去考慮別人"
+  },
+  "types": {
+    "A": {
+      "pick": "會鬆一口氣，終於有自己的時間了",
+      "reveal": "一個很久沒有自己的人",
+      "quote": "他走不走是一回事，你已經很久沒有自己了",
+      "b1": "我好像很久沒有做過自己想做的事了",
+      "b2": "你選這個的時候可能有點心虛，覺得自己是不是太冷血<br>你只是太久沒有一段時間是完全屬於你的<br>久到想不起來上一次做自己想做的事是什麼時候",
+      "b4": "你以為鬆一口氣代表你不夠愛他<br>會累是因為你真的在做，整天沒感覺的那個才是沒在做的人",
+      "b5": "你想要的從來就不是他離開，是你自己回來<br>這兩件事可以同時存在",
+      "bridge": "你剛剛選的是鬆一口氣<br>你這幾年一直在給，給到自己都快不見了<br>所以下面這一條，補的是把自己的喜悅找回來",
+      "gem": {
+        "name": "感覺很好",
+        "stones": "白水晶貔貅 x 青金石 x 藍月光",
+        "img": "img/crystals/ganjue-henhao.jpg",
+        "alt": "感覺很好水晶手鍊",
+        "url": "https://omnicrystal.store/shop/destiny-crystals/five-elements/a7/?utm_source=Karen&utm_medium=message",
+        "why": "白水晶貔貅把雜的東西擋在外面，你才有空間想自己的事<br>青金石讓你講得出口，想要什麼就說<br>藍月光把情緒放軟，不會一開口就變成吵架",
+        "moreLabel": "提升喜悅感的水晶 →",
+        "moreUrl": "https://omnicrystal.store/shop/?filter_%E8%83%BD%E9%87%8F%E5%8A%9F%E6%95%88=%E6%8F%90%E5%8D%87%E5%96%9C%E6%82%85%E6%84%9F&utm_source=Karen&utm_medium=message"
+      }
+    },
+    "B": {
+      "pick": "前幾天還好，過一陣子才開始受不了",
+      "reveal": "一個把感覺延後處理的人",
+      "quote": "當下你沒讓自己感覺，帳單兩個禮拜後才寄到",
+      "b1": "我沒事，這點事我撐得過去",
+      "b2": "事情發生的當下你都很好，好到旁邊的人都放心了<br>然後過了兩個禮拜，你在某個很普通的時刻突然撐不住<br>那個時候你沒有讓自己感覺，所以它晚了兩個禮拜才到",
+      "b4": "你以為撐過去了就是處理完了<br>沒講出來的那些不會自己消化掉，它們只是排隊，等你有空",
+      "b5": "你可以在當下就說一句我現在有點難過<br>講出來不會讓你變弱，只會讓它不用排那麼久的隊",
+      "bridge": "你剛剛選的是過一陣子才開始受不了<br>你習慣把感覺放到最後才處理，結果每次都堆到滿出來<br>所以下面這一條，補的是把話在當下就講出來",
+      "gem": {
+        "name": "冰川之光語",
+        "stones": "海藍寶 x 白阿賽 x 藍月光 x 白水晶",
+        "img": "img/crystals/bingchuan-zhiguangyu.jpg",
+        "alt": "冰川之光語水晶手鍊",
+        "url": "https://omnicrystal.store/shop/destiny-crystals/zodiac/d7/?utm_source=Karen&utm_medium=message",
+        "why": "海藍寶顧的是喉嚨那一段，話卡住的時候比較講得出來<br>白阿賽跟白水晶把心裡的雜訊清掉<br>藍月光讓情緒不用等到滿出來才處理",
+        "moreLabel": "舒緩情緒的水晶 →",
+        "moreUrl": "https://omnicrystal.store/shop/?filter_%E8%83%BD%E9%87%8F%E5%8A%9F%E6%95%88=%E8%88%92%E7%B7%A9%E6%83%85%E7%B7%92&utm_source=Karen&utm_medium=message"
+      }
+    },
+    "C": {
+      "pick": "房間一直維持原樣，誰都不准動",
+      "reveal": "一個把愛放在東西上的人",
+      "quote": "房間留著沒問題，只是他不在房間裡",
+      "b1": "只要東西還在，就好像他還沒真的走",
+      "b2": "你記得每一樣東西放在哪，誰動過你一眼就看出來<br>那個房間不是房間，是你替他留的位置<br>你很清楚他不會回來住了，可是你就是收不下去",
+      "b4": "你以為守住那些東西就是守住他<br>東西留得再完整，想他的時候還是會想，這兩件事沒有關係",
+      "b5": "房間可以留著，這沒什麼不對<br>只是他現在在別的地方活著，你可以打電話問他今天過得怎麼樣",
+      "bridge": "你剛剛選的是房間維持原樣<br>你把很多感情放在那些不會回話的東西上<br>所以下面這一條，補的是讓家的連結不用靠東西維繫",
+      "gem": {
+        "name": "幸福家園",
+        "stones": "白水晶 x 灰月光 x 藍月光",
+        "img": "img/crystals/xingfu-jiayuan.jpg",
+        "alt": "幸福家園水晶手鍊",
+        "url": "https://omnicrystal.store/shop/destiny-crystals/zodiac/d2/?utm_source=Karen&utm_medium=message",
+        "why": "白水晶把家裡的氣理順<br>灰月光顧的是安定感，不會東西一收走整個人就空掉<br>藍月光讓你開得了口說你在想他",
+        "moreLabel": "家庭幸福的水晶 →",
+        "moreUrl": "https://omnicrystal.store/shop/?filter_%E8%83%BD%E9%87%8F%E5%8A%9F%E6%95%88=%E5%AE%B6%E5%BA%AD%E5%B9%B8%E7%A6%8F&utm_source=Karen&utm_medium=message"
+      }
+    },
+    "D": {
+      "pick": "表面上很好，只是常常煮太多飯",
+      "reveal": "一個身體還記得的人",
+      "quote": "你嘴上說習慣了，手還是煮四人份",
+      "b1": "我沒什麼好難過的，日子還是要過",
+      "b2": "你跟每個人都說還好，也真的沒有哭過<br>可是你買菜還是買四人份，煮完才想起來只有兩個人吃<br>你的嘴已經適應了，手還沒有",
+      "b4": "你以為沒有掉眼淚就是不難過<br>難過不一定長成眼淚的樣子，有時候它長成冰箱裡吃不完的菜",
+      "b5": "你可以承認你在想他，這不會讓你變成一個放不下的人<br>會想很正常，煮太多也很正常",
+      "bridge": "你剛剛選的是常常煮太多飯<br>你把想念藏在很日常的動作裡，連自己都沒發現<br>所以下面這一條，補的是把日子好好過下去的那口氣",
+      "gem": {
+        "name": "朝暮相守",
+        "stones": "紫金珠砂 x 紫水晶 x 紅金珠砂 x 紅虎眼",
+        "img": "img/crystals/zhaomu-xiangshou.jpg",
+        "alt": "朝暮相守水晶手鍊",
+        "url": "https://omnicrystal.store/shop/destiny-crystals/five-elements/mu/?utm_source=Karen&utm_medium=message",
+        "why": "紫金珠砂跟紅金珠砂顧的是元氣，日子照過但人不會垮<br>紫水晶讓想念安靜下來<br>紅虎眼把力氣撐住，該吃飯的時候吃得下",
+        "moreLabel": "家庭幸福的水晶 →",
+        "moreUrl": "https://omnicrystal.store/shop/?filter_%E8%83%BD%E9%87%8F%E5%8A%9F%E6%95%88=%E5%AE%B6%E5%BA%AD%E5%B9%B8%E7%A6%8F&utm_source=Karen&utm_medium=message"
+      }
+    }
+  }
+};
+var Q1 = D.q1, Q2 = D.q2, Q3 = D.q3;
+function gemImg(x){ return /^https?:/.test(x) ? x : IMG_BASE + x; }
+var DRAIN = D.drain, ACTION = D.action, TYPES = D.types;
+
+/* ===== 狀態機 ===== */
+var STEPS = [Q1, Q2, Q3];
+var answers = [null, null, null];
+var step = 0;
+
+function ev(name, params){ if (typeof gtag === 'function') gtag('event', name, params || {}); }
+function show(id){
+  document.querySelectorAll('.screen').forEach(function(s){ s.classList.remove('on'); });
+  document.getElementById(id).classList.add('on');
+  window.scrollTo({top:0, behavior:'instant'});
+}
+function renderStep(){
+  var q = STEPS[step];
+  document.getElementById('q-count').textContent = (step+1) + ' / 3';
+  document.getElementById('q-fill').style.width = ((step) / 3 * 100 + 8) + '%';
+  document.getElementById('q-num').textContent = 'QUESTION 0' + (step+1);
+  document.getElementById('q-title').innerHTML = q.title;
+  document.getElementById('q-sub').textContent = q.sub;
+  var box = document.getElementById('q-opts');
+  box.innerHTML = '';
+  q.opts.forEach(function(o){
+    var d = document.createElement('div');
+    d.className = 'pick' + (answers[step] === o.k ? ' sel' : '');
+    d.innerHTML = '<span class="pick-letter">' + o.k.toUpperCase() + '</span><span class="pick-text">' + o.t + '</span>';
+    d.onclick = function(){ pick(o.k); };
+    box.appendChild(d);
+  });
+  document.getElementById('btn-back').style.visibility = step === 0 ? 'hidden' : 'visible';
+  document.getElementById('btn-next').textContent = step === 2 ? '看我的結果' : '下一題';
+  syncNext();
+}
+function syncNext(){
+  var b = document.getElementById('btn-next');
+  var ok = !!answers[step];
+  b.style.opacity = ok ? '1' : '.4';
+  b.style.pointerEvents = ok ? 'auto' : 'none';
+}
+function pick(k){
+  answers[step] = k;
+  document.querySelectorAll('#q-opts .pick').forEach(function(el){
+    el.classList.toggle('sel', el.querySelector('.pick-letter').textContent === k.toUpperCase());
+  });
+  syncNext();
+  ev('quiz_answer', { quiz_step: step + 1, option_letter: k });
+}
+document.getElementById('btn-start').onclick = function(){
+  ev('quiz_start', {});
+  step = 0; renderStep(); show('sc-q');
+};
+document.getElementById('btn-next').onclick = function(){
+  if (step < 2){ step++; renderStep(); show('sc-q'); return; }
+  show('sc-calc');
+  setTimeout(function(){ renderResult(); show('sc-result'); }, 900);
+};
+document.getElementById('btn-back').onclick = function(){
+  if (step > 0){ step--; renderStep(); show('sc-q'); }
+};
+document.getElementById('btn-retake').onclick = function(){
+  answers = [null,null,null]; step = 0;
+  history.replaceState(null,'',location.pathname);
+  renderStep(); show('sc-intro');
+};
+
+function blockHTML(h, t, tag){
+  return '<div class="res-blk"><div class="res-h">' + h + (tag ? '<em>' + tag + '</em>' : '') +
+         '</div><div class="res-t">' + t + '</div></div>';
+}
+function renderResult(){
+  var key = answers[0] || 'A';
+  var T = TYPES[key];
+  var drain = DRAIN[answers[1] || 'a'];
+  var action = ACTION[answers[2] || 'a'];
+
+  document.getElementById('r-reveal').textContent = T.reveal;
+  document.getElementById('r-quote').textContent = T.quote;
+  document.getElementById('r-blocks').innerHTML =
+      blockHTML('你心裡常出現的那句話', T.b1)
+    + blockHTML('你為什麼會停在這一個', T.b2)
+    + blockHTML('最耗你的地方', drain, '依你第二題的答案')
+    + blockHTML('你可能誤會的', T.b4)
+    + blockHTML('你其實需要聽到的', T.b5)
+    + blockHTML('這禮拜可以做的一件事', action, '依你第三題的答案');
+
+  document.getElementById('r-bridge').innerHTML = T.bridge;
+  document.getElementById('r-gem-name').textContent = T.gem.name;
+  document.getElementById('r-gem-stones').textContent = T.gem.stones;
+  document.getElementById('r-gem-why').innerHTML = T.gem.why;
+  document.getElementById('r-gem-img').src = gemImg(T.gem.img);
+  document.getElementById('r-gem-img').alt = T.gem.alt;
+  document.getElementById('r-gem-img-link').href = T.gem.url;
+  document.getElementById('r-gem-btn').href = T.gem.url;
+  var more = document.getElementById('r-gem-more');
+  more.textContent = T.gem.moreLabel; more.href = T.gem.moreUrl;
+
+  var box = document.getElementById('r-others');
+  box.innerHTML = '';
+  Object.keys(TYPES).forEach(function(k){
+    if (k === key) return;
+    var O = TYPES[k];
+    var d = document.createElement('div');
+    d.className = 'oth';
+    d.innerHTML = '<div class="oth-head"><span class="oth-letter">' + k + '</span>' + O.pick +
+      '<span class="oth-arrow">⌄</span></div><div class="oth-body">' +
+      blockHTML('把自己看成', O.reveal) + blockHTML('你其實需要聽到的', O.b5) + '</div>';
+    d.onclick = function(){
+      d.classList.toggle('open');
+      if (d.classList.contains('open')) ev('quiz_other_open', { option_letter: k });
+    };
+    box.appendChild(d);
+  });
+
+  history.replaceState(null, '', '#r=' + key);
+  ev('quiz_complete', { result_type: key, answer_2: answers[1] || '', answer_3: answers[2] || '' });
+  document.querySelectorAll('.fade-up').forEach(function(el){ observer.observe(el); });
+}
+
+/* 分享連結直接進結果 */
+(function(){
+  var m = location.hash.match(/r=([A-D])/);
+  if (m){ answers[0] = m[1]; renderResult(); show('sc-result'); }
+})();
+
+function copyCode(btn){
+  ev('code_copy', { partner:'forest_crystal', code_value:'Karen', result_type: answers[0] || '' });
+  var done = function(){
+    btn.textContent = '已複製'; btn.classList.add('done');
+    setTimeout(function(){ btn.textContent = '複製'; btn.classList.remove('done'); }, 1600);
+  };
+  if (navigator.clipboard && window.isSecureContext){
+    navigator.clipboard.writeText('Karen').then(done).catch(function(){ fallbackCopy(done); });
+  } else { fallbackCopy(done); }
+}
+function fallbackCopy(done){
+  var ta = document.createElement('textarea');
+  ta.value = 'Karen'; ta.style.cssText = 'position:fixed;top:-9999px';
+  document.body.appendChild(ta); ta.select();
+  try { document.execCommand('copy'); done(); } catch(e){}
+  document.body.removeChild(ta);
+}
+var observer = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){ if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-up').forEach(function(el){ observer.observe(el); });
+</script>
+</body>
+</html>
