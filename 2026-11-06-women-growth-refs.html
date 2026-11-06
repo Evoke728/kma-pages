@@ -44,6 +44,16 @@ section .desc { font-size:13px; color:#7A6350; margin-top:2px; }
 .card a { display:inline-block; margin-top:10px; font-size:14px; font-weight:700; color:var(--primary); text-decoration:none; border-bottom:2px solid var(--highlight); word-break:break-all; }
 .card a:hover { border-color:var(--primary); }
 .empty { text-align:center; color:#7A6350; padding:40px 0; display:none; }
+.tabs { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:24px; }
+.tab { font:inherit; font-size:15px; font-weight:700; padding:10px; border-radius:14px; border:2px solid var(--ink); background:var(--cream); color:var(--ink); cursor:pointer; }
+.tab[aria-selected="true"] { background:var(--ink); color:var(--cream); }
+.hidden { display:none !important; }
+.tier { padding:2px 10px; border-radius:50px; font-weight:700; }
+.tier.t1 { background:var(--ink); color:var(--cream); }
+.tier.t2 { background:var(--highlight); color:var(--ink); }
+.tier.t3 { background:#E9DDC9; color:#7A6350; border:1px dashed #B9A285; }
+.track { color:#7A6350; }
+.fans { color:var(--primary); font-weight:700; }
 footer { margin-top:48px; font-size:12px; color:#8A735E; text-align:center; }
 </style>
 </head>
@@ -55,16 +65,33 @@ footer { margin-top:48px; font-size:12px; color:#8A735E; text-align:center; }
     <div class="stats" id="stats"></div>
   </header>
 
-  <div class="controls">
-    <div class="row" id="groupFilter"></div>
-    <div class="row" id="statusFilter"></div>
-    <div class="row"><input type="search" id="q" placeholder="搜尋主題關鍵字，例如 自我價值、女兒、選擇權"></div>
+  <nav class="tabs" role="tablist">
+    <button class="tab" role="tab" data-view="posts" aria-selected="true">對標貼文</button>
+    <button class="tab" role="tab" data-view="accounts" aria-selected="false">對標帳號</button>
+  </nav>
+
+  <div id="postsView">
+    <div class="controls">
+      <div class="row" id="groupFilter"></div>
+      <div class="row" id="statusFilter"></div>
+      <div class="row"><input type="search" id="q" placeholder="搜尋主題關鍵字，例如 自我價值、女兒、選擇權"></div>
+    </div>
+
+    <main id="list"></main>
+    <p class="empty" id="empty">沒有符合的對標</p>
+
   </div>
 
-  <main id="list"></main>
-  <p class="empty" id="empty">沒有符合的對標</p>
+  <div id="accountsView" class="hidden">
+    <div class="controls">
+      <div class="row" id="tierFilter"></div>
+      <div class="row"><input type="search" id="aq" placeholder="搜尋帳號或賽道，例如 親子、財商、語錄"></div>
+    </div>
+    <main id="alist"></main>
+    <p class="empty" id="aempty">沒有符合的帳號</p>
+  </div>
 
-  <footer>資料來源：archive/2026-10-11_K媽合作結束/queue/kma｜整理日期 2026-11-06</footer>
+  <footer>資料來源：K媽 選題庫 queue／對標帳號 watchlist｜整理日期 2026-11-06</footer>
 </div>
 
 <script>
@@ -120,14 +147,14 @@ const DATA = [
 
 const state = { group:"all", status:"all", q:"" };
 
-function chips(el, key, opts){
+function chips(el, key, opts, st = state, cb = () => render()){
   el.innerHTML = opts.map(([v,label]) =>
-    `<button class="chip" data-v="${v}" aria-pressed="${state[key]===v}">${label}</button>`).join("");
+    `<button class="chip" data-v="${v}" aria-pressed="${st[key]===v}">${label}</button>`).join("");
   el.addEventListener("click", e => {
     const b = e.target.closest(".chip"); if(!b) return;
-    state[key] = b.dataset.v;
+    st[key] = b.dataset.v;
     el.querySelectorAll(".chip").forEach(c => c.setAttribute("aria-pressed", c===b));
-    render();
+    cb();
   });
 }
 
@@ -138,7 +165,7 @@ function stats(){
     `<div class="stat"><b>${n}</b><span>對標總數</span></div>
      <div class="stat"><b>${core}</b><span>核心對標</span></div>
      <div class="stat"><b>${n-done}</b><span>還沒做過</span></div>
-     <div class="stat"><b>${done}</b><span>已做或已採用</span></div>`;
+     <div class="stat"><b>${done}</b><span>已做過</span></div>`;
 }
 
 function esc(s){ return s.replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
@@ -171,6 +198,71 @@ chips(document.getElementById("statusFilter"), "status",
   [["all","不限狀態"],["todo","未做"],["done","已做"]]);
 document.getElementById("q").addEventListener("input", e => { state.q = e.target.value; render(); });
 stats(); render();
+
+const TIERS = { 1:["★ 高頻","t1","固定追，每批必看"], 2:["● 一般","t2","有素材時看"], 3:["？ 待確認","t3","handle 或定位還沒補齊"] };
+const ACCOUNTS = [
+  ["@christyabroad","https://www.instagram.com/christyabroad","","親子育兒","育兒知識型，依附理論＋家庭教養研究；lead magnet 設計強，版型元件成熟（權威徽章、頁碼、連載預告）",1],
+  ["@brokenquotes.in","https://www.instagram.com/brokenquotes.in/","","情感金句","情感金句、人格對號入座圖卡；紙紋襯線視覺跟 K媽 米色紙路線相容，入選貼文 4 萬、5.7 萬讚",1],
+  ["@Softenthought","https://www.instagram.com/Softenthought/","","情感語錄（英）","英文情感語錄＋AI 厚塗油畫，K媽 第三條視覺線的源頭；只借構圖，不搬句子",1],
+  ["葵媽咪 @kewi.mommy","https://www.instagram.com/kewi.mommy","","親子教養","女兒教養、安全教育界線題；留言關鍵字 → LINE 官方 → 160 多份懶人包，跟 K媽 官LINE 同一套打法",1],
+  ["科豆 @fightback_931","https://www.instagram.com/fightback_931/","","個人品牌／變現教學","「小數字乘以 365」複利可視化，留言率 7.9%，是庫裡圖文輪播最高的一批",1],
+  ["Thoughts | Kamlesh Kushwaha @thought.minds","https://www.instagram.com/thought.minds/","250 萬","語錄大帳（英）","庫裡產出最多的帳號，已餵出三篇素材；AI 油畫＋單一句型撐整組，CTA 卡把「沒追蹤」的代價畫出來",1],
+  ["CC陪你吃 @cc_eatfreely","https://www.instagram.com/cc_eatfreely","3,164","瘦身","結構跟 K媽 最像：親身走過當入場券、一對一陪跑變現，粉絲少但打法對",1],
+  ["漢娜湘瀅 @hannah77031","https://www.instagram.com/hannah77031","4.18 萬","瘦身＋育兒","支柱重疊度最高，證明育兒和瘦身可以在同一個帳號共存",1],
+  ["小峰｜健身教練 @winaimer003598","https://www.instagram.com/winaimer003598","5.24 萬","瘦身","日更 650 多天，用 LINE 發外食餐廳指南當 lead magnet，導流機制跟 K媽 同一套",1],
+  ["小丹尼｜退休理財規劃顧問 @yourdanny_ifa","https://www.instagram.com/yourdanny_ifa","1.96 萬","財商","持牌顧問路線的參照，權威來自可查證的執照與操作規模",1],
+  ["@myriahmoon","https://www.instagram.com/myriahmoon/","","星座／人格圖卡","「12 個入口＋綠紅雙欄」留言製造機版型，代表貼文 46 萬讚、6,215 則留言",2],
+  ["姵姵 @ashleybaby0217","https://www.instagram.com/ashleybaby0217","","親子療癒","親子療癒圖文，家庭育兒支柱對標",2],
+  ["綺闆 @chi_chi_hu","https://www.instagram.com/chi_chi_hu/","","自媒體行銷／AI 內容","自媒體行銷顧問，AI 內容＋自媒體",2],
+  ["@gptsavyy","https://www.instagram.com/gptsavyy","","AI 內容","AI 內容對標",2],
+  ["@_1mlinda（品牌 yen）","https://www.instagram.com/p/DZCYxJ2E2ad/","","情感／動畫 IP","芙莉蓮等動畫 IP 情感輪播，質感高、金句強（連結是代表貼文）",2],
+  ["壯壯營養師 @dietitian_bgg","https://www.instagram.com/dietitian_bgg","19.7 萬","瘦身","「放縱飲食法」創始人，專業資格＋自創方法論命名＋學員數撐權威",2],
+  ["Ray6669 @696669ray","https://www.instagram.com/696669ray","4.02 萬","瘦身（商品導向）","健身選手，靠減脂茶和補給品變現，當對照組看",2],
+  ["@hsh.waierullrich","https://www.instagram.com/hsh.waierullrich","","中文語錄（非原創）","白底一段話，「借詞」裝置拿到 8 萬讚；追裝置不追人",2],
+  ["不完美媽媽 藥師捲捲","","","育兒科普","手繪童書風育兒科普，長篇鋪陳強但 CTA 很弱；IG handle 待補",3],
+  ["富人賣雞蛋（handle 待補）","https://www.instagram.com/p/DafV2uRPh8H/","","財商口播","四層階梯寓言，55.6 萬瀏覽，全片無 CTA 純流量型（連結是代表貼文）",3],
+  ["資產活化寬限期（handle 待補）","https://www.instagram.com/p/Dca1BPnTVnU/","","財商口播","留言／讚 88.5%，庫裡最高；累進計分板＋一人分飾兩角（連結是代表貼文）",3],
+  ["@joez_lcy","https://www.instagram.com/joez_lcy","","財商（待確認）","手動指定的財商對標，還沒拆",3],
+  ["@thinkwithabhay","https://www.instagram.com/thinkwithabhay","","泛流量／親子（待確認）","手動指定，可能是英文帳號，若是就只借版型構圖",3],
+  ["@ruruuu.tw","https://www.instagram.com/ruruuu.tw/","","待確認","手動指定為 K媽 對標，還沒拆",3],
+  ["@brian.5mininvest","https://www.instagram.com/brian.5mininvest","","財商","手動指定的財商線對標，還沒拆",3],
+  ["@0315chiao","https://www.instagram.com/0315chiao","","待確認","inbox 新增，領域待確認",3],
+  ["@guan.ceo.1","https://www.instagram.com/guan.ceo.1","","待確認","inbox 新增，還沒拆",3],
+  ["@chichi_0714","https://www.instagram.com/chichi_0714","","待確認","inbox 新增，還沒拆",3],
+  ["@cindiezhu","https://www.instagram.com/cindiezhu","","待確認","inbox 新增，還沒拆",3]
+].map(([name,url,fans,track,why,tier]) => ({name,url,fans,track,why,tier}));
+
+const astate = { tier:"all", q:"" };
+function renderAccounts(){
+  const q = astate.q.trim().toLowerCase();
+  const items = ACCOUNTS.filter(a =>
+    (astate.tier==="all" || String(a.tier)===astate.tier) &&
+    (!q || (a.name+a.track+a.why).toLowerCase().includes(q)));
+  document.getElementById("alist").innerHTML = [1,2,3].map(t => {
+    const rows = items.filter(a=>a.tier===t);
+    if(!rows.length) return "";
+    return `<section><h2>${TIERS[t][0]}</h2><p class="desc">${TIERS[t][2]}｜${rows.length} 個</p>` +
+      rows.map(a => `<article class="card">
+        <div class="meta"><span class="tier ${TIERS[t][1]}">${TIERS[t][0]}</span>
+          <span class="track">${esc(a.track)}</span>${a.fans?`<span class="fans">${a.fans} 粉</span>`:""}</div>
+        <h3>${esc(a.name)}</h3>
+        <p class="note">${esc(a.why)}</p>
+        ${a.url?`<a href="${a.url}" target="_blank" rel="noopener">${a.url.includes("/p/")?"看代表貼文 →":"看帳號 →"}</a>`:""}
+      </article>`).join("") + `</section>`;
+  }).join("");
+  document.getElementById("aempty").style.display = items.length ? "none" : "block";
+}
+chips(document.getElementById("tierFilter"), "tier",
+  [["all","全部"],["1","★ 高頻"],["2","● 一般"],["3","？ 待確認"]], astate, renderAccounts);
+document.getElementById("aq").addEventListener("input", e => { astate.q = e.target.value; renderAccounts(); });
+renderAccounts();
+
+document.querySelector(".tabs").addEventListener("click", e => {
+  const b = e.target.closest(".tab"); if(!b) return;
+  document.querySelectorAll(".tab").forEach(t => t.setAttribute("aria-selected", t===b));
+  document.getElementById("postsView").classList.toggle("hidden", b.dataset.view!=="posts");
+  document.getElementById("accountsView").classList.toggle("hidden", b.dataset.view!=="accounts");
+});
 </script>
 </body>
 </html>
