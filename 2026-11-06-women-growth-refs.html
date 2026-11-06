@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>K媽｜女性成長對標清單</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;700;900&family=Noto+Sans+TC:wght@400;500;700;900&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary:#B5764A; --accent:#D0A06B; --highlight:#E7C79A;
+  --ink:#3A2717; --cream:#FFFBF4; --bg:#F2E6D2; --warm:#DFC7A0; --text:#3A281B;
+  --done:#6E8B5A; --todo:#B5764A;
+  --serif:"Noto Serif TC",serif; --sans:"Noto Sans TC","Inter",sans-serif;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:var(--bg); font-family:var(--sans); color:var(--text); line-height:1.7; overflow-x:hidden; }
+.wrap { max-width:760px; margin:0 auto; padding:40px 16px 64px; }
+header h1 { font-family:var(--serif); font-weight:900; font-size:clamp(28px,7vw,40px); line-height:1.3; color:var(--ink); }
+header h1 mark { background:var(--highlight); color:var(--ink); padding:0 .25em; border-radius:6px; }
+header p { margin-top:12px; font-size:15px; color:#6B5440; }
+.stats { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin-top:20px; }
+.stat { background:var(--cream); border:2px solid var(--warm); border-radius:14px; padding:10px 10px; }
+.stat b { display:block; font-family:var(--serif); font-size:24px; color:var(--ink); line-height:1.2; }
+.stat span { font-size:12px; color:#7A6350; }
+.controls { position:sticky; top:0; z-index:5; background:var(--bg); padding:16px 0 12px; margin-top:24px; border-bottom:2px solid var(--warm); }
+.row { display:flex; gap:8px; flex-wrap:wrap; }
+.row + .row { margin-top:8px; }
+.chip { font:inherit; font-size:14px; font-weight:500; padding:6px 14px; border-radius:50px; border:2px solid var(--warm); background:var(--cream); color:var(--text); cursor:pointer; }
+.chip[aria-pressed="true"] { background:var(--ink); border-color:var(--ink); color:var(--cream); }
+input[type=search] { font:inherit; font-size:15px; width:100%; padding:9px 14px; border-radius:12px; border:2px solid var(--warm); background:var(--cream); color:var(--text); }
+input[type=search]:focus { outline:none; border-color:var(--primary); }
+section { margin-top:28px; }
+section h2 { font-family:var(--serif); font-size:21px; color:var(--ink); }
+section .desc { font-size:13px; color:#7A6350; margin-top:2px; }
+.card { background:var(--cream); border:2px solid var(--warm); border-radius:16px; padding:16px 18px; margin-top:12px; box-shadow:4px 4px 0 var(--warm); }
+.meta { display:flex; gap:8px; align-items:center; flex-wrap:wrap; font-size:12px; }
+.week { font-family:"Inter",sans-serif; font-weight:700; color:var(--primary); letter-spacing:.02em; }
+.status { padding:2px 10px; border-radius:50px; font-weight:700; color:#fff; }
+.status.done { background:var(--done); }
+.status.todo { background:#C9B497; color:var(--ink); }
+.card h3 { font-size:16px; font-weight:700; color:var(--ink); margin-top:8px; line-height:1.6; }
+.note { font-size:13px; color:#7A6350; margin-top:4px; }
+.card a { display:inline-block; margin-top:10px; font-size:14px; font-weight:700; color:var(--primary); text-decoration:none; border-bottom:2px solid var(--highlight); word-break:break-all; }
+.card a:hover { border-color:var(--primary); }
+.empty { text-align:center; color:#7A6350; padding:40px 0; display:none; }
+footer { margin-top:48px; font-size:12px; color:#8A735E; text-align:center; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>女性成長<br><mark>對標清單</mark></h1>
+    <p>從 K媽 選題庫 W23 到 W39 整理出來，主題圍繞女性價值、女力、自我價值、價值觀<br>同一個對標衍生出好幾題的已經併成一張卡</p>
+    <div class="stats" id="stats"></div>
+  </header>
+
+  <div class="controls">
+    <div class="row" id="groupFilter"></div>
+    <div class="row" id="statusFilter"></div>
+    <div class="row"><input type="search" id="q" placeholder="搜尋主題關鍵字，例如 自我價值、女兒、選擇權"></div>
+  </div>
+
+  <main id="list"></main>
+  <p class="empty" id="empty">沒有符合的對標</p>
+
+  <footer>資料來源：archive/2026-10-11_K媽合作結束/queue/kma｜整理日期 2026-11-06</footer>
+</div>
+
+<script>
+const GROUPS = {
+  core:   { name:"核心｜女性價值與女力", desc:"正面講女性自我價值、界線、女力的對標" },
+  values: { name:"價值觀與認知", desc:"拆掉默認觀念、自我審視、認知升級" },
+  extend: { name:"延伸｜媽媽身分與關係裡的女性", desc:"切角落在女人怎麼看自己，但主軸偏親子、關係或理財" }
+};
+const DATA = [
+  // 核心
+  ["core","W23 #30","女力修煉這 10 點，你最需要哪一點","清單互動型",0,"https://www.instagram.com/p/DYM6JiHkRpq/"],
+  ["core","W23 #25","氣質可以後天培養嗎，好氣質的人有這些特質","收藏型",0,"https://www.instagram.com/p/DYecl9pkZe0/"],
+  ["core","W23 #27","中年女人最好的底牌：有錢、有腦、有退路","強共鳴",0,"https://www.instagram.com/p/DY6f11vH92d/"],
+  ["core","W23 #22","真正開始往上走的人，身上會出現這些變化","女性版翻身五種變化＋心理測驗導流",1,"https://www.instagram.com/p/DYEwcoOEvIL/"],
+  ["core","W23 #35–38","有些人的離開是篩選／把注意力收回自己身上／真正的自信／學會篩選","#38 已做成《學會篩選》",1,"https://www.instagram.com/p/DZHx-39khyd/"],
+  ["core","W23 #1","老公越有錢，女人越要懂的一件事","從兩性界線翻成女性自我定位",0,"https://vt.tiktok.com/ZS9S41SW1/"],
+  ["core","W23 #16","真正的旺夫不是犧牲，是把自己活成糖廠","婚姻是能量博弈",0,"https://www.instagram.com/p/DYtewGln4AN/"],
+  ["core","W23 #7","為什麼要生孩子，這題根本沒有標準答案","女性自主決定，已勾採用",1,"https://www.instagram.com/p/DXN_1b_iaUW/"],
+  ["core","W27 #9–12","別人嫌你「變了」「難搞」「現實」","你開始顧自己，有人就不好佔便宜了",0,"https://www.instagram.com/p/DZ3-GJ0ky-g/"],
+  ["core","W28 #23–24","你忍的那些，其實是你偷偷覺得自己只配到這","我以前以為我很好相處，後來發現只是不敢要求被好好對待",0,"https://www.instagram.com/p/DVW1Pl2ko2a/"],
+  ["core","W29 #19–21","我花 30 年才學會喜歡自己，希望女兒不用","你的價值不需要靠任何成就證明",0,"https://www.instagram.com/p/DZ-Forok-Ys/"],
+  ["core","W31 #13–16","我不是沒有賺錢能力，我只是把時間先給了這個家","#13 已做；另有全職媽媽三個賺錢限制、我的時間值多少錢",1,"https://www.instagram.com/p/DanJI95k1-f/"],
+  ["core","W31 #10–12","40 要尊重、50 要並肩、60 要陪在身邊","女人每個階段要的東西；#9 已做成《六十年婚姻》",1,"https://www.instagram.com/p/DZ7wBC3k4ET/"],
+  ["core","W32 #29–33","給 35+ 的自己，六件我不再解釋的事","#29 已做成《36 歲生日語錄》；另有不再問老公能不能買的那一年",1,"https://www.instagram.com/p/DSr5rdok9PD/"],
+  ["core","W33 #29–32","請養一個不好欺負的女兒／請養一個敢談錢的女兒","六條界線，每條掛一句可以教給小孩的台詞",0,"https://www.instagram.com/p/Dacz23cnZyo/"],
+  ["core","W39 #1–3","二十五歲的我，會怎麼看現在的我","主軸收在有沒有選擇權",0,"https://www.instagram.com/p/Dc_V2CEArWC/"],
+  ["core","W39 #4–6","你跪著求來的東西，現在都在你手上","你停下來高興過一秒嗎",0,"https://www.instagram.com/p/Db_wEZvxNH9/"],
+  ["core","W39 #12–16","七張讓你人生清醒的圖／十四句會痛的話","#12 已做；另有我以前很怕被說難相處",1,"https://www.instagram.com/p/Ddd_ntBAgaA/"],
+  // 價值觀
+  ["values","W33 #1–3","什麼叫有錢／什麼叫穩定／什麼叫好媽媽","連續反問，拆掉大家默認的詞",0,"https://www.instagram.com/p/DbzvLJSme4d/"],
+  ["values","W25 #5–8","低認知 vs 高認知七組對照","拉開人生差距的不是勤奮",0,"https://www.instagram.com/p/DZb_FTDjua2/"],
+  ["values","W24 #5–9","你選的不是完美的人，是你願意承擔的代價","八種男人八種代價，兩性選擇權",0,"https://www.instagram.com/p/DZMOcv_Ek--/"],
+  ["values","W29 #12–15","我不要女兒給我孝親費","心意可以，義務不行",0,"https://www.instagram.com/p/Da79LUhPGVE/"],
+  ["values","W23 #11","把自己當成「選項」客觀審視，你會選現在的你嗎","自我審視",0,"https://www.instagram.com/p/DYZim8ypgiE/"],
+  ["values","W23 #13","課題分離：別把別人的課題當成自己的","",0,"https://www.instagram.com/p/DYd8umfk9lw/"],
+  ["values","W23 #9","生活一直卡住，是大腦濾鏡壞了","RAS",0,"https://www.instagram.com/p/DXRrKSYEmIm/"],
+  ["values","W23 #10","你說你知道卻沒做到，那就是還沒真的懂","知行合一",0,"https://www.instagram.com/p/DYbFvFhpKau/"],
+  ["values","W23 #15","和不滿意的過去自己說再見","環境決定改變",0,"https://www.instagram.com/p/DYUa8rFFM5K/"],
+  ["values","W23 #28","5 年前想做的事，今天做到幾件","做到的人是開始了",0,"https://www.instagram.com/p/DYd0AdPjvph/"],
+  ["values","W35 #23–26","把一筆錢換成一個能力","你以為是自己的想法，其實是身邊五個人的平均值",0,"https://www.instagram.com/p/DW08x5iEs3g/"],
+  // 延伸
+  ["extend","W24 #13–17","全職媽媽在家賺錢的 7 種方式","過來人視角，第一桶流量收入",0,"https://www.instagram.com/p/DZULPXmSD-d/"],
+  ["extend","W24 #29–30","我以為我在給愛，其實只是在給我渴望被給的東西","怎麼分辨愛還是投射",0,"https://www.instagram.com/p/DY_l3rNEtg6/"],
+  ["extend","W28 #9–11","你嘴上說「我沒事」，心裡其實是這句","什麼都扛的媽媽",0,"https://www.instagram.com/p/DZ8QmnGCXN9/"],
+  ["extend","W28 #12–15","懷疑自己不夠吸引人的時候，先問是不是你們之間有距離了","把女性的自責翻成關係問題",0,"https://www.instagram.com/p/DaVBI-ilHP1/"],
+  ["extend","W28 #16–20","父性創傷 vs 母性創傷","我一直在證明自己，直到發現只是想被爸爸看一眼",0,"https://www.instagram.com/p/DZqu9ARE4Qy/"],
+  ["extend","W28 #21–22","我把睡前滑手機換成發呆十分鐘，才想起自己是誰","媽媽的自我照顧",0,"https://www.instagram.com/p/DaIA16qjRYm/"],
+  ["extend","W32 #10–13","有錢的安全感，實際上長什麼樣","聽起來像關心，其實把你推遠的話",0,"https://www.instagram.com/p/DbV9AkeE69F/"],
+  ["extend","W32 #1","12 個月出生的女人，各自最容易在哪一步卡住","綠旗紅旗雙欄",0,"https://www.instagram.com/p/DbHQ3EIjqvT/"],
+  ["extend","W35 #27–30","四個女兒拿一樣的錢，七年後差在哪","你現在正在賺哪一種錢",0,"https://www.instagram.com/p/DafV2uRPh8H/"],
+  ["extend","W38 #6–10","我女兒大概不知道的那些事／我媽大概不知道我知道","同時當女兒跟當媽媽",0,"https://www.instagram.com/p/DdCPiofk4pI/"]
+].map(([g,week,title,note,done,url]) => ({g,week,title,note,done:!!done,url}));
+
+const state = { group:"all", status:"all", q:"" };
+
+function chips(el, key, opts){
+  el.innerHTML = opts.map(([v,label]) =>
+    `<button class="chip" data-v="${v}" aria-pressed="${state[key]===v}">${label}</button>`).join("");
+  el.addEventListener("click", e => {
+    const b = e.target.closest(".chip"); if(!b) return;
+    state[key] = b.dataset.v;
+    el.querySelectorAll(".chip").forEach(c => c.setAttribute("aria-pressed", c===b));
+    render();
+  });
+}
+
+function stats(){
+  const n = DATA.length, done = DATA.filter(d=>d.done).length;
+  const core = DATA.filter(d=>d.g==="core").length;
+  document.getElementById("stats").innerHTML =
+    `<div class="stat"><b>${n}</b><span>對標總數</span></div>
+     <div class="stat"><b>${core}</b><span>核心對標</span></div>
+     <div class="stat"><b>${n-done}</b><span>還沒做過</span></div>
+     <div class="stat"><b>${done}</b><span>已做或已採用</span></div>`;
+}
+
+function esc(s){ return s.replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
+
+function render(){
+  const q = state.q.trim();
+  const items = DATA.filter(d =>
+    (state.group==="all" || d.g===state.group) &&
+    (state.status==="all" || (state.status==="done") === d.done) &&
+    (!q || (d.title+d.note+d.week).includes(q)));
+  const list = document.getElementById("list");
+  list.innerHTML = Object.entries(GROUPS).map(([k,g]) => {
+    const rows = items.filter(d=>d.g===k);
+    if(!rows.length) return "";
+    return `<section><h2>${g.name}</h2><p class="desc">${g.desc}｜${rows.length} 個</p>` +
+      rows.map(d => `<article class="card">
+        <div class="meta"><span class="week">${d.week}</span>
+          <span class="status ${d.done?"done":"todo"}">${d.done?"已做":"未做"}</span></div>
+        <h3>${esc(d.title)}</h3>
+        ${d.note?`<p class="note">${esc(d.note)}</p>`:""}
+        <a href="${d.url}" target="_blank" rel="noopener">看對標 →</a>
+      </article>`).join("") + `</section>`;
+  }).join("");
+  document.getElementById("empty").style.display = items.length ? "none" : "block";
+}
+
+chips(document.getElementById("groupFilter"), "group",
+  [["all","全部"],["core","核心"],["values","價值觀"],["extend","延伸"]]);
+chips(document.getElementById("statusFilter"), "status",
+  [["all","不限狀態"],["todo","未做"],["done","已做"]]);
+document.getElementById("q").addEventListener("input", e => { state.q = e.target.value; render(); });
+stats(); render();
+</script>
+</body>
+</html>
